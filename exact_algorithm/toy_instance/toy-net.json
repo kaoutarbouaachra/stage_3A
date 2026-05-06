@@ -1,0 +1,235 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "nodes": [
+    {
+      "name": "A",
+      "id": 0
+    },
+    {
+      "name": "B",
+      "id": 1
+    },
+    {
+      "name": "C",
+      "id": 2
+    },
+    {
+      "name": "D",
+      "id": 3
+    },
+    {
+      "name": "E",
+      "id": 4
+    },
+    {
+      "name": "F",
+      "id": 5
+    },
+    {
+      "name": "G",
+      "id": 6
+    }
+  ],
+  "links": [
+    {
+      "id": 0,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 400,
+      "delay": 6.33,
+      "from": 0,
+      "to": 1
+    },
+    {
+      "id": 1,
+      "cost": 1,
+      "metric": 200,
+      "capacity": 300,
+      "delay": 97.5,
+      "from": 0,
+      "to": 2
+    },
+    {
+
+      "id" : 2,
+      "cost": 1,
+      "metric": 200,
+      "capacity": 200,
+      "delay": 105.6,
+      "from": 1,
+      "to": 3
+    },
+    {
+      "id" : 3,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 143,
+      "from": 1,
+      "to": 4
+    },
+    {
+      "id" : 4,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 400,
+      "delay": 34.33,
+      "from": 2,
+      "to": 4
+    },
+    {
+      "id" : 5,
+      "cost": 1,
+      "metric": 300,
+      "capacity": 200,
+      "delay": 52.44,
+      "from": 2,
+      "to": 6
+    },
+    {
+      "id" : 6,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 68,
+      "from": 3,
+      "to": 5
+    },
+    {
+      "id" : 7,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 6.33,
+      "from": 3,
+      "to": 4
+    },
+    {
+      "id" : 8,
+      "cost": 1,
+      "metric": 300,
+      "capacity": 200,
+      "delay": 56.14,
+      "from": 4,
+      "to": 5
+    },
+    {
+      "id" : 9,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 124.82,
+      "from": 4,
+      "to": 6
+    },
+    {
+      "id" : 10,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 98.8,
+      "from": 5,
+      "to": 6
+    },
+    {
+      "id" : 11,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 400,
+      "delay": 6.33,
+      "from": 1,
+      "to": 0
+    },
+    {
+      "id" : 12,
+      "cost": 1,
+      "metric": 200,
+      "capacity": 300,
+      "delay": 97.5,
+      "from": 2,
+      "to": 0
+    },
+    {
+      "id" : 13,
+      "cost": 1,
+      "metric": 200,
+      "capacity": 200,
+      "delay": 105.6,
+      "from": 3,
+      "to": 1
+    },
+    {
+      "id" : 14,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 143,
+      "from": 4,
+      "to": 1
+    },
+    {
+      "id" : 15,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 400,
+      "delay": 34.33,
+      "from": 4,
+      "to": 2
+    },
+    {
+      "id" : 16,
+      "cost": 1,
+      "metric": 300,
+      "capacity": 200,
+      "delay": 52.44,
+      "from": 6,
+      "to": 2
+    },
+    {
+      "id" : 17,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 68,
+      "from": 5,
+      "to": 3
+    },
+    {
+      "id" : 18,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 6.33,
+      "from": 4,
+      "to": 3
+    },
+    {
+      "id" : 19,
+      "cost": 1,
+      "metric": 300,
+      "capacity": 200,
+      "delay": 56.14,
+      "from": 5,
+      "to": 4
+    },
+    {
+      "id" : 20,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 124.82,
+      "from": 6,
+      "to": 4
+    },
+    {
+      "id" : 21,
+      "cost": 1,
+      "metric": 100,
+      "capacity": 200,
+      "delay": 98.8,
+      "from": 6,
+      "to": 5
+    }
+  ]
+}

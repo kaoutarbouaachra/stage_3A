@@ -1,0 +1,31 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "nodes": [
+    {"name": "v0", "id": 0},
+    {"name": "v1", "id": 1},
+    {"name": "v2", "id": 2},
+    {"name": "v3", "id": 3},
+    {"name": "v4", "id": 4}
+  ],
+  "links": [
+    {"id": 0, "from": 0, "to": 4, "metric": 2, "capacity": 1},
+    {"id": 1, "from": 4, "to": 0, "metric": 2, "capacity": 1},
+    {"id": 2, "from": 0, "to": 1, "metric": 3, "capacity": 5},
+    {"id": 3, "from": 1, "to": 0, "metric": 3, "capacity": 5},
+    {"id": 4, "from": 0, "to": 2, "metric": 2, "capacity": 1},
+    {"id": 5, "from": 2, "to": 0, "metric": 2, "capacity": 1},
+    {"id": 6, "from": 0, "to": 3, "metric": 2, "capacity": 1},
+    {"id": 7, "from": 3, "to": 0, "metric": 2, "capacity": 3},
+    {"id": 8, "from": 1, "to": 4, "metric": 2, "capacity": 2},
+    {"id": 9, "from": 4, "to": 1, "metric": 2, "capacity": 2},
+    {"id": 10, "from": 1, "to": 2, "metric": 3, "capacity": 3},
+    {"id": 11, "from": 2, "to": 1, "metric": 3, "capacity": 3},
+    {"id": 12, "from": 2, "to": 4, "metric": 2, "capacity": 1},
+    {"id": 13, "from": 4, "to": 2, "metric": 2, "capacity": 1},
+    {"id": 14, "from": 2, "to": 3, "metric": 3, "capacity": 3},
+    {"id": 15, "from": 3, "to": 2, "metric": 3, "capacity": 3},
+    {"id": 16, "from": 3, "to": 4, "metric": 2, "capacity": 3},
+    {"id": 17, "from": 4, "to": 3, "metric": 2, "capacity": 3}
+  ]
+}

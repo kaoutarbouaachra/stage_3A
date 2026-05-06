@@ -1,0 +1,43 @@
+# Compiled binaries
+checker-v*-x86-64_linux
+checker
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+
+# Logs
+*.log
+checker.log
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build directories
+build/
+ftxui/
+src/ftxui/
+
+# Test build directories
+tests/build/
+tests/tests_config.h
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+
+# Temporary files
+*.tmp
+*.bak
+
+# Version-specific directories
+checker-v*/

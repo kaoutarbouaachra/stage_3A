@@ -1,0 +1,2 @@
+- [Morgan Chopin](<mailto:morgan.chopin@orange.com>),                         project author, main developer, PhD
+- [Qiao Zhang](<mailto:qiao.zhang@orange.com>),                               developer, PhD

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environnements
+venv/
+.env/
+
+# Résultats / logs
+results/
+logs/
+
+# Gurobi license (IMPORTANT)
+*.lic
+gurobi.lic
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
