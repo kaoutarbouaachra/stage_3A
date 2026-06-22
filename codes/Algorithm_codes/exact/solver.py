@@ -24,7 +24,7 @@ import gurobipy as gp
 import networkx as nx
 from gurobipy import GRB
 
-from core.ecmp_from_scratch import SplitCoeffs, compute_all_splits
+from core.ecmp import SplitCoeffs, compute_all_splits
 from core.instance import Instance
 from core.constraints import (
     add_flow_conservation,
@@ -139,7 +139,7 @@ def _reconstruct_path(
 class SequentialLexSolver:
     """
     Role: Implements Algorithm A: Lex-Minimax Sequential MILP for T-ASR.
-
+    
     Parameters:
             inst       : parsed Instance  (inst.max_seg read automatically)
             r          : ECMP split coefficients  {t: SplitCoeffs}
@@ -154,7 +154,7 @@ class SequentialLexSolver:
         inst: Instance,
         r: Dict[int, SplitCoeffs],
         time_limit: float = 300.0,
-        mip_gap: float = 1e-4,
+        mip_gap: float = 1e-7,
         max_iter: Optional[int] = None,
         verbose: bool = False,
     ) -> None:

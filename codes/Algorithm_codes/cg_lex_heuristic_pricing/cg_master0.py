@@ -26,8 +26,9 @@ import gurobipy as gp
 from gurobipy import GRB
 
 from core.instance import Instance
-from core.ecmp_from_scratch import SplitCoeffs
-from .pricing0_dp import Path, Trajectory
+from core.ecmp import SplitCoeffs
+from .pricing_dp_heuristic import Path, Trajectory
+from .pricing_dp_heuristic import price_demand_topk
 
 
 # ──────────────────────────────────────────────────────────────────────────

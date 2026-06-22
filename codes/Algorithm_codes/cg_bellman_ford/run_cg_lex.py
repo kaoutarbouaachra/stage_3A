@@ -36,6 +36,9 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from core.paths import CODES_DIR, RESULTS_DIR, CHECKER_DIR
 
+# Log directory (Algorithm_codes/logs/log_cg-bellman/)
+LOGS_DIR = RESULTS_DIR.parent / "logs"
+
 
 ### Gurobi setup
 def _setup_gurobi():
@@ -48,6 +51,50 @@ def _setup_gurobi():
 _lic = _setup_gurobi()
 
 
+# ---------------------------------------------------------------------------
+# Tee : duplique sys.stdout vers un fichier log
+# ---------------------------------------------------------------------------
+class _Tee:
+    """Writes simultaneously to stdout and a log file."""
+    def __init__(self, *files):
+        self.files = files
+
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()
+
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
+    def fileno(self):
+        # Required for subprocesses that call isatty / fileno
+        return sys.__stdout__.fileno()
+
+
+def _setup_logging(instance_name: str) -> tuple:
+    """
+    Creates logs/log_cg-bellman/, opens the log file and redirects
+    sys.stdout to a _Tee.  Returns (log_path, log_fh) so the caller
+    can close cleanly at the end.
+    """
+    log_dir = LOGS_DIR / "log_cg-bellman"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_path  = log_dir / f"{instance_name}_{timestamp}.log"
+    log_fh    = open(log_path, "w", encoding="utf-8")
+    sys.stdout = _Tee(sys.__stdout__, log_fh)
+    return log_path, log_fh
+
+
+def _teardown_logging(log_fh):
+    """Restores sys.stdout and closes the log file."""
+    sys.stdout = sys.__stdout__
+    log_fh.close()
+
+
+# ---------------------------------------------------------------------------
 
 def parse_args():
     p = argparse.ArgumentParser(
@@ -291,7 +338,7 @@ class LexRMP:
         m.setObjective(z_thresh, GRB.MINIMIZE)
         m.optimize()
 
-        ## Status checks: LP duals are only valid at proven optimality, but for MIP we can accept any feasible incumbent (e.g. under the time limit).
+        ## Status checks
         if not binary:
             # LP duals are only valid at proven optimality.
             if m.Status != GRB.OPTIMAL or m.SolCount == 0:
@@ -333,6 +380,11 @@ class LexRMP:
 def main():
     args = parse_args()
     name = args.instance
+
+    # ── Logging setup ────────────────────────────────────────────────────────
+    log_path, _log_fh = _setup_logging(name)
+    # ─────────────────────────────────────────────────────────────────────────
+
     HERE = Path(__file__).parent
     base = detect_base(name, args.data_dir)
     net_f  = base / f"{name}-net.json"
@@ -350,10 +402,11 @@ def main():
     print(f"  lp_time/rank : {args.lp_time}s")
     print(f"  mip_time/rank: {args.mip_time}s")
     print(f"  topk_cols    : {args.topk_cols}")
+    print(f"  Log          : {log_path}")
     print("=" * 68)
 
     from core.instance   import load_instance, summary
-    from core.ecmp_from_scratch       import compute_all_splits, compute_loads, sorted_load_vector
+    from core.ecmp     import compute_all_splits, compute_loads, sorted_load_vector
     from exact.solver     import write_solution
     from .cg_master  import TrajectoryPool
     from .pricing_dp import price_demand_topk, build_pricing_context
@@ -370,7 +423,6 @@ def main():
     }
 
     ## Pricing context: reachability per period + capacities, built ONCE
-    # (depends only on the instance + interventions, not on the duals).
     ctx = build_pricing_context(inst)
 
     ## Baseline (IGP, no waypoints) 
@@ -413,7 +465,7 @@ def main():
             if remaining_lp < 5:
                 break
 
-            # Solve LP-RMP(k):  must be optimal for valid duals
+            # Solve LP-RMP(k): must be optimal for valid duals
             lp_result = lex_rmp._build_model(
                 pool, rank_k, z_stars, binary=False, time_limit=remaining_lp)
             if lp_result is None:
@@ -433,10 +485,10 @@ def main():
                     break
                 results = price_demand_topk(
                     (d_id, src, tgt, vols), inst, r,
-                    mu=mu_bar,                 # stratified pressure (-mu = rho_L)
+                    mu=mu_bar,
                     pi_d=pi_d.get(d_id, 0.0),
-                    psi_1=psi1,                # raw budget dual psi(1) <= 0
-                    ctx=ctx,                   # prebuilt, reused
+                    psi_1=psi1,
+                    ctx=ctx,
                     top_k=args.topk_cols,
                     rc_tol=args.rc_tol,
                 )
@@ -448,7 +500,7 @@ def main():
             if added_count == 0:
                 break
 
-        ## Rank MIP: certified z_k*  (also gives a routing solution if the MIP is solved to optimality or has a good incumbent under the time limit)
+        ## Rank MIP: certified z_k*
         elapsed = time.perf_counter() - t_global
         remaining_mip = min(args.mip_time, args.time_limit - elapsed - 5)
         if remaining_mip < 5:
@@ -539,6 +591,10 @@ def main():
         }, f, indent=2)
     print(f"\n  Total time      : {t_total:.1f}s")
     print("=" * 68)
+
+    # ── Close log ────────────────────────────────────────────────────────────
+    _teardown_logging(_log_fh)
+    # ─────────────────────────────────────────────────────────────────────────
 
 
 if __name__ == "__main__":

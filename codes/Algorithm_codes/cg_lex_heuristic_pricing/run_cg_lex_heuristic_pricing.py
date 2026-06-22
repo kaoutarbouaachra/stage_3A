@@ -35,6 +35,9 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from core.paths import CODES_DIR, RESULTS_DIR, CHECKER_DIR
 
+# Log directory (Algorithm_codes/logs/log_cg-diagonal/)
+LOGS_DIR = RESULTS_DIR.parent / "logs"
+
 ### Gurobi setup
 def _setup_gurobi():
     for p in [Path.home() / "gurobi.lic",
@@ -45,6 +48,51 @@ def _setup_gurobi():
     return None
 _lic = _setup_gurobi()
 
+
+# ---------------------------------------------------------------------------
+# Tee: duplicates sys.stdout to a log file
+# ---------------------------------------------------------------------------
+class _Tee:
+    """Writes simultaneously to stdout and a log file."""
+    def __init__(self, *files):
+        self.files = files
+
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()
+
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
+    def fileno(self):
+        # Required for subprocesses that call isatty / fileno
+        return sys.__stdout__.fileno()
+
+
+def _setup_logging(instance_name: str) -> tuple:
+    """
+    Creates logs/log_cg-diagonal/, opens the log file and redirects
+    sys.stdout to a _Tee.  Returns (log_path, log_fh) so the caller
+    can close cleanly at the end.
+    """
+    log_dir = LOGS_DIR / "log_cg-diagonal"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_path  = log_dir / f"{instance_name}_{timestamp}.log"
+    log_fh    = open(log_path, "w", encoding="utf-8")
+    sys.stdout = _Tee(sys.__stdout__, log_fh)
+    return log_path, log_fh
+
+
+def _teardown_logging(log_fh):
+    """Restores sys.stdout and closes the log file."""
+    sys.stdout = sys.__stdout__
+    log_fh.close()
+
+
+# ---------------------------------------------------------------------------
 
 def parse_args():
     p = argparse.ArgumentParser(
@@ -203,7 +251,7 @@ class LexRMP:
 
         z1_star = z_stars[0] if z_stars else None
 
-        ### Inherited constraints (Tj, Nj) for j < k ─────────────────────
+        ### Inherited constraints (Tj, Nj) for j < k
         #
         #   (Tj): λ(a,t) ≤ z_j* + z_1* · y^(j)_{a,t}
         #   (Nj): Σ_{a,t} y^(j)_{a,t} ≤ j - 1
@@ -303,6 +351,9 @@ class LexRMP:
 def main():
     args = parse_args()
     name = args.instance
+    log_path, _log_fh = _setup_logging(name)
+   
+
     base = detect_base(name, args.data_dir)
     net_f  = base / f"{name}-net.json"
     tm_f   = base / f"{name}-tm.json"
@@ -320,13 +371,14 @@ def main():
     print(f"  lp_time/rank : {args.lp_time}s")
     print(f"  mip_time/rank: {args.mip_time}s")
     print(f"  topk_cols    : {args.topk_cols}")
+    print(f"  Log          : {log_path}")
     print("=" * 68)
 
     from core.instance import load_instance, summary
-    from core.ecmp_from_scratch     import compute_all_splits, compute_loads, sorted_load_vector
+    from core.ecmp    import compute_all_splits, compute_loads, sorted_load_vector
     from exact.solver  import write_solution
     from .cg_master0   import TrajectoryPool
-    from .pricing0_dp  import price_demand_topk
+    from .pricing_dp_heuristic  import price_demand_topk
 
     t_global = time.perf_counter()
 
@@ -440,7 +492,7 @@ def main():
                     if pool.add(d_id, res.trajectory):
                         added_count += 1
 
-            ## CG stopping criterion ────────────────────────────────────
+            ## CG stopping criterion
             if added_count == 0:
                 break   # optimal pool for this rank → go to the MIP
 
@@ -548,6 +600,11 @@ def main():
 
     print(f"\n  Total time      : {t_total:.1f}s")
     print("=" * 68)
+
+    # Close log 
+    _teardown_logging(_log_fh)
+    
+
 
 if __name__ == "__main__":
     main()
