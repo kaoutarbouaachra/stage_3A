@@ -4,11 +4,11 @@ Role: Entry point for the T-ASR Sequential Lex-Minimax solver.
 
 Usage (depuis Algorithm_codes/) :
     # simple
-    python -m exact.main --instance setA-01
+    python -m stela.main --instance setA-01
     # explicit dataset path
-    python -m exact.main --instance setA-01 --data-dir path/to/setA-01
+    python -m stela.main --instance setA-01 --data-dir path/to/setA-01
     # full manual mode
-    python -m exact.main --net path/net.json --tm path/tm.json --scenario path/scenario.json
+    python -m stela.main --net path/net.json --tm path/tm.json --scenario path/scenario.json
 """
 
 import argparse
