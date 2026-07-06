@@ -21,11 +21,18 @@ python -m TCG_exact.run_TCG_exact ar3 --max-rank 5
 python -m TCG_exact.run_TCG_exact setA-01 --max-rank 5 --time-limit 120
 ```
 
-Options: `--max-rank` (stop after this many ranks; default: all `N=|A|x|T|`),
-`--pricing-tol`, `--freeze-tol`, `--mip-gap`, `--time-limit`, `--out` (an
-*extra* copy of the srpaths solution at a custom path -- the
-`results/<instance>/TCG_exact/` copy described under Outputs is always
-written regardless).
+## Options
+
+- `--max-rank` — stop after this many ranks (default: all `N = |A|×|T|`).
+- `--pricing-tol` — reduced-cost tolerance for accepting an improving column.
+- `--freeze-tol` — tolerance for treating a recovered load as zero (early stop).
+- `--mip-gap` — relative MIP gap for the integer master (default: `0.0`).
+- `--time-limit` — per-rank wall-clock cap (seconds) on the **integer master
+  solve only**; the LP column-generation phase is always run to optimality and
+  is never time-limited.
+- `--out` — write an **extra** copy of the srpaths solution to a custom path;
+  the `results/<instance>/TCG_exact/` copy (see **Outputs**) is always written
+  regardless.
 
 The instance is resolved by name in the `codes/` tree:
 `codes/<name>_instance/` (toy, ar3) or `codes/<prefix>/<name>/` (setA-01 -> setA).
