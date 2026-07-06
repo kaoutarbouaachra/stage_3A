@@ -1,16 +1,6 @@
-# TCG_exact -- TCG-Exact
+# TCG_exact 
 
 **Official name (report):** Trajectory Column Generation with Exact Layered-MIP
-Pricing (**TCG-Exact**)
-**Git folder:** `TCG_exact`
-
-| Method family | Formulation | Pricing oracle | Guarantee |
-|---|---|---|---|
-| STELA | compact (x^dt_ij) | sequential MILP per rank | exact (rank-by-rank) |
-| ALEXA | compact (x^dt_ij) | assignment matrix | exact (rank-by-rank) |
-| TCG-Diag (`TCG_diag`) | trajectory | exact-diagonal / top-K off-diagonal | sound, not complete |
-| TCG-TopK (`TCG_topk`) | trajectory | fully heuristic top-K | sound, not complete |
-| **TCG-Exact** (`TCG_exact`) | trajectory | **exact layered MIP** | **certified LP bound per rank** |
 
 TCG-Exact is the only trajectory-based method with a valid LP optimality
 certificate: pricing is solved to global optimality (layered MIP with the
