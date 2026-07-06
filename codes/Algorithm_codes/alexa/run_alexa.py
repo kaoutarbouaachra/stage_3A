@@ -1,0 +1,222 @@
+"""
+Function: run_alexa.py
+Role: CLI driver for ALEXA (Assignment-based LEXicographic Algorithm).
+
+Ported from a reference Pyomo/CPLEX script to gurobipy, reusing the shared
+core.* building blocks (instance loading, ECMP, flow/segment/budget
+constraints, load expressions) the same way stela/solver.py does, plus the
+same demand-aware segment pruning technique as STELA.
+
+Fixes relative to the reference script:
+  - NUMBER_ITERATIONS was hardcoded to 1 (only rank 1 / the MLU was ever
+    solved); replaced by --max-rank, default: all ranks.
+  - M_link was a flat, invalid-once-loads-exceed-1.0 constant (1.0); now a
+    per-(arc,period) bound derived from instance data (see bigm.py).
+  - x was built over all |V|^2 node pairs; now pruned per demand/period
+    (see segments.py), matching STELA's approach.
+  - Solver backend is gurobipy directly (no more Pyomo/CPLEX abstraction).
+  - --time-limit is now applied PER RANK (one Gurobi solve per iteration),
+    not as a single flat option set once for the whole run.
+
+Usage (from Algorithm_codes/):
+    python -m alexa.run_alexa toy
+    python -m alexa.run_alexa ar3 --max-rank 5
+    python -m alexa.run_alexa setA-01 --max-rank 5 --time-limit 120
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime
+import json
+import os
+import sys
+from pathlib import Path
+from typing import Optional
+
+ALGO_NAME = "alexa"
+
+try:
+    from core.paths import RESULTS_DIR, LOGS_DIR, CODES_DIR, CHECKER_DIR
+except Exception:
+    RESULTS_DIR = Path("results")
+    LOGS_DIR = Path("logs")
+    CODES_DIR = Path(".")
+    CHECKER_DIR = Path("checker")
+
+
+### Gurobi setup -- same two-path pattern as the other packages.
+def _setup_gurobi():
+    for p in [Path.home() / "gurobi.lic", CODES_DIR / "gurobi.lic"]:
+        if p.exists():
+            os.environ["GRB_LICENSE_FILE"] = str(p)
+            return str(p)
+    return None
+_lic = _setup_gurobi()
+
+
+class _Tee:
+    """Writes simultaneously to stdout and a log file."""
+    def __init__(self, *files):
+        self.files = files
+
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()
+
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
+    def fileno(self):
+        return sys.__stdout__.fileno()
+
+
+def _setup_logging(instance_name: str) -> tuple:
+    log_dir = LOGS_DIR / ALGO_NAME
+    log_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_path = log_dir / f"{instance_name}_{timestamp}.log"
+    log_fh = open(log_path, "w", encoding="utf-8")
+    sys.stdout = _Tee(sys.__stdout__, log_fh)
+    return log_path, log_fh
+
+
+def _teardown_logging(log_fh) -> None:
+    sys.stdout = sys.__stdout__
+    log_fh.close()
+
+
+def _results_dir_for(instance_name: str) -> Path:
+    d = RESULTS_DIR / instance_name / ALGO_NAME
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def detect_base(name: str, override: Optional[str] = None) -> Path:
+    if override:
+        return Path(override)
+    if name.startswith("setA"):
+        return CODES_DIR / "setA" / name
+    if name == "toy":
+        return CODES_DIR / "toy_instance"
+    return CODES_DIR / f"{name}_instance"
+
+
+def parse_args():
+    p = argparse.ArgumentParser(description="T-ASR -- ALEXA (assignment-based lexicographic MILP)")
+    p.add_argument("instance", help="instance name (e.g. toy, ar3, setA-01)")
+    p.add_argument("--data_dir", default=None)
+    p.add_argument("--checker_dir", default=None)
+    p.add_argument("--max-rank", type=int, default=None, dest="max_rank",
+                   help="stop after this many ranks (default: all N=|A|x|T|)")
+    p.add_argument("--time-limit", type=float, default=300.0, dest="time_limit",
+                   help="Gurobi time limit PER RANK/ITERATION, in seconds")
+    p.add_argument("--mip-gap", type=float, default=1e-7, dest="mip_gap")
+    p.add_argument("--eps", type=float, default=1e-4,
+                   help="one-sided freeze tolerance: L[k] <= l_k_opt + eps")
+    return p.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    name = args.instance
+
+    log_path, log_fh = _setup_logging(name)
+    res_dir = _results_dir_for(name)
+    try:
+        base = detect_base(name, args.data_dir)
+        net_f = base / f"{name}-net.json"
+        tm_f = base / f"{name}-tm.json"
+        scen_f = base / f"{name}-scenario.json"
+
+        print("=" * 68)
+        print("  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)")
+        print(f"  Algorithm    : ALEXA  (folder: {ALGO_NAME})")
+        print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print("=" * 68)
+        print(f"  Instance     : {name}")
+        print(f"  Log          : {log_path}")
+        print(f"  Results dir  : {res_dir}")
+        print("=" * 68)
+
+        from core.instance import load_instance, summary
+        from core.ecmp import compute_all_splits, compute_loads, sorted_load_vector
+        from stela.solver import write_solution
+        from .solver import AssignmentLexSolver
+
+        inst = load_instance(net_f, tm_f, scen_f)
+        print(f"\n  {summary(inst)}")
+        r = compute_all_splits(inst)
+
+        trivial = {(d_id, t): [] for (d_id, _, _, _) in inst.demands for t in inst.T}
+        base_vec = sorted_load_vector(compute_loads(trivial, inst, r), inst)
+        print(f"  MLU baseline  : {base_vec[0]:.6f}")
+
+        solver = AssignmentLexSolver(
+            inst, r,
+            time_limit=args.time_limit,
+            mip_gap=args.mip_gap,
+            eps=args.eps,
+            max_rank=args.max_rank,
+            verbose=False,
+        )
+        waypoints, z_stars = solver.solve()
+
+        final_vec = (sorted_load_vector(compute_loads(waypoints, inst, r), inst)
+                     if waypoints else base_vec)
+        mlu_sol = final_vec[0]
+        pct = (base_vec[0] - mlu_sol) / max(base_vec[0], 1e-12) * 100
+        print(f"\n  {'='*64}")
+        print(f"  Algorithm       : ALEXA")
+        print(f"  MLU baseline    : {base_vec[0]:.6f}")
+        print(f"  MLU solution    : {mlu_sol:.6f}  ({pct:+.2f}%)")
+        print(f"  Certified ranks : {[round(z, 6) for z in z_stars]}")
+
+        sol_path = res_dir / f"{name}-srpaths.json"
+        checker_valid = None
+        checker_mlu = None
+        if waypoints:
+            write_solution(waypoints, inst, sol_path)
+            print(f"  Saved -> {sol_path}")
+
+            try:
+                from core.checker import find_checker, run_checker
+                checker_dir = Path(args.checker_dir) if args.checker_dir else CHECKER_DIR
+                checker_bin = find_checker(checker_dir)
+                if checker_bin:
+                    print("\n  Running checker...")
+                    result = run_checker(
+                        net_file=net_f, tm_file=tm_f, scenario_file=scen_f,
+                        srpaths_file=sol_path, checker_bin=checker_bin,
+                    )
+                    if result:
+                        checker_valid = result.valid
+                        checker_mlu = result.max_load
+                        print(f"  Feasible    : {result.valid}")
+                        print(f"  MLU checker : {result.max_load:.6f}")
+            except Exception as e:
+                print(f"  Checker: {e}")
+
+        with open(res_dir / f"{name}-summary.json", "w") as f:
+            json.dump({
+                "algorithm": ALGO_NAME,
+                "instance": name,
+                "mlu_baseline": base_vec[0],
+                "mlu_solution": mlu_sol,
+                "reduction_pct": pct,
+                "z_stars": z_stars,
+                "checker_valid": checker_valid,
+                "checker_mlu": checker_mlu,
+            }, f, indent=2)
+        print(f"  Summary saved -> {res_dir / f'{name}-summary.json'}")
+        print("=" * 68)
+    finally:
+        _teardown_logging(log_fh)
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

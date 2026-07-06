@@ -1,6 +1,6 @@
 """
 Function: paths.py
-Role: Chemins du projet, indépendants du sous-dossier qui lance un script.
+Role: Project paths, independent of the subfolder from which a script is run.
 """
 from pathlib import Path
 

@@ -1,5 +1,5 @@
 """
-Function: run_cg_lex.py  — unified rank-by-rank pair-path CG driver (h = 2, two time steps)
+Function: run_tcg_diag.py  -- unified rank-by-rank pair-path CG driver (h = 2, two time steps)
 Role: Wires the lexicographic loop to the CORRECTED modules:
         * pricing_dp.py  -> exact diagonal Bellman-Ford + heuristic off-diagonal,
                             signature price_demand_topk(..., psi_1, ctx=...).
@@ -21,9 +21,9 @@ Dual signs: sigma_d (free), mu_k <= 0, eta_j <= 0, psi(t) <= 0. The pricing uses
 budget penalty. Passing mu = mu_bar is correct AT LP OPTIMALITY (rho_L = -mu_bar),
 which is why the LP must be solved to proven optimality before reading duals.
 
-Usage:
-    python run_cg_lex.py --instance setA-01 --K 5
-    python run_cg_lex.py --instance setA-10 --K 3 --time_limit 900
+Usage (from Algorithm_codes/):
+    python -m TCG_diag.run_tcg_diag --instance setA-01 --K 5
+    python -m TCG_diag.run_tcg_diag --instance setA-10 --K 3 --time_limit 900
 """
 
 import argparse
@@ -36,7 +36,12 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from core.paths import CODES_DIR, RESULTS_DIR, CHECKER_DIR
 
-# Log directory (Algorithm_codes/logs/log_cg-bellman/)
+# Official algorithm identifier -- used for both the results and log
+# subfolders, and stamped into every summary JSON, so that outputs from
+# different TCG variants never collide and are self-identifying.
+ALGO_NAME = "TCG_diag"
+
+# Log directory (Algorithm_codes/logs/TCG_diag/)
 LOGS_DIR = RESULTS_DIR.parent / "logs"
 
 
@@ -52,7 +57,7 @@ _lic = _setup_gurobi()
 
 
 # ---------------------------------------------------------------------------
-# Tee : duplique sys.stdout vers un fichier log
+# Tee : duplicates sys.stdout to a log file
 # ---------------------------------------------------------------------------
 class _Tee:
     """Writes simultaneously to stdout and a log file."""
@@ -75,11 +80,11 @@ class _Tee:
 
 def _setup_logging(instance_name: str) -> tuple:
     """
-    Creates logs/log_cg-bellman/, opens the log file and redirects
+    Creates logs/TCG_diag/, opens the log file and redirects
     sys.stdout to a _Tee.  Returns (log_path, log_fh) so the caller
     can close cleanly at the end.
     """
-    log_dir = LOGS_DIR / "log_cg-bellman"
+    log_dir = LOGS_DIR / ALGO_NAME
     log_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path  = log_dir / f"{instance_name}_{timestamp}.log"
@@ -98,7 +103,7 @@ def _teardown_logging(log_fh):
 
 def parse_args():
     p = argparse.ArgumentParser(
-        description="T-ASR — Rank-by-Rank Pair-Path CG (full algorithm)"
+        description="T-ASR -- Rank-by-Rank Pair-Path CG (TCG-Diag)"
     )
     p.add_argument("--instance",    required=True)
     p.add_argument("--data_dir",    default=None)
@@ -137,7 +142,7 @@ class LexRMP:
     """
     Function: LexRMP
     Role: Restricted Master Problem for rank k of the lex algorithm.
-    
+
     The objective changes each rank; the inherited rows (Tj, Nj) for j < k are
     added cumulatively. Load is modelled with explicit lambda(a,t) variables and
     a (L) equality lambda = sum Gamma z, so the pricing pressure is rho_L = -mu_bar.
@@ -170,7 +175,7 @@ class LexRMP:
                 if coeff > 1e-12:
                     idx.setdefault((u, v), []).append((arc_id, coeff))
             self.r_index[t] = idx
-            
+
         # Persistent caches keyed by (d_id, ti); Gamma/beta are intrinsic to the
         # trajectory (independent of the dual values and of the rank k).
         self._gamma_cache: Dict[Tuple[int, int], Dict[Tuple[int, int], float]] = {}
@@ -239,15 +244,15 @@ class LexRMP:
         m.setParam("OutputFlag", 1 if verbose else 0)
         m.setParam("TimeLimit", time_limit)
         vtype = GRB.BINARY if binary else GRB.CONTINUOUS
-        
-        ## Routing variables z_{d,ti} 
+
+        ## Routing variables z_{d,ti}
         z = {}
         for d_id in self.demands_info:
             for ti in range(len(pool.get(d_id))):
                 z[(d_id, ti)] = m.addVar(lb=0.0, ub=1.0, vtype=vtype,
                                          name=f"z_{d_id}_{ti}")
 
-        ## Current-rank threshold variable 
+        ## Current-rank threshold variable
         z_thresh = m.addVar(lb=0.0, vtype=GRB.CONTINUOUS, name="z_thresh")
 
         ## Load variables lambda(a,t)
@@ -255,7 +260,7 @@ class LexRMP:
                             name=f"lam_{at[0]}_{at[1]}")
                for at in self.arc_time_pairs}
 
-        ## Exceedance variables y^(j)_{a,t}, j = 1..k 
+        ## Exceedance variables y^(j)_{a,t}, j = 1..k
         y = {}
         for j in range(1, rank_k + 1):
             for at in self.arc_time_pairs:
@@ -264,7 +269,7 @@ class LexRMP:
                     vtype=GRB.BINARY if binary else GRB.CONTINUOUS,
                     name=f"y_{j}_{at[0]}_{at[1]}")
 
-        ## (S) selection 
+        ## (S) selection
         cons_S = {}
         for d_id in self.demands_info:
             n = len(pool.get(d_id))
@@ -272,7 +277,7 @@ class LexRMP:
                 gp.quicksum(z[(d_id, ti)] for ti in range(n)) == 1,
                 name=f"S_{d_id}")
 
-        ## (L) load definition: lambda = sum Gamma z 
+        ## (L) load definition: lambda = sum Gamma z
         gamma = {(d_id, ti): self._gamma(d_id, ti, traj)
                  for d_id in self.demands_info
                  for ti, traj in enumerate(pool.get(d_id))}
@@ -301,7 +306,7 @@ class LexRMP:
                 cons_B[t] = m.addConstr(expr <= kappa, name=f"B_{t}")
         z1_star = z_stars[0] if z_stars else None
 
-        ## Inherited rows (Tj, Nj) for j < k 
+        ## Inherited rows (Tj, Nj) for j < k
         #   (Tj) lambda(a,t) <= z_j* + z_1* * y^(j)_{a,t}
         #   (Nj) sum_{a,t} y^(j)_{a,t} <= j - 1
         # j = 1 forces all loads <= z_1* (since N1 sums to 0), which also makes
@@ -318,7 +323,7 @@ class LexRMP:
                 gp.quicksum(y[(j,) + at] for at in self.arc_time_pairs) <= j - 1,
                 name=f"N{j}")
 
-        ## Current-rank rows (Tk, Nk) 
+        ## Current-rank rows (Tk, Nk)
         cons_Tk = {}
         if rank_k == 1:
             # Rank 1: minimise the MLU directly (no exceedances).
@@ -381,19 +386,23 @@ def main():
     args = parse_args()
     name = args.instance
 
-    # ── Logging setup ────────────────────────────────────────────────────────
+    # -- Logging setup ------------------------------------------------------
     log_path, _log_fh = _setup_logging(name)
-    # ─────────────────────────────────────────────────────────────────────────
+    # -------------------------------------------------------------------------
 
-    HERE = Path(__file__).parent
     base = detect_base(name, args.data_dir)
     net_f  = base / f"{name}-net.json"
     tm_f   = base / f"{name}-tm.json"
     scen_f = base / f"{name}-scenario.json"
-    res_dir = RESULTS_DIR / name
+
+    # Results live under results/<instance>/<ALGO_NAME>/ so that different
+    # TCG variants never overwrite each other's output on the same instance.
+    res_dir = RESULTS_DIR / name / ALGO_NAME
     res_dir.mkdir(parents=True, exist_ok=True)
+
     print("=" * 68)
-    print("  T-ASR — Pair-Path Column Generation  (Rank-by-Rank Lex)")
+    print("  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)")
+    print(f"  Algorithm    : TCG-Diag  (folder: {ALGO_NAME})")
     print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 68)
     print(f"  Instance     : {name}")
@@ -403,11 +412,12 @@ def main():
     print(f"  mip_time/rank: {args.mip_time}s")
     print(f"  topk_cols    : {args.topk_cols}")
     print(f"  Log          : {log_path}")
+    print(f"  Results dir  : {res_dir}")
     print("=" * 68)
 
     from core.instance   import load_instance, summary
     from core.ecmp     import compute_all_splits, compute_loads, sorted_load_vector
-    from exact.solver     import write_solution
+    from stela.solver     import write_solution
     from .cg_master  import TrajectoryPool
     from .pricing_dp import price_demand_topk, build_pricing_context
 
@@ -425,14 +435,14 @@ def main():
     ## Pricing context: reachability per period + capacities, built ONCE
     ctx = build_pricing_context(inst)
 
-    ## Baseline (IGP, no waypoints) 
+    ## Baseline (IGP, no waypoints)
     trivial  = {(d_id, t): []
                 for (d_id, _, _, _) in inst.demands for t in inst.T}
     base_vec = sorted_load_vector(compute_loads(trivial, inst, r), inst)
     print(f"  MLU baseline  : {base_vec[0]:.6f}")
     print(f"  Top-5 baseline: {[round(x,4) for x in base_vec[:5]]}")
 
-    ## Initial pool: trivial trajectories (IGP, IGP) per demand 
+    ## Initial pool: trivial trajectories (IGP, IGP) per demand
     pool = TrajectoryPool()
     for d_id in demands_info:
         pool.add(d_id, ([], []))
@@ -455,8 +465,8 @@ def main():
         t_rank_start = time.perf_counter()
         lp_bound     = float('inf')
         cg_iters     = 0
-        
-        ## Inner CG for this rank 
+
+        ## Inner CG for this rank
         for cg_iter in range(args.max_cg_iter):
             elapsed = time.perf_counter() - t_global
             if elapsed > args.time_limit:
@@ -544,6 +554,7 @@ def main():
     mlu_sol = final_vec[0]
     pct = (base_vec[0] - mlu_sol) / max(base_vec[0], 1e-12) * 100
     print(f"\n  {'='*64}")
+    print(f"  Algorithm       : TCG-Diag")
     print(f"  MLU baseline    : {base_vec[0]:.6f}")
     print(f"  MLU solution    : {mlu_sol:.6f}  ({pct:+.2f}%)")
     print(f"  Certified ranks : {[round(z,6) for z in z_stars]}")
@@ -551,12 +562,14 @@ def main():
     print(f"  Top-5 solution  : {[round(x,4) for x in final_vec[:5]]}")
     print(f"  Pool size       : {pool.total_size()}")
 
-    sol_path = res_dir / f"{name}-srpaths-cglex.json"
+    sol_path = res_dir / f"{name}-srpaths.json"
     if waypoints:
         write_solution(waypoints, inst, sol_path)
-        print(f"  Saved → {sol_path}")
+        print(f"  Saved -> {sol_path}")
 
-    ## Orange checker 
+    ## Orange checker
+    checker_valid = None
+    checker_mlu = None
     try:
         from core.checker import find_checker, run_checker
         checker_dir = Path(args.checker_dir) if args.checker_dir else CHECKER_DIR
@@ -569,15 +582,18 @@ def main():
                 checker_bin=checker_bin,
             )
             if result:
+                checker_valid = result.valid
+                checker_mlu = result.max_load
                 print(f"  Feasible    : {result.valid}")
                 print(f"  MLU checker : {result.max_load:.6f}")
     except Exception as e:
         print(f"  Checker: {e}")
 
-    ## JSON summary 
+    ## JSON summary -- self-identifying via the "algorithm" field
     t_total = time.perf_counter() - t_global
-    with open(res_dir / f"{name}-cglex-summary.json", "w") as f:
+    with open(res_dir / f"{name}-summary.json", "w") as f:
         json.dump({
+            "algorithm":     ALGO_NAME,
             "instance":      name,
             "K":             args.K,
             "mlu_baseline":  base_vec[0],
@@ -588,13 +604,17 @@ def main():
             "top5_solution": [round(x, 6) for x in final_vec[:5]],
             "pool_size":     pool.total_size(),
             "time_s":        round(t_total, 2),
+            "checker_valid": checker_valid,
+            "checker_mlu":   checker_mlu,
         }, f, indent=2)
+    print(f"  Summary saved -> {res_dir / f'{name}-summary.json'}")
+
     print(f"\n  Total time      : {t_total:.1f}s")
     print("=" * 68)
 
-    # ── Close log ────────────────────────────────────────────────────────────
+    # -- Close log ------------------------------------------------------------
     _teardown_logging(_log_fh)
-    # ─────────────────────────────────────────────────────────────────────────
+    # ---------------------------------------------------------------------------
 
 
 if __name__ == "__main__":
