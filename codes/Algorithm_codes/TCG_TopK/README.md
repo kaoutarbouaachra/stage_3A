@@ -2,7 +2,7 @@
 
 **Trajectory Column Generation with Fully Heuristic Top-K Pricing**
 
-Git folder: `TCG_topk`
+
 
 ## Overview
 
@@ -37,69 +37,9 @@ lexicographic ranks. For each rank `k = 1, ..., K`:
 2. Solve the rank-k **integer** master on the current pool to obtain `z_k*`.
 3. Freeze `z_k*` as an inherited row for rank `k + 1`.
 
-The reduced cost of a candidate trajectory `(p0, p1)` for demand `d` is
 
-```
-rc = -pi_d
-     + sum_{(i,j) in segs(p0)} theta_d(i,j,0)
-     + sum_{(i,j) in segs(p1)} theta_d(i,j,1)
-     - nu(1) * dist(p0, p1)
 
-theta_d(i,j,t) = sum_a (-mu_bar_k(a,t)) * nu(d,t)/c(a) * r(i,j,a,t)
-```
-
-where `nu(1) <= 0` is the budget dual (so `-nu(1) >= 0` acts as the budget
-penalty).
-
-## Implementation notes
-
-- **Solver status check is shared between the LP and the MIP solve, and
-  accepts `TIME_LIMIT` / `SUBOPTIMAL` for both:**
-  ```python
-  if m.Status not in (GRB.OPTIMAL, GRB.SUBOPTIMAL, GRB.TIME_LIMIT):
-      return None
-  ```
-  LP duality only guarantees meaningful reduced costs at a proven-optimal LP
-  vertex. If `--lp_time` is hit before Gurobi proves optimality, this driver
-  will still read and use the duals from that time-limited solve, which can
-  silently feed incorrect pricing signals into the column generation loop
-  and propagate through the lexicographic chain. If certified pricing
-  matters for your experiments, consider requiring `GRB.OPTIMAL` for the
-  `binary=False` (LP) case specifically.
-- **No explicit two-period guard.** Trajectories are built as fixed pairs
-  `(traj[0], traj[1])` throughout, so the driver is implicitly specialized to
-  h = 2, but there is no early, explicit check on `len(inst.T)` -- an
-  instance with a different horizon would likely fail later with an
-  index/key error rather than a clear message at load time.
-- **Gamma/beta are recomputed for the whole pool on every model build.**
-  `_precompute_gamma(pool)` iterates every trajectory of every demand fresh
-  at the top of each `_build_model` call (LP and MIP alike), with no
-  persistent cache across calls or ranks. Simple, but strictly more
-  recomputation than an incremental per-trajectory cache as the pool and
-  rank count grow.
-- **Initial pool:** one trivial trajectory per demand, `([], [])` (pure IGP
-  routing, no waypoints, both periods).
-- **Instance resolution** (`detect_base`): `setA*` -> `CODES_DIR/setA/<name>`,
-  `toy` -> `CODES_DIR/toy_instance`, else -> `CODES_DIR/<name>_instance`.
-- **Logging:** every run writes a timestamped log to
-  `Algorithm_codes/logs/TCG_topk/<instance>_<timestamp>.log`, tee'd to
-  stdout. The console banner also prints "Algorithm: TCG-TopK" so console/log
-  output is self-identifying.
-- **Gurobi license:** `~/gurobi.lic` then `codes/gurobi.lic` (via
-  `core.paths.CODES_DIR`), set as `GRB_LICENSE_FILE` before any Gurobi call.
-
-## Package layout
-
-```
-Algorithm_codes/
-└── TCG_topk/
-    ├── cg_master0.py            <- TrajectoryPool; trajectory_load_contribution,
-    │                               trajectory_budget_cost
-    ├── pricing_dp_heuristic.py  <- price_demand_topk (top-K heuristic pricing
-    │                               for both the diagonal and off-diagonal
-    │                               cases)
-    └── run_TCG_TopK.py          <- driver (this file)
-```
+'''
 
 Run as a module from `Algorithm_codes/` (so that the absolute imports
 `from core import ...` and `from stela.solver import ...` resolve):
