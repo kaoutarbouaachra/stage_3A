@@ -40,34 +40,6 @@ lexicographic ranks. For each rank `k = 1, ..., K`:
 2. Solve the rank-k **integer** master on the current pool to obtain `z_k*`.
 3. Freeze `z_k*` as an inherited row for rank `k + 1`.
 
-## Implementation notes
-
-- **Dual sign convention:** `sigma_d` free, `mu_k <= 0`, `eta_j <= 0`,
-  `psi(t) <= 0`. Pricing uses `-mu_bar` as the per-`(a,t)` load pressure and
-  `rho = -psi(1)` as the budget penalty for the single h=2 transition.
-- **LP duals are only meaningful at proven optimality.** Duals are read from
-  the LP relaxation only if Gurobi returns `GRB.OPTIMAL`; `mu = mu_bar` is
-  only correct once the LP has actually converged.
-- **Big-M in the inherited rows** is `z1_star` (the global max), not a
-  tightened per-rank value: `lam[at] <= zj + z1_star * y[(j,)+at]`. Valid,
-  but a looser LP relaxation at deep ranks than a tightened bound would give.
-- **The rank-k MIP accepts any feasible incumbent, not only a proven-optimal
-  one.** If `--mip_time` is hit before Gurobi proves optimality, `z_k*` is
-  taken from whatever incumbent was found, and that value is then inherited
-  as a hard constraint at rank k+1 -- so a time-limited, suboptimal `z_k*`
-  can silently propagate down the lexicographic chain. Check
-  `mip_result["status"] == GRB.OPTIMAL` if you need certified ranks,
-  especially on larger instances where `--mip_time` may bind.
-- **Initial pool:** one trivial trajectory per demand, `([], [])` (pure IGP
-  routing, no waypoints, both periods).
-- **Instance resolution** (`detect_base`): `setA*` -> `CODES_DIR/setA/<name>`,
-  `toy` -> `CODES_DIR/toy_instance`, else -> `CODES_DIR/<name>_instance`.
-- **Logging:** every run writes a timestamped log to
-  `Algorithm_codes/logs/TCG_diag/<instance>_<timestamp>.log`, tee'd to
-  stdout. The console banner also prints "Algorithm: TCG-Diag" so console/log
-  output is self-identifying.
-- **Gurobi license:** `~/gurobi.lic` then `codes/gurobi.lic` (via
-  `core.paths.CODES_DIR`), set as `GRB_LICENSE_FILE` before any Gurobi call.
 
 ## Package layout
 
