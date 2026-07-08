@@ -1,23 +1,6 @@
 """
-pricing_dp.py  (v3 -- exact diagonal pricing)
+pricing_dp.py  (exact diagonal pricing-off diagonal enumeration (topK))
 ---------------------------------------------
-Specialised to h = 2 (a trajectory is a pair (p0, p1)).
- 
-What changed vs v2
-  * DIAGONAL pricing is now EXACT: a bounded-hop Bellman-Ford on the combined
-    segment cost theta^comb(i,j) = theta_d(i,j,0) + theta_d(i,j,1), over segment
-    paths of at most maxSeg segments whose every hop is reachable in BOTH G_0 and
-    G_1 (Proposition "Diagonal pricing"). This restores the optimality
-    certificate and the anytime lower bound ON THE DIAGONAL.
-  * Reachability per period and capacities are precomputed ONCE in a
-    PricingContext (they depend only on the instance + interventions, which are
-    fixed for the whole run -- only the duals change between CG iterations).
-  * OFF-DIAGONAL pricing is kept as the previous heuristic enumeration: it is a
-    fast column generator, but it is NOT exact, so it does not by itself certify
-    LP optimality. The product-DP (exact off-diagonal) is the remaining piece for
-    a full global guarantee; see best_diagonal_reduced_cost() for the bound that
-    IS valid today.
- 
 Dual sign convention (matches cg_master.py)
   mu(a,t) <= 0, psi(t) <= 0 are passed raw; here we use the non-negative
   effective quantities (-mu) inside theta and rho = -psi for the budget penalty.

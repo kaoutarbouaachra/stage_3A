@@ -23,12 +23,6 @@ This version is wired to the ACTUAL core API:
         internally (see ecmp_nt / ecmp_from_scratch), so the adapter does NOT
         recompute subgraphs.
 
-Engine conventions produced here:
-    - arc          := arc_id (int)         (matches r keying and capacities)
-    - segment      := (u, v) node-id tuple
-    - demand id    := the integer index d_id from the traffic matrix
-                      (so the output srpaths demand ids line up)
-    - budget       := kappa(1)             (two-period master, periods=(0,1))
 """
 
 from __future__ import annotations

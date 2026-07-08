@@ -3,12 +3,6 @@
 Function: constraints.py
 Role: Add Gurobi constraints for the T-ASR problem.
 
-Each function takes the Gurobi model `m`, the decision variables, and
-the instance data, and mutates `m` in-place (adds constraints).
-
-Variables:
-  -x[d_id, t, i, j]  : binary, 1 if demand d at time t uses segment (i→j)
-  -delta[d_id, t, i, j]: continuous [0,1], linearises |x^dt_ij - x^{d,t-1}_ij|
 """
 
 from typing import Dict, List, Set, Tuple

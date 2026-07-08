@@ -1,13 +1,6 @@
 """
 Function: segments.py
 Role: Demand-aware, reachability-based segment pruning.
-
-The reference implementation built x[d,t,i,j] over ALL |V|^2 node pairs per
-period -- the same O(|V|^2) blow-up STELA's own _useful_segments avoids.
-This is the same pruning technique (own copy here so this package stays
-self-contained, matching the rest of the codebase's per-package style):
-for each demand and period, only keep segments that could plausibly appear
-in a valid maxSeg-bounded SR-path for THAT demand.
 """
 
 from __future__ import annotations

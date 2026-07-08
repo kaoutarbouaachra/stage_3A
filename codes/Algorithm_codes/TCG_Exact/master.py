@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-cg_exact.master
+TCG_Exact.master
 ===============
 
 Pair-path restricted master LP, root-node column generation with exact

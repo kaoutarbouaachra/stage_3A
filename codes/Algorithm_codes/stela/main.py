@@ -1,6 +1,6 @@
 """
 Function: main.py
-Role: Entry point for the T-ASR Sequential Lex-Minimax solver.
+Role: Entry point for the STELA solver.
 
 Usage (depuis Algorithm_codes/) :
     # simple

@@ -6,10 +6,6 @@ cg_exact.data
 Data structures for the two-period pair-path T-ASR formulation, plus the
 Gurobi import guard shared by the rest of the package.
 
-This module has NO dependency on ``core``; it is the pure engine layer.
-The bridge to ``core`` (instance loading + ECMP split coefficients) lives in
-:mod:`cg_exact.adapter`.
-
 Nodes, arcs, and demand ids may be strings, integers, or tuples, as long as
 they are hashable. Arcs are arbitrary hashable objects; for network arcs,
 tuples ``(u, v)`` are natural and are what the adapter produces.

@@ -1,6 +1,6 @@
 """
 Function: solver.py
-Role: Sequential Lexicographic Minimisation for T-ASR  (Algorithm A).
+Role:  Stela solver.
 """
 
 from __future__ import annotations

@@ -2,22 +2,6 @@
 Function: run_alexa.py
 Role: CLI driver for ALEXA (Assignment-based LEXicographic Algorithm).
 
-Ported from a reference Pyomo/CPLEX script to gurobipy, reusing the shared
-core.* building blocks (instance loading, ECMP, flow/segment/budget
-constraints, load expressions) the same way stela/solver.py does, plus the
-same demand-aware segment pruning technique as STELA.
-
-Fixes relative to the reference script:
-  - NUMBER_ITERATIONS was hardcoded to 1 (only rank 1 / the MLU was ever
-    solved); replaced by --max-rank, default: all ranks.
-  - M_link was a flat, invalid-once-loads-exceed-1.0 constant (1.0); now a
-    per-(arc,period) bound derived from instance data (see bigm.py).
-  - x was built over all |V|^2 node pairs; now pruned per demand/period
-    (see segments.py), matching STELA's approach.
-  - Solver backend is gurobipy directly (no more Pyomo/CPLEX abstraction).
-  - --time-limit is now applied PER RANK (one Gurobi solve per iteration),
-    not as a single flat option set once for the whole run.
-
 Usage (from Algorithm_codes/):
     python -m alexa.run_alexa toy
     python -m alexa.run_alexa ar3 --max-rank 5
@@ -113,8 +97,8 @@ def parse_args():
                    help="stop after this many ranks (default: all N=|A|x|T|)")
     p.add_argument("--time-limit", type=float, default=300.0, dest="time_limit",
                    help="Gurobi time limit PER RANK/ITERATION, in seconds")
-    p.add_argument("--mip-gap", type=float, default=1e-7, dest="mip_gap")
-    p.add_argument("--eps", type=float, default=1e-4,
+    p.add_argument("--mip-gap", type=float, default=1e-8, dest="mip_gap")
+    p.add_argument("--eps", type=float, default=1e-8,
                    help="one-sided freeze tolerance: L[k] <= l_k_opt + eps")
     return p.parse_args()
 

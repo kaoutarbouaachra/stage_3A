@@ -2,13 +2,6 @@
 Function: ecmp_nt.py
 Role: ECMP split coefficients via nt4python (Orange networktools).
 
-Computes:
-    r[t][(u, v, arc_id)] = ECMP fraction
-
-Public functions (same names as ecmp_from_scratch):
-    - compute_all_splits(inst)
-    - compute_loads(waypoints, inst, r)
-    - sorted_load_vector(loads, inst)
 """
 
 from __future__ import annotations

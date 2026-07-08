@@ -2,8 +2,6 @@
 Function: pricing_dp_nt.py 
 Role:pricing with nt4python k-hop Bellman-Ford on the diagonal
 
---------------------------------------------------------------------------------
-Drop-in replacement for cg_bellman_ford/pricing_dp.py.
 -------------------------
 
 Important modelling point:

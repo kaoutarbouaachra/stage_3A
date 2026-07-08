@@ -3,19 +3,6 @@ cg_master.py
 ------------
 Restricted Master Problem (RMP) for the pair-path Column Generation.
  
-This module is specialised to the horizon h = 2 (a trajectory is a pair
-(p0, p1)), which is the EURO/ROADEF 2026 challenge case. The h = 2 assumption
-is asserted explicitly; do not reuse this file for h >= 3 without revisiting the
-budget cost (see `trajectory_budget_cost`).
- 
-Variables:
-  z[d, traj_id] in {0, 1}   for every trajectory (p0, p1) in the pool
- 
-Constraints:
-  (S) sum_traj z[d, traj] = 1                          for every demand d
-  (L) lambda(a, t) = sum_{d,traj} Gamma_dat(traj) z   for every (a, t)
-  (B) sum_{d,traj} beta_dt(traj) z <= kappa(t)         for every t in T*
- 
 Objective:
   Phase 1 (pool generation, rank 1): MLU = max_{a,t} lambda(a, t)
   Phase 2 (lex k >= 2): not implemented here -- see the lex module, which must

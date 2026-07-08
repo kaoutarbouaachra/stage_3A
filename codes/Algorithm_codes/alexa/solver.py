@@ -1,17 +1,6 @@
 """
 Function: solver.py
 Role: Sequential lexicographic loop over the ALEXA assignment-sort model.
-
-Like STELA, the model is built once and extended (frozen ranks are never
-removed); unlike STELA, sorting is explicit via the permutation-matrix
-variables L / p, built once upfront for all N components rather than added
-incrementally per rank.
-
-Freezing pattern: this file uses the ONE-SIDED tolerant freeze,
-`L[k] <= l_k_opt + eps` (no artificial lower bound), matching the reference
-implementation this was ported from. This is intentionally different from
-the CURRENT symmetric +/-1e-6 band in stela/solver.py -- see that package's
-README for the discrepancy this is meant to avoid.
 """
 
 from __future__ import annotations

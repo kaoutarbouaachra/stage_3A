@@ -4,16 +4,6 @@ Role: Builds the ALEXA Gurobi model -- the compact formulation with explicit
 permutation-matrix sorting (the assignment-based mechanism that defines
 ALEXA, as opposed to STELA's threshold-exceedance rows).
 
-Reuses the same shared building blocks as STELA (core.constraints) for
-everything that is NOT specific to the assignment-sort mechanism:
-    - flow conservation, segment-count, and budget constraints
-    - the load/utilization expressions (build_load_exprs)
-
-build_load_exprs already returns each load as a ready-to-use utilization
-expression (load / capacity), so unlike the reference implementation there
-is no separate `u` variable or utilization-defining equality constraint:
-the returned LinExpr is used directly inside the big-M-linking constraint,
-exactly the same way STELA uses it directly in its threshold rows.
 """
 
 from __future__ import annotations

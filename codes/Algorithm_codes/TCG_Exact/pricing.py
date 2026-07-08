@@ -1,18 +1,9 @@
 #!/usr/bin/env python3
 """
-cg_exact.pricing
+TCG_Exact.pricing
 ================
 
 Exact corrected pair-path pricing MIP (layered formulation).
-
-The corrected formulation implements the trail constraint
-
-    sum_{ell=1}^K y[t, ell, e] <= 1        for every real segment e, period t,
-
-which makes the layer variables, the binary usage indicators x, and the
-pricing objective consistent: each real segment appears in at most one layer
-of a period path. Without it, the load term double-counts segments that appear
-in several layers, and the equivalence with (PP) fails.
 """
 
 from __future__ import annotations
