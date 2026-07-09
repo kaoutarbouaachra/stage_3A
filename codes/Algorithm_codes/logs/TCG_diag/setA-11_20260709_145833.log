@@ -1,0 +1,14 @@
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_diag)
+  2026-07-09 14:58:33
+====================================================================
+  Instance     : setA-11
+  K ranks      : 12
+  time_limit   : 3600s
+  lp_time/rank : 240s
+  mip_time/rank: 240s
+  topk_cols    : 5
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_diag\setA-11_20260709_145833.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-11\TCG_diag
+====================================================================

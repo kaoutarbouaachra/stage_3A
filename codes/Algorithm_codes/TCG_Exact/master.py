@@ -10,9 +10,6 @@ pricing, and a pool-restricted integer solve.
     solve_lp(rank_values=[z1,...,z_{k-1}]) solves the rank-k STELA LP.
     solve_integer_master(...)             solves the integer master over the
                                           currently generated pool.
-
-The inherited-rank big-M is the tightened STELA value (z1* - zj*), and the
-current-rank big-M is z1*.
 """
 
 from __future__ import annotations

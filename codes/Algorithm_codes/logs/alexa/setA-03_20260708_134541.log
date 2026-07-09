@@ -1,0 +1,27 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-08 13:45:41
+====================================================================
+  Instance     : setA-03
+  Log          : /mnt/c/Users/LBSY9262/Downloads/stage_3A_codes/codes/Algorithm_codes/logs/alexa/setA-03_20260708_134541.log
+  Results dir  : /mnt/c/Users/LBSY9262/Downloads/stage_3A_codes/codes/Algorithm_codes/results/setA-03/alexa
+====================================================================
+
+  setA-03 | 50 nodes, 250 arcs, 20 demands, 2 timesteps, N=500
+    t=0: 7460 non-zero ECMP coefficients
+    t=1: 7481 non-zero ECMP coefficients
+  MLU baseline  : 1.000001
+  Building ALEXA model (maxSeg=6, |V|=50, |D|=20, |T|=2) ...
+  -> 4,900 useful segment slots  (naive: 5,000 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
+
+  x variables : 98,000
+  Base model : 397,500 vars, 351,540 constraints, 150,996,498 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------

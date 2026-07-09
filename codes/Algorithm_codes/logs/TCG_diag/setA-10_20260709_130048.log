@@ -1,0 +1,52 @@
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_diag)
+  2026-07-09 13:00:48
+====================================================================
+  Instance     : setA-10
+  K ranks      : 12
+  time_limit   : 3600s
+  lp_time/rank : 240s
+  mip_time/rank: 240s
+  topk_cols    : 5
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_diag\setA-10_20260709_130048.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-10\TCG_diag
+====================================================================
+
+  setA-10 | 150 nodes, 966 arcs, 1000 demands, 2 timesteps, N=1932
+    t=0: 115586 non-zero ECMP coefficients
+    t=1: 115619 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Top-5 baseline: [1.0, 0.8913, 0.8696, 0.6348, 0.6196]
+
+  Initial pool : 1000 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
+      1    20    3329   0.139130   0.134783 [0.1348, 0.1348, 0.1348] 2793.7s
+
+  Not enough time for MIP at rank 2.
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 1.000000
+  MLU solution    : 0.134783  (+86.52%)
+  Certified ranks : [0.134783]
+  Top-5 baseline  : [1.0, 0.8913, 0.8696, 0.6348, 0.6196]
+  Top-5 solution  : [0.1348, 0.1348, 0.1348, 0.1348, 0.1326]
+  Pool size       : 5817
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-10\TCG_diag\setA-10-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-10\TCG_diag\setA-10-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=0.134782 | top5=[0.134782, 0.134782, 0.134782, 0.134782, 0.132608]
+  Feasible    : True
+  MLU checker : 0.134782
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-10\TCG_diag\setA-10-summary.json
+
+  Total time      : 3656.3s
+====================================================================

@@ -1,0 +1,47 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-01 15:52:15
+====================================================================
+  Instance     : setA-01
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\alexa\setA-01_20260701_155215.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\alexa
+====================================================================
+
+  setA-01 | 20 nodes, 80 arcs, 40 demands, 2 timesteps, N=160
+    t=0: 935 non-zero ECMP coefficients
+    t=1: 949 non-zero ECMP coefficients
+  MLU baseline  : 1.000001
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=40, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
+
+  x variables : 30,400
+  Base model : 71,360 vars, 58,160 constraints, 12,204,478 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.580407     120.3s     120.3s TIME_LIM
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 170.7s
+  MLU (z*_1) = 1.580407
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000001
+  MLU solution    : 1.580407  (-58.04%)
+  Certified ranks : [1.580407]
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\alexa\setA-01-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\alexa\setA-01-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=1.580407 | top5=[1.580407, 1.522628, 1.508243, 1.386713, 1.247317]
+  Feasible    : True
+  MLU checker : 1.580407
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\alexa\setA-01-summary.json
+====================================================================

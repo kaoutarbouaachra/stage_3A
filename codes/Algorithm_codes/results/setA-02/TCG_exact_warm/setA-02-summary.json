@@ -1,0 +1,19 @@
+{
+  "algorithm": "TCG_exact_warm",
+  "instance": "setA-02",
+  "warm_start": {
+    "source": "C:\\Users\\LBSY9262\\Downloads\\stage_3A_codes\\codes\\Algorithm_codes\\results\\setA-02\\TCG_diag\\setA-02-srpaths.json",
+    "warm_algo": "TCG_diag",
+    "unresolved_entries": 0
+  },
+  "ranks_certified": 5,
+  "z_stars": [
+    0.9030747093023255,
+    0.5485780439121757,
+    0.5387698656429942,
+    0.5228078651685394,
+    0.4954668261562998
+  ],
+  "pool_size": 314,
+  "time_s": 661.09
+}

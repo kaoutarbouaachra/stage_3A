@@ -1,5 +1,5 @@
 """
-Function: run_tcg_diag.py  -- unified rank-by-rank pair-path CG driver (h = 2, two time steps)
+Function: run_TCG_Diag.py  -- unified rank-by-rank pair-path CG driver (h = 2, two time steps)
 Role: Wires the lexicographic loop to the CORRECTED modules:
         * pricing_dp.py  -> exact diagonal Bellman-Ford + heuristic off-diagonal,
                             signature price_demand_topk(..., psi_1, ctx=...).
@@ -22,8 +22,8 @@ budget penalty. Passing mu = mu_bar is correct AT LP OPTIMALITY (rho_L = -mu_bar
 which is why the LP must be solved to proven optimality before reading duals.
 
 Usage (from Algorithm_codes/):
-    python -m TCG_diag.run_tcg_diag --instance setA-01 --K 5
-    python -m TCG_diag.run_tcg_diag --instance setA-10 --K 3 --time_limit 900
+    python -m TCG_diag.run_TCG_Diag --instance setA-01 --K 5
+    python -m TCG_diag.run_TCG_Diag --instance setA-10 --K 3 --time_limit 900
 """
 
 import argparse
@@ -36,9 +36,6 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from core.paths import CODES_DIR, RESULTS_DIR, CHECKER_DIR
 
-# Official algorithm identifier -- used for both the results and log
-# subfolders, and stamped into every summary JSON, so that outputs from
-# different TCG variants never collide and are self-identifying.
 ALGO_NAME = "TCG_diag"
 
 # Log directory (Algorithm_codes/logs/TCG_diag/)
@@ -55,10 +52,6 @@ def _setup_gurobi():
     return None
 _lic = _setup_gurobi()
 
-
-# ---------------------------------------------------------------------------
-# Tee : duplicates sys.stdout to a log file
-# ---------------------------------------------------------------------------
 class _Tee:
     """Writes simultaneously to stdout and a log file."""
     def __init__(self, *files):
@@ -74,7 +67,6 @@ class _Tee:
             f.flush()
 
     def fileno(self):
-        # Required for subprocesses that call isatty / fileno
         return sys.__stdout__.fileno()
 
 
@@ -108,18 +100,18 @@ def parse_args():
     p.add_argument("--instance",    required=True)
     p.add_argument("--data_dir",    default=None)
     p.add_argument("--checker_dir", default="../checker")
-    p.add_argument("--K",           type=int,   default=5,
-                   help="Number of lex ranks to certify (default 5)")
-    p.add_argument("--time_limit",  type=float, default=900.0)
-    p.add_argument("--lp_time",     type=float, default=90.0,
+    p.add_argument("--K",           type=int,   default=12,
+                   help="Number of lex ranks to certify (default 12)")
+    p.add_argument("--time_limit",  type=float, default=3600,)
+    p.add_argument("--lp_time",     type=float, default=240,
                    help="Max time per LP-RMP")
-    p.add_argument("--mip_time",    type=float, default=180.0,
+    p.add_argument("--mip_time",    type=float, default=240,
                    help="Max time per rank MIP")
     p.add_argument("--max_cg_iter", type=int,   default=20,
                    help="Max CG iterations per rank")
-    p.add_argument("--topk_cols",   type=int,   default=3,
+    p.add_argument("--topk_cols",   type=int,   default=5,
                    help="Columns added per demand per iteration")
-    p.add_argument("--rc_tol",      type=float, default=-1e-6)
+    p.add_argument("--rc_tol",      type=float, default=-1e-8)
     return p.parse_args()
 
 def detect_base(name, override=None):

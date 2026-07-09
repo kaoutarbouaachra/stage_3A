@@ -6,10 +6,6 @@ __pycache__/
 venv/
 .env/
 
-# Résultats / logs
-results/
-logs/
-
 # Gurobi license (IMPORTANT)
 *.lic
 gurobi.lic

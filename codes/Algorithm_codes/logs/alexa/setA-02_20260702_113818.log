@@ -1,0 +1,50 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-02 11:38:18
+====================================================================
+  Instance     : setA-02
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\alexa\setA-02_20260702_113818.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\alexa
+====================================================================
+
+  setA-02 | 30 nodes, 150 arcs, 45 demands, 2 timesteps, N=300
+    t=0: 2209 non-zero ECMP coefficients
+    t=1: 2231 non-zero ECMP coefficients
+  MLU baseline  : 1.098078
+  Building ALEXA model (maxSeg=6, |V|=30, |D|=45, |T|=2) ...
+  -> 1,740 useful segment slots  (naive: 1,800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
+
+  x variables : 78,300
+  Base model : 207,750 vars, 171,990 constraints, 60,791,248 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.903075    1963.7s    1963.7s  OPTIMAL
+      2   0.548578    1081.1s    3045.3s  OPTIMAL
+      3   0.538770     282.5s    3328.2s  OPTIMAL
+      4   0.522808     843.7s    4172.2s  OPTIMAL
+      5   0.495467     358.7s    4531.4s  OPTIMAL
+
+  Done.  5 ranks in 4531.7s
+  MLU (z*_1) = 0.903075
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.098078
+  MLU solution    : 0.903075  (+17.76%)
+  Certified ranks : [0.903075, 0.548578, 0.53877, 0.522808, 0.495467]
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\alexa\setA-02-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\alexa\setA-02-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=0.903074 | top5=[0.903074, 0.548578, 0.538769, 0.522807, 0.495466]
+  Feasible    : True
+  MLU checker : 0.903074
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\alexa\setA-02-summary.json
+====================================================================

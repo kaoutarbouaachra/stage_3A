@@ -1,0 +1,19 @@
+====================================================================
+  T-ASR -- Exact Pair-Path Column Generation (sequential leximin)
+  Algorithm    : TCG-Exact  (folder: TCG_exact)
+  2026-07-06 09:02:17
+====================================================================
+  Instance     : setA-05
+  Log          : /mnt/c/Users/LBSY9262/Downloads/stage_3A_codes/codes/Algorithm_codes/logs/TCG_exact/setA-05_20260706_090217.log
+  Results dir  : /mnt/c/Users/LBSY9262/Downloads/stage_3A_codes/codes/Algorithm_codes/results/setA-05/TCG_exact
+====================================================================
+[load] /mnt/c/Users/LBSY9262/Downloads/stage_3A_codes/codes/setA/setA-05/setA-05-net.json
+    t=0: 43640 non-zero ECMP coefficients
+    t=1: 43657 non-zero ECMP coefficients
+[data] nodes=100 arcs=396 demands=100 K=6 budget(kappa1)=1.0 N=792
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
+[rank   1] LP=0.204986  z_1*=0.204986  pool=280 cols  iters=11
+[rank   2] LP=0.0832862  z_2*=0.119703  pool=387 cols  iters=4

@@ -1,0 +1,23 @@
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_exact_warm)
+  2026-07-07 13:06:12
+====================================================================
+[load] C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\setA\setA-04\setA-04-net.json
+    t=0: 7291 non-zero ECMP coefficients
+    t=1: 7330 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=200 K=6 budget=44.0 N=500
+[warm] source       : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-04\TCG_diag\setA-04-srpaths.json
+  Instance     : setA-04
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_exact_warm\setA-04_20260707_130612.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-04\TCG_exact_warm
+====================================================================
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
+[warm] heuristic columns seeded: +166 new (0 demand(s) refused -> trivial); pool now 366 cols
+[warm] heuristic incumbent sorted loads (top): 0.58281, 0.576045, 0.45912, 0.458909, 0.451533
+[rank   1] LP=0.581144  z_1*=0.581237  pool=375 cols  iters=2
+[rank   2] LP=0.38975  z_2*=0.580858  pool=375 cols  iters=1
+[rank   3] LP=0.314506  z_3*=0.559222  pool=404 cols  iters=2
