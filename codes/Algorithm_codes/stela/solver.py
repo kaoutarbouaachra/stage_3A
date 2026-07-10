@@ -154,7 +154,8 @@ class SequentialLexSolver:
         inst: Instance,
         r: Dict[int, SplitCoeffs],
         time_limit: float = 300.0,
-        mip_gap: float = 1e-7,
+        mip_gap: float = 1e-8,
+        epsilon: float = 1e-8,
         max_iter: Optional[int] = None,
         verbose: bool = False,
     ) -> None:
@@ -162,6 +163,7 @@ class SequentialLexSolver:
         self.r          = r
         self.time_limit = time_limit
         self.mip_gap    = mip_gap
+        self.epsilon    = epsilon
         self.verbose    = verbose
 
         self.components: List[Tuple[int, int]] = [
@@ -321,8 +323,8 @@ class SequentialLexSolver:
             )
             best_waypoints = self._extract_waypoints(x)
 
-            z_k.lb = z_k_val - 1e-6
-            z_k.ub = z_k_val + 1e-6
+            z_k.lb = z_k_val - self.epsilon
+            z_k.ub = z_k_val + self.epsilon
             m.update()
 
             if z_k_val < 1e-9:

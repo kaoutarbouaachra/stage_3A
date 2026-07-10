@@ -1,6 +1,6 @@
-# TCG_exact 
+# TCG_Exact 
 
-**Official name (report):** Trajectory Column Generation with Exact Layered-MIP
+Trajectory Column Generation with Exact Layered-MIP
 
 TCG-Exact is the trajectory-based method with a valid LP optimality
 certificate: pricing is solved to global optimality (layered MIP with the
@@ -16,9 +16,9 @@ Always **as a module**, from `Algorithm_codes/`
 ```bash
 cd .../codes/Algorithm_codes
 
-python -m TCG_exact.run_TCG_exact toy
-python -m TCG_exact.run_TCG_exact ar3 --max-rank 5
-python -m TCG_exact.run_TCG_exact setA-01 --max-rank 5 --time-limit 120
+python -m TCG_Exact.run_TCG_Exact toy
+python -m TCG_Exact.run_TCG_Exact ar3 --max-rank 5
+python -m TCG_Exact.run_TCG_Exact setA-01 --max-rank 5 --time-limit 120
 ```
 
 ## Options
@@ -52,6 +52,67 @@ The instance is resolved by name in the `codes/` tree:
 Results and logs are namespaced under a `TCG_exact` subfolder specifically so
 that running TCG-Diag, TCG-TopK, and TCG-Exact on the same instance never
 overwrites another method's output.
+
+
+---
+
+## Warm start
+
+`run_TCG_exact_warm` is the **same** sequential leximin method as
+`run_TCG_Exact` — same rank-by-rank STELA loop, same `z_k*` recovery from the
+integer solution's sorted load vector, same freeze tolerance, same exact
+pricing enabled at every rank — with **only** the initial pool changed. The
+heuristic columns are *added on top of* the trivial basic pool (never
+replacing it), so the warm start accelerates the search without shrinking what
+the method can certify.
+
+### How to run
+
+```bash
+cd .../codes/Algorithm_codes
+
+# default: seed from results//TCG_diag/-srpaths.json
+python -m TCG_Exact.run_TCG_exact_warm toy
+python -m TCG_Exact.run_TCG_exact_warm setA-01 --max-rank 5 --time-limit 120
+
+# seed from another heuristic's srpaths (must have been run first)
+python -m TCG_Exact.run_TCG_exact_warm setA-01 --warm-algo TCG_topk
+
+# seed from an arbitrary srpaths file (overrides --warm-algo)
+python -m TCG_Exact.run_TCG_exact_warm setA-01 --warm-srpaths /path/to/seed-srpaths.json
+```
+
+### Extra options
+
+All of the `run_TCG_Exact` options above apply, plus:
+
+- `--warm-algo` — the heuristic whose srpaths seeds the pool, read from
+  `results/<instance>/<warm-algo>/<instance>-srpaths.json`
+  (default: `TCG_diag`).
+- `--warm-srpaths` — explicit path to a srpaths.json to seed from. **Overrides**
+  `--warm-algo` when given.
+
+The warm start reads its seed from the official challenge srpaths format, so
+any heuristic that writes srpaths can be used. It does **not** fabricate a
+seed: the source file must already exist. With the default `--warm-algo`, that
+means **TCG-Diag must have been run first** on the instance, otherwise the
+driver exits with a `FileNotFoundError` telling you which heuristic to run.
+
+### Warm-start outputs
+
+Namespaced under a **separate** `TCG_exact_warm` subfolder so warm and cold
+runs never overwrite each other:
+
+- `results/<instance>/TCG_exact_warm/<instance>-srpaths.json` -- final routing
+  in challenge srpaths format. Always written; extra copy to `--out <path>` if
+  given.
+- `results/<instance>/TCG_exact_warm/<instance>-summary.json` -- `algorithm`
+  (`"TCG_exact_warm"`), `instance`, a `warm_start` block (`source`,
+  `warm_algo` — `null` when `--warm-srpaths` is used, `unresolved_entries`),
+  `ranks_certified`, `z_stars`, `pool_size`, `time_s`.
+- `logs/TCG_exact_warm/<instance>_<timestamp>.log` -- full console output,
+  tee'd to a timestamped file on every run.
+
 
 ## Dependencies
 

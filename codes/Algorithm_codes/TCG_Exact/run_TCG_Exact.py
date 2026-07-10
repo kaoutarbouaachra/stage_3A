@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-run_TCG_exact.py
+run_TCG_Exact.py
 =================
 
 TCG-Exact: sequential lexicographic (leximin) driver for the exact pair-path
@@ -21,9 +21,9 @@ The pool is shared across ranks (it only grows). The driver stops when the
 sorted load vector is fully determined (z_k* reaches 0, or k = N).
 
 Run as a module from Algorithm_codes/:
-    python -m TCG_exact.run_TCG_exact toy
-    python -m TCG_exact.run_TCG_exact ar3 --max-rank 5
-    python -m TCG_exact.run_TCG_exact setA-01 --max-rank 5 --time-limit 120
+    python -m TCG_Exact.run_TCG_Exact toy
+    python -m TCG_Exact.run_TCG_Exact ar3 --max-rank 5
+    python -m TCG_Exact.run_TCG_Exact setA-01 --max-rank 5 --time-limit 120
 
 Outputs (always):
     results/<instance>/TCG_exact/<instance>-srpaths.json
@@ -45,19 +45,15 @@ from typing import Dict, List, Optional, Tuple
 from .data import ArcTime, Column, DemandId, TASRData, TASRError
 from .master import MasterResult, PairPathColumnGeneration
 
-# Official algorithm identifier -- used for the results/log subfolders and
-# stamped into every summary JSON, so outputs are always self-identifying
-# and never collide with the other TCG variants.
-ALGO_NAME = "TCG_exact"
 
+ALGO_NAME = "TCG_exact"
 _NET = "-net.json"
 _TM = "-tm.json"
 _SCEN = "-scenario.json"
 
 
 # ---------------------------------------------------------------------------
-# core.paths integration, with a safe fallback if core.paths is not
-# importable (e.g. running outside a full Algorithm_codes/ checkout).
+# core.paths integration
 # ---------------------------------------------------------------------------
 try:
     from core.paths import RESULTS_DIR, LOGS_DIR, CODES_DIR as _CORE_CODES_DIR
@@ -67,7 +63,7 @@ except Exception:
     _CORE_CODES_DIR = None
 
 
-### Gurobi setup -- same pattern as the other TCG drivers.
+### Gurobi setup 
 def _setup_gurobi():
     candidates = [Path.home() / "gurobi.lic"]
     if _CORE_CODES_DIR is not None:
@@ -239,7 +235,7 @@ def _export_srpaths(chosen: Dict[DemandId, Column], data: TASRData,
 
 
 # ---------------------------------------------------------------------------
-# Driver
+# Sequential leximin driver
 # ---------------------------------------------------------------------------
 def solve_leximin(data: TASRData,
                   max_rank: Optional[int] = None,

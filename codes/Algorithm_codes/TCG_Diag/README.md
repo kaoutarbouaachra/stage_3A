@@ -60,8 +60,8 @@ Run as a module from `Algorithm_codes/`:
 ```bash
 cd .../codes/Algorithm_codes
 
-python -m TCG_diag.run_tcg_diag --instance setA-01 --K 5
-python -m TCG_diag.run_tcg_diag --instance setA-10 --K 3 --time_limit 900
+python -m TCG_diag.run_TCG_Diag --instance setA-01 --K 5
+python -m TCG_diag.run_TCG_Diag --instance setA-10 --K 3 --time_limit 900
 ```
 
 ### CLI arguments

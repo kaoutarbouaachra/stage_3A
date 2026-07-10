@@ -1,0 +1,29 @@
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_diag)
+  2026-07-10 15:21:49
+====================================================================
+  Instance     : setA-14
+  K ranks      : 12
+  time_limit   : 3600.0s
+  lp_time/rank : 240s
+  mip_time/rank: 240s
+  topk_cols    : 5
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_diag\setA-14_20260710_152149.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-14\TCG_diag
+====================================================================
+
+  setA-14 | 250 nodes, 1108 arcs, 600 demands, 2 timesteps, N=2216
+    t=0: 375560 non-zero ECMP coefficients
+    t=1: 375619 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Top-5 baseline: [1.0, 0.7356, 0.7356, 0.7092, 0.6667]
+
+  Initial pool : 600 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu

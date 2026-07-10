@@ -1,0 +1,55 @@
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_diag)
+  2026-07-10 09:41:03
+====================================================================
+  Instance     : setA-12
+  K ranks      : 12
+  time_limit   : 3600s
+  lp_time/rank : 240s
+  mip_time/rank: 240s
+  topk_cols    : 5
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_diag\setA-12_20260710_094103.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-12\TCG_diag
+====================================================================
+
+  setA-12 | 200 nodes, 898 arcs, 400 demands, 2 timesteps, N=1796
+    t=0: 220812 non-zero ECMP coefficients
+    t=1: 220689 non-zero ECMP coefficients
+  MLU baseline  : 1.000110
+  Top-5 baseline: [1.0001, 0.8799, 0.7201, 0.44, 0.4296]
+
+  Initial pool : 400 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2806743
+Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
+      1     2     420   0.879873   0.879873 [0.8799, 0.8401, 0.7201]  255.3s
+      2     3     435   0.386130   0.640075 [0.8799, 0.6401, 0.4949]  345.7s
+      3     2     450   0.207095   0.494919 [0.8799, 0.6401, 0.4949]  234.2s
+      4     1     450   0.069019   0.494919 [0.8799, 0.6401, 0.4949]  141.8s
+
+  Not enough time for MIP at rank 5.
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 1.000110
+  MLU solution    : 0.879873  (+12.02%)
+  Certified ranks : [0.879873, 0.640075, 0.494919, 0.494919]
+  Top-5 baseline  : [1.0001, 0.8799, 0.7201, 0.44, 0.4296]
+  Top-5 solution  : [0.8799, 0.6401, 0.4949, 0.4949, 0.36]
+  Pool size       : 8313
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-12\TCG_diag\setA-12-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-12\TCG_diag\setA-12-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=0.879872 | top5=[0.879872, 0.640075, 0.494918, 0.494918, 0.360035]
+  Feasible    : True
+  MLU checker : 0.879872
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-12\TCG_diag\setA-12-summary.json
+
+  Total time      : 3636.8s
+====================================================================
