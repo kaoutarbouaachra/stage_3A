@@ -1,0 +1,75 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-15 22:51:50
+====================================================================
+  Instance     : /home/setAP-14
+  Log          : /home/setAP-14_20260715_225150.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-14 | 10 nodes, 50 arcs, 30 demands, 2 timesteps, N=100
+    t=0: 154 non-zero ECMP coefficients
+    t=1: 159 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=30, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 5,400
+  Base model : 18,200 vars, 16,360 constraints, 995,498 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.593154      17.7s      17.7s  OPTIMAL
+      2   0.573238      14.4s      32.1s  OPTIMAL
+      3   0.453184      95.2s     127.3s  OPTIMAL
+      4   0.381057      72.9s     200.3s  OPTIMAL
+      5   0.374905      49.0s     249.3s  OPTIMAL
+      6   0.362897      38.3s     287.7s  OPTIMAL
+      7   0.346916      15.5s     303.1s  OPTIMAL
+      8   0.339850      54.2s     357.3s  OPTIMAL
+      9   0.312255      46.3s     403.6s  OPTIMAL
+     10   0.308585      60.4s     464.1s  OPTIMAL
+     11   0.305063      36.4s     500.5s  OPTIMAL
+     12   0.292635      59.7s     560.3s  OPTIMAL
+     13   0.287836      58.1s     618.4s  OPTIMAL
+     14   0.285311      34.6s     652.9s  OPTIMAL
+     15   0.261896      59.1s     712.1s  OPTIMAL
+     16   0.250357      50.6s     762.7s  OPTIMAL
+     17   0.244040      51.8s     814.5s  OPTIMAL
+     18   0.235387      93.7s     908.2s  OPTIMAL
+     19   0.233986      45.7s     953.9s  OPTIMAL
+     20   0.229691      58.5s    1012.4s  OPTIMAL
+     21   0.225088      56.0s    1068.4s  OPTIMAL
+     22   0.224735      20.2s    1088.6s  OPTIMAL
+     23   0.222011      21.6s    1110.2s  OPTIMAL
+     24   0.219918      12.0s    1122.3s  OPTIMAL
+     25   0.211176      67.5s    1189.8s  OPTIMAL
+  [k=26] Unexpected status 11 -- stopping.
+
+  Done.  25 ranks in 1198.6s
+  MLU (z*_1) = 0.593154
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 0.593154  (+40.68%)
+  Certified ranks : [0.593154, 0.573238, 0.453184, 0.381057, 0.374905, 0.362897, 0.346916, 0.33985, 0.312255, 0.308585, 0.305063, 0.292635, 0.287836, 0.285311, 0.261896, 0.250357, 0.24404, 0.235387, 0.233986, 0.229691, 0.225088, 0.224735, 0.222011, 0.219918, 0.211176]
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)
