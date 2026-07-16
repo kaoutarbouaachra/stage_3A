@@ -1,0 +1,62 @@
+
+════════════════════════════════════════════════════════════
+ 1. Loading instance
+════════════════════════════════════════════════════════════
+setAP-121 | 50 nodes, 250 arcs, 50 demands, 2 timesteps, N=500
+
+════════════════════════════════════════════════════════════
+ 2. ECMP computation
+════════════════════════════════════════════════════════════
+    t=0: 7333 non-zero ECMP coefficients
+    t=1: 7341 non-zero ECMP coefficients
+
+════════════════════════════════════════════════════════════
+ 3. Baseline
+════════════════════════════════════════════════════════════
+MLU baseline: 1.000000
+
+════════════════════════════════════════════════════════════
+ 4. Solver
+════════════════════════════════════════════════════════════
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=50, |T|=2) …
+  → 4,900 useful segment slots  (naive: 5,000 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 245,000
+  Base model : 367,500 vars, 250,101 constraints, 1,592,500 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   0.465966      88.8s     105.1s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+  [k=2] Unexpected status 11 — stopping.
+
+  Done.  1 iterations in 1198.8s
+  MLU (z*_1) = 0.465966
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 5. Results
+════════════════════════════════════════════════════════════
+
+Lex vector (first values):
+  z*_  1 = 0.465966 █████████████
+
+MLU solution: 0.465966
+  Solution written → /home/setAP-121/setAP-121-srpaths.json
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 6. Checker
+════════════════════════════════════════════════════════════
+
+Done.
+Total time: 1200.22s
+
+Interrupt request received

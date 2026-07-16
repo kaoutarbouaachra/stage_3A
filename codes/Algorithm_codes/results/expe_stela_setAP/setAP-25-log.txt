@@ -1,0 +1,62 @@
+
+════════════════════════════════════════════════════════════
+ 1. Loading instance
+════════════════════════════════════════════════════════════
+setAP-25 | 10 nodes, 50 arcs, 50 demands, 2 timesteps, N=100
+
+════════════════════════════════════════════════════════════
+ 2. ECMP computation
+════════════════════════════════════════════════════════════
+    t=0: 177 non-zero ECMP coefficients
+    t=1: 180 non-zero ECMP coefficients
+
+════════════════════════════════════════════════════════════
+ 3. Baseline
+════════════════════════════════════════════════════════════
+MLU baseline: 1.053303
+
+════════════════════════════════════════════════════════════
+ 4. Solver
+════════════════════════════════════════════════════════════
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=10, |D|=50, |T|=2) …
+  → 180 useful segment slots  (naive: 200 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 9,000
+  Base model : 13,500 vars, 10,101 constraints, 58,500 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   1.053303       0.1s       0.5s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+  [k=2] Unexpected status 11 — stopping.
+
+  Done.  1 iterations in 1199.8s
+  MLU (z*_1) = 1.053303
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 5. Results
+════════════════════════════════════════════════════════════
+
+Lex vector (first values):
+  z*_  1 = 1.053303 ███████████████████████████████
+
+MLU solution: 1.053303
+  Solution written → /home/setAP-25/setAP-25-srpaths.json
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 6. Checker
+════════════════════════════════════════════════════════════
+
+Done.
+Total time: 1199.93s
+
+Interrupt request received

@@ -1,0 +1,64 @@
+
+════════════════════════════════════════════════════════════
+ 1. Loading instance
+════════════════════════════════════════════════════════════
+setAP-117 | 50 nodes, 250 arcs, 40 demands, 2 timesteps, N=500
+
+════════════════════════════════════════════════════════════
+ 2. ECMP computation
+════════════════════════════════════════════════════════════
+    t=0: 7934 non-zero ECMP coefficients
+    t=1: 7948 non-zero ECMP coefficients
+
+════════════════════════════════════════════════════════════
+ 3. Baseline
+════════════════════════════════════════════════════════════
+MLU baseline: 1.000000
+
+════════════════════════════════════════════════════════════
+ 4. Solver
+════════════════════════════════════════════════════════════
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=40, |T|=2) …
+  → 4,900 useful segment slots  (naive: 5,000 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 196,000
+  Base model : 294,000 vars, 200,081 constraints, 1,274,000 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   1.000000      14.5s      27.4s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      2   0.739683     926.0s     953.8s  +0.260317  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+  [k=3] Unexpected status 11 — stopping.
+
+  Done.  2 iterations in 1198.8s
+  MLU (z*_1) = 1.000000
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 5. Results
+════════════════════════════════════════════════════════════
+
+Lex vector (first values):
+  z*_  1 = 1.000000 ██████████████████████████████
+  z*_  2 = 0.739683 ██████████████████████
+
+MLU solution: 1.000000
+  Solution written → /home/setAP-117/setAP-117-srpaths.json
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 6. Checker
+════════════════════════════════════════════════════════════
+
+Done.
+Total time: 1200.10s
+
+Interrupt request received

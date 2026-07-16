@@ -1,0 +1,68 @@
+
+════════════════════════════════════════════════════════════
+ 1. Loading instance
+════════════════════════════════════════════════════════════
+setAP-86 | 40 nodes, 200 arcs, 30 demands, 2 timesteps, N=400
+
+════════════════════════════════════════════════════════════
+ 2. ECMP computation
+════════════════════════════════════════════════════════════
+    t=0: 4412 non-zero ECMP coefficients
+    t=1: 4435 non-zero ECMP coefficients
+
+════════════════════════════════════════════════════════════
+ 3. Baseline
+════════════════════════════════════════════════════════════
+MLU baseline: 1.000000
+
+════════════════════════════════════════════════════════════
+ 4. Solver
+════════════════════════════════════════════════════════════
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=40, |D|=30, |T|=2) …
+  → 3,120 useful segment slots  (naive: 3,200 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 93,600
+  Base model : 140,400 vars, 96,061 constraints, 608,400 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   0.504395      42.4s      48.0s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      2   0.489579      27.9s      76.1s  +0.014816  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      3   0.456457     240.8s     317.0s  +0.033122  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      4   0.433472     295.0s     612.2s  +0.022985  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+  [k=5] Unexpected status 11 — stopping.
+
+  Done.  4 iterations in 1199.2s
+  MLU (z*_1) = 0.504395
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 5. Results
+════════════════════════════════════════════════════════════
+
+Lex vector (first values):
+  z*_  1 = 0.504395 ███████████████
+  z*_  2 = 0.489579 ██████████████
+  z*_  3 = 0.456457 █████████████
+  z*_  4 = 0.433472 █████████████
+
+MLU solution: 0.504395
+  Solution written → /home/setAP-86/setAP-86-srpaths.json
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 6. Checker
+════════════════════════════════════════════════════════════
+
+Done.
+Total time: 1199.95s
+
+Interrupt request received
