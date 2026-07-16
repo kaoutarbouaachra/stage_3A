@@ -1,0 +1,68 @@
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_diag\setA-13_20260716_093159.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_diag)
+  2026-07-16 09:31:59
+====================================================================
+  Instance     : setA-13
+  K ranks      : 12
+  time_limit   : 3600.0s   (soft cap)
+  lp_time/iter : 240s   (bounds ONE LP optimize())
+  pricing_time : 300s   (bounds ONE pricing sweep)
+  mip_time/rank: 240s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-13\TCG_diag
+====================================================================
+
+  setA-13 | 200 nodes, 1000 arcs, 2000 demands, 2 timesteps, N=2000
+    t=0: 251646 non-zero ECMP coefficients
+    t=1: 251700 non-zero ECMP coefficients
+  MLU baseline  : 0.999999
+  Top-5 baseline: [1.0, 0.9359, 0.8504, 0.6667, 0.6667]
+
+  Initial pool : 2000 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool   2065  LP  0.999999  +  65 cols  priced 805/2000  lp   1.6s  price  300.3s
+    r1 it 2  pool   2145  LP  0.850427  +  80 cols  priced 828/2000  lp   1.5s  price  300.1s
+    r1 it 3  pool   2170  LP  0.688033  +  25 cols  priced 1023/2000  lp   1.0s  price  300.1s
+    r1 it 4  pool   2245  LP  0.666666  +  75 cols  priced 1065/2000  lp   1.1s  price  300.2s
+    r1 it 5  pool   2245  LP  0.551281  +   0 cols  priced 926/2000  lp   1.3s  price  300.1s
+      1     5    2245   0.551281   0.551281 [0.5513, 0.5043, 0.4936] 1686.3s  (mip 1.0s)
+    r2 it 1  pool   2504  LP  0.400060  + 259 cols  priced 1039/2000  lp   1.4s  price  300.2s
+    r2 it 2  pool   2623  LP  0.311050  + 119 cols  priced 1026/2000  lp   1.4s  price  300.1s
+    r2 it 3  pool   2673  LP  0.264102  +  50 cols  priced 924/2000  lp   1.7s  price  300.1s
+    r2 it 4  pool   2847  LP  0.257122  + 174 cols  priced 1007/2000  lp   1.6s  price  300.1s
+    r2 it 5  pool   2847  LP  0.256410  +   0 cols  priced 476/2000  lp   1.7s  price  139.7s
+      2     5    2847   0.256410   0.465812 [0.5427, 0.4658, 0.4444] 1538.2s  (mip 1.8s)
+    r3 it 1  stop CG -> 240s reserved for the rank MIP
+      3     0    2847        inf   0.329060 [0.5256, 0.4658, 0.3291]  189.4s  (mip 2.0s)
+
+  Time limit reached before rank 4.
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 0.999999
+  MLU solution    : 0.525641  (+47.44%)
+  Certified ranks : [0.551281, 0.465812, 0.32906]
+  Top-5 baseline  : [1.0, 0.9359, 0.8504, 0.6667, 0.6667]
+  Top-5 solution  : [0.5256, 0.4658, 0.3291, 0.2585, 0.2513]
+  Pool size       : 2847
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-13\TCG_diag\setA-13-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-13\TCG_diag\setA-13-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=0.525640 | top5=[0.52564, 0.465811, 0.329059, 0.258546, 0.251281]
+  Feasible    : True
+  MLU checker : 0.525640
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-13\TCG_diag\setA-13-summary.json
+
+  Total time      : 3923.9s
+====================================================================
+Freeing default Gurobi environment

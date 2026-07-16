@@ -1,0 +1,18 @@
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_diag\setA-14_20260716_135417.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_diag)
+  2026-07-16 13:54:17
+====================================================================
+  Instance     : setA-14
+  K ranks      : 12
+  time_limit   : 3600.0s   (soft cap)
+  lp_time/iter : 240s   (bounds ONE LP optimize())
+  pricing_time : 300s   (bounds ONE pricing sweep)
+  mip_time/rank: 240s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-14\TCG_diag
+====================================================================
+
+  setA-14 | 250 nodes, 1108 arcs, 600 demands, 2 timesteps, N=2216

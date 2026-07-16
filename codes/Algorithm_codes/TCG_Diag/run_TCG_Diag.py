@@ -21,9 +21,32 @@ Dual signs: sigma_d (free), mu_k <= 0, eta_j <= 0, psi(t) <= 0. The pricing uses
 budget penalty. Passing mu = mu_bar is correct AT LP OPTIMALITY (rho_L = -mu_bar),
 which is why the LP must be solved to proven optimality before reading duals.
 
+--------------------------------------------------------------------------------
+TIMING MODEL 
+  * args.lp_time / args.mip_time bound ONE Gurobi optimize() call each, through
+    its TimeLimit parameter. They do NOT bound the Python model build, the
+    pricing sweep, nor the sum over CG iterations.
+  * args.pricing_time bounds ONE pricing sweep (all demands), in wall-clock.
+  * The inner CG loop stops at `cg_deadline`, set so that args.mip_time remains
+    for the rank MIP.
+  * THE RANK MIP ALWAYS RUNS, with TimeLimit = args.mip_time. It is never
+    skipped, whatever the CG consumed. This is sound: the MIP on a partial pool
+    is still feasible, hence returns a valid upper bound on z_k*, an
+    unconverged CG costs quality, not correctness.
+
+  Consequence, stated plainly: args.time_limit is a SOFT cap. Because the model
+  build is pure Python and cannot be interrupted, the last rank may overshoot it
+  by roughly (build time + args.mip_time). A new rank is only started while
+  elapsed <= time_limit, so at most one rank overshoots.
+
+  On large instances rank 1's CG can consume the whole budget on its own; only
+  its MIP is then guaranteed. To certify several ranks, shrink the per-iteration
+  cost (--topk_cols 1, --max_cg_iter 6) rather than raising --time_limit.
+
 Usage (from Algorithm_codes/):
     python -m TCG_diag.run_TCG_Diag --instance setA-01 --K 5
-    python -m TCG_diag.run_TCG_Diag --instance setA-10 --K 3 --time_limit 900
+    python -m TCG_diag.run_TCG_Diag --instance setA-13 --time_limit 6000 \
+        --topk_cols 1 --max_cg_iter 6 --lp_time 200 --pricing_time 200 --mip_time 400
 """
 
 import argparse
@@ -51,6 +74,7 @@ def _setup_gurobi():
             return str(p)
     return None
 _lic = _setup_gurobi()
+
 
 class _Tee:
     """Writes simultaneously to stdout and a log file."""
@@ -88,7 +112,25 @@ def _setup_logging(instance_name: str) -> tuple:
 def _teardown_logging(log_fh):
     """Restores sys.stdout and closes the log file."""
     sys.stdout = sys.__stdout__
-    log_fh.close()
+    try:
+        log_fh.close()
+    except Exception:
+        pass
+
+
+def _release_gurobi():
+    """
+    Release the WLS license token. gurobipy keeps a hidden default environment
+    alive for the whole process; on a WLS license that env holds a session with
+    the token server until the process exits. Disposing it explicitly returns the
+    token as soon as the run is over (matters when several instances are chained
+    inside one process).
+    """
+    try:
+        import gurobipy as gp
+        gp.disposeDefaultEnv()
+    except Exception:
+        pass
 
 
 # ---------------------------------------------------------------------------
@@ -102,17 +144,23 @@ def parse_args():
     p.add_argument("--checker_dir", default="../checker")
     p.add_argument("--K",           type=int,   default=12,
                    help="Number of lex ranks to certify (default 12)")
-    p.add_argument("--time_limit",  type=float, default=3600,)
+    p.add_argument("--time_limit",  type=float, default=3600,
+                   help="Soft global cap; the last rank may overshoot it by "
+                        "(build time + mip_time)")
     p.add_argument("--lp_time",     type=float, default=240,
-                   help="Max time per LP-RMP")
+                   help="Max time per LP-RMP optimize() call")
     p.add_argument("--mip_time",    type=float, default=240,
-                   help="Max time per rank MIP")
+                   help="Time granted to each rank MIP; always reserved, the "
+                        "MIP is never skipped")
+    p.add_argument("--pricing_time", type=float, default=300,
+                   help="Max wall-clock per CG pricing sweep (all demands)")
     p.add_argument("--max_cg_iter", type=int,   default=20,
                    help="Max CG iterations per rank")
     p.add_argument("--topk_cols",   type=int,   default=5,
                    help="Columns added per demand per iteration")
     p.add_argument("--rc_tol",      type=float, default=-1e-8)
     return p.parse_args()
+
 
 def detect_base(name, override=None):
     if override:
@@ -227,6 +275,10 @@ class LexRMP:
           binary=False -> LP relaxation (duals for pricing); requires OPTIMAL.
           binary=True  -> MIP (routing solution); requires a feasible incumbent.
         Returns None on failure.
+
+        The Gurobi model is disposed before returning: everything needed
+        downstream (.X, .Pi) is copied into `result` first, so disposing here
+        keeps the process footprint flat across the many builds of a run.
         """
         import gurobipy as gp
         from gurobipy import GRB
@@ -237,150 +289,150 @@ class LexRMP:
         m.setParam("TimeLimit", time_limit)
         vtype = GRB.BINARY if binary else GRB.CONTINUOUS
 
-        ## Routing variables z_{d,ti}
-        z = {}
-        for d_id in self.demands_info:
-            for ti in range(len(pool.get(d_id))):
-                z[(d_id, ti)] = m.addVar(lb=0.0, ub=1.0, vtype=vtype,
-                                         name=f"z_{d_id}_{ti}")
-
-        ## Current-rank threshold variable
-        z_thresh = m.addVar(lb=0.0, vtype=GRB.CONTINUOUS, name="z_thresh")
-
-        ## Load variables lambda(a,t)
-        lam = {at: m.addVar(lb=0.0, vtype=GRB.CONTINUOUS,
-                            name=f"lam_{at[0]}_{at[1]}")
-               for at in self.arc_time_pairs}
-
-        ## Exceedance variables y^(j)_{a,t}, j = 1..k
-        y = {}
-        for j in range(1, rank_k + 1):
-            for at in self.arc_time_pairs:
-                y[(j,) + at] = m.addVar(
-                    lb=0.0, ub=1.0,
-                    vtype=GRB.BINARY if binary else GRB.CONTINUOUS,
-                    name=f"y_{j}_{at[0]}_{at[1]}")
-
-        ## (S) selection
-        cons_S = {}
-        for d_id in self.demands_info:
-            n = len(pool.get(d_id))
-            cons_S[d_id] = m.addConstr(
-                gp.quicksum(z[(d_id, ti)] for ti in range(n)) == 1,
-                name=f"S_{d_id}")
-
-        ## (L) load definition: lambda = sum Gamma z
-        gamma = {(d_id, ti): self._gamma(d_id, ti, traj)
-                 for d_id in self.demands_info
-                 for ti, traj in enumerate(pool.get(d_id))}
-        cons_L = {}
-        for at in self.arc_time_pairs:
-            expr = gp.LinExpr()
-            for (d_id, ti), g in gamma.items():
-                val = g.get(at, 0.0)
-                if val > 1e-12:
-                    expr.add(z[(d_id, ti)], val)
-            cons_L[at] = m.addConstr(lam[at] == expr, name=f"L_{at[0]}_{at[1]}")
-
-        #### (B) budget
-        cons_B = {}
-        for t in self.inst.T_star:
-            kappa = self.inst.budget.get(t)
-            if kappa is None:
-                continue
-            expr = gp.LinExpr()
+        try:
+            ## Routing variables z_{d,ti}
+            z = {}
             for d_id in self.demands_info:
-                for ti, traj in enumerate(pool.get(d_id)):
-                    b = self._beta(d_id, ti, traj)
-                    if b > 0:
-                        expr.add(z[(d_id, ti)], float(b))
-            if expr.size() > 0:
-                cons_B[t] = m.addConstr(expr <= kappa, name=f"B_{t}")
-        z1_star = z_stars[0] if z_stars else None
+                for ti in range(len(pool.get(d_id))):
+                    z[(d_id, ti)] = m.addVar(lb=0.0, ub=1.0, vtype=vtype,
+                                             name=f"z_{d_id}_{ti}")
 
-        ## Inherited rows (Tj, Nj) for j < k
-        #   (Tj) lambda(a,t) <= z_j* + z_1* * y^(j)_{a,t}
-        #   (Nj) sum_{a,t} y^(j)_{a,t} <= j - 1
-        # j = 1 forces all loads <= z_1* (since N1 sums to 0), which also makes
-        # the big-M = z_1* valid in every threshold row.
-        #
-        cons_Tj = {}
-        for j in range(1, rank_k):
-            zj = z_stars[j - 1]
-            for at in self.arc_time_pairs:
-                cons_Tj[(j,) + at] = m.addConstr(
-                    lam[at] <= zj + z1_star * y[(j,) + at],
-                    name=f"T{j}_{at[0]}_{at[1]}")
-            m.addConstr(
-                gp.quicksum(y[(j,) + at] for at in self.arc_time_pairs) <= j - 1,
-                name=f"N{j}")
+            ## Current-rank threshold variable
+            z_thresh = m.addVar(lb=0.0, vtype=GRB.CONTINUOUS, name="z_thresh")
 
-        ## Current-rank rows (Tk, Nk)
-        cons_Tk = {}
-        if rank_k == 1:
-            # Rank 1: minimise the MLU directly (no exceedances).
-            for at in self.arc_time_pairs:
-                cons_Tk[at] = m.addConstr(lam[at] <= z_thresh,
-                                          name=f"Tk_{at[0]}_{at[1]}")
-        else:
-            for at in self.arc_time_pairs:
-                cons_Tk[at] = m.addConstr(
-                    lam[at] <= z_thresh + z1_star * y[(rank_k,) + at],
-                    name=f"Tk_{at[0]}_{at[1]}")
-            m.addConstr(
-                gp.quicksum(y[(rank_k,) + at] for at in self.arc_time_pairs)
-                <= rank_k - 1, name="Nk")
+            ## Load variables lambda(a,t)
+            lam = {at: m.addVar(lb=0.0, vtype=GRB.CONTINUOUS,
+                                name=f"lam_{at[0]}_{at[1]}")
+                   for at in self.arc_time_pairs}
 
-        ## Objective: minimise z_thresh (the current rank's MLU threshold)
-        m.setObjective(z_thresh, GRB.MINIMIZE)
-        m.optimize()
+            ## Exceedance variables y^(j)_{a,t}, j = 1..k
+            y = {}
+            for j in range(1, rank_k + 1):
+                for at in self.arc_time_pairs:
+                    y[(j,) + at] = m.addVar(
+                        lb=0.0, ub=1.0,
+                        vtype=GRB.BINARY if binary else GRB.CONTINUOUS,
+                        name=f"y_{j}_{at[0]}_{at[1]}")
 
-        ## Status checks
-        if not binary:
-            # LP duals are only valid at proven optimality.
-            if m.Status != GRB.OPTIMAL or m.SolCount == 0:
-                return None
-        else:
-            # MIP: accept any feasible incumbent (e.g. under the time limit).
-            if m.SolCount == 0:
-                return None
-        result = {"z_k": z_thresh.X, "status": m.Status}
-        if not binary:
-            result["pi"] = {d_id: c.Pi for d_id, c in cons_S.items()}
-            result["mu_k"] = {at: c.Pi for at, c in cons_Tk.items()}
-            result["eta_j"] = {key: c.Pi for key, c in cons_Tj.items()}
-            result["psi"] = {t: c.Pi for t, c in cons_B.items()}
-
-            # Stratified dual: mu_bar_k(a,t) = mu_k(a,t) + sum_{j<k} eta_j(a,t).
-            mu_bar = {}
-            for at in self.arc_time_pairs:
-                val = result["mu_k"].get(at, 0.0)
-                for j in range(1, rank_k):
-                    val += result["eta_j"].get((j,) + at, 0.0)
-                mu_bar[at] = val
-            result["mu_bar"] = mu_bar
-        else:
-            sol = {}
+            ## (S) selection
+            cons_S = {}
             for d_id in self.demands_info:
-                for ti, traj in enumerate(pool.get(d_id)):
-                    if z[(d_id, ti)].X > 0.5:
-                        sol[d_id] = traj
-                        break
-            result["solution"] = sol
-        return result
+                n = len(pool.get(d_id))
+                cons_S[d_id] = m.addConstr(
+                    gp.quicksum(z[(d_id, ti)] for ti in range(n)) == 1,
+                    name=f"S_{d_id}")
+
+            ## (L) load definition: lambda = sum Gamma z
+            gamma = {(d_id, ti): self._gamma(d_id, ti, traj)
+                     for d_id in self.demands_info
+                     for ti, traj in enumerate(pool.get(d_id))}
+            cons_L = {}
+            for at in self.arc_time_pairs:
+                expr = gp.LinExpr()
+                for (d_id, ti), g in gamma.items():
+                    val = g.get(at, 0.0)
+                    if val > 1e-12:
+                        expr.add(z[(d_id, ti)], val)
+                cons_L[at] = m.addConstr(lam[at] == expr, name=f"L_{at[0]}_{at[1]}")
+
+            #### (B) budget
+            cons_B = {}
+            for t in self.inst.T_star:
+                kappa = self.inst.budget.get(t)
+                if kappa is None:
+                    continue
+                expr = gp.LinExpr()
+                for d_id in self.demands_info:
+                    for ti, traj in enumerate(pool.get(d_id)):
+                        b = self._beta(d_id, ti, traj)
+                        if b > 0:
+                            expr.add(z[(d_id, ti)], float(b))
+                if expr.size() > 0:
+                    cons_B[t] = m.addConstr(expr <= kappa, name=f"B_{t}")
+            z1_star = z_stars[0] if z_stars else None
+
+            ## Inherited rows (Tj, Nj) for j < k
+            #   (Tj) lambda(a,t) <= z_j* + z_1* * y^(j)_{a,t}
+            #   (Nj) sum_{a,t} y^(j)_{a,t} <= j - 1
+            # j = 1 forces all loads <= z_1* (since N1 sums to 0), which also makes
+            # the big-M = z_1* valid in every threshold row.
+            #
+            cons_Tj = {}
+            for j in range(1, rank_k):
+                zj = z_stars[j - 1]
+                for at in self.arc_time_pairs:
+                    cons_Tj[(j,) + at] = m.addConstr(
+                        lam[at] <= zj + z1_star * y[(j,) + at],
+                        name=f"T{j}_{at[0]}_{at[1]}")
+                m.addConstr(
+                    gp.quicksum(y[(j,) + at] for at in self.arc_time_pairs) <= j - 1,
+                    name=f"N{j}")
+
+            ## Current-rank rows (Tk, Nk)
+            cons_Tk = {}
+            if rank_k == 1:
+                # Rank 1: minimise the MLU directly (no exceedances).
+                for at in self.arc_time_pairs:
+                    cons_Tk[at] = m.addConstr(lam[at] <= z_thresh,
+                                              name=f"Tk_{at[0]}_{at[1]}")
+            else:
+                for at in self.arc_time_pairs:
+                    cons_Tk[at] = m.addConstr(
+                        lam[at] <= z_thresh + z1_star * y[(rank_k,) + at],
+                        name=f"Tk_{at[0]}_{at[1]}")
+                m.addConstr(
+                    gp.quicksum(y[(rank_k,) + at] for at in self.arc_time_pairs)
+                    <= rank_k - 1, name="Nk")
+
+            ## Objective: minimise z_thresh (the current rank's MLU threshold)
+            m.setObjective(z_thresh, GRB.MINIMIZE)
+            m.optimize()
+
+            ## Status checks
+            if not binary:
+                # LP duals are only valid at proven optimality.
+                if m.Status != GRB.OPTIMAL or m.SolCount == 0:
+                    return None
+            else:
+                # MIP: accept any feasible incumbent (e.g. under the time limit).
+                if m.SolCount == 0:
+                    return None
+
+            result = {"z_k": z_thresh.X, "status": m.Status}
+            if not binary:
+                result["pi"] = {d_id: c.Pi for d_id, c in cons_S.items()}
+                result["mu_k"] = {at: c.Pi for at, c in cons_Tk.items()}
+                result["eta_j"] = {key: c.Pi for key, c in cons_Tj.items()}
+                result["psi"] = {t: c.Pi for t, c in cons_B.items()}
+
+                # Stratified dual: mu_bar_k(a,t) = mu_k(a,t) + sum_{j<k} eta_j(a,t).
+                mu_bar = {}
+                for at in self.arc_time_pairs:
+                    val = result["mu_k"].get(at, 0.0)
+                    for j in range(1, rank_k):
+                        val += result["eta_j"].get((j,) + at, 0.0)
+                    mu_bar[at] = val
+                result["mu_bar"] = mu_bar
+            else:
+                sol = {}
+                for d_id in self.demands_info:
+                    for ti, traj in enumerate(pool.get(d_id)):
+                        if z[(d_id, ti)].X > 0.5:
+                            sol[d_id] = traj
+                            break
+                result["solution"] = sol
+            return result
+        finally:
+            # Free the model whatever the exit path (return / exception).
+            m.dispose()
 
 
 ###################
 ###  MAIN
 ###################
 
-def main():
-    args = parse_args()
+def _run(args):
     name = args.instance
-
-    # -- Logging setup ------------------------------------------------------
-    log_path, _log_fh = _setup_logging(name)
-    # -------------------------------------------------------------------------
 
     base = detect_base(name, args.data_dir)
     net_f  = base / f"{name}-net.json"
@@ -399,11 +451,12 @@ def main():
     print("=" * 68)
     print(f"  Instance     : {name}")
     print(f"  K ranks      : {args.K}")
-    print(f"  time_limit   : {args.time_limit}s")
-    print(f"  lp_time/rank : {args.lp_time}s")
-    print(f"  mip_time/rank: {args.mip_time}s")
+    print(f"  time_limit   : {args.time_limit}s   (soft cap)")
+    print(f"  lp_time/iter : {args.lp_time}s   (bounds ONE LP optimize())")
+    print(f"  pricing_time : {args.pricing_time}s   (bounds ONE pricing sweep)")
+    print(f"  mip_time/rank: {args.mip_time}s   (always reserved, never skipped)")
+    print(f"  max_cg_iter  : {args.max_cg_iter}")
     print(f"  topk_cols    : {args.topk_cols}")
-    print(f"  Log          : {log_path}")
     print(f"  Results dir  : {res_dir}")
     print("=" * 68)
 
@@ -458,19 +511,29 @@ def main():
         lp_bound     = float('inf')
         cg_iters     = 0
 
-        ## Inner CG for this rank
+        ## Inner CG for this rank.
+        ## cg_deadline reserves args.mip_time so that the rank MIP below always
+        ## has room. The CG is what gets truncated, never the MIP.
+        cg_deadline = t_global + args.time_limit - args.mip_time - 10
         for cg_iter in range(args.max_cg_iter):
-            elapsed = time.perf_counter() - t_global
-            if elapsed > args.time_limit:
+            now = time.perf_counter()
+            if now > cg_deadline:
+                print(f"    r{rank_k} it{cg_iter+1:>2}  stop CG "
+                      f"-> {args.mip_time:.0f}s reserved for the rank MIP")
                 break
-            remaining_lp = min(args.lp_time, args.time_limit - elapsed - 10)
+            remaining_lp = min(args.lp_time, cg_deadline - now)
             if remaining_lp < 5:
+                print(f"    r{rank_k} it{cg_iter+1:>2}  stop CG (no room for an LP)")
                 break
 
-            # Solve LP-RMP(k): must be optimal for valid duals
+            # LP-RMP(k): Python build (UNbounded) + Gurobi solve (TimeLimit only).
+            t_lp0 = time.perf_counter()
             lp_result = lex_rmp._build_model(
                 pool, rank_k, z_stars, binary=False, time_limit=remaining_lp)
+            dt_lp = time.perf_counter() - t_lp0
             if lp_result is None:
+                print(f"    r{rank_k} it{cg_iter+1:>2}  LP not optimal "
+                      f"({dt_lp:.1f}s) -> stop CG")
                 break
             lp_bound = lp_result["z_k"]
             cg_iters += 1
@@ -480,10 +543,14 @@ def main():
             pi_d   = lp_result["pi"]
             psi1   = lp_result["psi"].get(1, 0.0)        # psi(1) <= 0
 
-            # Pricing per demand (exact diagonal + heuristic off-diagonal)
+            # Pricing sweep: bounded by pricing_time AND by cg_deadline, so a
+            # long sweep can never eat into the MIP's reservation.
+            t_price = time.perf_counter()
+            price_deadline = min(t_price + args.pricing_time, cg_deadline)
             added_count = 0
+            n_priced = 0
             for d_id, (src, tgt, vols) in demands_info.items():
-                if time.perf_counter() - t_global > args.time_limit:
+                if time.perf_counter() > price_deadline:
                     break
                 results = price_demand_topk(
                     (d_id, src, tgt, vols), inst, r,
@@ -497,21 +564,33 @@ def main():
                 for res in results:
                     if pool.add(d_id, res.trajectory):
                         added_count += 1
+                n_priced += 1
+            dt_price = time.perf_counter() - t_price
 
-            # CG stopping: no improving column -> pool optimal for this rank
+            # Per-iteration log: shows where the wall-clock actually goes.
+            # `price` >> `lp`  -> bottleneck is the per-demand Bellman-Ford.
+            # `lp` growing     -> bottleneck is the (L) build, O(arc_time x pool).
+            print(f"    r{rank_k} it{cg_iter+1:>2}  pool {pool.total_size():>6}  "
+                  f"LP {lp_bound:>9.6f}  +{added_count:>4} cols  "
+                  f"priced {n_priced}/{len(demands_info)}  "
+                  f"lp {dt_lp:>5.1f}s  price {dt_price:>6.1f}s")
+
+            # CG stopping: no improving column -> pool optimal for this rank.
             if added_count == 0:
                 break
 
-        ## Rank MIP: certified z_k*
-        elapsed = time.perf_counter() - t_global
-        remaining_mip = min(args.mip_time, args.time_limit - elapsed - 5)
-        if remaining_mip < 5:
-            print(f"\n  Not enough time for MIP at rank {rank_k}.")
-            break
+        ## Rank MIP -- ALWAYS executed, with the full args.mip_time.
+        ## Deliberately NOT conditioned on the remaining global time: a partial
+        ## pool still yields a feasible incumbent, i.e. a valid upper bound on
+        ## z_k*. Truncating the CG costs quality; skipping the MIP would cost
+        ## the rank itself.
+        t_mip0 = time.perf_counter()
         mip_result = lex_rmp._build_model(
-            pool, rank_k, z_stars, binary=True, time_limit=remaining_mip)
+            pool, rank_k, z_stars, binary=True, time_limit=args.mip_time)
+        dt_mip = time.perf_counter() - t_mip0
         if mip_result is None:
-            print(f"\n  MIP failed at rank {rank_k}.")
+            print(f"\n  MIP found no feasible incumbent at rank {rank_k} "
+                  f"({dt_mip:.1f}s).")
             break
         z_k_star = mip_result["z_k"]
         sol_k    = mip_result["solution"]
@@ -531,7 +610,7 @@ def main():
         t_rank = time.perf_counter() - t_rank_start
         print(f"  {rank_k:>5} {cg_iters:>5} {pool.total_size():>7}"
               f" {lp_bound:>10.6f} {z_k_star:>10.6f}"
-              f" {top3_str:>22} {t_rank:>6.1f}s")
+              f" {top3_str:>22} {t_rank:>6.1f}s  (mip {dt_mip:.1f}s)")
 
 
     ########################################
@@ -604,9 +683,21 @@ def main():
     print(f"\n  Total time      : {t_total:.1f}s")
     print("=" * 68)
 
-    # -- Close log ------------------------------------------------------------
-    _teardown_logging(_log_fh)
-    # ---------------------------------------------------------------------------
+
+def main():
+    args = parse_args()
+
+    # -- Logging setup ------------------------------------------------------
+    log_path, _log_fh = _setup_logging(args.instance)
+    print(f"  Log          : {log_path}")
+
+    # try/finally: the WLS token is released and the log closed even if the run
+    # raises (failed rank, infeasible model, KeyboardInterrupt...).
+    try:
+        _run(args)
+    finally:
+        _release_gurobi()
+        _teardown_logging(_log_fh)
 
 
 if __name__ == "__main__":

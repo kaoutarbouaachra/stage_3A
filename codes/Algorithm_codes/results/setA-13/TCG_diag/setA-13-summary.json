@@ -3,9 +3,13 @@
   "instance": "setA-13",
   "K": 12,
   "mlu_baseline": 0.9999990000000003,
-  "mlu_solution": 0.9999990000000003,
-  "reduction_pct": 0.0,
-  "z_stars": [],
+  "mlu_solution": 0.5256405000000002,
+  "reduction_pct": 47.43589743589743,
+  "z_stars": [
+    0.5512814999999985,
+    0.46581150000000004,
+    0.3290595
+  ],
   "top5_baseline": [
     0.999999,
     0.935897,
@@ -14,14 +18,14 @@
     0.666666
   ],
   "top5_solution": [
-    0.999999,
-    0.935897,
-    0.850427,
-    0.666666,
-    0.666666
+    0.525641,
+    0.465812,
+    0.32906,
+    0.258547,
+    0.251282
   ],
-  "pool_size": 2000,
-  "time_s": 257.73,
-  "checker_valid": null,
-  "checker_mlu": null
+  "pool_size": 2847,
+  "time_s": 3923.94,
+  "checker_valid": true,
+  "checker_mlu": 0.52564
 }
