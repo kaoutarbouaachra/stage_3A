@@ -1,0 +1,57 @@
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_diag\setA-20_20260720_100459.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_diag)
+  2026-07-20 10:04:59
+====================================================================
+  Instance     : setA-20
+  K ranks      : 12
+  time_limit   : 4500.0s   (soft cap)
+  lp_time/iter : 800.0s   (bounds ONE LP optimize())
+  pricing_time : 3600.0s   (bounds ONE pricing sweep)
+  mip_time/rank: 240s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-20\TCG_diag
+====================================================================
+
+  setA-20 | 400 nodes, 2000 arcs, 6000 demands, 2 timesteps, N=4000
+    t=0: 716276 non-zero ECMP coefficients
+    t=1: 716470 non-zero ECMP coefficients
+  MLU baseline  : 0.999999
+  Top-5 baseline: [1.0, 0.9913, 0.8408, 0.746, 0.6482]
+
+  Initial pool : 6000 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool   6070  LP  0.999999  +  70 cols  priced 1739/6000  lp   8.6s  price 1637.9s
+    r1 it 2  stop CG -> 240s reserved for the rank MIP
+      1     1    6070   0.999999   0.991312 [0.9913, 0.8223, 0.746] 3266.5s  (mip 5.3s)
+
+  Time limit reached before rank 2.
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 0.999999
+  MLU solution    : 0.991312  (+0.87%)
+  Certified ranks : [0.991312]
+  Top-5 baseline  : [1.0, 0.9913, 0.8408, 0.746, 0.6482]
+  Top-5 solution  : [0.9913, 0.8223, 0.746, 0.7353, 0.6482]
+  Pool size       : 6070
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-20\TCG_diag\setA-20-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-20\TCG_diag\setA-20-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=0.991312 | top5=[0.991312, 0.822323, 0.745953, 0.73533, 0.648211]
+  Feasible    : True
+  MLU checker : 0.991312
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-20\TCG_diag\setA-20-summary.json
+
+  Total time      : 7470.3s
+====================================================================
+Freeing default Gurobi environment
