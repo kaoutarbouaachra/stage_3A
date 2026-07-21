@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 from typing import (
     Any,
     Dict,
+    FrozenSet,
     Hashable,
     Iterable,
     List,
@@ -177,7 +178,7 @@ class TASRData:
     periods: Tuple[Period, Period] = (0, 1)
 
     _demand_by_id: Dict[DemandId, Demand] = field(init=False, repr=False)
-    _feasible_segment_sets: Dict[Tuple[DemandId, Period], Set[Segment]] = field(init=False, repr=False)
+    _feasible_segment_sets: Dict[Tuple[DemandId, Period], FrozenSet[Segment]] = field(init=False, repr=False)
 
     def __post_init__(self) -> None:
         if tuple(self.periods) != (0, 1):
@@ -191,13 +192,27 @@ class TASRData:
         if len(self._demand_by_id) != len(self.demands):
             raise ValueError("Demand ids must be unique.")
 
-        fs: Dict[Tuple[DemandId, Period], Set[Segment]] = {}
+        # De-duplicate the feasible sets by identity: when the adapter passes
+        # the SAME (shared) set object for every demand at a given period -- as
+        # it does when the feasible set is demand-independent -- we store one
+        # frozenset and let every key reference it, instead of rebuilding a
+        # fresh set per demand. Rebuilding per demand made #demands x 2 copies
+        # of a set with hundreds of thousands of entries -> MemoryError.
+        # Genuinely distinct source objects are still frozen separately, so
+        # per-demand feasible sets keep working.
+        fs: Dict[Tuple[DemandId, Period], FrozenSet[Segment]] = {}
+        dedup: Dict[int, FrozenSet[Segment]] = {}
         for d in self.demands:
             for t in self.periods:
                 key = (d.id, t)
                 if key not in self.feasible_segments:
                     raise ValueError(f"Missing feasible_segments for demand {d.id!r}, period {t}.")
-                fs[key] = set(tuple(e) for e in self.feasible_segments[key])
+                src = self.feasible_segments[key]
+                cached = dedup.get(id(src))
+                if cached is None:
+                    cached = src if isinstance(src, frozenset) else frozenset(tuple(e) for e in src)
+                    dedup[id(src)] = cached
+                fs[key] = cached
                 if t not in d.volume:
                     raise ValueError(f"Demand {d.id!r} has no volume for period {t}.")
         object.__setattr__(self, "_feasible_segment_sets", fs)
@@ -216,8 +231,12 @@ class TASRData:
     def arc_times(self) -> List[ArcTime]:
         return [(a, t) for t in self.periods for a in self.arcs]
 
-    def feasible_real_segments(self, demand_id: DemandId, t: Period) -> Set[Segment]:
-        return set(self._feasible_segment_sets[(demand_id, t)])
+    def feasible_real_segments(self, demand_id: DemandId, t: Period) -> FrozenSet[Segment]:
+        # Return the shared, immutable set directly -- do NOT copy. The old
+        # ``set(...)`` here allocated a fresh copy of a huge set on EVERY call
+        # (once per demand per pricing iteration). Callers are read-only
+        # (membership tests / iteration); they must not mutate the result.
+        return self._feasible_segment_sets[(demand_id, t)]
 
     def r(self, segment: Segment, arc: Arc, t: Period) -> float:
         return float(self.routing_fraction.get((segment, arc, t), 0.0))

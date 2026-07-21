@@ -1,0 +1,7 @@
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_exact_warm)
+  2026-07-21 13:14:09
+====================================================================
+[load] C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\setA\setA-03\setA-03-net.json
+    t=0: 7460 non-zero ECMP coefficients

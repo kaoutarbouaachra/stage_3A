@@ -27,7 +27,7 @@ This version is wired to the ACTUAL core API:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Set, Tuple
+from typing import Any, Dict, FrozenSet, List, Set, Tuple
 
 from .data import (
     Arc,
@@ -78,16 +78,23 @@ def build_tasr_data_from_instance(inst: Any) -> TASRData:
             feasible_per_t[t].add(seg)
 
     # --- demands and per-demand candidate segments --------------------------
+    # The feasible set is demand-independent here, so we build ONE immutable
+    # set per period and let every demand share the same reference. Using
+    # set(feasible_per_t[t]) per demand made #demands x 2 full copies of a
+    # set with hundreds of thousands of entries -> MemoryError on setA-20.
+    feas_by_t: Dict[Period, FrozenSet[Segment]] = {
+        t: frozenset(feasible_per_t[t]) for t in periods
+    }
+
     demands: List[Demand] = []
-    feasible_segments: Dict[Tuple[DemandId, Period], Set[Segment]] = {}
+    feasible_segments: Dict[Tuple[DemandId, Period], FrozenSet[Segment]] = {}
     for (d_id, s, tgt, vols) in inst.demands:
         if len(vols) < 2:
             raise TASRError(f"Demand {d_id} has fewer than 2 traffic values (need t=0 and t=1).")
         demands.append(Demand(id=d_id, source=s, target=tgt,
                               volume={0: float(vols[0]), 1: float(vols[1])}))
         for t in periods:
-            # All ordered reachable pairs at period t (demand-independent here).
-            feasible_segments[(d_id, t)] = set(feasible_per_t[t])
+            feasible_segments[(d_id, t)] = feas_by_t[t]  # shared reference, no copy
 
     # --- budget = kappa(1) ---------------------------------------------------
     budget = float(inst.budget.get(1, 0.0))

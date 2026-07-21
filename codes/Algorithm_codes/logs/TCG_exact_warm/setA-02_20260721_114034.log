@@ -1,7 +1,7 @@
 ====================================================================
   T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
   Algorithm    : TCG-Exact-Warm  (folder: TCG_exact_warm)
-  2026-07-07 11:33:33
+  2026-07-21 11:40:34
 ====================================================================
 [load] C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\setA\setA-02\setA-02-net.json
     t=0: 2209 non-zero ECMP coefficients
@@ -9,70 +9,69 @@
 [data] nodes=30 arcs=150 demands=45 K=6 budget=63.0 N=300
 [warm] source       : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\TCG_diag\setA-02-srpaths.json
   Instance     : setA-02
-  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_exact_warm\setA-02_20260707_113333.log
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_exact_warm\setA-02_20260721_114034.log
   Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\TCG_exact_warm
 ====================================================================
 Set parameter WLSAccessID
 Set parameter WLSSecret
-Set parameter LicenseID to value 2806743
-Academic license 2806743 - for non-commercial use only - registered to ka___@polytechnique.edu
-[warm] heuristic columns seeded: +32 new (0 demand(s) refused -> trivial); pool now 77 cols
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +36 new (0 demand(s) refused -> trivial); pool now 81 cols
 [warm] heuristic incumbent sorted loads (top): 0.903075, 0.548578, 0.53877, 0.522808, 0.495467
-[rank   1] LP=0.624267  z_1*=0.903075  pool=78 cols  iters=2
-[rank   2] LP=0.418042  z_2*=0.548578  pool=91 cols  iters=3
-[rank   3] LP=0.335846  z_3*=0.53877  pool=103 cols  iters=2
-[rank   4] LP=0.270028  z_4*=0.522808  pool=164 cols  iters=3
-[rank   5] LP=0.220602  z_5*=0.495467  pool=314 cols  iters=5
+[rank   1] LP=0.624267  z_1*=0.903075  pool=83 cols  iters=3
+[rank   2] LP=0.418042  z_2*=0.548578  pool=95 cols  iters=3
+[rank   3] LP=0.335846  z_3*=0.53877  pool=111 cols  iters=3
+[rank   4] LP=0.270028  z_4*=0.522808  pool=170 cols  iters=3
 
 [leximin] z* prefix (sorted load vector, leading entries):
-  0.903075, 0.548578, 0.53877, 0.522808, 0.495467
+  0.903075, 0.548578, 0.53877, 0.522808
 
 [routing] selected columns:
-  demand=0  p0=((20, 27), (27, 10))  p1=((20, 27), (27, 10))
+  demand=0  p0=((20, 10),)  p1=((20, 10),)
   demand=1  p0=((24, 13), (13, 18))  p1=((24, 13), (13, 18))
   demand=10  p0=((2, 29),)  p1=((2, 23), (23, 29))
-  demand=11  p0=((3, 16), (16, 14))  p1=((3, 14),)
+  demand=11  p0=((3, 14),)  p1=((3, 14),)
   demand=12  p0=((18, 14),)  p1=((18, 14),)
   demand=13  p0=((24, 21),)  p1=((24, 21),)
-  demand=14  p0=((21, 27), (27, 29))  p1=((21, 27), (27, 29))
+  demand=14  p0=((21, 29),)  p1=((21, 1), (1, 29))
   demand=15  p0=((15, 28),)  p1=((15, 28),)
-  demand=16  p0=((17, 23),)  p1=((17, 9), (9, 23))
+  demand=16  p0=((17, 23),)  p1=((17, 23),)
   demand=17  p0=((29, 11),)  p1=((29, 11),)
   demand=18  p0=((12, 6),)  p1=((12, 6),)
   demand=19  p0=((2, 9),)  p1=((2, 9),)
-  demand=2  p0=((23, 18), (18, 26), (26, 2))  p1=((23, 18), (18, 26), (26, 2))
+  demand=2  p0=((23, 2),)  p1=((23, 2),)
   demand=20  p0=((20, 12),)  p1=((20, 12),)
   demand=21  p0=((28, 6),)  p1=((28, 6),)
   demand=22  p0=((2, 0),)  p1=((2, 0),)
   demand=23  p0=((23, 0),)  p1=((23, 0),)
-  demand=24  p0=((1, 22), (22, 6))  p1=((1, 14), (14, 6))
+  demand=24  p0=((1, 25), (25, 6))  p1=((1, 25), (25, 6))
   demand=25  p0=((22, 4),)  p1=((22, 4),)
-  demand=26  p0=((15, 3), (3, 22), (22, 20), (20, 11), (11, 13), (13, 2))  p1=((15, 7), (7, 2))
-  demand=27  p0=((2, 13), (13, 11))  p1=((2, 13), (13, 11))
-  demand=28  p0=((19, 17),)  p1=((19, 17),)
-  demand=29  p0=((14, 27), (27, 15))  p1=((14, 24), (24, 15))
+  demand=26  p0=((15, 2),)  p1=((15, 2),)
+  demand=27  p0=((2, 26), (26, 11))  p1=((2, 11),)
+  demand=28  p0=((19, 17),)  p1=((19, 13), (13, 17))
+  demand=29  p0=((14, 1), (1, 15))  p1=((14, 0), (0, 15))
   demand=3  p0=((11, 20),)  p1=((11, 20),)
-  demand=30  p0=((4, 9), (9, 2))  p1=((4, 0), (0, 2))
-  demand=31  p0=((10, 19), (19, 25))  p1=((10, 12), (12, 28), (28, 25))
+  demand=30  p0=((4, 10), (10, 13), (13, 2))  p1=((4, 12), (12, 2))
+  demand=31  p0=((10, 9), (9, 25))  p1=((10, 13), (13, 25))
   demand=32  p0=((9, 2),)  p1=((9, 2),)
   demand=33  p0=((7, 0),)  p1=((7, 0),)
   demand=34  p0=((14, 16),)  p1=((14, 16),)
-  demand=35  p0=((25, 3),)  p1=((25, 3),)
+  demand=35  p0=((25, 7), (7, 3))  p1=((25, 3),)
   demand=36  p0=((15, 1),)  p1=((15, 1),)
   demand=37  p0=((14, 6),)  p1=((14, 6),)
-  demand=38  p0=((7, 3), (3, 10))  p1=((7, 3), (3, 10))
-  demand=39  p0=((28, 13),)  p1=((28, 13),)
+  demand=38  p0=((7, 10),)  p1=((7, 10),)
+  demand=39  p0=((28, 5), (5, 13))  p1=((28, 7), (7, 13))
   demand=4  p0=((11, 13),)  p1=((11, 12), (12, 13))
   demand=40  p0=((18, 4),)  p1=((18, 4),)
   demand=41  p0=((0, 21),)  p1=((0, 21),)
-  demand=42  p0=((17, 10), (10, 4))  p1=((17, 7), (7, 8), (8, 0), (0, 4))
+  demand=42  p0=((17, 10), (10, 4))  p1=((17, 4),)
   demand=43  p0=((17, 20),)  p1=((17, 20),)
   demand=44  p0=((25, 21),)  p1=((25, 21),)
-  demand=5  p0=((4, 14),)  p1=((4, 14),)
-  demand=6  p0=((1, 5), (5, 2))  p1=((1, 5), (5, 2))
-  demand=7  p0=((14, 27), (27, 4))  p1=((14, 27), (27, 4))
+  demand=5  p0=((4, 10), (10, 9), (9, 14))  p1=((4, 3), (3, 14))
+  demand=6  p0=((1, 2),)  p1=((1, 2),)
+  demand=7  p0=((14, 4),)  p1=((14, 4),)
   demand=8  p0=((28, 3),)  p1=((28, 3),)
-  demand=9  p0=((15, 13), (13, 25))  p1=((15, 13), (13, 25))
+  demand=9  p0=((15, 14), (14, 9), (9, 25))  p1=((15, 11), (11, 25))
 [out] wrote C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\TCG_exact_warm\setA-02-srpaths.json
   Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\TCG_exact_warm\setA-02-summary.json
 ====================================================================

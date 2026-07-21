@@ -1,0 +1,72 @@
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_exact_warm)
+  2026-07-21 11:32:09
+====================================================================
+[load] C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\setA\setA-01\setA-01-net.json
+    t=0: 935 non-zero ECMP coefficients
+    t=1: 949 non-zero ECMP coefficients
+[data] nodes=20 arcs=80 demands=40 K=6 budget=51.0 N=160
+[warm] source       : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_diag\setA-01-srpaths.json
+  Instance     : setA-01
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_exact_warm\setA-01_20260721_113209.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_exact_warm
+====================================================================
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +35 new (0 demand(s) refused -> trivial); pool now 75 cols
+[warm] heuristic incumbent sorted loads (top): 0.929384, 0.729593, 0.486031, 0.482959, 0.469691
+[rank   1] LP=0.929384  z_1*=0.929384  pool=75 cols  iters=1
+[rank   2] LP=0.345716  z_2*=0.583674  pool=181 cols  iters=7
+[rank   3] LP=0.291747  z_3*=0.565403  pool=237 cols  iters=3
+[rank   4] LP=0.255114  z_4*=0.527966  pool=311 cols  iters=4
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  0.929384, 0.583674, 0.565403, 0.527966
+
+[routing] selected columns:
+  demand=0  p0=((7, 8),)  p1=((7, 8),)
+  demand=1  p0=((15, 0),)  p1=((15, 0),)
+  demand=10  p0=((9, 14),)  p1=((9, 14),)
+  demand=11  p0=((15, 10), (10, 8))  p1=((15, 10), (10, 8))
+  demand=12  p0=((14, 13), (13, 3), (3, 15))  p1=((14, 3), (3, 15))
+  demand=13  p0=((7, 14),)  p1=((7, 14),)
+  demand=14  p0=((19, 17),)  p1=((19, 5), (5, 17))
+  demand=15  p0=((4, 11),)  p1=((4, 11),)
+  demand=16  p0=((14, 11), (11, 16))  p1=((14, 16),)
+  demand=17  p0=((5, 8), (8, 16))  p1=((5, 3), (3, 16))
+  demand=18  p0=((10, 5), (5, 18))  p1=((10, 11), (11, 6), (6, 11), (11, 18))
+  demand=19  p0=((6, 0),)  p1=((6, 0),)
+  demand=2  p0=((2, 4), (4, 17), (17, 3))  p1=((2, 4), (4, 17), (17, 3))
+  demand=20  p0=((15, 1), (1, 9))  p1=((15, 5), (5, 9))
+  demand=21  p0=((5, 10),)  p1=((5, 10),)
+  demand=22  p0=((16, 3),)  p1=((16, 3),)
+  demand=23  p0=((12, 5), (5, 9))  p1=((12, 18), (18, 9))
+  demand=24  p0=((19, 13), (13, 16))  p1=((19, 10), (10, 19), (19, 11), (11, 18), (18, 12), (12, 16))
+  demand=25  p0=((16, 1), (1, 8))  p1=((16, 1), (1, 8))
+  demand=26  p0=((15, 3), (3, 1), (1, 19))  p1=((15, 3), (3, 1), (1, 19))
+  demand=27  p0=((17, 13), (13, 9), (9, 15))  p1=((17, 13), (13, 9), (9, 15))
+  demand=28  p0=((11, 15),)  p1=((11, 15),)
+  demand=29  p0=((6, 5), (5, 9))  p1=((6, 5), (5, 9))
+  demand=3  p0=((16, 12),)  p1=((16, 12),)
+  demand=30  p0=((15, 4),)  p1=((15, 4),)
+  demand=31  p0=((11, 19),)  p1=((11, 19),)
+  demand=32  p0=((19, 10), (10, 5), (5, 8))  p1=((19, 10), (10, 5), (5, 8))
+  demand=33  p0=((8, 10), (10, 15))  p1=((8, 10), (10, 15))
+  demand=34  p0=((9, 15), (15, 16))  p1=((9, 15), (15, 16))
+  demand=35  p0=((1, 2), (2, 16))  p1=((1, 16),)
+  demand=36  p0=((16, 2), (2, 11))  p1=((16, 2), (2, 11))
+  demand=37  p0=((7, 11), (11, 18))  p1=((7, 11), (11, 18))
+  demand=38  p0=((7, 4), (4, 2))  p1=((7, 4), (4, 2))
+  demand=39  p0=((3, 1), (1, 17))  p1=((3, 1), (1, 17))
+  demand=4  p0=((9, 6),)  p1=((9, 6),)
+  demand=5  p0=((8, 11), (11, 2), (2, 4), (4, 17))  p1=((8, 11), (11, 2), (2, 4), (4, 17))
+  demand=6  p0=((18, 10), (10, 14))  p1=((18, 10), (10, 14))
+  demand=7  p0=((17, 12), (12, 0))  p1=((17, 0),)
+  demand=8  p0=((0, 11), (11, 18))  p1=((0, 11), (11, 18))
+  demand=9  p0=((18, 7), (7, 3))  p1=((18, 3),)
+[out] wrote C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_exact_warm\setA-01-srpaths.json
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_exact_warm\setA-01-summary.json
+====================================================================
