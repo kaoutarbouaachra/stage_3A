@@ -5,3 +5,48 @@
 ====================================================================
 [load] C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\setA\setA-03\setA-03-net.json
     t=0: 7460 non-zero ECMP coefficients
+    t=1: 7481 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=20 K=6 budget=53.0 N=500
+[warm] source       : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-03\TCG_diag\setA-03-srpaths.json
+  Instance     : setA-03
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_exact_warm\setA-03_20260721_131409.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-03\TCG_exact_warm
+====================================================================
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +18 new (0 demand(s) refused -> trivial); pool now 38 cols
+[warm] heuristic incumbent sorted loads (top): 0.944428, 0.630138, 0.601922, 0.572968, 0.513634
+[rank   1] LP=0.633661  z_1*=0.944428  pool=40 cols  iters=2
+[rank   2] LP=0.29478  z_2*=0.630138  pool=87 cols  iters=6
+[rank   3] LP=0.236991  z_3*=0.601922  pool=126 cols  iters=5
+[rank   4] LP=0.201145  z_4*=0.572968  pool=181 cols  iters=5
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  0.944428, 0.630138, 0.601922, 0.572968
+
+[routing] selected columns:
+  demand=0  p0=((23, 1), (1, 45))  p1=((23, 45),)
+  demand=1  p0=((21, 25), (25, 24))  p1=((21, 37), (37, 24))
+  demand=10  p0=((46, 7),)  p1=((46, 7),)
+  demand=11  p0=((10, 8), (8, 2))  p1=((10, 13), (13, 2))
+  demand=12  p0=((3, 39),)  p1=((3, 39),)
+  demand=13  p0=((18, 10), (10, 32), (32, 41))  p1=((18, 41),)
+  demand=14  p0=((17, 14),)  p1=((17, 14),)
+  demand=15  p0=((30, 11),)  p1=((30, 11),)
+  demand=16  p0=((29, 45),)  p1=((29, 45),)
+  demand=17  p0=((48, 32),)  p1=((48, 32),)
+  demand=18  p0=((0, 3),)  p1=((0, 3),)
+  demand=19  p0=((25, 5), (5, 42))  p1=((25, 5), (5, 42))
+  demand=2  p0=((44, 7), (7, 2))  p1=((44, 23), (23, 2))
+  demand=3  p0=((7, 31), (31, 40))  p1=((7, 31), (31, 40))
+  demand=4  p0=((40, 49), (49, 43))  p1=((40, 10), (10, 43))
+  demand=5  p0=((15, 27), (27, 2))  p1=((15, 3), (3, 2))
+  demand=6  p0=((17, 42),)  p1=((17, 42),)
+  demand=7  p0=((47, 22), (22, 1), (1, 28))  p1=((47, 22), (22, 1), (1, 28))
+  demand=8  p0=((41, 11), (11, 48))  p1=((41, 35), (35, 48))
+  demand=9  p0=((44, 12), (12, 40))  p1=((44, 40),)
+[out] wrote C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-03\TCG_exact_warm\setA-03-srpaths.json
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-03\TCG_exact_warm\setA-03-summary.json
+====================================================================

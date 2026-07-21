@@ -6,14 +6,13 @@
     "warm_algo": "TCG_diag",
     "unresolved_entries": 0
   },
-  "ranks_certified": 5,
+  "ranks_certified": 4,
   "z_stars": [
     0.9444279904306221,
     0.6301377473363775,
     0.6019223650385603,
-    0.5729676470588235,
-    0.5136339285714286
+    0.5729676470588235
   ],
-  "pool_size": 221,
-  "time_s": 1189.27
+  "pool_size": 181,
+  "time_s": 1160.73
 }
