@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-16 05:41:15
+  2026-07-20 19:56:58
 ====================================================================
   Instance     : /home/setAP-30
-  Log          : /home/setAP-30_20260716_054115.log
+  Log          : /home/setAP-30_20260720_195658.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,20 +25,20 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   0.967632      52.3s      52.3s  OPTIMAL
-      2   0.752939     157.6s     209.9s  OPTIMAL
-      3   0.592780      89.3s     299.2s  OPTIMAL
-      4   0.439314      35.8s     335.1s  OPTIMAL
-      5   0.383225      43.2s     378.3s  OPTIMAL
-      6   0.309617     143.4s     521.7s  OPTIMAL
-      7   0.306931     167.5s     689.3s  OPTIMAL
-      8   0.298372     129.6s     819.0s  OPTIMAL
-      9   0.292655     115.0s     934.0s  OPTIMAL
-     10   0.271635     116.0s    1050.1s  OPTIMAL
-     11   0.267595     138.0s    1188.2s  OPTIMAL
+      1   0.967632      49.9s      49.9s  OPTIMAL
+      2   0.752939     157.6s     207.6s  OPTIMAL
+      3   0.592780      86.6s     294.2s  OPTIMAL
+      4   0.439314      35.7s     329.9s  OPTIMAL
+      5   0.383225      42.5s     372.5s  OPTIMAL
+      6   0.309617     145.2s     517.7s  OPTIMAL
+      7   0.306931     158.6s     676.4s  OPTIMAL
+      8   0.298372     126.9s     803.4s  OPTIMAL
+      9   0.292655     111.6s     915.0s  OPTIMAL
+     10   0.271635     113.7s    1028.8s  OPTIMAL
+     11   0.267595     124.3s    1153.2s  OPTIMAL
   [k=12] Unexpected status 11 -- stopping.
 
-  Done.  11 ranks in 1196.0s
+  Done.  11 ranks in 1193.8s
   MLU (z*_1) = 0.967632
 
   ================================================================

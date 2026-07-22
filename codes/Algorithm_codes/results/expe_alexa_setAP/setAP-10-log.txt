@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-15 21:09:30
+  2026-07-20 11:58:27
 ====================================================================
   Instance     : /home/setAP-10
-  Log          : /home/setAP-10_20260715_210930.log
+  Log          : /home/setAP-10_20260720_115827.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,34 +25,33 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   0.881771       4.7s       4.7s  OPTIMAL
-      2   0.454562      26.3s      31.0s  OPTIMAL
-      3   0.442873      11.0s      42.1s  OPTIMAL
-      4   0.389217      26.6s      68.7s  OPTIMAL
-      5   0.388485       8.6s      77.2s  OPTIMAL
-      6   0.348878      80.5s     157.7s  OPTIMAL
-      7   0.341062      63.5s     221.3s  OPTIMAL
-      8   0.339739      58.1s     279.4s  OPTIMAL
-      9   0.336762      40.9s     320.3s  OPTIMAL
-     10   0.331377     129.6s     449.9s  OPTIMAL
-     11   0.330626     119.6s     569.6s  OPTIMAL
-     12   0.319929      77.9s     647.4s  OPTIMAL
-     13   0.319257      59.1s     706.5s  OPTIMAL
-     14   0.315597      74.0s     780.6s  OPTIMAL
-     15   0.315383      84.2s     864.8s  OPTIMAL
-     16   0.309711      96.6s     961.4s  OPTIMAL
-     17   0.283720     136.8s    1098.3s  OPTIMAL
-     18   0.280009      41.7s    1140.0s  OPTIMAL
-  [k=19] Unexpected status 11 -- stopping.
+      1   0.881771       5.1s       5.1s  OPTIMAL
+      2   0.454562      27.4s      32.5s  OPTIMAL
+      3   0.442873      12.1s      44.6s  OPTIMAL
+      4   0.389217      28.1s      72.8s  OPTIMAL
+      5   0.388485       9.1s      81.9s  OPTIMAL
+      6   0.348878      91.7s     173.6s  OPTIMAL
+      7   0.341062      68.3s     242.0s  OPTIMAL
+      8   0.339739      62.6s     304.5s  OPTIMAL
+      9   0.336762      44.1s     348.6s  OPTIMAL
+     10   0.331377     139.6s     488.2s  OPTIMAL
+     11   0.330626     129.7s     617.9s  OPTIMAL
+     12   0.319929      82.3s     700.2s  OPTIMAL
+     13   0.319257      65.4s     765.6s  OPTIMAL
+     14   0.315597      79.8s     845.5s  OPTIMAL
+     15   0.315383      89.6s     935.1s  OPTIMAL
+     16   0.309711     102.6s    1037.7s  OPTIMAL
+     17   0.283720     149.8s    1187.6s  OPTIMAL
+  [k=18] Unexpected status 11 -- stopping.
 
-  Done.  18 ranks in 1198.8s
+  Done.  17 ranks in 1198.7s
   MLU (z*_1) = 0.881771
 
   ================================================================
   Algorithm       : ALEXA
   MLU baseline    : 0.881771
   MLU solution    : 0.881771  (+0.00%)
-  Certified ranks : [0.881771, 0.454562, 0.442873, 0.389217, 0.388485, 0.348878, 0.341062, 0.339739, 0.336762, 0.331377, 0.330626, 0.319929, 0.319257, 0.315597, 0.315383, 0.309711, 0.28372, 0.280009]
+  Certified ranks : [0.881771, 0.454562, 0.442873, 0.389217, 0.388485, 0.348878, 0.341062, 0.339739, 0.336762, 0.331377, 0.330626, 0.319929, 0.319257, 0.315597, 0.315383, 0.309711, 0.28372]
 
 Interrupt request received
 Traceback (most recent call last):

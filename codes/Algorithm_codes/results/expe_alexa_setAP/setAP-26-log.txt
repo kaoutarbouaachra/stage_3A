@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-16 03:58:54
+  2026-07-20 18:21:16
 ====================================================================
   Instance     : /home/setAP-26
-  Log          : /home/setAP-26_20260716_035854.log
+  Log          : /home/setAP-26_20260720_182116.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,21 +25,21 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   0.661657      78.4s      78.4s  OPTIMAL
-      2   0.581155      48.5s     126.9s  OPTIMAL
-      3   0.561140      34.3s     161.2s  OPTIMAL
-      4   0.507528      44.9s     206.1s  OPTIMAL
-      5   0.501717     106.5s     312.7s  OPTIMAL
-      6   0.457114      73.0s     385.8s  OPTIMAL
-      7   0.424717      96.7s     482.5s  OPTIMAL
-      8   0.420112     124.2s     606.8s  OPTIMAL
-      9   0.354089      99.1s     705.9s  OPTIMAL
-     10   0.331708     126.0s     832.0s  OPTIMAL
-     11   0.329544     103.5s     935.5s  OPTIMAL
-     12   0.304742     111.4s    1047.0s  OPTIMAL
+      1   0.661657      80.2s      80.2s  OPTIMAL
+      2   0.581155      49.3s     129.6s  OPTIMAL
+      3   0.561140      34.8s     164.3s  OPTIMAL
+      4   0.507528      47.5s     211.8s  OPTIMAL
+      5   0.501717     109.8s     321.7s  OPTIMAL
+      6   0.457114      72.8s     394.5s  OPTIMAL
+      7   0.424717      98.6s     493.2s  OPTIMAL
+      8   0.420112     129.5s     622.7s  OPTIMAL
+      9   0.354089      99.8s     722.5s  OPTIMAL
+     10   0.331708     134.2s     856.7s  OPTIMAL
+     11   0.329544     106.5s     963.2s  OPTIMAL
+     12   0.304742     116.9s    1080.2s  OPTIMAL
   [k=13] Unexpected status 11 -- stopping.
 
-  Done.  12 ranks in 1192.6s
+  Done.  12 ranks in 1196.0s
   MLU (z*_1) = 0.661657
 
   ================================================================

@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-16 04:50:04
+  2026-07-20 19:09:07
 ====================================================================
   Instance     : /home/setAP-28
-  Log          : /home/setAP-28_20260716_045004.log
+  Log          : /home/setAP-28_20260720_190907.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,26 +25,25 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   1.000000      15.7s      15.7s  OPTIMAL
-      2   0.511278      14.3s      30.0s  OPTIMAL
-      3   0.408163      18.3s      48.3s  OPTIMAL
-      4   0.096934      18.5s      66.9s  OPTIMAL
-      5   0.072403      58.0s     124.9s  OPTIMAL
-      6   0.046558      46.1s     171.0s  OPTIMAL
-      7   0.035551     157.2s     328.2s  OPTIMAL
-      8   0.033649     127.8s     456.0s  OPTIMAL
-      9   0.032954     174.6s     630.7s  OPTIMAL
-     10   0.031938     300.1s     930.9s TIME_LIM
-  [k=11] Unexpected status 11 -- stopping.
+      1   1.000000      14.6s      14.6s  OPTIMAL
+      2   0.511278      13.5s      28.1s  OPTIMAL
+      3   0.408163      17.1s      45.2s  OPTIMAL
+      4   0.096934      17.9s      63.1s  OPTIMAL
+      5   0.072403      55.0s     118.1s  OPTIMAL
+      6   0.046558      42.8s     160.9s  OPTIMAL
+      7   0.035551     146.9s     307.8s  OPTIMAL
+      8   0.033649     117.1s     424.9s  OPTIMAL
+      9   0.032954     162.8s     587.8s  OPTIMAL
+  [k=10] Unexpected status 11 -- stopping.
 
-  Done.  10 ranks in 1196.2s
+  Done.  9 ranks in 1196.1s
   MLU (z*_1) = 1.000000
 
   ================================================================
   Algorithm       : ALEXA
   MLU baseline    : 1.000000
   MLU solution    : 1.000000  (+0.00%)
-  Certified ranks : [1.0, 0.511278, 0.408163, 0.096934, 0.072403, 0.046558, 0.035551, 0.033649, 0.032954, 0.031938]
+  Certified ranks : [1.0, 0.511278, 0.408163, 0.096934, 0.072403, 0.046558, 0.035551, 0.033649, 0.032954]
 
 Interrupt request received
 Traceback (most recent call last):

@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-16 15:04:22
+  2026-07-21 04:43:38
 ====================================================================
   Instance     : /home/setAP-52
-  Log          : /home/setAP-52_20260716_150422.log
+  Log          : /home/setAP-52_20260721_044338.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,20 +25,19 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   8.387903     204.5s     204.5s  OPTIMAL
-      2   0.681471     235.0s     439.5s  OPTIMAL
-      3   0.607095     300.2s     739.8s TIME_LIM
-      4   0.506257     300.1s    1040.1s TIME_LIM
-  [k=5] Unexpected status 11 -- stopping.
+      1   8.387903     200.1s     200.1s  OPTIMAL
+      2   0.681471     235.9s     436.1s  OPTIMAL
+      3   0.607095     642.9s    1079.1s  OPTIMAL
+  [k=4] Unexpected status 11 -- stopping.
 
-  Done.  4 ranks in 1188.8s
+  Done.  3 ranks in 1188.7s
   MLU (z*_1) = 8.387903
 
   ================================================================
   Algorithm       : ALEXA
   MLU baseline    : 8.387903
   MLU solution    : 8.387903  (+0.00%)
-  Certified ranks : [8.387903, 0.681471, 0.607095, 0.506257]
+  Certified ranks : [8.387903, 0.681471, 0.607095]
 
 Interrupt request received
 Traceback (most recent call last):

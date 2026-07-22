@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-15 18:53:05
+  2026-07-20 09:51:43
 ====================================================================
   Instance     : /home/setAP-04
-  Log          : /home/setAP-04_20260715_185305.log
+  Log          : /home/setAP-04_20260720_095143.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,46 +25,46 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   1.000000       1.9s       1.9s  OPTIMAL
-      2   0.625000       2.1s       4.0s  OPTIMAL
-      3   0.400958       4.0s       8.0s  OPTIMAL
-      4   0.326519       4.8s      12.9s  OPTIMAL
-      5   0.319875       5.6s      18.5s  OPTIMAL
-      6   0.302791       3.3s      21.7s  OPTIMAL
-      7   0.264115       4.9s      26.7s  OPTIMAL
-      8   0.230936       7.4s      34.1s  OPTIMAL
-      9   0.161537       5.8s      39.9s  OPTIMAL
-     10   0.149024       5.6s      45.5s  OPTIMAL
-     11   0.130007       5.6s      51.1s  OPTIMAL
-     12   0.117666       4.0s      55.0s  OPTIMAL
-     13   0.114885       5.3s      60.3s  OPTIMAL
-     14   0.111320       4.2s      64.5s  OPTIMAL
-     15   0.109978       5.9s      70.4s  OPTIMAL
-     16   0.102005       5.6s      76.1s  OPTIMAL
-     17   0.099272       6.1s      82.2s  OPTIMAL
-     18   0.090207       4.8s      87.0s  OPTIMAL
-     19   0.087997       6.1s      93.1s  OPTIMAL
-     20   0.085600       5.4s      98.5s  OPTIMAL
-     21   0.084903       4.6s     103.1s  OPTIMAL
-     22   0.081095       4.4s     107.5s  OPTIMAL
-     23   0.072084       4.1s     111.6s  OPTIMAL
-     24   0.068215       5.2s     116.9s  OPTIMAL
-     25   0.064211       4.8s     121.7s  OPTIMAL
-     26   0.050381       4.8s     126.5s  OPTIMAL
-     27   0.047939       5.2s     131.7s  OPTIMAL
-     28   0.038655       5.5s     137.2s  OPTIMAL
-     29   0.030513       4.3s     141.5s  OPTIMAL
-     30   0.026141       4.4s     145.9s  OPTIMAL
-     31   0.021880       4.9s     150.8s  OPTIMAL
-     32   0.017039       4.8s     155.6s  OPTIMAL
-     33   0.015318       4.4s     160.0s  OPTIMAL
-     34   0.013465       4.2s     164.2s  OPTIMAL
-     35   0.002099       4.8s     169.0s  OPTIMAL
-     36   0.001398       4.4s     173.4s  OPTIMAL
-     37   0.000000       2.1s     175.6s  OPTIMAL
+      1   1.000000       2.1s       2.1s  OPTIMAL
+      2   0.625000       2.3s       4.4s  OPTIMAL
+      3   0.400958       4.2s       8.6s  OPTIMAL
+      4   0.326519       5.1s      13.7s  OPTIMAL
+      5   0.319875       6.2s      19.8s  OPTIMAL
+      6   0.302791       3.6s      23.4s  OPTIMAL
+      7   0.264115       5.5s      28.9s  OPTIMAL
+      8   0.230936       8.1s      37.0s  OPTIMAL
+      9   0.161537       6.2s      43.1s  OPTIMAL
+     10   0.149024       6.0s      49.2s  OPTIMAL
+     11   0.130007       6.2s      55.3s  OPTIMAL
+     12   0.117666       4.4s      59.7s  OPTIMAL
+     13   0.114885       5.3s      65.0s  OPTIMAL
+     14   0.111320       4.4s      69.4s  OPTIMAL
+     15   0.109978       6.3s      75.7s  OPTIMAL
+     16   0.102005       6.2s      81.9s  OPTIMAL
+     17   0.099272       6.6s      88.6s  OPTIMAL
+     18   0.090207       5.1s      93.7s  OPTIMAL
+     19   0.087997       6.5s     100.2s  OPTIMAL
+     20   0.085600       7.2s     107.4s  OPTIMAL
+     21   0.084903       6.1s     113.5s  OPTIMAL
+     22   0.081095       5.7s     119.2s  OPTIMAL
+     23   0.072084       4.7s     124.0s  OPTIMAL
+     24   0.068215       5.5s     129.5s  OPTIMAL
+     25   0.064211       5.2s     134.7s  OPTIMAL
+     26   0.050381       5.1s     139.7s  OPTIMAL
+     27   0.047939       5.4s     145.1s  OPTIMAL
+     28   0.038655       5.9s     151.1s  OPTIMAL
+     29   0.030513       4.4s     155.5s  OPTIMAL
+     30   0.026141       4.8s     160.3s  OPTIMAL
+     31   0.021880       5.2s     165.5s  OPTIMAL
+     32   0.017039       5.3s     170.8s  OPTIMAL
+     33   0.015318       4.9s     175.7s  OPTIMAL
+     34   0.013465       4.8s     180.5s  OPTIMAL
+     35   0.002099       5.3s     185.8s  OPTIMAL
+     36   0.001398       5.0s     190.8s  OPTIMAL
+     37   0.000000       2.3s     193.2s  OPTIMAL
   All loads are 0 -- converged.
 
-  Done.  37 ranks in 175.6s
+  Done.  37 ranks in 193.2s
   MLU (z*_1) = 1.000000
 
   ================================================================

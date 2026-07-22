@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-17 06:22:29
+  2026-07-21 19:53:54
 ====================================================================
   Instance     : /home/setAP-90
-  Log          : /home/setAP-90_20260717_062229.log
+  Log          : /home/setAP-90_20260721_195354.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,23 +25,4 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-  [k=1] No integer solution found -- try increasing time_limit.
-
-  Done.  0 ranks in 300.8s
-
-  ================================================================
-  Algorithm       : ALEXA
-  MLU baseline    : 1.000000
-  MLU solution    : 1.000000  (+0.00%)
-  Certified ranks : []
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
-    sol_path = res_dir / f"{name}-srpaths.json"
-               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
-TypeError: unsupported operand type(s) for /: 'str' and 'str'
-Warning: environment still referenced so free is deferred (Continue to use WLS)
+      1   1.000000     761.6s     761.6s  OPTIMAL

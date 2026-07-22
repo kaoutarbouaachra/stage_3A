@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-17 06:46:52
+  2026-07-21 20:42:00
 ====================================================================
   Instance     : /home/setAP-92
-  Log          : /home/setAP-92_20260717_064652.log
+  Log          : /home/setAP-92_20260721_204200.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,15 +25,17 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-  [k=1] No integer solution found -- try increasing time_limit.
+  [k=1] Unexpected status 11 -- stopping.
 
-  Done.  0 ranks in 310.3s
+  Done.  0 ranks in 1092.0s
 
   ================================================================
   Algorithm       : ALEXA
   MLU baseline    : 1.000000
   MLU solution    : 1.000000  (+0.00%)
   Certified ranks : []
+
+Interrupt request received
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code

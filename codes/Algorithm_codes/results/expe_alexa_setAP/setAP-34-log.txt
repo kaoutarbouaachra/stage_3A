@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-16 07:23:35
+  2026-07-20 21:32:39
 ====================================================================
   Instance     : /home/setAP-34
-  Log          : /home/setAP-34_20260716_072335.log
+  Log          : /home/setAP-34_20260720_213239.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,23 +25,22 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   1.000000      31.9s      31.9s  OPTIMAL
-      2   0.650000      36.3s      68.2s  OPTIMAL
-      3   0.602694      35.6s     103.8s  OPTIMAL
-      4   0.283473     103.3s     207.2s  OPTIMAL
-      5   0.194020     300.2s     507.4s TIME_LIM
-      6   0.170045     300.2s     807.7s TIME_LIM
-      7   0.166355     300.1s    1107.9s TIME_LIM
-  [k=8] Unexpected status 11 -- stopping.
+      1   1.000000      31.4s      31.4s  OPTIMAL
+      2   0.650000      34.6s      66.0s  OPTIMAL
+      3   0.602694      33.6s      99.7s  OPTIMAL
+      4   0.283473      99.3s     199.1s  OPTIMAL
+      5   0.180233     439.4s     638.5s  OPTIMAL
+      6   0.166355     367.0s    1005.6s  OPTIMAL
+  [k=7] Unexpected status 11 -- stopping.
 
-  Done.  7 ranks in 1194.0s
+  Done.  6 ranks in 1194.3s
   MLU (z*_1) = 1.000000
 
   ================================================================
   Algorithm       : ALEXA
   MLU baseline    : 1.000000
   MLU solution    : 1.000000  (+0.00%)
-  Certified ranks : [1.0, 0.65, 0.602694, 0.283473, 0.19402, 0.170045, 0.166355]
+  Certified ranks : [1.0, 0.65, 0.602694, 0.283473, 0.180233, 0.166355]
 
 Interrupt request received
 Traceback (most recent call last):

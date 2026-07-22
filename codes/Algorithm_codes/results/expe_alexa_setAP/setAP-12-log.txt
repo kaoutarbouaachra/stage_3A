@@ -1,10 +1,10 @@
 ====================================================================
   T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
   Algorithm    : ALEXA  (folder: alexa)
-  2026-07-15 22:00:41
+  2026-07-20 12:46:18
 ====================================================================
   Instance     : /home/setAP-12
-  Log          : /home/setAP-12_20260715_220041.log
+  Log          : /home/setAP-12_20260720_124618.log
   Results dir  : /tmp/
 ====================================================================
 
@@ -25,24 +25,23 @@ WLS license 2495062 - registered to Orange SA
 
       k       z*_k  iter_time    elapsed   status
   ----- ---------- ---------- ---------- --------
-      1   1.001563      24.7s      24.7s  OPTIMAL
-      2   0.988720      70.6s      95.4s  OPTIMAL
-      3   0.851485      57.1s     152.5s  OPTIMAL
-      4   0.665017      57.2s     209.7s  OPTIMAL
-      5   0.517784     230.3s     440.0s  OPTIMAL
-      6   0.455080     156.3s     596.3s  OPTIMAL
-      7   0.437661     300.0s     896.4s TIME_LIM
-      8   0.422423     300.0s    1196.4s TIME_LIM
-  [k=9] Unexpected status 11 -- stopping.
+      1   1.001563      26.4s      26.4s  OPTIMAL
+      2   0.988720      72.6s      99.0s  OPTIMAL
+      3   0.851485      58.7s     157.7s  OPTIMAL
+      4   0.665017      58.2s     216.0s  OPTIMAL
+      5   0.517784     247.5s     463.5s  OPTIMAL
+      6   0.455080     176.9s     640.4s  OPTIMAL
+      7   0.437661     545.2s    1185.7s  OPTIMAL
+  [k=8] Unexpected status 11 -- stopping.
 
-  Done.  8 ranks in 1198.6s
+  Done.  7 ranks in 1198.6s
   MLU (z*_1) = 1.001563
 
   ================================================================
   Algorithm       : ALEXA
   MLU baseline    : 1.122720
   MLU solution    : 1.001563  (+10.79%)
-  Certified ranks : [1.001563, 0.98872, 0.851485, 0.665017, 0.517784, 0.45508, 0.437661, 0.422423]
+  Certified ranks : [1.001563, 0.98872, 0.851485, 0.665017, 0.517784, 0.45508, 0.437661]
 
 Interrupt request received
 Traceback (most recent call last):
