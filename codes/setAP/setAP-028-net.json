@@ -1,0 +1,788 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "nodes": [
+    {
+      "name": "v0",
+      "id": 0
+    },
+    {
+      "name": "v1",
+      "id": 1
+    },
+    {
+      "name": "v2",
+      "id": 2
+    },
+    {
+      "name": "v3",
+      "id": 3
+    },
+    {
+      "name": "v4",
+      "id": 4
+    },
+    {
+      "name": "v5",
+      "id": 5
+    },
+    {
+      "name": "v6",
+      "id": 6
+    },
+    {
+      "name": "v7",
+      "id": 7
+    },
+    {
+      "name": "v8",
+      "id": 8
+    },
+    {
+      "name": "v9",
+      "id": 9
+    },
+    {
+      "name": "v10",
+      "id": 10
+    },
+    {
+      "name": "v11",
+      "id": 11
+    },
+    {
+      "name": "v12",
+      "id": 12
+    },
+    {
+      "name": "v13",
+      "id": 13
+    },
+    {
+      "name": "v14",
+      "id": 14
+    },
+    {
+      "name": "v15",
+      "id": 15
+    },
+    {
+      "name": "v16",
+      "id": 16
+    },
+    {
+      "name": "v17",
+      "id": 17
+    },
+    {
+      "name": "v18",
+      "id": 18
+    },
+    {
+      "name": "v19",
+      "id": 19
+    }
+  ],
+  "links": [
+    {
+      "id": 0,
+      "from": 0,
+      "to": 13,
+      "metric": 120,
+      "capacity": 829
+    },
+    {
+      "id": 1,
+      "from": 13,
+      "to": 0,
+      "metric": 163,
+      "capacity": 611
+    },
+    {
+      "id": 2,
+      "from": 1,
+      "to": 7,
+      "metric": 188,
+      "capacity": 530
+    },
+    {
+      "id": 3,
+      "from": 7,
+      "to": 1,
+      "metric": 155,
+      "capacity": 645
+    },
+    {
+      "id": 4,
+      "from": 2,
+      "to": 15,
+      "metric": 326,
+      "capacity": 306
+    },
+    {
+      "id": 5,
+      "from": 15,
+      "to": 2,
+      "metric": 126,
+      "capacity": 788
+    },
+    {
+      "id": 6,
+      "from": 3,
+      "to": 16,
+      "metric": 274,
+      "capacity": 364
+    },
+    {
+      "id": 7,
+      "from": 16,
+      "to": 3,
+      "metric": 307,
+      "capacity": 325
+    },
+    {
+      "id": 8,
+      "from": 4,
+      "to": 17,
+      "metric": 104,
+      "capacity": 953
+    },
+    {
+      "id": 9,
+      "from": 17,
+      "to": 4,
+      "metric": 155,
+      "capacity": 645
+    },
+    {
+      "id": 10,
+      "from": 5,
+      "to": 16,
+      "metric": 121,
+      "capacity": 821
+    },
+    {
+      "id": 11,
+      "from": 16,
+      "to": 5,
+      "metric": 167,
+      "capacity": 597
+    },
+    {
+      "id": 12,
+      "from": 6,
+      "to": 7,
+      "metric": 198,
+      "capacity": 505
+    },
+    {
+      "id": 13,
+      "from": 7,
+      "to": 6,
+      "metric": 286,
+      "capacity": 349
+    },
+    {
+      "id": 14,
+      "from": 7,
+      "to": 8,
+      "metric": 169,
+      "capacity": 590
+    },
+    {
+      "id": 15,
+      "from": 8,
+      "to": 7,
+      "metric": 145,
+      "capacity": 689
+    },
+    {
+      "id": 16,
+      "from": 8,
+      "to": 13,
+      "metric": 125,
+      "capacity": 794
+    },
+    {
+      "id": 17,
+      "from": 13,
+      "to": 8,
+      "metric": 277,
+      "capacity": 360
+    },
+    {
+      "id": 18,
+      "from": 9,
+      "to": 17,
+      "metric": 180,
+      "capacity": 553
+    },
+    {
+      "id": 19,
+      "from": 17,
+      "to": 9,
+      "metric": 116,
+      "capacity": 857
+    },
+    {
+      "id": 20,
+      "from": 10,
+      "to": 2,
+      "metric": 546,
+      "capacity": 183
+    },
+    {
+      "id": 21,
+      "from": 2,
+      "to": 10,
+      "metric": 336,
+      "capacity": 297
+    },
+    {
+      "id": 22,
+      "from": 11,
+      "to": 17,
+      "metric": 108,
+      "capacity": 921
+    },
+    {
+      "id": 23,
+      "from": 17,
+      "to": 11,
+      "metric": 139,
+      "capacity": 718
+    },
+    {
+      "id": 24,
+      "from": 12,
+      "to": 5,
+      "metric": 133,
+      "capacity": 751
+    },
+    {
+      "id": 25,
+      "from": 5,
+      "to": 12,
+      "metric": 617,
+      "capacity": 162
+    },
+    {
+      "id": 26,
+      "from": 13,
+      "to": 16,
+      "metric": 775,
+      "capacity": 129
+    },
+    {
+      "id": 27,
+      "from": 16,
+      "to": 13,
+      "metric": 182,
+      "capacity": 547
+    },
+    {
+      "id": 28,
+      "from": 14,
+      "to": 13,
+      "metric": 145,
+      "capacity": 685
+    },
+    {
+      "id": 29,
+      "from": 13,
+      "to": 14,
+      "metric": 177,
+      "capacity": 562
+    },
+    {
+      "id": 30,
+      "from": 15,
+      "to": 4,
+      "metric": 218,
+      "capacity": 458
+    },
+    {
+      "id": 31,
+      "from": 4,
+      "to": 15,
+      "metric": 1587,
+      "capacity": 63
+    },
+    {
+      "id": 32,
+      "from": 16,
+      "to": 8,
+      "metric": 147,
+      "capacity": 679
+    },
+    {
+      "id": 33,
+      "from": 8,
+      "to": 16,
+      "metric": 137,
+      "capacity": 727
+    },
+    {
+      "id": 34,
+      "from": 17,
+      "to": 2,
+      "metric": 1851,
+      "capacity": 54
+    },
+    {
+      "id": 35,
+      "from": 2,
+      "to": 17,
+      "metric": 450,
+      "capacity": 222
+    },
+    {
+      "id": 36,
+      "from": 18,
+      "to": 17,
+      "metric": 490,
+      "capacity": 204
+    },
+    {
+      "id": 37,
+      "from": 17,
+      "to": 18,
+      "metric": 130,
+      "capacity": 768
+    },
+    {
+      "id": 38,
+      "from": 19,
+      "to": 17,
+      "metric": 6666,
+      "capacity": 15
+    },
+    {
+      "id": 39,
+      "from": 17,
+      "to": 19,
+      "metric": 20000,
+      "capacity": 5
+    },
+    {
+      "id": 40,
+      "from": 16,
+      "to": 7,
+      "metric": 512,
+      "capacity": 195
+    },
+    {
+      "id": 41,
+      "from": 7,
+      "to": 16,
+      "metric": 227,
+      "capacity": 439
+    },
+    {
+      "id": 42,
+      "from": 0,
+      "to": 16,
+      "metric": 250,
+      "capacity": 400
+    },
+    {
+      "id": 43,
+      "from": 16,
+      "to": 0,
+      "metric": 176,
+      "capacity": 565
+    },
+    {
+      "id": 44,
+      "from": 17,
+      "to": 3,
+      "metric": 314,
+      "capacity": 318
+    },
+    {
+      "id": 45,
+      "from": 3,
+      "to": 17,
+      "metric": 135,
+      "capacity": 736
+    },
+    {
+      "id": 46,
+      "from": 0,
+      "to": 17,
+      "metric": 176,
+      "capacity": 568
+    },
+    {
+      "id": 47,
+      "from": 17,
+      "to": 0,
+      "metric": 305,
+      "capacity": 327
+    },
+    {
+      "id": 48,
+      "from": 9,
+      "to": 5,
+      "metric": 257,
+      "capacity": 388
+    },
+    {
+      "id": 49,
+      "from": 5,
+      "to": 9,
+      "metric": 106,
+      "capacity": 935
+    },
+    {
+      "id": 50,
+      "from": 16,
+      "to": 9,
+      "metric": 228,
+      "capacity": 437
+    },
+    {
+      "id": 51,
+      "from": 9,
+      "to": 16,
+      "metric": 178,
+      "capacity": 560
+    },
+    {
+      "id": 52,
+      "from": 11,
+      "to": 13,
+      "metric": 346,
+      "capacity": 289
+    },
+    {
+      "id": 53,
+      "from": 13,
+      "to": 11,
+      "metric": 112,
+      "capacity": 889
+    },
+    {
+      "id": 54,
+      "from": 17,
+      "to": 8,
+      "metric": 105,
+      "capacity": 945
+    },
+    {
+      "id": 55,
+      "from": 8,
+      "to": 17,
+      "metric": 101,
+      "capacity": 981
+    },
+    {
+      "id": 56,
+      "from": 16,
+      "to": 17,
+      "metric": 167,
+      "capacity": 596
+    },
+    {
+      "id": 57,
+      "from": 17,
+      "to": 16,
+      "metric": 124,
+      "capacity": 804
+    },
+    {
+      "id": 58,
+      "from": 0,
+      "to": 11,
+      "metric": 235,
+      "capacity": 424
+    },
+    {
+      "id": 59,
+      "from": 11,
+      "to": 0,
+      "metric": 467,
+      "capacity": 214
+    },
+    {
+      "id": 60,
+      "from": 0,
+      "to": 9,
+      "metric": 375,
+      "capacity": 266
+    },
+    {
+      "id": 61,
+      "from": 9,
+      "to": 0,
+      "metric": 534,
+      "capacity": 187
+    },
+    {
+      "id": 62,
+      "from": 4,
+      "to": 8,
+      "metric": 7692,
+      "capacity": 13
+    },
+    {
+      "id": 63,
+      "from": 8,
+      "to": 4,
+      "metric": 149,
+      "capacity": 667
+    },
+    {
+      "id": 64,
+      "from": 10,
+      "to": 7,
+      "metric": 189,
+      "capacity": 527
+    },
+    {
+      "id": 65,
+      "from": 7,
+      "to": 10,
+      "metric": 321,
+      "capacity": 311
+    },
+    {
+      "id": 66,
+      "from": 4,
+      "to": 2,
+      "metric": 117,
+      "capacity": 851
+    },
+    {
+      "id": 67,
+      "from": 2,
+      "to": 4,
+      "metric": 154,
+      "capacity": 649
+    },
+    {
+      "id": 68,
+      "from": 1,
+      "to": 17,
+      "metric": 1449,
+      "capacity": 69
+    },
+    {
+      "id": 69,
+      "from": 17,
+      "to": 1,
+      "metric": 158,
+      "capacity": 631
+    },
+    {
+      "id": 70,
+      "from": 17,
+      "to": 7,
+      "metric": 462,
+      "capacity": 216
+    },
+    {
+      "id": 71,
+      "from": 7,
+      "to": 17,
+      "metric": 6666,
+      "capacity": 15
+    },
+    {
+      "id": 72,
+      "from": 4,
+      "to": 5,
+      "metric": 116,
+      "capacity": 858
+    },
+    {
+      "id": 73,
+      "from": 5,
+      "to": 4,
+      "metric": 132,
+      "capacity": 755
+    },
+    {
+      "id": 74,
+      "from": 16,
+      "to": 2,
+      "metric": 198,
+      "capacity": 503
+    },
+    {
+      "id": 75,
+      "from": 2,
+      "to": 16,
+      "metric": 182,
+      "capacity": 547
+    },
+    {
+      "id": 76,
+      "from": 7,
+      "to": 2,
+      "metric": 135,
+      "capacity": 739
+    },
+    {
+      "id": 77,
+      "from": 2,
+      "to": 7,
+      "metric": 689,
+      "capacity": 145
+    },
+    {
+      "id": 78,
+      "from": 10,
+      "to": 4,
+      "metric": 158,
+      "capacity": 630
+    },
+    {
+      "id": 79,
+      "from": 4,
+      "to": 10,
+      "metric": 153,
+      "capacity": 652
+    },
+    {
+      "id": 80,
+      "from": 11,
+      "to": 5,
+      "metric": 178,
+      "capacity": 561
+    },
+    {
+      "id": 81,
+      "from": 5,
+      "to": 11,
+      "metric": 205,
+      "capacity": 487
+    },
+    {
+      "id": 82,
+      "from": 5,
+      "to": 17,
+      "metric": 1492,
+      "capacity": 67
+    },
+    {
+      "id": 83,
+      "from": 17,
+      "to": 5,
+      "metric": 152,
+      "capacity": 654
+    },
+    {
+      "id": 84,
+      "from": 1,
+      "to": 11,
+      "metric": 150,
+      "capacity": 666
+    },
+    {
+      "id": 85,
+      "from": 11,
+      "to": 1,
+      "metric": 207,
+      "capacity": 482
+    },
+    {
+      "id": 86,
+      "from": 16,
+      "to": 11,
+      "metric": 164,
+      "capacity": 609
+    },
+    {
+      "id": 87,
+      "from": 11,
+      "to": 16,
+      "metric": 275,
+      "capacity": 363
+    },
+    {
+      "id": 88,
+      "from": 6,
+      "to": 10,
+      "metric": 1562,
+      "capacity": 64
+    },
+    {
+      "id": 89,
+      "from": 10,
+      "to": 6,
+      "metric": 129,
+      "capacity": 774
+    },
+    {
+      "id": 90,
+      "from": 2,
+      "to": 0,
+      "metric": 671,
+      "capacity": 149
+    },
+    {
+      "id": 91,
+      "from": 0,
+      "to": 2,
+      "metric": 107,
+      "capacity": 934
+    },
+    {
+      "id": 92,
+      "from": 16,
+      "to": 14,
+      "metric": 581,
+      "capacity": 172
+    },
+    {
+      "id": 93,
+      "from": 14,
+      "to": 16,
+      "metric": 101,
+      "capacity": 989
+    },
+    {
+      "id": 94,
+      "from": 2,
+      "to": 3,
+      "metric": 210,
+      "capacity": 476
+    },
+    {
+      "id": 95,
+      "from": 3,
+      "to": 2,
+      "metric": 134,
+      "capacity": 744
+    },
+    {
+      "id": 96,
+      "from": 2,
+      "to": 1,
+      "metric": 178,
+      "capacity": 560
+    },
+    {
+      "id": 97,
+      "from": 1,
+      "to": 2,
+      "metric": 364,
+      "capacity": 274
+    },
+    {
+      "id": 98,
+      "from": 2,
+      "to": 13,
+      "metric": 2564,
+      "capacity": 39
+    },
+    {
+      "id": 99,
+      "from": 13,
+      "to": 2,
+      "metric": 246,
+      "capacity": 406
+    }
+  ]
+}

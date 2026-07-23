@@ -1,0 +1,398 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "nodes": [
+    {
+      "name": "v0",
+      "id": 0
+    },
+    {
+      "name": "v1",
+      "id": 1
+    },
+    {
+      "name": "v2",
+      "id": 2
+    },
+    {
+      "name": "v3",
+      "id": 3
+    },
+    {
+      "name": "v4",
+      "id": 4
+    },
+    {
+      "name": "v5",
+      "id": 5
+    },
+    {
+      "name": "v6",
+      "id": 6
+    },
+    {
+      "name": "v7",
+      "id": 7
+    },
+    {
+      "name": "v8",
+      "id": 8
+    },
+    {
+      "name": "v9",
+      "id": 9
+    }
+  ],
+  "links": [
+    {
+      "id": 0,
+      "from": 0,
+      "to": 1,
+      "metric": 201,
+      "capacity": 497
+    },
+    {
+      "id": 1,
+      "from": 1,
+      "to": 0,
+      "metric": 105,
+      "capacity": 949
+    },
+    {
+      "id": 2,
+      "from": 1,
+      "to": 4,
+      "metric": 2000,
+      "capacity": 50
+    },
+    {
+      "id": 3,
+      "from": 4,
+      "to": 1,
+      "metric": 254,
+      "capacity": 393
+    },
+    {
+      "id": 4,
+      "from": 2,
+      "to": 5,
+      "metric": 166,
+      "capacity": 601
+    },
+    {
+      "id": 5,
+      "from": 5,
+      "to": 2,
+      "metric": 252,
+      "capacity": 396
+    },
+    {
+      "id": 6,
+      "from": 3,
+      "to": 1,
+      "metric": 210,
+      "capacity": 476
+    },
+    {
+      "id": 7,
+      "from": 1,
+      "to": 3,
+      "metric": 366,
+      "capacity": 273
+    },
+    {
+      "id": 8,
+      "from": 4,
+      "to": 0,
+      "metric": 1000,
+      "capacity": 100
+    },
+    {
+      "id": 9,
+      "from": 0,
+      "to": 4,
+      "metric": 204,
+      "capacity": 490
+    },
+    {
+      "id": 10,
+      "from": 5,
+      "to": 3,
+      "metric": 333,
+      "capacity": 300
+    },
+    {
+      "id": 11,
+      "from": 3,
+      "to": 5,
+      "metric": 133,
+      "capacity": 751
+    },
+    {
+      "id": 12,
+      "from": 6,
+      "to": 2,
+      "metric": 196,
+      "capacity": 510
+    },
+    {
+      "id": 13,
+      "from": 2,
+      "to": 6,
+      "metric": 450,
+      "capacity": 222
+    },
+    {
+      "id": 14,
+      "from": 7,
+      "to": 0,
+      "metric": 4347,
+      "capacity": 23
+    },
+    {
+      "id": 15,
+      "from": 0,
+      "to": 7,
+      "metric": 112,
+      "capacity": 887
+    },
+    {
+      "id": 16,
+      "from": 8,
+      "to": 1,
+      "metric": 505,
+      "capacity": 198
+    },
+    {
+      "id": 17,
+      "from": 1,
+      "to": 8,
+      "metric": 318,
+      "capacity": 314
+    },
+    {
+      "id": 18,
+      "from": 9,
+      "to": 7,
+      "metric": 251,
+      "capacity": 397
+    },
+    {
+      "id": 19,
+      "from": 7,
+      "to": 9,
+      "metric": 16666,
+      "capacity": 6
+    },
+    {
+      "id": 20,
+      "from": 3,
+      "to": 2,
+      "metric": 188,
+      "capacity": 530
+    },
+    {
+      "id": 21,
+      "from": 2,
+      "to": 3,
+      "metric": 235,
+      "capacity": 425
+    },
+    {
+      "id": 22,
+      "from": 5,
+      "to": 6,
+      "metric": 224,
+      "capacity": 446
+    },
+    {
+      "id": 23,
+      "from": 6,
+      "to": 5,
+      "metric": 100,
+      "capacity": 992
+    },
+    {
+      "id": 24,
+      "from": 5,
+      "to": 7,
+      "metric": 129,
+      "capacity": 772
+    },
+    {
+      "id": 25,
+      "from": 7,
+      "to": 5,
+      "metric": 110,
+      "capacity": 903
+    },
+    {
+      "id": 26,
+      "from": 5,
+      "to": 9,
+      "metric": 1515,
+      "capacity": 66
+    },
+    {
+      "id": 27,
+      "from": 9,
+      "to": 5,
+      "metric": 101,
+      "capacity": 990
+    },
+    {
+      "id": 28,
+      "from": 5,
+      "to": 4,
+      "metric": 166,
+      "capacity": 601
+    },
+    {
+      "id": 29,
+      "from": 4,
+      "to": 5,
+      "metric": 340,
+      "capacity": 294
+    },
+    {
+      "id": 30,
+      "from": 1,
+      "to": 7,
+      "metric": 602,
+      "capacity": 166
+    },
+    {
+      "id": 31,
+      "from": 7,
+      "to": 1,
+      "metric": 276,
+      "capacity": 362
+    },
+    {
+      "id": 32,
+      "from": 3,
+      "to": 7,
+      "metric": 1492,
+      "capacity": 67
+    },
+    {
+      "id": 33,
+      "from": 7,
+      "to": 3,
+      "metric": 1886,
+      "capacity": 53
+    },
+    {
+      "id": 34,
+      "from": 9,
+      "to": 3,
+      "metric": 520,
+      "capacity": 192
+    },
+    {
+      "id": 35,
+      "from": 3,
+      "to": 9,
+      "metric": 980,
+      "capacity": 102
+    },
+    {
+      "id": 36,
+      "from": 9,
+      "to": 4,
+      "metric": 125,
+      "capacity": 799
+    },
+    {
+      "id": 37,
+      "from": 4,
+      "to": 9,
+      "metric": 130,
+      "capacity": 767
+    },
+    {
+      "id": 38,
+      "from": 9,
+      "to": 1,
+      "metric": 377,
+      "capacity": 265
+    },
+    {
+      "id": 39,
+      "from": 1,
+      "to": 9,
+      "metric": 571,
+      "capacity": 175
+    },
+    {
+      "id": 40,
+      "from": 3,
+      "to": 6,
+      "metric": 156,
+      "capacity": 638
+    },
+    {
+      "id": 41,
+      "from": 6,
+      "to": 3,
+      "metric": 206,
+      "capacity": 485
+    },
+    {
+      "id": 42,
+      "from": 5,
+      "to": 1,
+      "metric": 126,
+      "capacity": 788
+    },
+    {
+      "id": 43,
+      "from": 1,
+      "to": 5,
+      "metric": 105,
+      "capacity": 948
+    },
+    {
+      "id": 44,
+      "from": 5,
+      "to": 0,
+      "metric": 112,
+      "capacity": 890
+    },
+    {
+      "id": 45,
+      "from": 0,
+      "to": 5,
+      "metric": 193,
+      "capacity": 517
+    },
+    {
+      "id": 46,
+      "from": 3,
+      "to": 0,
+      "metric": 134,
+      "capacity": 744
+    },
+    {
+      "id": 47,
+      "from": 0,
+      "to": 3,
+      "metric": 4761,
+      "capacity": 21
+    },
+    {
+      "id": 48,
+      "from": 2,
+      "to": 4,
+      "metric": 523,
+      "capacity": 191
+    },
+    {
+      "id": 49,
+      "from": 4,
+      "to": 2,
+      "metric": 374,
+      "capacity": 267
+    }
+  ]
+}
