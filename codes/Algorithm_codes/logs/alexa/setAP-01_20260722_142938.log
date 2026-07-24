@@ -1,0 +1,72 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-22 14:29:38
+====================================================================
+  Instance     : setAP-01
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\alexa\setAP-01_20260722_142938.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-01\alexa
+====================================================================
+
+  setAP-01 | 10 nodes, 50 arcs, 10 demands, 2 timesteps, N=100
+    t=0: 143 non-zero ECMP coefficients
+    t=1: 149 non-zero ECMP coefficients
+  MLU baseline  : 1.947098
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=10, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+
+  x variables : 1,800
+  Base model : 12,800 vars, 12,320 constraints, 342,098 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.947098       1.6s       1.6s  OPTIMAL
+      2   0.897437      11.8s      13.5s  OPTIMAL
+      3   0.700987      28.0s      41.5s  OPTIMAL
+      4   0.593230      22.6s      64.1s  OPTIMAL
+      5   0.482759      33.3s      97.4s  OPTIMAL
+      6   0.374332      12.7s     110.1s  OPTIMAL
+      7   0.356176       9.8s     119.9s  OPTIMAL
+      8   0.353734      13.8s     133.7s  OPTIMAL
+      9   0.342150      23.9s     157.6s  OPTIMAL
+     10   0.296667      16.4s     174.0s  OPTIMAL
+     11   0.291665      44.3s     218.4s  OPTIMAL
+     12   0.278698       8.2s     226.6s  OPTIMAL
+     13   0.276060      46.6s     273.3s  OPTIMAL
+     14   0.274043      43.4s     316.7s  OPTIMAL
+     15   0.250940      36.6s     353.3s  OPTIMAL
+     16   0.249435      65.5s     418.9s  OPTIMAL
+     17   0.240903      40.9s     459.8s  OPTIMAL
+     18   0.224169      55.1s     514.9s  OPTIMAL
+     19   0.223519     107.4s     622.4s  OPTIMAL
+     20   0.215813      81.8s     704.2s  OPTIMAL
+     21   0.205767     151.0s     855.3s  OPTIMAL
+     22   0.205723      30.6s     885.9s  OPTIMAL
+     23   0.198162      29.5s     915.5s  OPTIMAL
+     24   0.179678      90.8s    1006.3s  OPTIMAL
+     25   0.175230     122.8s    1129.1s  OPTIMAL
+     26   0.175230      52.1s    1181.2s  OPTIMAL
+  [k=27] Unexpected status 11 -- stopping.
+
+  Done.  26 ranks in 1191.1s
+  MLU (z*_1) = 1.947098
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.947098
+  MLU solution    : 1.947098  (+0.00%)
+  Certified ranks : [1.947098, 0.897437, 0.700987, 0.59323, 0.482759, 0.374332, 0.356176, 0.353734, 0.34215, 0.296667, 0.291665, 0.278698, 0.27606, 0.274043, 0.25094, 0.249435, 0.240903, 0.224169, 0.223519, 0.215813, 0.205767, 0.205723, 0.198162, 0.179678, 0.17523, 0.17523]
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-01\alexa\setAP-01-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-01\alexa\setAP-01-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=1.947097 | top5=[1.947097, 0.897436, 0.700987, 0.593229, 0.482759]
+  Feasible    : True
+  MLU checker : 1.947097
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-01\alexa\setAP-01-summary.json
+====================================================================

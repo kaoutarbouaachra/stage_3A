@@ -1,0 +1,193 @@
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_exact_warm)
+  2026-07-22 10:23:24
+====================================================================
+[load] C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\setA\setA-01\setA-01-net.json
+    t=0: 935 non-zero ECMP coefficients
+    t=1: 949 non-zero ECMP coefficients
+[data] nodes=20 arcs=80 demands=40 K=6 budget=51.0 N=160
+[warm] source       : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_diag\setA-01-srpaths.json
+  Instance     : setA-01
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_exact_warm\setA-01_20260722_102324.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_exact_warm
+====================================================================
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +35 new (0 demand(s) refused -> trivial); pool now 75 cols
+[warm] heuristic incumbent sorted loads (top): 0.929384, 0.729593, 0.486031, 0.482959, 0.469691
+[rank   1] LP=0.929384  z_1*=0.929384  pool=75 cols  iters=1
+[rank   2] LP=0.345716  z_2*=0.583674  pool=181 cols  iters=7
+[rank   3] LP=0.291747  z_3*=0.565403  pool=237 cols  iters=3
+[rank   4] LP=0.255114  z_4*=0.527966  pool=311 cols  iters=4
+[rank   5] LP=0.229206  z_5*=0.513097  pool=374 cols  iters=5
+[rank   6] LP=0.209646  z_6*=0.503082  pool=399 cols  iters=3
+[rank   7] LP=0.191856  z_7*=0.486031  pool=414 cols  iters=4
+[rank   8] LP=0.175002  z_8*=0.482675  pool=430 cols  iters=3
+[rank   9] LP=0.159256  z_9*=0.475736  pool=440 cols  iters=3
+[rank  10] LP=0.144723  z_10*=0.469691  pool=465 cols  iters=5
+[rank  11] LP=0.131619  z_11*=0.46803  pool=477 cols  iters=3
+[rank  12] LP=0.119064  z_12*=0.459412  pool=485 cols  iters=3
+[rank  13] LP=0.106932  z_13*=0.455591  pool=493 cols  iters=2
+[rank  14] LP=0.0955628  z_14*=0.432726  pool=502 cols  iters=2
+[rank  15] LP=0.084684  z_15*=0.430769  pool=508 cols  iters=3
+[rank  16] LP=0.0741547  z_16*=0.418448  pool=518 cols  iters=3
+[rank  17] LP=0.064058  z_17*=0.415397  pool=526 cols  iters=4
+[rank  18] LP=0.054487  z_18*=0.39174  pool=531 cols  iters=3
+[rank  19] LP=0.0456405  z_19*=0.386068  pool=531 cols  iters=1
+[rank  20] LP=0.0370416  z_20*=0.376593  pool=532 cols  iters=2
+[rank  21] LP=0.0286214  z_21*=0.375559  pool=535 cols  iters=3
+[rank  22] LP=0.0204891  z_22*=0.370114  pool=547 cols  iters=5
+[rank  23] LP=0.0125306  z_23*=0.365957  pool=550 cols  iters=2
+[rank  24] LP=0.00470753  z_24*=0.354804  pool=554 cols  iters=4
+[rank  25] LP=0  z_25*=0.346013  pool=554 cols  iters=1
+[rank  26] LP=0  z_26*=0.340613  pool=554 cols  iters=1
+[rank  27] LP=0  z_27*=0.33146  pool=554 cols  iters=1
+[rank  28] LP=0  z_28*=0.330995  pool=554 cols  iters=1
+[rank  29] LP=0  z_29*=0.33009  pool=554 cols  iters=1
+[rank  30] LP=0  z_30*=0.326814  pool=554 cols  iters=1
+[rank  31] LP=0  z_31*=0.322113  pool=554 cols  iters=1
+[rank  32] LP=0  z_32*=0.316519  pool=554 cols  iters=1
+[rank  33] LP=0  z_33*=0.314614  pool=554 cols  iters=1
+[rank  34] LP=0  z_34*=0.311029  pool=554 cols  iters=1
+[rank  35] LP=0  z_35*=0.305066  pool=554 cols  iters=1
+[rank  36] LP=0  z_36*=0.303105  pool=554 cols  iters=1
+[rank  37] LP=0  z_37*=0.302389  pool=554 cols  iters=1
+[rank  38] LP=0  z_38*=0.297524  pool=554 cols  iters=1
+[rank  39] LP=0  z_39*=0.295259  pool=554 cols  iters=1
+[rank  40] LP=0  z_40*=0.292655  pool=554 cols  iters=1
+[rank  41] LP=0  z_41*=0.291192  pool=554 cols  iters=1
+[rank  42] LP=0  z_42*=0.288962  pool=554 cols  iters=1
+[rank  43] LP=0  z_43*=0.287079  pool=554 cols  iters=1
+[rank  44] LP=0  z_44*=0.286292  pool=554 cols  iters=1
+[rank  45] LP=0  z_45*=0.28445  pool=554 cols  iters=1
+[rank  46] LP=0  z_46*=0.281212  pool=554 cols  iters=1
+[rank  47] LP=0  z_47*=0.280137  pool=554 cols  iters=1
+[rank  48] LP=0  z_48*=0.276563  pool=554 cols  iters=1
+[rank  49] LP=0  z_49*=0.274969  pool=554 cols  iters=1
+[rank  50] LP=0  z_50*=0.273597  pool=554 cols  iters=1
+[rank  51] LP=0  z_51*=0.269847  pool=554 cols  iters=1
+[rank  52] LP=0  z_52*=0.267697  pool=554 cols  iters=1
+[rank  53] LP=0  z_53*=0.262128  pool=554 cols  iters=1
+[rank  54] LP=0  z_54*=0.26154  pool=554 cols  iters=1
+[rank  55] LP=0  z_55*=0.260488  pool=554 cols  iters=1
+[rank  56] LP=0  z_56*=0.256944  pool=554 cols  iters=1
+[rank  57] LP=0  z_57*=0.253758  pool=554 cols  iters=1
+[rank  58] LP=0  z_58*=0.248018  pool=554 cols  iters=1
+[rank  59] LP=0  z_59*=0.242859  pool=554 cols  iters=1
+[rank  60] LP=0  z_60*=0.24075  pool=554 cols  iters=1
+[rank  61] LP=0  z_61*=0.239053  pool=554 cols  iters=1
+[rank  62] LP=0  z_62*=0.23734  pool=554 cols  iters=1
+[rank  63] LP=0  z_63*=0.235344  pool=554 cols  iters=1
+[rank  64] LP=0  z_64*=0.234686  pool=554 cols  iters=1
+[rank  65] LP=0  z_65*=0.228883  pool=554 cols  iters=1
+[rank  66] LP=0  z_66*=0.221463  pool=554 cols  iters=1
+[rank  67] LP=0  z_67*=0.220733  pool=554 cols  iters=1
+[rank  68] LP=0  z_68*=0.218257  pool=554 cols  iters=1
+[rank  69] LP=0  z_69*=0.217876  pool=554 cols  iters=1
+[rank  70] LP=0  z_70*=0.210366  pool=554 cols  iters=1
+[rank  71] LP=0  z_71*=0.206066  pool=554 cols  iters=1
+[rank  72] LP=0  z_72*=0.18367  pool=554 cols  iters=1
+[rank  73] LP=0  z_73*=0.182834  pool=554 cols  iters=1
+[rank  74] LP=0  z_74*=0.18204  pool=554 cols  iters=1
+[rank  75] LP=0  z_75*=0.176971  pool=554 cols  iters=1
+[rank  76] LP=0  z_76*=0.174915  pool=554 cols  iters=1
+[rank  77] LP=0  z_77*=0.173778  pool=554 cols  iters=1
+[rank  78] LP=0  z_78*=0.17156  pool=554 cols  iters=1
+[rank  79] LP=0  z_79*=0.170675  pool=554 cols  iters=1
+[rank  80] LP=0  z_80*=0.168114  pool=554 cols  iters=1
+[rank  81] LP=0  z_81*=0.162339  pool=554 cols  iters=1
+[rank  82] LP=0  z_82*=0.15332  pool=554 cols  iters=1
+[rank  83] LP=0  z_83*=0.151548  pool=554 cols  iters=1
+[rank  84] LP=0  z_84*=0.148223  pool=554 cols  iters=1
+[rank  85] LP=0  z_85*=0.145325  pool=554 cols  iters=1
+[rank  86] LP=0  z_86*=0.144702  pool=554 cols  iters=1
+[rank  87] LP=0  z_87*=0.143441  pool=554 cols  iters=1
+[rank  88] LP=0  z_88*=0.142503  pool=554 cols  iters=1
+[rank  89] LP=0  z_89*=0.141285  pool=554 cols  iters=1
+[rank  90] LP=0  z_90*=0.137099  pool=554 cols  iters=1
+[rank  91] LP=0  z_91*=0.135312  pool=554 cols  iters=1
+[rank  92] LP=0  z_92*=0.132141  pool=554 cols  iters=1
+[rank  93] LP=0  z_93*=0.128472  pool=554 cols  iters=1
+[rank  94] LP=0  z_94*=0.126375  pool=554 cols  iters=1
+[rank  95] LP=0  z_95*=0.118955  pool=554 cols  iters=1
+[rank  96] LP=0  z_96*=0.114604  pool=554 cols  iters=1
+[rank  97] LP=0  z_97*=0.112024  pool=554 cols  iters=1
+[rank  98] LP=0  z_98*=0.104424  pool=554 cols  iters=1
+[rank  99] LP=0  z_99*=0.103439  pool=554 cols  iters=1
+[rank 100] LP=0  z_100*=0.103033  pool=554 cols  iters=1
+[rank 101] LP=0  z_101*=0.0999677  pool=554 cols  iters=1
+[rank 102] LP=0  z_102*=0.095289  pool=554 cols  iters=1
+[rank 103] LP=0  z_103*=0.0922242  pool=554 cols  iters=1
+[rank 104] LP=0  z_104*=0.0921552  pool=554 cols  iters=1
+[rank 105] LP=0  z_105*=0.0911991  pool=554 cols  iters=1
+[rank 106] LP=0  z_106*=0.0863711  pool=554 cols  iters=1
+[rank 107] LP=0  z_107*=0.0853431  pool=554 cols  iters=1
+[rank 108] LP=0  z_108*=0.0805516  pool=554 cols  iters=1
+[rank 109] LP=0  z_109*=0.0793813  pool=554 cols  iters=1
+[rank 110] LP=0  z_110*=0.0785791  pool=554 cols  iters=1
+[rank 111] LP=0  z_111*=0.0766602  pool=554 cols  iters=1
+[rank 112] LP=0  z_112*=0.0762258  pool=554 cols  iters=1
+[rank 113] LP=0  z_113*=0.0748881  pool=554 cols  iters=1
+[rank 114] LP=0  z_114*=0.0728138  pool=554 cols  iters=1
+[rank 115] LP=0  z_115*=0.0726255  pool=554 cols  iters=1
+[rank 116] LP=0  z_116*=0.0668665  pool=554 cols  iters=1
+[rank 117] LP=0  z_117*=0.0595381  pool=554 cols  iters=1
+[rank 118] LP=0  z_118*=0.0501115  pool=554 cols  iters=1
+[rank 119] LP=0  z_119*=0.0477652  pool=554 cols  iters=1
+[rank 120] LP=0  z_120*=0.0365594  pool=554 cols  iters=1
+[rank 121] LP=0  z_121*=0.0272208  pool=554 cols  iters=1
+[rank 122] LP=0  z_122*=0.0178433  pool=554 cols  iters=1
+[rank 123] LP=0  z_123*=0.00783039  pool=554 cols  iters=1
+[rank 124] LP=0  z_124*=0  pool=554 cols  iters=1
+[stop] remaining loads are ~0 at rank 124; leximin vector complete.
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  0.929384, 0.583674, 0.565403, 0.527966, 0.513097, 0.503082, 0.486031, 0.482675, 0.475736, 0.469691, 0.46803, 0.459412, 0.455591, 0.432726, 0.430769, 0.418448, 0.415397, 0.39174, 0.386068, 0.376593, 0.375559, 0.370114, 0.365957, 0.354804, 0.346013, 0.340613, 0.33146, 0.330995, 0.33009, 0.326814, 0.322113, 0.316519, 0.314614, 0.311029, 0.305066, 0.303105, 0.302389, 0.297524, 0.295259, 0.292655, 0.291192, 0.288962, 0.287079, 0.286292, 0.28445, 0.281212, 0.280137, 0.276563, 0.274969, 0.273597, 0.269847, 0.267697, 0.262128, 0.26154, 0.260488, 0.256944, 0.253758, 0.248018, 0.242859, 0.24075, 0.239053, 0.23734, 0.235344, 0.234686, 0.228883, 0.221463, 0.220733, 0.218257, 0.217876, 0.210366, 0.206066, 0.18367, 0.182834, 0.18204, 0.176971, 0.174915, 0.173778, 0.17156, 0.170675, 0.168114, 0.162339, 0.15332, 0.151548, 0.148223, 0.145325, 0.144702, 0.143441, 0.142503, 0.141285, 0.137099, 0.135312, 0.132141, 0.128472, 0.126375, 0.118955, 0.114604, 0.112024, 0.104424, 0.103439, 0.103033, 0.0999677, 0.095289, 0.0922242, 0.0921552, 0.0911991, 0.0863711, 0.0853431, 0.0805516, 0.0793813, 0.0785791, 0.0766602, 0.0762258, 0.0748881, 0.0728138, 0.0726255, 0.0668665, 0.0595381, 0.0501115, 0.0477652, 0.0365594, 0.0272208, 0.0178433, 0.00783039, 0
+
+[routing] selected columns:
+  demand=0  p0=((7, 8),)  p1=((7, 8),)
+  demand=1  p0=((15, 0),)  p1=((15, 0),)
+  demand=10  p0=((9, 14),)  p1=((9, 14),)
+  demand=11  p0=((15, 3), (3, 10), (10, 8))  p1=((15, 3), (3, 8))
+  demand=12  p0=((14, 13), (13, 3), (3, 15))  p1=((14, 3), (3, 15))
+  demand=13  p0=((7, 14),)  p1=((7, 11), (11, 14))
+  demand=14  p0=((19, 17),)  p1=((19, 17),)
+  demand=15  p0=((4, 11),)  p1=((4, 11),)
+  demand=16  p0=((14, 11), (11, 16))  p1=((14, 16),)
+  demand=17  p0=((5, 16),)  p1=((5, 16),)
+  demand=18  p0=((10, 18),)  p1=((10, 18),)
+  demand=19  p0=((6, 0),)  p1=((6, 0),)
+  demand=2  p0=((2, 16), (16, 3))  p1=((2, 16), (16, 3))
+  demand=20  p0=((15, 1), (1, 9))  p1=((15, 5), (5, 9))
+  demand=21  p0=((5, 10),)  p1=((5, 10),)
+  demand=22  p0=((16, 2), (2, 4), (4, 17), (17, 3))  p1=((16, 18), (18, 3))
+  demand=23  p0=((12, 5), (5, 9))  p1=((12, 5), (5, 9))
+  demand=24  p0=((19, 13), (13, 16))  p1=((19, 10), (10, 19), (19, 11), (11, 18), (18, 12), (12, 16))
+  demand=25  p0=((16, 2), (2, 8))  p1=((16, 2), (2, 8))
+  demand=26  p0=((15, 10), (10, 19))  p1=((15, 10), (10, 19))
+  demand=27  p0=((17, 13), (13, 15))  p1=((17, 13), (13, 15))
+  demand=28  p0=((11, 15),)  p1=((11, 15),)
+  demand=29  p0=((6, 13), (13, 9))  p1=((6, 10), (10, 1), (1, 9))
+  demand=3  p0=((16, 12),)  p1=((16, 12),)
+  demand=30  p0=((15, 13), (13, 4))  p1=((15, 13), (13, 4))
+  demand=31  p0=((11, 19),)  p1=((11, 19),)
+  demand=32  p0=((19, 8),)  p1=((19, 8),)
+  demand=33  p0=((8, 10), (10, 15))  p1=((8, 10), (10, 15))
+  demand=34  p0=((9, 15), (15, 16))  p1=((9, 4), (4, 16))
+  demand=35  p0=((1, 2), (2, 16))  p1=((1, 16),)
+  demand=36  p0=((16, 2), (2, 6), (6, 11))  p1=((16, 2), (2, 11))
+  demand=37  p0=((7, 11), (11, 18))  p1=((7, 11), (11, 18))
+  demand=38  p0=((7, 4), (4, 2))  p1=((7, 4), (4, 2))
+  demand=39  p0=((3, 17),)  p1=((3, 17),)
+  demand=4  p0=((9, 6),)  p1=((9, 6),)
+  demand=5  p0=((8, 19), (19, 2), (2, 4), (4, 17))  p1=((8, 19), (19, 2), (2, 4), (4, 17))
+  demand=6  p0=((18, 5), (5, 14))  p1=((18, 5), (5, 14))
+  demand=7  p0=((17, 12), (12, 0))  p1=((17, 0),)
+  demand=8  p0=((0, 18),)  p1=((0, 18),)
+  demand=9  p0=((18, 7), (7, 3))  p1=((18, 3),)
+[out] wrote C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_exact_warm\setA-01-srpaths.json
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-01\TCG_exact_warm\setA-01-summary.json
+====================================================================

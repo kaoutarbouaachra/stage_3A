@@ -48,8 +48,8 @@ python -m alexa.run_alexa setA-01 --max-rank 5 --time-limit 120
 | `--checker_dir` | `None` | path to the official ROADEF checker (falls back to `CHECKER_DIR`) |
 | `--max-rank` | all `N = |A| x |T|` | stop after this many ranks |
 | `--time-limit` | `300.0` | Gurobi time limit **per rank/iteration**, seconds |
-| `--mip-gap` | `1e-7` | relative MIP gap, applied per rank |
-| `--eps` | `1e-4` | one-sided freeze tolerance: `L[k] <= l_k_opt + eps` |
+| `--mip-gap` | `1e-8` | relative MIP gap, applied per rank |
+| `--eps` | `1e-9` | one-sided freeze tolerance: `L[k] <= l_k_opt + eps` |
 
 ## Outputs
 

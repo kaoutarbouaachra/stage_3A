@@ -1,0 +1,103 @@
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_exact_warm)
+  2026-07-23 10:22:31
+====================================================================
+[load] C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\setA\setA-02\setA-02-net.json
+    t=0: 2209 non-zero ECMP coefficients
+    t=1: 2231 non-zero ECMP coefficients
+[data] nodes=30 arcs=150 demands=45 K=6 budget=63.0 N=300
+[warm] source       : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\TCG_diag\setA-02-srpaths.json
+  Instance     : setA-02
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_exact_warm\setA-02_20260723_102231.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setA-02\TCG_exact_warm
+====================================================================
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +36 new (0 demand(s) refused -> trivial); pool now 81 cols
+[warm] heuristic incumbent sorted loads (top): 0.903075, 0.548578, 0.53877, 0.522808, 0.495467
+[rank   1] LP=0.624267  z_1*=0.903075  pool=83 cols  iters=3
+[rank   2] LP=0.418042  z_2*=0.548578  pool=95 cols  iters=3
+[rank   3] LP=0.335846  z_3*=0.53877  pool=111 cols  iters=3
+[rank   4] LP=0.270028  z_4*=0.522808  pool=170 cols  iters=3
+[rank   5] LP=0.220602  z_5*=0.495467  pool=285 cols  iters=4
+[rank   6] LP=0.188468  z_6*=0.478554  pool=594 cols  iters=10
+[rank   7] LP=0.167628  z_7*=0.465631  pool=794 cols  iters=8
+[rank   8] LP=0.153215  z_8*=0.461319  pool=885 cols  iters=8
+[rank   9] LP=0.140282  z_9*=0.451537  pool=1025 cols  iters=16
+[rank  10] LP=0.1294  z_10*=0.451267  pool=1093 cols  iters=6
+[rank  11] LP=0.11984  z_11*=0.435176  pool=1130 cols  iters=4
+[rank  12] LP=0.11136  z_12*=0.413464  pool=1222 cols  iters=11
+[rank  13] LP=0.103489  z_13*=0.405725  pool=1248 cols  iters=8
+[rank  14] LP=0.0959066  z_14*=0.404502  pool=1277 cols  iters=3
+[rank  15] LP=0.0888312  z_15*=0.375546  pool=1318 cols  iters=4
+[rank  16] LP=0.0821689  z_16*=0.374042  pool=1346 cols  iters=4
+[rank  17] LP=0.0759899  z_17*=0.369391  pool=1369 cols  iters=7
+[rank  18] LP=0.0701194  z_18*=0.367655  pool=1382 cols  iters=5
+[rank  19] LP=0.0644943  z_19*=0.365954  pool=1393 cols  iters=6
+[rank  20] LP=0.0590674  z_20*=0.33289  pool=1452 cols  iters=12
+[rank  21] LP=0.053734  z_21*=0.324878  pool=1458 cols  iters=4
+[rank  22] LP=0.0484614  z_22*=0.321408  pool=1459 cols  iters=2
+[rank  23] LP=0.0432403  z_23*=0.318487  pool=1465 cols  iters=4
+[rank  24] LP=0.0381383  z_24*=0.313723  pool=1473 cols  iters=4
+[rank  25] LP=0.0331009  z_25*=0.296573  pool=1476 cols  iters=2
+[rank  26] LP=0.0281233  z_26*=0.296227  pool=1479 cols  iters=3
+[rank  27] LP=0.0232186  z_27*=0.293628  pool=1483 cols  iters=2
+[rank  28] LP=0.0183601  z_28*=0.292572  pool=1489 cols  iters=2
+[rank  29] LP=0.0135915  z_29*=0.292147  pool=1494 cols  iters=2
+[rank  30] LP=0.00885222  z_30*=0.291026  pool=1494 cols  iters=1
+[rank  31] LP=0.0041567  z_31*=0.290079  pool=1500 cols  iters=4
+[rank  32] LP=0  z_32*=0.288043  pool=1500 cols  iters=1
+[rank  33] LP=0  z_33*=0.285364  pool=1500 cols  iters=1
+[rank  34] LP=0  z_34*=0.285329  pool=1500 cols  iters=1
+[rank  35] LP=0  z_35*=0.284523  pool=1500 cols  iters=1
+[rank  36] LP=0  z_36*=0.284318  pool=1500 cols  iters=1
+[rank  37] LP=0  z_37*=0.2826  pool=1500 cols  iters=1
+[rank  38] LP=0  z_38*=0.281601  pool=1500 cols  iters=1
+[rank  39] LP=0  z_39*=0.280549  pool=1500 cols  iters=1
+[rank  40] LP=0  z_40*=0.279742  pool=1500 cols  iters=1
+[rank  41] LP=0  z_41*=0.277374  pool=1500 cols  iters=1
+[rank  42] LP=0  z_42*=0.277035  pool=1500 cols  iters=1
+[rank  43] LP=0  z_43*=0.276413  pool=1500 cols  iters=1
+[rank  44] LP=0  z_44*=0.276389  pool=1500 cols  iters=1
+[rank  45] LP=0  z_45*=0.275478  pool=1500 cols  iters=1
+[rank  46] LP=0  z_46*=0.273857  pool=1500 cols  iters=1
+[rank  47] LP=0  z_47*=0.268172  pool=1500 cols  iters=1
+[rank  48] LP=0  z_48*=0.265465  pool=1500 cols  iters=1
+[rank  49] LP=0  z_49*=0.264457  pool=1500 cols  iters=1
+[rank  50] LP=0  z_50*=0.264146  pool=1500 cols  iters=1
+[rank  51] LP=0  z_51*=0.262142  pool=1500 cols  iters=1
+[rank  52] LP=0  z_52*=0.26051  pool=1500 cols  iters=1
+[rank  53] LP=0  z_53*=0.259679  pool=1500 cols  iters=1
+[rank  54] LP=0  z_54*=0.259492  pool=1500 cols  iters=1
+[rank  55] LP=0  z_55*=0.256464  pool=1500 cols  iters=1
+[rank  56] LP=0  z_56*=0.256168  pool=1500 cols  iters=1
+[rank  57] LP=0  z_57*=0.255811  pool=1500 cols  iters=1
+[rank  58] LP=0  z_58*=0.25217  pool=1500 cols  iters=1
+[rank  59] LP=0  z_59*=0.252001  pool=1500 cols  iters=1
+[rank  60] LP=0  z_60*=0.25081  pool=1500 cols  iters=1
+[rank  61] LP=0  z_61*=0.249134  pool=1500 cols  iters=1
+[rank  62] LP=0  z_62*=0.246599  pool=1500 cols  iters=1
+[rank  63] LP=0  z_63*=0.246273  pool=1500 cols  iters=1
+[rank  64] LP=0  z_64*=0.243926  pool=1500 cols  iters=1
+[rank  65] LP=0  z_65*=0.243577  pool=1500 cols  iters=1
+[rank  66] LP=0  z_66*=0.238453  pool=1500 cols  iters=1
+[rank  67] LP=0  z_67*=0.236285  pool=1500 cols  iters=1
+[rank  68] LP=0  z_68*=0.236246  pool=1500 cols  iters=1
+[rank  69] LP=0  z_69*=0.235825  pool=1500 cols  iters=1
+[rank  70] LP=0  z_70*=0.235281  pool=1500 cols  iters=1
+[rank  71] LP=0  z_71*=0.234118  pool=1500 cols  iters=1
+[rank  72] LP=0  z_72*=0.230603  pool=1500 cols  iters=1
+[rank  73] LP=0  z_73*=0.227569  pool=1500 cols  iters=1
+[rank  74] LP=0  z_74*=0.225649  pool=1500 cols  iters=1
+[rank  75] LP=0  z_75*=0.225354  pool=1500 cols  iters=1
+[rank  76] LP=0  z_76*=0.22504  pool=1500 cols  iters=1
+[rank  77] LP=0  z_77*=0.219384  pool=1500 cols  iters=1
+[rank  78] LP=0  z_78*=0.219376  pool=1500 cols  iters=1
+[rank  79] LP=0  z_79*=0.219023  pool=1500 cols  iters=1
+[rank  80] LP=0  z_80*=0.217796  pool=1500 cols  iters=1
+[rank  81] LP=0  z_81*=0.215768  pool=1500 cols  iters=1
+[rank  82] LP=0  z_82*=0.214719  pool=1500 cols  iters=1
+[rank  83] LP=0  z_83*=0.214403  pool=1500 cols  iters=1
