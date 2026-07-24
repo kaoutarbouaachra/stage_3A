@@ -21,3 +21,6 @@ Thumbs.db
 .venv/
 __pycache__/
 *.pyc
+
+# Checker output
+checker.log

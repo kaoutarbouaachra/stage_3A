@@ -63,7 +63,7 @@ class AssignmentLexSolver:
         r: Dict[int, SplitCoeffs],
         time_limit: float = 300.0,
         mip_gap: float = 1e-8,
-        eps: float = 1e-11,
+        eps: float = 1e-9,
         max_rank: Optional[int] = None,
         verbose: bool = False,
     ) -> None:

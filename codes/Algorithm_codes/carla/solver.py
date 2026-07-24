@@ -181,7 +181,7 @@ class CumulativeLexSolver:
         r: Dict[int, SplitCoeffs],
         time_limit: float = 300.0,
         mip_gap: float = 0.0,
-        mip_gap_abs: float = 1e-9,
+        mip_gap_abs: float = 1e-8,
         epsilon: float = 1e-9,
         max_iter: Optional[int] = None,
         free_threshold: bool = False,

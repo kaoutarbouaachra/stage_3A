@@ -4,8 +4,8 @@ Role: CLI driver for ALEXA (Assignment-based LEXicographic Algorithm).
 
 Usage (from Algorithm_codes/):
     python -m alexa.run_alexa toy
-    python -m alexa.run_alexa ar3 --max-rank 5
     python -m alexa.run_alexa setA-01 --max-rank 5 --time-limit 120
+    python -m alexa.run_alexa setAP-001 --data-dir=../setAP/ --time-limit=600
 """
 
 from __future__ import annotations
@@ -16,17 +16,13 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import Optional
 
-ALGO_NAME = "alexa"
+from core.paths import RESULTS_DIR, LOGS_DIR, CODES_DIR, CHECKER_DIR
+from core.dataset import add_dataset_args, resolve_paths, instance_name
 
-try:
-    from core.paths import RESULTS_DIR, LOGS_DIR, CODES_DIR, CHECKER_DIR
-except Exception:
-    RESULTS_DIR = Path("results")
-    LOGS_DIR = Path("logs")
-    CODES_DIR = Path(".")
-    CHECKER_DIR = Path("checker")
+# Uppercase, to match STELA and CARLA. Output namespacing is
+# results/<instance>/<ALGO>/ and logs/<ALGO>/ across every package.
+ALGO_NAME = "ALEXA"
 
 
 ### Gurobi setup -- same two-path pattern as the other packages.
@@ -36,11 +32,18 @@ def _setup_gurobi():
             os.environ["GRB_LICENSE_FILE"] = str(p)
             return str(p)
     return None
+
+
 _lic = _setup_gurobi()
 
 
+#################################
+### Logging
+#################################
+
 class _Tee:
     """Writes simultaneously to stdout and a log file."""
+
     def __init__(self, *files):
         self.files = files
 
@@ -57,11 +60,11 @@ class _Tee:
         return sys.__stdout__.fileno()
 
 
-def _setup_logging(instance_name: str) -> tuple:
+def _setup_logging(name: str) -> tuple:
     log_dir = LOGS_DIR / ALGO_NAME
     log_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = log_dir / f"{instance_name}_{timestamp}.log"
+    log_path = log_dir / f"{name}_{timestamp}.log"
     log_fh = open(log_path, "w", encoding="utf-8")
     sys.stdout = _Tee(sys.__stdout__, log_fh)
     return log_path, log_fh
@@ -72,55 +75,72 @@ def _teardown_logging(log_fh) -> None:
     log_fh.close()
 
 
-def _results_dir_for(instance_name: str) -> Path:
-    d = RESULTS_DIR / instance_name / ALGO_NAME
+def _results_dir_for(name: str) -> Path:
+    d = RESULTS_DIR / name / ALGO_NAME
     d.mkdir(parents=True, exist_ok=True)
     return d
 
 
-def detect_base(name: str, override: Optional[str] = None) -> Path:
-    if override:
-        return Path(override)
-    if name.startswith("setA"):
-        return CODES_DIR / "setA" / name
-    if name == "toy":
-        return CODES_DIR / "toy_instance"
-    return CODES_DIR / f"{name}_instance"
-
+#################################
+### CLI
+#################################
 
 def parse_args():
-    p = argparse.ArgumentParser(description="T-ASR -- ALEXA (assignment-based lexicographic MILP)")
-    p.add_argument("instance", help="instance name (e.g. toy, ar3, setA-01)")
-    p.add_argument("--data_dir", default=None)
-    p.add_argument("--checker_dir", default=None)
-    p.add_argument("--max-rank", type=int, default=None, dest="max_rank",
-                   help="stop after this many ranks (default: all N=|A|x|T|)")
-    p.add_argument("--time-limit", type=float, default=300.0, dest="time_limit",
-                   help="Gurobi time limit PER RANK/ITERATION, in seconds")
-    p.add_argument("--mip-gap", type=float, default=1e-8, dest="mip_gap")
-    p.add_argument("--eps", type=float, default=1e-8,
-                   help="one-sided freeze tolerance: L[k] <= l_k_opt + eps")
+    p = argparse.ArgumentParser(
+        description="T-ASR -- ALEXA (assignment-based lexicographic MILP)"
+    )
+    add_dataset_args(p)
+
+    p.add_argument(
+        "--checker-dir", "--checker_dir",
+        dest="checker_dir", default=None,
+        help="Checker binary directory",
+    )
+
+    # --max-iter is the spelling used by STELA and CARLA; both are accepted
+    # so that a single batch script can drive the three packages.
+    p.add_argument(
+        "--max-rank", "--max-iter",
+        type=int, default=None, dest="max_rank",
+        help="stop after this many ranks (default: all N=|A|x|T|)",
+    )
+    p.add_argument(
+        "--time-limit", type=float, default=300.0, dest="time_limit",
+        help="Gurobi time limit PER RANK/ITERATION, in seconds",
+    )
+    p.add_argument(
+        "--mip-gap", type=float, default=1e-8, dest="mip_gap",
+        help="Relative MIP optimality gap, applied per rank. Must stay "
+             "strictly below --eps.",
+    )
+    p.add_argument(
+        "--eps", "--epsilon", dest="eps", type=float, default=1e-6,
+        help="One-sided freeze tolerance: L[k] <= l_k_opt + eps. Must dominate "
+             "the solver tolerances (MIPGap, FeasibilityTol = 1e-6).",
+    )
     return p.parse_args()
 
 
+#################################
+### Main
+#################################
+
 def main() -> int:
     args = parse_args()
-    name = args.instance
+    name = instance_name(args)
 
     log_path, log_fh = _setup_logging(name)
     res_dir = _results_dir_for(name)
     try:
-        base = detect_base(name, args.data_dir)
-        net_f = base / f"{name}-net.json"
-        tm_f = base / f"{name}-tm.json"
-        scen_f = base / f"{name}-scenario.json"
+        net_f, tm_f, scen_f = resolve_paths(args)
 
         print("=" * 68)
         print("  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)")
-        print(f"  Algorithm    : ALEXA  (folder: {ALGO_NAME})")
+        print(f"  Algorithm    : {ALGO_NAME}")
         print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print("=" * 68)
         print(f"  Instance     : {name}")
+        print(f"  Dataset      : {net_f.parent}")
         print(f"  Log          : {log_path}")
         print(f"  Results dir  : {res_dir}")
         print("=" * 68)
@@ -153,10 +173,10 @@ def main() -> int:
         mlu_sol = final_vec[0]
         pct = (base_vec[0] - mlu_sol) / max(base_vec[0], 1e-12) * 100
         print(f"\n  {'='*64}")
-        print(f"  Algorithm       : ALEXA")
+        print(f"  Algorithm       : {ALGO_NAME}")
         print(f"  MLU baseline    : {base_vec[0]:.6f}")
         print(f"  MLU solution    : {mlu_sol:.6f}  ({pct:+.2f}%)")
-        print(f"  Certified ranks : {[round(z, 6) for z in z_stars]}")
+        print(f"  Certified ranks : {len(z_stars)} / {solver.built.N}")
 
         sol_path = res_dir / f"{name}-srpaths.json"
         checker_valid = None
@@ -183,18 +203,24 @@ def main() -> int:
             except Exception as e:
                 print(f"  Checker: {e}")
 
-        with open(res_dir / f"{name}-summary.json", "w") as f:
+        summary_path = res_dir / f"{name}-summary.json"
+        with open(summary_path, "w") as f:
             json.dump({
-                "algorithm": ALGO_NAME,
-                "instance": name,
-                "mlu_baseline": base_vec[0],
-                "mlu_solution": mlu_sol,
+                "algorithm":     ALGO_NAME,
+                "instance":      name,
+                "N":             solver.built.N,
+                "ranks_solved":  len(z_stars),
+                "mlu_baseline":  base_vec[0],
+                "mlu_solution":  mlu_sol,
                 "reduction_pct": pct,
-                "z_stars": z_stars,
+                "z_stars":       z_stars,
+                "time_limit":    args.time_limit,
+                "mip_gap":       args.mip_gap,
+                "eps":           args.eps,
                 "checker_valid": checker_valid,
-                "checker_mlu": checker_mlu,
+                "checker_mlu":   checker_mlu,
             }, f, indent=2)
-        print(f"  Summary saved -> {res_dir / f'{name}-summary.json'}")
+        print(f"  Summary saved -> {summary_path}")
         print("=" * 68)
     finally:
         _teardown_logging(log_fh)

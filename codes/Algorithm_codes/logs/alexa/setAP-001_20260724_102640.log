@@ -1,0 +1,48 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 10:26:40
+====================================================================
+  Instance     : setAP-001
+  Dataset      : ..\setAP
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\ALEXA\setAP-001_20260724_102640.log
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-001\ALEXA
+====================================================================
+
+  setAP-001 | 10 nodes, 50 arcs, 10 demands, 2 timesteps, N=100
+    t=0: 143 non-zero ECMP coefficients
+    t=1: 149 non-zero ECMP coefficients
+  MLU baseline  : 1.947098
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=10, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+
+  x variables : 1,800
+  Base model : 12,800 vars, 12,320 constraints, 342,098 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.947098       1.8s       1.8s  OPTIMAL
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 3.1s
+  MLU (z*_1) = 1.947098
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.947098
+  MLU solution    : 1.947098  (+0.00%)
+  Certified ranks : 1 / 100
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-001\ALEXA\setAP-001-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-001\ALEXA\setAP-001-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=1.947097 | top5=[1.947097, 1.0, 0.950756, 0.587751, 0.471645]
+  Feasible    : True
+  MLU checker : 1.947097
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-001\ALEXA\setAP-001-summary.json
+====================================================================

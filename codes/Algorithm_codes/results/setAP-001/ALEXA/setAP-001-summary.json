@@ -1,0 +1,17 @@
+{
+  "algorithm": "ALEXA",
+  "instance": "setAP-001",
+  "N": 100,
+  "ranks_solved": 1,
+  "mlu_baseline": 1.9470977739726028,
+  "mlu_solution": 1.9470977739726028,
+  "reduction_pct": 0.0,
+  "z_stars": [
+    1.9470977739726045
+  ],
+  "time_limit": 60.0,
+  "mip_gap": 1e-08,
+  "eps": 1e-06,
+  "checker_valid": true,
+  "checker_mlu": 1.947097
+}

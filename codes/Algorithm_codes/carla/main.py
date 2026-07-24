@@ -2,11 +2,11 @@
 Function: main.py
 Role: Entry point for the CARLA solver.
 
-Usage (depuis Algorithm_codes/) :
-    # simple
+Usage (from Algorithm_codes/) :
+    # positional name, explicit dataset folder (batch style)
+    python -m carla.main setAP-001 --data-dir=../setAP/ --time-limit=600
+    # named form, auto-resolved location
     python -m carla.main --instance setA-01
-    # explicit dataset path
-    python -m carla.main --instance setA-01 --data-dir path/to/setA-01
     # full manual mode
     python -m carla.main --net path/net.json --tm path/tm.json --scenario path/scenario.json
     # free-threshold variant for the frozen levels
@@ -15,13 +15,13 @@ Usage (depuis Algorithm_codes/) :
 
 import argparse
 import json
-import sys
 import os
 import time
 from pathlib import Path
 
 from core.instance import load_instance, summary
 from core.ecmp_from_scratch import compute_all_splits, compute_loads, sorted_load_vector
+from core.dataset import add_dataset_args, resolve_paths, instance_name
 from .solver import CumulativeLexSolver, write_solution
 from core.checker import find_checker, run_checker
 from core.paths import CODES_DIR, RESULTS_DIR, CHECKER_DIR
@@ -61,24 +61,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="T-ASR Cumulative Lex-Minimax Solver (CARLA)"
     )
-
-    group = parser.add_mutually_exclusive_group(required=True)
-
-    group.add_argument(
-        "--instance", "-i",
-        help="Instance name (e.g. setA-01, toy, etc.)"
-    )
-
-    group.add_argument("--net", help="Path to net.json")
-
-    parser.add_argument("--tm", help="Path to tm.json")
-    parser.add_argument("--scenario", help="Path to scenario.json")
-
-    parser.add_argument(
-        "--data-dir", "-d",
-        default=None,
-        help="Base folder for instance files"
-    )
+    add_dataset_args(parser)
 
     parser.add_argument(
         "--out-dir", "-o",
@@ -94,16 +77,22 @@ def parse_args():
 
     parser.add_argument("--max-iter", type=int, default=None)
     parser.add_argument("--time-limit", type=float, default=300.0)
+
     parser.add_argument(
         "--mip-gap", type=float, default=0.0,
         help="Relative MIP gap. Keep at 0: the objective Theta_k scales "
              "like k*lambda_1, so a relative gap is not the right tolerance."
     )
     parser.add_argument(
-        "--mip-gap-abs", type=float, default=1e-9,
-        help="Absolute MIP gap. This is the meaningful tolerance for CARLA."
+        "--mip-gap-abs", type=float, default=1e-8,
+        help="Absolute MIP gap. This is the meaningful tolerance for CARLA. "
+             "Must stay strictly below --epsilon."
     )
-    parser.add_argument("--epsilon", type=float, default=1e-9)
+    parser.add_argument(
+        "--epsilon", type=float, default=1e-6,
+        help="One-sided slack used when freezing a level. Must dominate both "
+             "--mip-gap-abs and the solver FeasibilityTol (1e-6)."
+    )
     parser.add_argument(
         "--free-threshold", action="store_true",
         help="Use the aggregated form j*z_j + sum u^(j) <= Theta_j for the "
@@ -112,42 +101,6 @@ def parse_args():
     parser.add_argument("--verbose-gurobi", action="store_true")
 
     return parser.parse_args()
-
-
-#################################
-# Path resolution
-#################################
-
-def resolve_paths(args):
-    """
-    Role: Resolve dataset paths. Instances live in CODES_DIR
-          (toy_instance/, setA/<name>/, ar3_instance/, ...).
-    """
-    if args.net:
-        return Path(args.net), Path(args.tm), Path(args.scenario)
-
-    name = args.instance
-    if args.data_dir:
-        base = Path(args.data_dir)
-    elif name.startswith("setA"):
-        base = CODES_DIR / "setA" / name
-    elif name.startswith("ar"):
-        base = CODES_DIR / "ar3_instance"
-    elif name == "toy":
-        base = CODES_DIR / "toy_instance"
-    else:
-        base = CODES_DIR / f"{name}_instance"
-
-    net_f  = base / f"{name}-net.json"
-    tm_f   = base / f"{name}-tm.json"
-    scen_f = base / f"{name}-scenario.json"
-
-    for p in (net_f, tm_f, scen_f):
-        if not p.exists():
-            print(f"[ERROR] Missing file: {p}")
-            sys.exit(1)
-
-    return net_f, tm_f, scen_f
 
 
 #################################
@@ -251,7 +204,7 @@ def main():
     print(f"\nMLU solution: {mlu_sol:.6f}")
 
     ### Save solution
-    instance_out_dir = out_dir / (args.instance or "output") / ALGO
+    instance_out_dir = out_dir / instance_name(args) / ALGO
     instance_out_dir.mkdir(parents=True, exist_ok=True)
     sol_path = instance_out_dir / f"{inst.name}-srpaths.json"
     write_solution(waypoints, inst, sol_path)

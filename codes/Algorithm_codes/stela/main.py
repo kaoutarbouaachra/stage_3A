@@ -2,26 +2,29 @@
 Function: main.py
 Role: Entry point for the STELA solver.
 
-Usage (depuis Algorithm_codes/) :
-    # simple
+Usage (from Algorithm_codes/) :
+    # positional name, explicit dataset folder (batch style)
+    python -m stela.main setAP-001 --data-dir=../setAP/ --time-limit=600
+    # named form, auto-resolved location
     python -m stela.main --instance setA-01
-    # explicit dataset path
-    python -m stela.main --instance setA-01 --data-dir path/to/setA-01
     # full manual mode
     python -m stela.main --net path/net.json --tm path/tm.json --scenario path/scenario.json
 """
 
 import argparse
 import json
-import sys
 import os
 import time
 from pathlib import Path
+
 from core.instance import load_instance, summary
-from core.ecmp_from_scratch     import compute_all_splits, compute_loads, sorted_load_vector
-from .solver        import SequentialLexSolver, write_solution
-from core.checker   import find_checker, run_checker
-from core.paths     import CODES_DIR, RESULTS_DIR, CHECKER_DIR
+from core.ecmp_from_scratch import compute_all_splits, compute_loads, sorted_load_vector
+from core.dataset import add_dataset_args, resolve_paths, instance_name
+from .solver import SequentialLexSolver, write_solution
+from core.checker import find_checker, run_checker
+from core.paths import CODES_DIR, RESULTS_DIR, CHECKER_DIR
+
+ALGO = "STELA"
 
 
 #################################
@@ -54,26 +57,9 @@ GRB_LICENSE = setup_gurobi_license()
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="T-ASR Sequential Lex-Minimax Solver"
+        description="T-ASR Sequential Lex-Minimax Solver (STELA)"
     )
-
-    group = parser.add_mutually_exclusive_group(required=True)
-
-    group.add_argument(
-        "--instance", "-i",
-        help="Instance name (e.g. setA-01, toy, etc.)"
-    )
-
-    group.add_argument("--net", help="Path to net.json")
-
-    parser.add_argument("--tm", help="Path to tm.json")
-    parser.add_argument("--scenario", help="Path to scenario.json")
-
-    parser.add_argument(
-        "--data-dir", "-d",
-        default=None,
-        help="Base folder for instance files"
-    )
+    add_dataset_args(parser)
 
     parser.add_argument(
         "--out-dir", "-o",
@@ -89,60 +75,43 @@ def parse_args():
 
     parser.add_argument("--max-iter", type=int, default=None)
     parser.add_argument("--time-limit", type=float, default=300.0)
-    parser.add_argument("--mip-gap", type=float, default=1e-4)
+
+    # 1e-8, not 1e-4. The freeze band at rank k has width epsilon, so a
+    # relative gap larger than epsilon lets the solver return a scheme whose
+    # rank-k value is outside the band that the next rank will enforce. The
+    # error then propagates to every deeper rank.
+    parser.add_argument(
+        "--mip-gap", type=float, default=1e-8,
+        help="Relative MIP optimality gap, applied per rank."
+    )
+    parser.add_argument(
+        "--epsilon", type=float, default=1e-6,
+        help="One-sided freeze tolerance for an optimized rank. Must dominate "
+             "the solver tolerances (MIPGap, FeasibilityTol)."
+    )
     parser.add_argument("--verbose-gurobi", action="store_true")
 
     return parser.parse_args()
 
 
 #################################
-# Path resolution
-#################################
-def resolve_paths(args):
-    """
-    Role: Resolve dataset paths. Instances live in CODES_DIR
-          (toy_instance/, setA/<name>/, ar3_instance/, ...).
-    """
-    if args.net:
-        return Path(args.net), Path(args.tm), Path(args.scenario)
-    name = args.instance
-    if args.data_dir:
-        base = Path(args.data_dir)
-    elif name.startswith("setA"):
-        base = CODES_DIR / "setA" / name
-    elif name.startswith("ar"):
-        base = CODES_DIR / "ar3_instance"
-    elif name == "toy":
-        base = CODES_DIR / "toy_instance"
-    else:
-        base = CODES_DIR / f"{name}_instance"
-    net_f  = base / f"{name}-net.json"
-    tm_f   = base / f"{name}-tm.json"
-    scen_f = base / f"{name}-scenario.json"
-
-    for p in (net_f, tm_f, scen_f):
-        if not p.exists():
-            print(f"[ERROR] Missing file: {p}")
-            sys.exit(1)
-
-    return net_f, tm_f, scen_f
-
-#################################
 ### Helpers
 #################################
 
 def section(title):
-    print("\n" + "═" * 60)
+    print("\n" + "=" * 60)
     print(f" {title}")
-    print("═" * 60)
+    print("=" * 60)
+
 
 def print_z_stars(z_stars, N):
     print("\nLex vector (first values):")
     for i, z in enumerate(z_stars[:20], 1):
-        bar = "█" * int(z * 30)
-        print(f"  z*_{i:3d} = {z:.6f} {bar}")
+        bar = "#" * int(z * 30)
+        print(f"  z*_{i:<3d} = {z:.6f}  {bar}")
     if len(z_stars) > 20:
-        print(f"  ... ({len(z_stars)} values total, N={N})")
+        print(f"  ... ({len(z_stars)} ranks certified, N={N})")
+
 
 def print_checker(checker_result, mlu):
     diff = abs(checker_result.max_load - mlu)
@@ -151,6 +120,24 @@ def print_checker(checker_result, mlu):
     print(f"  Checker MLU : {checker_result.max_load:.6f}")
     print(f"  Gap         : {diff:.2e}")
     print("  OK" if diff < 1e-4 else "  WARNING")
+
+
+def write_summary(path, inst, z_stars, N, elapsed, args):
+    """Dump the certified prefix and the run parameters next to the solution."""
+    payload = {
+        "algorithm":    ALGO,
+        "instance":     inst.name,
+        "N":            N,
+        "ranks_solved": len(z_stars),
+        "z_stars":      z_stars,
+        "time_limit":   args.time_limit,
+        "mip_gap":      args.mip_gap,
+        "epsilon":      args.epsilon,
+        "total_time_s": elapsed,
+    }
+    with open(path, "w") as f:
+        json.dump(payload, f, indent=2)
+    print(f"  Summary written -> {path}")
 
 
 #################################
@@ -187,6 +174,7 @@ def main():
         inst, r,
         time_limit=args.time_limit,
         mip_gap=args.mip_gap,
+        epsilon=args.epsilon,
         max_iter=args.max_iter,
         verbose=args.verbose_gurobi,
     )
@@ -202,10 +190,16 @@ def main():
     print(f"\nMLU solution: {mlu_sol:.6f}")
 
     ### Save solution
-    instance_out_dir = out_dir / (args.instance or "output")
+    instance_out_dir = out_dir / instance_name(args) / ALGO
     instance_out_dir.mkdir(parents=True, exist_ok=True)
     sol_path = instance_out_dir / f"{inst.name}-srpaths.json"
     write_solution(waypoints, inst, sol_path)
+
+    elapsed = time.perf_counter() - t_global
+    write_summary(
+        instance_out_dir / f"{inst.name}-summary.json",
+        inst, z_stars, solver.N, elapsed, args,
+    )
 
     ### Checker
     section("6. Checker")
@@ -225,6 +219,7 @@ def main():
     ### Final
     print("\nDone.")
     print(f"Total time: {time.perf_counter() - t_global:.2f}s")
+
 
 if __name__ == "__main__":
     main()
