@@ -1,0 +1,54 @@
+#!/bin/bash
+#author:Kaoutar
+
+VERSION="2026-07-27-30min-stela-carla"
+COMMAND_DIR="."
+INSTANCES_DIR="../setAP"
+INSTANCE_SET="setAP"
+NB_INSTANCES=125
+TIME_PER_INSTANCE=1800          # 30 minutes wall-clock per (algo, instance)
+SLEEP_BETWEEN_RUNS=30
+EXPE_NAME="expe30min"           # logs go to logs/expe30min/
+LOG_DIR="logs/$EXPE_NAME"
+
+echo "====== $(date) ====== STARTING EXPE"
+echo "====== $(date) ======   Version           : $VERSION"
+echo "====== $(date) ======   Instance dir      : $INSTANCES_DIR"
+echo "====== $(date) ======   Instance set      : $INSTANCE_SET"
+echo "====== $(date) ======   Instance nb       : $NB_INSTANCES"
+echo "====== $(date) ======   Time per instance : $TIME_PER_INSTANCE"
+echo "====== $(date) ======   Log dir           : $LOG_DIR"
+echo "====== $(date) ======   Algorithms        : STELA, CARLA"
+sleep 10
+
+cd "$COMMAND_DIR" || { echo "Erreur : répertoire $COMMAND_DIR introuvable"; exit 1; }
+mkdir -p "$LOG_DIR"
+
+for i in $(seq -w 1 $NB_INSTANCES); do
+  echo
+  echo "====== $(date) ====== STARTING STELA ON INSTANCE $INSTANCE_SET-$i"
+  echo
+  timeout -s SIGINT $TIME_PER_INSTANCE \
+    python -m stela.main \
+              --data_dir="$INSTANCES_DIR" \
+              --time-limit=$TIME_PER_INSTANCE \
+              "$INSTANCE_SET-$i" 2>&1 | tee "$LOG_DIR/stela-$INSTANCE_SET-$i-log.txt"
+  echo "====== $(date) ====== DONE ; WRITTEN $LOG_DIR/stela-$INSTANCE_SET-$i-log.txt"
+  echo "====== $(date) Waiting $SLEEP_BETWEEN_RUNS s for gurobi license release"
+  sleep $SLEEP_BETWEEN_RUNS
+
+  echo
+  echo "====== $(date) ====== STARTING CARLA ON INSTANCE $INSTANCE_SET-$i"
+  echo
+  timeout -s SIGINT $TIME_PER_INSTANCE \
+    python -m carla.main \
+              --data_dir="$INSTANCES_DIR" \
+              --time-limit=$TIME_PER_INSTANCE \
+              "$INSTANCE_SET-$i" 2>&1 | tee "$LOG_DIR/carla-$INSTANCE_SET-$i-log.txt"
+  echo "====== $(date) ====== DONE ; WRITTEN $LOG_DIR/carla-$INSTANCE_SET-$i-log.txt"
+  echo "====== $(date) Waiting $SLEEP_BETWEEN_RUNS s for gurobi license release"
+  sleep $SLEEP_BETWEEN_RUNS
+
+done
+
+echo "====== $(date) ====== EXPE FINISHED"
