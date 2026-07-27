@@ -1,0 +1,77 @@
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_DIAG\setAP-118_20260727_102316.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_DIAG)
+  2026-07-27 10:23:16
+====================================================================
+  Instance     : setAP-118
+  Dataset      : ..\setAP
+  K ranks      : 12
+  time_limit   : 3600s   (soft cap)
+  lp_time/iter : 240s   (bounds ONE LP optimize())
+  pricing_time : 300s   (bounds ONE pricing sweep)
+  mip_time/rank: 240s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-118\TCG_DIAG
+====================================================================
+
+  setAP-118 | 50 nodes, 250 arcs, 40 demands, 2 timesteps, N=500
+    t=0: 7697 non-zero ECMP coefficients
+    t=1: 7781 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Top-5 baseline: [1.0, 0.3154, 0.0294, 0.0203, 0.0179]
+
+  Initial pool : 40 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     40  LP  1.000000  +   0 cols  priced 40/40  lp   0.0s  price    0.7s
+      1     1      40   1.000000   1.000000  [1.0, 0.3154, 0.0294]    0.9s  (mip 0.0s)
+    r2 it 1  pool     40  LP  0.157710  +   0 cols  priced 40/40  lp   0.0s  price    0.7s
+      2     1      40   0.157710   0.315420  [1.0, 0.3154, 0.0294]    0.9s  (mip 0.0s)
+    r3 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.0s  price    0.7s
+      3     1      40   0.000000   0.029443  [1.0, 0.3154, 0.0294]    0.9s  (mip 0.1s)
+    r4 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.1s  price    0.7s
+      4     1      40   0.000000   0.020326  [1.0, 0.3154, 0.0294]    1.0s  (mip 0.1s)
+    r5 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.1s  price    0.8s
+      5     1      40   0.000000   0.017900  [1.0, 0.3154, 0.0294]    1.1s  (mip 0.1s)
+    r6 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.1s  price    0.8s
+      6     1      40   0.000000   0.015576  [1.0, 0.3154, 0.0294]    1.2s  (mip 0.1s)
+    r7 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.1s  price    0.8s
+      7     1      40   0.000000   0.013926  [1.0, 0.3154, 0.0294]    1.1s  (mip 0.1s)
+    r8 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.1s  price    0.8s
+      8     1      40   0.000000   0.013897  [1.0, 0.3154, 0.0294]    1.1s  (mip 0.1s)
+    r9 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.1s  price    0.8s
+      9     1      40   0.000000   0.012144  [1.0, 0.3154, 0.0294]    1.1s  (mip 0.1s)
+    r10 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.1s  price    0.7s
+     10     1      40   0.000000   0.010700  [1.0, 0.3154, 0.0294]    1.2s  (mip 0.2s)
+    r11 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.3s  price    0.9s
+     11     1      40   0.000000   0.009900  [1.0, 0.3154, 0.0294]    1.4s  (mip 0.2s)
+    r12 it 1  pool     40  LP  0.000000  +   0 cols  priced 40/40  lp   0.2s  price    1.0s
+     12     1      40   0.000000   0.009441  [1.0, 0.3154, 0.0294]    1.5s  (mip 0.2s)
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : 12 / 12 requested
+  Top-5 baseline  : [1.0, 0.3154, 0.0294, 0.0203, 0.0179]
+  Top-5 solution  : [1.0, 0.3154, 0.0294, 0.0203, 0.0179]
+  Pool size       : 40
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-118\TCG_DIAG\setAP-118-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-118\TCG_DIAG\setAP-118-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=1.000000 | top5=[1.0, 0.31542, 0.029443, 0.020326, 0.017899]
+  Feasible    : True
+  MLU checker : 1.000000
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-118\TCG_DIAG\setAP-118-summary.json
+
+  Total time      : 19.2s
+====================================================================
+Freeing default Gurobi environment

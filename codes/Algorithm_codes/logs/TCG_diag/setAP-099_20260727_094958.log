@@ -1,0 +1,125 @@
+  Log          : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\logs\TCG_DIAG\setAP-099_20260727_094958.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_DIAG)
+  2026-07-27 09:49:58
+====================================================================
+  Instance     : setAP-099
+  Dataset      : ..\setAP
+  K ranks      : 12
+  time_limit   : 3600s   (soft cap)
+  lp_time/iter : 240s   (bounds ONE LP optimize())
+  pricing_time : 300s   (bounds ONE pricing sweep)
+  mip_time/rank: 240s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-099\TCG_DIAG
+====================================================================
+
+  setAP-099 | 40 nodes, 200 arcs, 50 demands, 2 timesteps, N=400
+    t=0: 4791 non-zero ECMP coefficients
+    t=1: 4798 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Top-5 baseline: [1.0, 0.8591, 0.398, 0.293, 0.2853]
+
+  Initial pool : 50 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     50  LP  1.000000  +   0 cols  priced 50/50  lp   0.1s  price    0.8s
+      1     1      50   1.000000   1.000000   [1.0, 0.8591, 0.398]    1.0s  (mip 0.0s)
+    r2 it 1  pool     50  LP  0.429538  +   0 cols  priced 50/50  lp   0.0s  price    0.9s
+      2     1      50   0.429538   0.859077   [1.0, 0.8591, 0.398]    1.1s  (mip 0.0s)
+    r3 it 1  pool     85  LP  0.191454  +  35 cols  priced 50/50  lp   0.1s  price    0.8s
+    r3 it 2  pool    105  LP  0.170369  +  20 cols  priced 50/50  lp   0.1s  price    1.1s
+    r3 it 3  pool    105  LP  0.166969  +   0 cols  priced 50/50  lp   0.1s  price    1.3s
+      3     3     105   0.166969   0.292994   [1.0, 0.8591, 0.293]    3.8s  (mip 0.2s)
+    r4 it 1  pool    250  LP  0.095390  + 145 cols  priced 50/50  lp   0.1s  price    1.3s
+    r4 it 2  pool    278  LP  0.084492  +  28 cols  priced 50/50  lp   0.1s  price    1.1s
+    r4 it 3  pool    328  LP  0.084191  +  50 cols  priced 50/50  lp   0.1s  price    1.1s
+    r4 it 4  pool    328  LP  0.084178  +   0 cols  priced 50/50  lp   0.2s  price    1.2s
+      4     4     328   0.084178   0.285310   [1.0, 0.8591, 0.293]    5.6s  (mip 0.2s)
+    r5 it 1  pool    530  LP  0.051636  + 202 cols  priced 50/50  lp   0.1s  price    1.1s
+    r5 it 2  pool    630  LP  0.046527  + 100 cols  priced 50/50  lp   0.3s  price    1.5s
+    r5 it 3  pool    713  LP  0.044837  +  83 cols  priced 50/50  lp   0.3s  price    1.3s
+    r5 it 4  pool    804  LP  0.044250  +  91 cols  priced 50/50  lp   0.3s  price    1.1s
+    r5 it 5  pool    875  LP  0.043933  +  71 cols  priced 50/50  lp   0.3s  price    1.1s
+    r5 it 6  pool    937  LP  0.043902  +  62 cols  priced 50/50  lp   0.4s  price    1.3s
+    r5 it 7  pool    970  LP  0.043881  +  33 cols  priced 50/50  lp   0.4s  price    1.2s
+    r5 it 8  pool    999  LP  0.043878  +  29 cols  priced 50/50  lp   0.4s  price    1.2s
+    r5 it 9  pool   1023  LP  0.043877  +  24 cols  priced 50/50  lp   0.4s  price    1.2s
+    r5 it10  pool   1045  LP  0.043877  +  22 cols  priced 50/50  lp   0.4s  price    1.1s
+    r5 it11  pool   1061  LP  0.043877  +  16 cols  priced 50/50  lp   0.4s  price    1.1s
+    r5 it12  pool   1070  LP  0.043877  +   9 cols  priced 50/50  lp   0.4s  price    1.0s
+    r5 it13  pool   1072  LP  0.043876  +   2 cols  priced 50/50  lp   0.4s  price    1.3s
+    r5 it14  pool   1072  LP  0.043876  +   0 cols  priced 50/50  lp   0.5s  price    1.2s
+      5    14    1072   0.043876   0.247578   [1.0, 0.8591, 0.293]   22.4s  (mip 0.4s)
+    r6 it 1  pool   1167  LP  0.030331  +  95 cols  priced 50/50  lp   0.4s  price    1.5s
+    r6 it 2  pool   1225  LP  0.030014  +  58 cols  priced 50/50  lp   0.4s  price    1.6s
+    r6 it 3  pool   1269  LP  0.029797  +  44 cols  priced 50/50  lp   0.6s  price    1.6s
+    r6 it 4  pool   1316  LP  0.029678  +  47 cols  priced 50/50  lp   0.4s  price    1.4s
+    r6 it 5  pool   1337  LP  0.029654  +  21 cols  priced 50/50  lp   0.5s  price    1.4s
+    r6 it 6  pool   1342  LP  0.029648  +   5 cols  priced 50/50  lp   0.5s  price    1.5s
+    r6 it 7  pool   1343  LP  0.029647  +   1 cols  priced 50/50  lp   0.4s  price    1.2s
+    r6 it 8  pool   1343  LP  0.029647  +   0 cols  priced 50/50  lp   0.4s  price    1.1s
+      6     8    1343   0.029647   0.219656   [1.0, 0.8591, 0.293]   15.5s  (mip 0.5s)
+    r7 it 1  pool   1409  LP  0.020877  +  66 cols  priced 50/50  lp   0.4s  price    1.2s
+    r7 it 2  pool   1458  LP  0.020800  +  49 cols  priced 50/50  lp   0.5s  price    1.3s
+    r7 it 3  pool   1474  LP  0.020773  +  16 cols  priced 50/50  lp   0.5s  price    1.3s
+    r7 it 4  pool   1484  LP  0.020769  +  10 cols  priced 50/50  lp   0.4s  price    1.0s
+    r7 it 5  pool   1485  LP  0.020768  +   1 cols  priced 50/50  lp   0.4s  price    1.0s
+    r7 it 6  pool   1485  LP  0.020768  +   0 cols  priced 50/50  lp   0.4s  price    1.0s
+      7     6    1485   0.020768   0.207901   [1.0, 0.8591, 0.293]    9.9s  (mip 0.6s)
+    r8 it 1  pool   1597  LP  0.013860  + 112 cols  priced 50/50  lp   0.4s  price    1.1s
+    r8 it 2  pool   1629  LP  0.013726  +  32 cols  priced 50/50  lp   0.4s  price    1.2s
+    r8 it 3  pool   1648  LP  0.013704  +  19 cols  priced 50/50  lp   0.4s  price    1.2s
+    r8 it 4  pool   1654  LP  0.013696  +   6 cols  priced 50/50  lp   0.6s  price    1.6s
+    r8 it 5  pool   1658  LP  0.013695  +   4 cols  priced 50/50  lp   0.5s  price    1.1s
+    r8 it 6  pool   1658  LP  0.013695  +   0 cols  priced 50/50  lp   0.5s  price    1.0s
+      8     6    1658   0.013695   0.198248   [1.0, 0.8591, 0.293]   10.7s  (mip 0.5s)
+    r9 it 1  pool   1697  LP  0.008087  +  39 cols  priced 50/50  lp   0.4s  price    1.1s
+    r9 it 2  pool   1727  LP  0.008028  +  30 cols  priced 50/50  lp   0.4s  price    1.1s
+    r9 it 3  pool   1732  LP  0.008014  +   5 cols  priced 50/50  lp   0.4s  price    1.1s
+    r9 it 4  pool   1735  LP  0.008013  +   3 cols  priced 50/50  lp   0.5s  price    1.1s
+    r9 it 5  pool   1739  LP  0.008013  +   4 cols  priced 50/50  lp   0.5s  price    1.2s
+    r9 it 6  pool   1741  LP  0.008013  +   2 cols  priced 50/50  lp   0.5s  price    1.3s
+    r9 it 7  pool   1741  LP  0.008013  +   0 cols  priced 50/50  lp   0.6s  price    1.3s
+      9     7    1741   0.008013   0.192241   [1.0, 0.8591, 0.293]   12.2s  (mip 0.8s)
+    r10 it 1  pool   1861  LP  0.003041  + 120 cols  priced 50/50  lp   0.5s  price    1.2s
+    r10 it 2  pool   1942  LP  0.003028  +  81 cols  priced 50/50  lp   0.5s  price    2.4s
+    r10 it 3  pool   1961  LP  0.003022  +  19 cols  priced 50/50  lp   0.7s  price    1.2s
+    r10 it 4  pool   1977  LP  0.003017  +  16 cols  priced 50/50  lp   0.5s  price    1.2s
+    r10 it 5  pool   1983  LP  0.003016  +   6 cols  priced 50/50  lp   0.6s  price    1.2s
+    r10 it 6  pool   1988  LP  0.003016  +   5 cols  priced 50/50  lp   0.6s  price    1.1s
+    r10 it 7  pool   1990  LP  0.003016  +   2 cols  priced 50/50  lp   0.5s  price    1.3s
+    r10 it 8  pool   1990  LP  0.003016  +   0 cols  priced 50/50  lp   0.5s  price    1.1s
+     10     8    1990   0.003016   0.160840   [1.0, 0.8591, 0.293]   16.0s  (mip 0.7s)
+    r11 it 1  pool   1990  LP  0.000000  +   0 cols  priced 50/50  lp   0.5s  price    0.8s
+     11     1    1990   0.000000   0.147693   [1.0, 0.8591, 0.293]    2.3s  (mip 0.9s)
+    r12 it 1  pool   1990  LP  0.000000  +   0 cols  priced 50/50  lp   0.5s  price    0.9s
+     12     1    1990   0.000000   0.141794   [1.0, 0.8591, 0.293]    2.3s  (mip 0.9s)
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : 12 / 12 requested
+  Top-5 baseline  : [1.0, 0.8591, 0.398, 0.293, 0.2853]
+  Top-5 solution  : [1.0, 0.8591, 0.293, 0.2853, 0.2476]
+  Pool size       : 1990
+  Solution written → C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-099\TCG_DIAG\setAP-099-srpaths.json
+  Saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-099\TCG_DIAG\setAP-099-srpaths.json
+
+  Running checker...
+[CHECKER] FEASIBLE | MLU=1.000000 | top5=[1.0, 0.859076, 0.292993, 0.285309, 0.247577]
+  Feasible    : True
+  MLU checker : 1.000000
+  Summary saved -> C:\Users\LBSY9262\Downloads\stage_3A_codes\codes\Algorithm_codes\results\setAP-099\TCG_DIAG\setAP-099-summary.json
+
+  Total time      : 111.3s
+====================================================================
+Freeing default Gurobi environment

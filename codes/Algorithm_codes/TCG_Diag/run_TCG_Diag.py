@@ -22,7 +22,7 @@ budget penalty. Passing mu = mu_bar is correct AT LP OPTIMALITY (rho_L = -mu_bar
 which is why the LP must be solved to proven optimality before reading duals.
 
 --------------------------------------------------------------------------------
-TIMING MODEL 
+TIMING MODEL
   * args.lp_time / args.mip_time bound ONE Gurobi optimize() call each, through
     its TimeLimit parameter. They do NOT bound the Python model build, the
     pricing sweep, nor the sum over CG iterations.
@@ -43,9 +43,13 @@ TIMING MODEL
   its MIP is then guaranteed. To certify several ranks, shrink the per-iteration
   cost (--topk_cols 1, --max_cg_iter 6) rather than raising --time_limit.
 
+SCOPE: this driver assumes h = 2 (see the assertion in _run). It is a heuristic
+pricing variant and is NOT part of the exact suite compared in the paper.
+
 Usage (from Algorithm_codes/):
-    python -m TCG_diag.run_TCG_Diag --instance setA-01 --K 5
-    python -m TCG_diag.run_TCG_Diag --instance setA-13 --time_limit 6000 \
+    python -m TCG_Diag.run_TCG_Diag --instance setA-01 --K 5
+    python -m TCG_Diag.run_TCG_Diag setAP-001 --data-dir=../setAP/ --K 5
+    python -m TCG_Diag.run_TCG_Diag --instance setA-13 --time-limit 6000 \
         --topk_cols 1 --max_cg_iter 6 --lp_time 200 --pricing_time 200 --mip_time 400
 """
 
@@ -57,12 +61,13 @@ import time
 import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
-from core.paths import CODES_DIR, RESULTS_DIR, CHECKER_DIR
 
-ALGO_NAME = "TCG_diag"
+from core.paths import CODES_DIR, RESULTS_DIR, LOGS_DIR, CHECKER_DIR
+from core.dataset import add_dataset_args, resolve_paths, instance_name
 
-# Log directory (Algorithm_codes/logs/TCG_diag/)
-LOGS_DIR = RESULTS_DIR.parent / "logs"
+# Uppercase, to match ALEXA / STELA / CARLA. Output namespacing is
+# results/<instance>/<ALGO>/ and logs/<ALGO>/ across every package.
+ALGO_NAME = "TCG_DIAG"
 
 
 ### Gurobi setup
@@ -73,11 +78,18 @@ def _setup_gurobi():
             os.environ["GRB_LICENSE_FILE"] = str(p)
             return str(p)
     return None
+
+
 _lic = _setup_gurobi()
 
 
+#################################
+### Logging
+#################################
+
 class _Tee:
     """Writes simultaneously to stdout and a log file."""
+
     def __init__(self, *files):
         self.files = files
 
@@ -94,17 +106,16 @@ class _Tee:
         return sys.__stdout__.fileno()
 
 
-def _setup_logging(instance_name: str) -> tuple:
+def _setup_logging(name: str) -> tuple:
     """
-    Creates logs/TCG_diag/, opens the log file and redirects
-    sys.stdout to a _Tee.  Returns (log_path, log_fh) so the caller
-    can close cleanly at the end.
+    Creates logs/<ALGO_NAME>/, opens the log file and redirects sys.stdout to a
+    _Tee. Returns (log_path, log_fh) so the caller can close cleanly at the end.
     """
     log_dir = LOGS_DIR / ALGO_NAME
     log_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path  = log_dir / f"{instance_name}_{timestamp}.log"
-    log_fh    = open(log_path, "w", encoding="utf-8")
+    log_path = log_dir / f"{name}_{timestamp}.log"
+    log_fh = open(log_path, "w", encoding="utf-8")
     sys.stdout = _Tee(sys.__stdout__, log_fh)
     return log_path, log_fh
 
@@ -133,51 +144,62 @@ def _release_gurobi():
         pass
 
 
-# ---------------------------------------------------------------------------
+#################################
+### CLI
+#################################
 
 def parse_args():
     p = argparse.ArgumentParser(
         description="T-ASR -- Rank-by-Rank Pair-Path CG (TCG-Diag)"
     )
-    p.add_argument("--instance",    required=True)
-    p.add_argument("--data_dir",    default=None)
-    p.add_argument("--checker_dir", default="../checker")
-    p.add_argument("--K",           type=int,   default=12,
+    add_dataset_args(p)
+
+    p.add_argument(
+        "--checker-dir", "--checker_dir",
+        dest="checker_dir", default=None,
+        help="Checker binary directory",
+    )
+    p.add_argument("--K", type=int, default=12,
                    help="Number of lex ranks to certify (default 12)")
-    p.add_argument("--time_limit",  type=float, default=3600,
-                   help="Soft global cap; the last rank may overshoot it by "
-                        "(build time + mip_time)")
-    p.add_argument("--lp_time",     type=float, default=240,
-                   help="Max time per LP-RMP optimize() call")
-    p.add_argument("--mip_time",    type=float, default=240,
-                   help="Time granted to each rank MIP; always reserved, the "
-                        "MIP is never skipped")
-    p.add_argument("--pricing_time", type=float, default=300,
-                   help="Max wall-clock per CG pricing sweep (all demands)")
-    p.add_argument("--max_cg_iter", type=int,   default=20,
-                   help="Max CG iterations per rank")
-    p.add_argument("--topk_cols",   type=int,   default=5,
-                   help="Columns added per demand per iteration")
-    p.add_argument("--rc_tol",      type=float, default=-1e-8)
+    p.add_argument(
+        "--time-limit", "--time_limit",
+        dest="time_limit", type=float, default=3600,
+        help="Soft global cap; the last rank may overshoot it by "
+             "(build time + mip_time)",
+    )
+    p.add_argument(
+        "--lp-time", "--lp_time", dest="lp_time", type=float, default=240,
+        help="Max time per LP-RMP optimize() call",
+    )
+    p.add_argument(
+        "--mip-time", "--mip_time", dest="mip_time", type=float, default=240,
+        help="Time granted to each rank MIP; always reserved, the MIP is "
+             "never skipped",
+    )
+    p.add_argument(
+        "--pricing-time", "--pricing_time",
+        dest="pricing_time", type=float, default=300,
+        help="Max wall-clock per CG pricing sweep (all demands)",
+    )
+    p.add_argument(
+        "--max-cg-iter", "--max_cg_iter",
+        dest="max_cg_iter", type=int, default=20,
+        help="Max CG iterations per rank",
+    )
+    p.add_argument(
+        "--topk-cols", "--topk_cols",
+        dest="topk_cols", type=int, default=5,
+        help="Columns added per demand per iteration",
+    )
+    p.add_argument("--rc-tol", "--rc_tol",
+                   dest="rc_tol", type=float, default=-1e-8)
     return p.parse_args()
-
-
-def detect_base(name, override=None):
-    if override:
-        return Path(override).resolve()
-
-    if name.startswith("setA"):
-        return CODES_DIR / "setA" / name
-
-    if name == "toy":
-        return CODES_DIR / "toy_instance"
-
-    return CODES_DIR / f"{name}_instance"
 
 
 ###############################################
 ###  LEX RMP  (master problem for a given rank)
 ##############################################
+
 class LexRMP:
     """
     Function: LexRMP
@@ -187,6 +209,7 @@ class LexRMP:
     added cumulatively. Load is modelled with explicit lambda(a,t) variables and
     a (L) equality lambda = sum Gamma z, so the pricing pressure is rho_L = -mu_bar.
     """
+
     def __init__(self, inst, r):
         self.inst = inst
         self.r = r
@@ -431,14 +454,7 @@ class LexRMP:
 ###  MAIN
 ###################
 
-def _run(args):
-    name = args.instance
-
-    base = detect_base(name, args.data_dir)
-    net_f  = base / f"{name}-net.json"
-    tm_f   = base / f"{name}-tm.json"
-    scen_f = base / f"{name}-scenario.json"
-
+def _run(args, name, net_f, tm_f, scen_f):
     # Results live under results/<instance>/<ALGO_NAME>/ so that different
     # TCG variants never overwrite each other's output on the same instance.
     res_dir = RESULTS_DIR / name / ALGO_NAME
@@ -450,6 +466,7 @@ def _run(args):
     print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 68)
     print(f"  Instance     : {name}")
+    print(f"  Dataset      : {net_f.parent}")
     print(f"  K ranks      : {args.K}")
     print(f"  time_limit   : {args.time_limit}s   (soft cap)")
     print(f"  lp_time/iter : {args.lp_time}s   (bounds ONE LP optimize())")
@@ -460,17 +477,21 @@ def _run(args):
     print(f"  Results dir  : {res_dir}")
     print("=" * 68)
 
-    from core.instance   import load_instance, summary
-    from core.ecmp     import compute_all_splits, compute_loads, sorted_load_vector
-    from stela.solver     import write_solution
-    from .cg_master  import TrajectoryPool
+    from core.instance import load_instance, summary
+    from core.ecmp import compute_all_splits, compute_loads, sorted_load_vector
+    from stela.solver import write_solution
+    from .cg_master import TrajectoryPool
     from .pricing_dp import price_demand_topk, build_pricing_context
 
     t_global = time.perf_counter()
     ## Load instance
     inst = load_instance(net_f, tm_f, scen_f)
     print(f"\n  {summary(inst)}")
-    assert len(inst.T) == 2, "this driver is specialised to h = 2"
+    if len(inst.T) != 2:
+        raise ValueError(
+            f"this driver is specialised to h = 2, but instance '{name}' has "
+            f"h = {len(inst.T)}. Use an exact solver (ALEXA / STELA / CARLA) "
+            f"on this instance.")
     r = compute_all_splits(inst)
     demands_info = {
         d_id: (src, tgt, vols)
@@ -481,8 +502,8 @@ def _run(args):
     ctx = build_pricing_context(inst)
 
     ## Baseline (IGP, no waypoints)
-    trivial  = {(d_id, t): []
-                for (d_id, _, _, _) in inst.demands for t in inst.T}
+    trivial = {(d_id, t): []
+               for (d_id, _, _, _) in inst.demands for t in inst.T}
     base_vec = sorted_load_vector(compute_loads(trivial, inst, r), inst)
     print(f"  MLU baseline  : {base_vec[0]:.6f}")
     print(f"  Top-5 baseline: {[round(x,4) for x in base_vec[:5]]}")
@@ -494,9 +515,9 @@ def _run(args):
     print(f"\n  Initial pool : {pool.total_size()} trajectories")
     lex_rmp = LexRMP(inst, r)
 
-    z_stars       = []
+    z_stars = []
     best_solution = {}
-    best_vec      = list(base_vec)
+    best_vec = list(base_vec)
 
     print(f"\n  {'Rank':>5} {'CGit':>5} {'Pool':>7} {'LP_bound':>10}"
           f" {'z_k*':>10} {'Top3_sol':>22} {'Time':>7}")
@@ -508,8 +529,8 @@ def _run(args):
             print(f"\n  Time limit reached before rank {rank_k}.")
             break
         t_rank_start = time.perf_counter()
-        lp_bound     = float('inf')
-        cg_iters     = 0
+        lp_bound = float('inf')
+        cg_iters = 0
 
         ## Inner CG for this rank.
         ## cg_deadline reserves args.mip_time so that the rank MIP below always
@@ -540,8 +561,8 @@ def _run(args):
 
             # Stratified duals
             mu_bar = lp_result["mu_bar"]
-            pi_d   = lp_result["pi"]
-            psi1   = lp_result["psi"].get(1, 0.0)        # psi(1) <= 0
+            pi_d = lp_result["pi"]
+            psi1 = lp_result["psi"].get(1, 0.0)        # psi(1) <= 0
 
             # Pricing sweep: bounded by pricing_time AND by cg_deadline, so a
             # long sweep can never eat into the MIP's reservation.
@@ -593,7 +614,7 @@ def _run(args):
                   f"({dt_mip:.1f}s).")
             break
         z_k_star = mip_result["z_k"]
-        sol_k    = mip_result["solution"]
+        sol_k = mip_result["solution"]
         z_stars.append(z_k_star)
 
         if sol_k:
@@ -602,7 +623,7 @@ def _run(args):
             for d_id, traj in sol_k.items():
                 wp_cur[(d_id, 0)] = list(traj[0])
                 wp_cur[(d_id, 1)] = list(traj[1])
-            cur_vec  = sorted_load_vector(compute_loads(wp_cur, inst, r), inst)
+            cur_vec = sorted_load_vector(compute_loads(wp_cur, inst, r), inst)
             best_vec = cur_vec
             top3_str = str([round(x, 4) for x in cur_vec[:3]])
         else:
@@ -611,7 +632,6 @@ def _run(args):
         print(f"  {rank_k:>5} {cg_iters:>5} {pool.total_size():>7}"
               f" {lp_bound:>10.6f} {z_k_star:>10.6f}"
               f" {top3_str:>22} {t_rank:>6.1f}s  (mip {dt_mip:.1f}s)")
-
 
     ########################################
     ## FINAL RESULTS
@@ -628,7 +648,7 @@ def _run(args):
     print(f"  Algorithm       : TCG-Diag")
     print(f"  MLU baseline    : {base_vec[0]:.6f}")
     print(f"  MLU solution    : {mlu_sol:.6f}  ({pct:+.2f}%)")
-    print(f"  Certified ranks : {[round(z,6) for z in z_stars]}")
+    print(f"  Certified ranks : {len(z_stars)} / {args.K} requested")
     print(f"  Top-5 baseline  : {[round(x,4) for x in base_vec[:5]]}")
     print(f"  Top-5 solution  : {[round(x,4) for x in final_vec[:5]]}")
     print(f"  Pool size       : {pool.total_size()}")
@@ -662,11 +682,13 @@ def _run(args):
 
     ## JSON summary -- self-identifying via the "algorithm" field
     t_total = time.perf_counter() - t_global
-    with open(res_dir / f"{name}-summary.json", "w") as f:
+    summary_path = res_dir / f"{name}-summary.json"
+    with open(summary_path, "w") as f:
         json.dump({
             "algorithm":     ALGO_NAME,
             "instance":      name,
             "K":             args.K,
+            "ranks_solved":  len(z_stars),
             "mlu_baseline":  base_vec[0],
             "mlu_solution":  mlu_sol,
             "reduction_pct": pct,
@@ -674,11 +696,12 @@ def _run(args):
             "top5_baseline": [round(x, 6) for x in base_vec[:5]],
             "top5_solution": [round(x, 6) for x in final_vec[:5]],
             "pool_size":     pool.total_size(),
+            "time_limit":    args.time_limit,
             "time_s":        round(t_total, 2),
             "checker_valid": checker_valid,
             "checker_mlu":   checker_mlu,
         }, f, indent=2)
-    print(f"  Summary saved -> {res_dir / f'{name}-summary.json'}")
+    print(f"  Summary saved -> {summary_path}")
 
     print(f"\n  Total time      : {t_total:.1f}s")
     print("=" * 68)
@@ -686,15 +709,19 @@ def _run(args):
 
 def main():
     args = parse_args()
+    name = instance_name(args)
 
-    # -- Logging setup ------------------------------------------------------
-    log_path, _log_fh = _setup_logging(args.instance)
+    # Resolve BEFORE opening the log: resolve_paths exits on a missing instance,
+    # and an empty log file for a run that never started is just noise.
+    net_f, tm_f, scen_f = resolve_paths(args)
+
+    log_path, _log_fh = _setup_logging(name)
     print(f"  Log          : {log_path}")
 
     # try/finally: the WLS token is released and the log closed even if the run
     # raises (failed rank, infeasible model, KeyboardInterrupt...).
     try:
-        _run(args)
+        _run(args, name, net_f, tm_f, scen_f)
     finally:
         _release_gurobi()
         _teardown_logging(_log_fh)

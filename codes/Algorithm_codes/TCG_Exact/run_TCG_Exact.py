@@ -20,16 +20,20 @@ For each rank k = 1, 2, ... it does:
 The pool is shared across ranks (it only grows). The driver stops when the
 sorted load vector is fully determined (z_k* reaches 0, or k = N).
 
+SCOPE: assumes h = 2 (columns carry paths[0] and paths[1]). Exact for the LP
+relaxation under exact pricing; the integer master over a finite pool is a
+heuristic for the MIP unless branch-and-price is used.
+
 Run as a module from Algorithm_codes/:
     python -m TCG_Exact.run_TCG_Exact toy
-    python -m TCG_Exact.run_TCG_Exact ar3 --max-rank 5
     python -m TCG_Exact.run_TCG_Exact setA-01 --max-rank 5 --time-limit 120
+    python -m TCG_Exact.run_TCG_Exact setAP-001 --data-dir=../setAP/ --max-rank 5
 
 Outputs (always):
-    results/<instance>/TCG_exact/<instance>-srpaths.json
-    results/<instance>/TCG_exact/<instance>-summary.json
+    results/<instance>/TCG_EXACT/<instance>-srpaths.json
+    results/<instance>/TCG_EXACT/<instance>-summary.json
 Logs (always):
-    logs/TCG_exact/<instance>_<timestamp>.log
+    logs/TCG_EXACT/<instance>_<timestamp>.log
 """
 
 from __future__ import annotations
@@ -42,37 +46,27 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+from core.paths import RESULTS_DIR, LOGS_DIR, CODES_DIR
+from core.dataset import add_dataset_args, resolve_paths, instance_name
+
 from .data import ArcTime, Column, DemandId, TASRData, TASRError
 from .master import MasterResult, PairPathColumnGeneration
 
 
-ALGO_NAME = "TCG_exact"
-_NET = "-net.json"
-_TM = "-tm.json"
-_SCEN = "-scenario.json"
+# Uppercase, to match ALEXA / STELA / CARLA / TCG_DIAG. Output namespacing is
+# results/<instance>/<ALGO>/ and logs/<ALGO>/ across every package.
+ALGO_NAME = "TCG_EXACT"
 
 
-# ---------------------------------------------------------------------------
-# core.paths integration
-# ---------------------------------------------------------------------------
-try:
-    from core.paths import RESULTS_DIR, LOGS_DIR, CODES_DIR as _CORE_CODES_DIR
-except Exception:
-    RESULTS_DIR = Path("results")
-    LOGS_DIR = Path("logs")
-    _CORE_CODES_DIR = None
-
-
-### Gurobi setup 
+### Gurobi setup
 def _setup_gurobi():
-    candidates = [Path.home() / "gurobi.lic"]
-    if _CORE_CODES_DIR is not None:
-        candidates.append(_CORE_CODES_DIR / "gurobi.lic")
-    for p in candidates:
+    for p in [Path.home() / "gurobi.lic", CODES_DIR / "gurobi.lic"]:
         if p.exists():
             os.environ["GRB_LICENSE_FILE"] = str(p)
             return str(p)
     return None
+
+
 _lic = _setup_gurobi()
 
 
@@ -81,6 +75,7 @@ _lic = _setup_gurobi()
 # ---------------------------------------------------------------------------
 class _Tee:
     """Writes simultaneously to stdout and a log file."""
+
     def __init__(self, *files):
         self.files = files
 
@@ -97,12 +92,12 @@ class _Tee:
         return sys.__stdout__.fileno()
 
 
-def _setup_logging(instance_name: str) -> tuple:
-    """Creates logs/TCG_exact/, opens the log file, tees sys.stdout to it."""
+def _setup_logging(name: str) -> tuple:
+    """Creates logs/<ALGO_NAME>/, opens the log file, tees sys.stdout to it."""
     log_dir = LOGS_DIR / ALGO_NAME
     log_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = log_dir / f"{instance_name}_{timestamp}.log"
+    log_path = log_dir / f"{name}_{timestamp}.log"
     log_fh = open(log_path, "w", encoding="utf-8")
     sys.stdout = _Tee(sys.__stdout__, log_fh)
     return log_path, log_fh
@@ -111,67 +106,26 @@ def _setup_logging(instance_name: str) -> tuple:
 def _teardown_logging(log_fh) -> None:
     """Restores sys.stdout and closes the log file."""
     sys.stdout = sys.__stdout__
-    log_fh.close()
+    try:
+        log_fh.close()
+    except Exception:
+        pass
 
 
-def _results_dir_for(instance_name: str) -> Path:
-    """results/<instance>/TCG_exact/ -- created on demand."""
-    d = RESULTS_DIR / instance_name / ALGO_NAME
+def _release_gurobi() -> None:
+    """Return the WLS license token as soon as the run is over."""
+    try:
+        import gurobipy as gp
+        gp.disposeDefaultEnv()
+    except Exception:
+        pass
+
+
+def _results_dir_for(name: str) -> Path:
+    """results/<instance>/<ALGO_NAME>/ -- created on demand."""
+    d = RESULTS_DIR / name / ALGO_NAME
     d.mkdir(parents=True, exist_ok=True)
     return d
-
-
-# ---------------------------------------------------------------------------
-# Instance resolution
-# ---------------------------------------------------------------------------
-def _find_codes_root(start: Path) -> Optional[Path]:
-    """Walk up from start looking for a 'codes' directory (or use start if it is one)."""
-    for p in [start, *start.parents]:
-        if p.name == "codes":
-            return p
-        cand = p / "codes"
-        if cand.is_dir():
-            return cand
-    return None
-
-
-def resolve_instance(name_or_path: str) -> Tuple[str, str, str]:
-    """Return (net, tm, scenario) absolute paths for an instance name or a folder path."""
-    p = Path(name_or_path)
-    if p.is_dir():
-        stem = p.name.replace("_instance", "")
-        net = p / f"{stem}{_NET}"
-        if net.exists():
-            return str(net), str(p / f"{stem}{_TM}"), str(p / f"{stem}{_SCEN}")
-        net = p / f"{p.name}{_NET}"
-        if net.exists():
-            return str(net), str(p / f"{p.name}{_TM}"), str(p / f"{p.name}{_SCEN}")
-
-    name = p.name
-    codes = _find_codes_root(Path.cwd())
-    candidates = []
-    if codes is not None:
-        candidates.append(codes / f"{name}_instance")
-        if "-" in name:
-            prefix = name.rsplit("-", 1)[0]
-            candidates.append(codes / prefix / name)
-        candidates.append(codes / name)
-
-    for folder in candidates:
-        net = folder / f"{name}{_NET}"
-        if net.exists():
-            return str(net), str(folder / f"{name}{_TM}"), str(folder / f"{name}{_SCEN}")
-
-    if codes is not None:
-        hits = list(codes.rglob(f"{name}{_NET}"))
-        if hits:
-            folder = hits[0].parent
-            return (str(hits[0]), str(folder / f"{name}{_TM}"), str(folder / f"{name}{_SCEN}"))
-
-    raise FileNotFoundError(
-        f"Could not resolve instance {name_or_path!r}. "
-        f"Looked under {codes if codes else '(no codes/ root found)'}."
-    )
 
 
 # ---------------------------------------------------------------------------
@@ -208,7 +162,7 @@ def _sorted_load_vector(data: TASRData,
 # ---------------------------------------------------------------------------
 # srpaths export (challenge output format)
 # ---------------------------------------------------------------------------
-def _path_to_waypoints(source, target, path) -> List:
+def _path_to_waypoints(path) -> List:
     """
     Convert a segment path ((u0,v0),(v0,v1),...) into the waypoint list the
     challenge expects: the intermediate nodes between source and target.
@@ -217,16 +171,15 @@ def _path_to_waypoints(source, target, path) -> List:
     if not path:
         return []
     nodes = [path[0][0]] + [seg[1] for seg in path]
-    return [n for n in nodes[1:-1]]
+    return list(nodes[1:-1])
 
 
 def _export_srpaths(chosen: Dict[DemandId, Column], data: TASRData,
                     out_path: Path) -> None:
     entries = []
     for d_id, col in sorted(chosen.items(), key=lambda kv: str(kv[0])):
-        d = data.demand_by_id[d_id]
         for t in data.periods:
-            wps = _path_to_waypoints(d.source, d.target, col.paths[t])
+            wps = _path_to_waypoints(col.paths[t])
             if wps:  # empty waypoint lists may be omitted
                 entries.append({"d": int(d_id) if isinstance(d_id, int) else d_id,
                                 "t": int(t), "w": [int(w) for w in wps]})
@@ -250,6 +203,10 @@ def solve_leximin(data: TASRData,
     where z_star_list = [z_1*, z_2*, ...], chosen_columns is the final
     integer routing (one column per demand from the last solved rank), and
     cg is the column-generation instance (useful for pool-size reporting).
+
+    time_limit bounds ONE integer-master optimize() call. It does NOT bound the
+    LP, the pricing sweep, or the whole run: total wall-clock grows with the
+    number of ranks.
     """
     N = len(data.arc_times)
     if max_rank is None:
@@ -271,10 +228,13 @@ def solve_leximin(data: TASRData,
         chosen = _selected_columns(cg, mip)
         last_chosen = chosen
 
-        # Recover z_k* from the integer solution's sorted load vector.
+        # Recover z_k* from the integer solution's sorted load vector rather
+        # than from the master's z variable: the theorem guarantees the
+        # returned routing lies in the rank-k feasible set, so its k-th sorted
+        # load IS z_k*, whereas the master's z is only bracketed by
+        # [z_{k+1}*, z_k*].
         sorted_loads = _sorted_load_vector(data, chosen)
         zk = sorted_loads[k - 1] if k - 1 < len(sorted_loads) else 0.0
-        # Snap to a clean value to avoid freeze-band drift across ranks.
         z_star.append(float(zk))
 
         if verbose:
@@ -286,86 +246,125 @@ def solve_leximin(data: TASRData,
         # Stop early once the tail is all zeros.
         if zk <= freeze_tol and all(v <= freeze_tol for v in sorted_loads[k - 1:]):
             if verbose:
-                print(f"[stop] remaining loads are ~0 at rank {k}; leximin vector complete.")
+                print(f"[stop] remaining loads are ~0 at rank {k}; "
+                      f"leximin vector complete.")
             break
 
     return z_star, last_chosen, cg
 
 
-def _run_real(name: str, args: argparse.Namespace) -> None:
-    log_path, log_fh = _setup_logging(name)
+def _run(args: argparse.Namespace, name: str,
+         net_f: Path, tm_f: Path, scen_f: Path) -> None:
     res_dir = _results_dir_for(name)
-    try:
-        print("=" * 68)
-        print("  T-ASR -- Exact Pair-Path Column Generation (sequential leximin)")
-        print(f"  Algorithm    : TCG-Exact  (folder: {ALGO_NAME})")
-        print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print("=" * 68)
-        print(f"  Instance     : {name}")
-        print(f"  Log          : {log_path}")
-        print(f"  Results dir  : {res_dir}")
-        print("=" * 68)
 
-        from .adapter import build_tasr_data_from_files
-        net, tm, scen = resolve_instance(name)
-        print(f"[load] {net}")
-        data = build_tasr_data_from_files(net, tm, scen)
-        print(f"[data] nodes={len(data.nodes)} arcs={len(data.arcs)} demands={len(data.demands)} "
-              f"K={data.max_segments} budget(kappa1)={data.budget} N={len(data.arc_times)}")
+    print("=" * 68)
+    print("  T-ASR -- Exact Pair-Path Column Generation (sequential leximin)")
+    print(f"  Algorithm    : TCG-Exact  (folder: {ALGO_NAME})")
+    print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("=" * 68)
+    print(f"  Instance     : {name}")
+    print(f"  Dataset      : {net_f.parent}")
+    print(f"  Results dir  : {res_dir}")
+    print("=" * 68)
 
-        t0 = datetime.datetime.now()
-        z_star, chosen, cg = solve_leximin(
-            data, max_rank=args.max_rank, pricing_tol=args.pricing_tol,
-            freeze_tol=args.freeze_tol, mip_gap=args.mip_gap, time_limit=args.time_limit,
-        )
-        elapsed_s = (datetime.datetime.now() - t0).total_seconds()
+    from .adapter import build_tasr_data_from_files
 
-        print("\n[leximin] z* prefix (sorted load vector, leading entries):")
-        print("  " + ", ".join(f"{z:.6g}" for z in z_star))
-        print("\n[routing] selected columns:")
-        for d_id, col in sorted(chosen.items(), key=lambda kv: str(kv[0])):
-            print(f"  demand={d_id}  p0={col.paths[0]}  p1={col.paths[1]}")
+    print(f"[load] {net_f}")
+    data = build_tasr_data_from_files(str(net_f), str(tm_f), str(scen_f))
+    print(f"[data] nodes={len(data.nodes)} arcs={len(data.arcs)} "
+          f"demands={len(data.demands)} K={data.max_segments} "
+          f"budget(kappa1)={data.budget} N={len(data.arc_times)}")
 
-        # Always saved under results/<instance>/TCG_exact/ ...
-        sol_path = res_dir / f"{name}-srpaths.json"
-        _export_srpaths(chosen, data, sol_path)
+    if len(data.periods) != 2:
+        raise TASRError(
+            f"this driver is specialised to h = 2, but instance '{name}' has "
+            f"h = {len(data.periods)}. Use an exact solver "
+            f"(ALEXA / STELA / CARLA) on this instance.")
 
-        pool_size = sum(len(c) for c in cg.columns.values())
-        with open(res_dir / f"{name}-summary.json", "w") as f:
-            json.dump({
-                "algorithm": ALGO_NAME,
-                "instance": name,
-                "ranks_certified": len(z_star),
-                "z_stars": z_star,
-                "pool_size": pool_size,
-                "time_s": round(elapsed_s, 2),
-            }, f, indent=2)
-        print(f"  Summary saved -> {res_dir / f'{name}-summary.json'}")
+    t0 = datetime.datetime.now()
+    z_star, chosen, cg = solve_leximin(
+        data, max_rank=args.max_rank, pricing_tol=args.pricing_tol,
+        freeze_tol=args.freeze_tol, mip_gap=args.mip_gap,
+        time_limit=args.time_limit,
+    )
+    elapsed_s = (datetime.datetime.now() - t0).total_seconds()
 
-        # ... plus an optional extra copy at a user-specified path.
-        if args.out:
-            _export_srpaths(chosen, data, Path(args.out))
+    print("\n[leximin] z* prefix (sorted load vector, leading entries):")
+    print("  " + ", ".join(f"{z:.6g}" for z in z_star[:20]))
+    if len(z_star) > 20:
+        print(f"  ... ({len(z_star)} ranks certified, N={len(data.arc_times)})")
 
-        print("=" * 68)
-    finally:
-        _teardown_logging(log_fh)
+    # Always saved under results/<instance>/<ALGO_NAME>/ ...
+    sol_path = res_dir / f"{name}-srpaths.json"
+    _export_srpaths(chosen, data, sol_path)
+
+    pool_size = sum(len(c) for c in cg.columns.values())
+    summary_path = res_dir / f"{name}-summary.json"
+    with open(summary_path, "w") as f:
+        json.dump({
+            "algorithm":       ALGO_NAME,
+            "instance":        name,
+            "N":               len(data.arc_times),
+            "ranks_solved":    len(z_star),
+            "z_stars":         z_star,
+            "pool_size":       pool_size,
+            "pricing_tol":     args.pricing_tol,
+            "freeze_tol":      args.freeze_tol,
+            "mip_gap":         args.mip_gap,
+            "time_limit":      args.time_limit,
+            "time_s":          round(elapsed_s, 2),
+        }, f, indent=2)
+    print(f"  Summary saved -> {summary_path}")
+
+    # ... plus an optional extra copy at a user-specified path.
+    if args.out:
+        _export_srpaths(chosen, data, Path(args.out))
+
+    print("=" * 68)
 
 
 def main(argv: Optional[list] = None) -> int:
-    ap = argparse.ArgumentParser(description="TCG-Exact: sequential leximin via exact pair-path CG.")
-    ap.add_argument("instance", help="instance name (toy, ar3, setA-01) or folder path")
-    ap.add_argument("--max-rank", type=int, default=None, dest="max_rank",
+    ap = argparse.ArgumentParser(
+        description="TCG-Exact: sequential leximin via exact pair-path CG."
+    )
+    add_dataset_args(ap)
+
+    # --max-iter is the spelling used by STELA and CARLA; both are accepted so
+    # that a single batch script can drive every package.
+    ap.add_argument("--max-rank", "--max-iter",
+                    type=int, default=None, dest="max_rank",
                     help="stop after this many ranks (default: all N=|A|x|T|)")
-    ap.add_argument("--pricing-tol", type=float, default=1e-7, dest="pricing_tol")
-    ap.add_argument("--freeze-tol", type=float, default=1e-6, dest="freeze_tol")
-    ap.add_argument("--mip-gap", type=float, default=0.0, dest="mip_gap")
-    ap.add_argument("--time-limit", type=float, default=None, dest="time_limit")
+    ap.add_argument("--pricing-tol", "--pricing_tol",
+                    type=float, default=1e-7, dest="pricing_tol")
+    ap.add_argument("--freeze-tol", "--freeze_tol",
+                    type=float, default=1e-6, dest="freeze_tol")
+    ap.add_argument("--mip-gap", "--mip_gap",
+                    type=float, default=0.0, dest="mip_gap")
+    ap.add_argument("--time-limit", "--time_limit",
+                    type=float, default=None, dest="time_limit",
+                    help="Time limit for ONE integer-master call, in seconds. "
+                         "Not a global cap: total time grows with the number "
+                         "of ranks.")
     ap.add_argument("--out", type=str, default=None,
-                    help="also write the srpaths JSON solution to this extra path "
-                         "(the results/<instance>/TCG_exact/ copy is always written)")
+                    help="also write the srpaths JSON solution to this extra "
+                         "path (the results/<instance>/<ALGO>/ copy is always "
+                         "written)")
     args = ap.parse_args(argv)
 
-    _run_real(args.instance, args)
+    name = instance_name(args)
+
+    # Resolve BEFORE opening the log: resolve_paths exits on a missing
+    # instance, and an empty log for a run that never started is just noise.
+    net_f, tm_f, scen_f = resolve_paths(args)
+
+    log_path, log_fh = _setup_logging(name)
+    print(f"  Log          : {log_path}")
+    try:
+        _run(args, name, net_f, tm_f, scen_f)
+    finally:
+        _release_gurobi()
+        _teardown_logging(log_fh)
+
     return 0
 
 

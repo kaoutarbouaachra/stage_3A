@@ -3,19 +3,18 @@
 run_TCG_exact_warm.py
 =====================
 
-TCG-Exact-Warm: the sequential leximin driver of :mod:`run_TCG_exact`, but with
+TCG-Exact-Warm: the sequential leximin driver of :mod:`run_TCG_Exact`, but with
 the column pool *warm-started* from a heuristic solution instead of starting
 from the bare basic (IGP) pool.
 
 Motivation
 ----------
-``run_TCG_Exact`` builds its initial pool with :meth:`_build_basic_initial_pool`
-(one trivial pair-path per demand). That is a cold start: the exact pricing has
-to discover every useful waypoint trajectory from scratch, rank by rank. Here we
-additionally seed the pool with the trajectories of a heuristic solution (by
-default the TCG-Diag output), so the restricted master starts from a good
-incumbent and the pricing spends its budget closing the gap rather than
-re-discovering structure.
+``run_TCG_Exact`` builds its initial pool with one trivial pair-path per demand.
+That is a cold start: the exact pricing has to discover every useful waypoint
+trajectory from scratch, rank by rank. Here we additionally seed the pool with
+the trajectories of a heuristic solution (by default the TCG-Diag output), so
+the restricted master starts from a good incumbent and the pricing spends its
+budget closing the gap rather than re-discovering structure.
 
 Design decisions
 ----------------
@@ -28,7 +27,7 @@ Design decisions
 
 * **Decoupled via the challenge output format.** The warm start is read from a
   ``<instance>-srpaths.json`` file (the official solution format), by default the
-  one written by TCG-Diag under ``results/<instance>/TCG_diag/``. Any heuristic
+  one written by TCG-Diag under ``results/<instance>/TCG_DIAG/``. Any heuristic
   that writes srpaths can be used as the seed (``--warm-algo`` / ``--warm-srpaths``).
 
 * **Feasibility-guarded seeding (correctness).** ``TASRData.make_column`` computes
@@ -40,21 +39,24 @@ Design decisions
   ``maxSeg``) before seeding; an infeasible trajectory is refused (the demand
   falls back to its trivial column) and a warning is printed.
 
-Everything downstream of the pool -- the rank-by-rank STELA loop, the z_k*
-recovery from the integer solution's sorted load vector, the freeze tolerance,
-the outputs -- is identical to ``run_TCG_exact``; only the initial pool differs.
+SCOPE: assumes h = 2, like the cold driver.
+
+Everything downstream of the pool -- the rank-by-rank loop, the z_k* recovery
+from the integer solution's sorted load vector, the freeze tolerance, the
+outputs -- is identical to ``run_TCG_Exact``; only the initial pool differs.
 
 Run as a module from Algorithm_codes/:
     python -m TCG_Exact.run_TCG_exact_warm toy
     python -m TCG_Exact.run_TCG_exact_warm setA-01 --max-rank 5 --time-limit 120
-    python -m TCG_Exact.run_TCG_exact_warm setA-01 --warm-algo TCG_topk
+    python -m TCG_Exact.run_TCG_exact_warm setAP-001 --data-dir=../setAP/ --max-rank 5
+    python -m TCG_Exact.run_TCG_exact_warm setA-01 --warm-algo TCG_TOPK
     python -m TCG_Exact.run_TCG_exact_warm setA-01 --warm-srpaths /path/to/seed-srpaths.json
 
 Outputs (always):
-    results/<instance>/TCG_exact_warm/<instance>-srpaths.json
-    results/<instance>/TCG_exact_warm/<instance>-summary.json
+    results/<instance>/TCG_EXACT_WARM/<instance>-srpaths.json
+    results/<instance>/TCG_EXACT_WARM/<instance>-summary.json
 Logs (always):
-    logs/TCG_exact_warm/<instance>_<timestamp>.log
+    logs/TCG_EXACT_WARM/<instance>_<timestamp>.log
 """
 
 from __future__ import annotations
@@ -66,48 +68,57 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-from .data import Column, DemandId, Period, TASRData
+from core.paths import RESULTS_DIR, LOGS_DIR
+from core.dataset import add_dataset_args, resolve_paths, instance_name
+
+from .data import Column, DemandId, Period, TASRData, TASRError
 from .master import PairPathColumnGeneration
 
 # Reuse the pure, ALGO-agnostic helpers from the cold driver so the two stay in
-# lock-step (instance resolution, integer-solution reconstruction, srpaths I/O,
-# stdout tee). Only the pieces that must carry the new ALGO_NAME are redefined.
+# lock-step (integer-solution reconstruction, srpaths I/O, stdout tee, license
+# release). Only the pieces that must carry the new ALGO_NAME are redefined.
 from .run_TCG_Exact import (
-    RESULTS_DIR,
-    LOGS_DIR,
     _Tee,
     _teardown_logging,
+    _release_gurobi,
     _selected_columns,
     _sorted_load_vector,
     _export_srpaths,
-    resolve_instance,
 )
 
 # Official algorithm identifier -- its own results/log subfolder so warm and
 # cold runs never overwrite each other and every summary is self-identifying.
-ALGO_NAME = "TCG_exact_warm"
+ALGO_NAME = "TCG_EXACT_WARM"
 
 # Default heuristic whose srpaths seeds the pool (results/<inst>/<this>/...).
-DEFAULT_WARM_ALGO = "TCG_diag"
+DEFAULT_WARM_ALGO = "TCG_DIAG"
+
+# results-folder name -> module path, used only to print an actionable hint
+# when the seed file is missing. The results folder and the Python package are
+# NOT the same string (folders are uppercase, packages keep their own casing).
+_WARM_ALGO_MODULE = {
+    "TCG_DIAG": "TCG_diag.run_TCG_Diag",
+    "TCG_TOPK": "TCG_topk.run_TCG_TopK",
+}
 
 
 # ---------------------------------------------------------------------------
 # Logging / results dir (carry the warm ALGO_NAME)
 # ---------------------------------------------------------------------------
-def _setup_logging(instance_name: str) -> tuple:
-    """Creates logs/TCG_exact_warm/, opens the log file, tees sys.stdout to it."""
+def _setup_logging(name: str) -> tuple:
+    """Creates logs/<ALGO_NAME>/, opens the log file, tees sys.stdout to it."""
     log_dir = LOGS_DIR / ALGO_NAME
     log_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = log_dir / f"{instance_name}_{timestamp}.log"
+    log_path = log_dir / f"{name}_{timestamp}.log"
     log_fh = open(log_path, "w", encoding="utf-8")
     sys.stdout = _Tee(sys.__stdout__, log_fh)
     return log_path, log_fh
 
 
-def _results_dir_for(instance_name: str) -> Path:
-    """results/<instance>/TCG_exact_warm/ -- created on demand."""
-    d = RESULTS_DIR / instance_name / ALGO_NAME
+def _results_dir_for(name: str) -> Path:
+    """results/<instance>/<ALGO_NAME>/ -- created on demand."""
+    d = RESULTS_DIR / name / ALGO_NAME
     d.mkdir(parents=True, exist_ok=True)
     return d
 
@@ -116,19 +127,33 @@ def _results_dir_for(instance_name: str) -> Path:
 # Warm-start source resolution and parsing
 # ---------------------------------------------------------------------------
 def _resolve_warm_path(instance: str, args: argparse.Namespace) -> Path:
-    """Locate the srpaths.json that seeds the pool."""
+    """
+    Locate the srpaths.json that seeds the pool.
+
+    The results folders were renamed to uppercase; runs produced before that
+    rename still sit in the lowercase folder, so both spellings are tried.
+    """
     if args.warm_srpaths:
         p = Path(args.warm_srpaths)
-    else:
-        p = RESULTS_DIR / instance / args.warm_algo / f"{instance}-srpaths.json"
-    if not p.exists():
-        raise FileNotFoundError(
-            f"Warm-start srpaths not found: {p}\n"
-            f"Run the heuristic first, e.g.\n"
-            f"    python -m {args.warm_algo}.run_tcg_diag --instance {instance}\n"
-            f"or pass an explicit file with --warm-srpaths PATH."
-        )
-    return p
+        if not p.exists():
+            raise FileNotFoundError(f"Warm-start srpaths not found: {p}")
+        return p
+
+    tried: List[Path] = []
+    for folder in (args.warm_algo, args.warm_algo.lower()):
+        p = RESULTS_DIR / instance / folder / f"{instance}-srpaths.json"
+        if p.exists():
+            return p
+        tried.append(p)
+
+    module = _WARM_ALGO_MODULE.get(args.warm_algo.upper())
+    hint = (f"    python -m {module} {instance}\n" if module else "")
+    raise FileNotFoundError(
+        "Warm-start srpaths not found. Looked in:\n"
+        + "".join(f"    {p}\n" for p in tried)
+        + "Run the heuristic first, e.g.\n" + hint
+        + "or pass an explicit file with --warm-srpaths PATH."
+    )
 
 
 def _make_resolvers(data: TASRData):
@@ -304,6 +329,10 @@ def solve_leximin_warm(data: TASRData,
     Same sequential leximin loop as run_TCG_Exact.solve_leximin, but the pool is
     warm-started with the heuristic columns before rank 1. Returns
     (z_star_list, chosen_columns, cg).
+
+    NOTE: the rank loop below is duplicated from the cold driver. Any change to
+    the loop must be applied in both files until the seeding is factored out
+    into a hook on solve_leximin.
     """
     N = len(data.arc_times)
     if max_rank is None:
@@ -338,7 +367,9 @@ def solve_leximin_warm(data: TASRData,
         chosen = _selected_columns(cg, mip)
         last_chosen = chosen
 
-        # Recover z_k* from the integer solution's sorted load vector.
+        # Recover z_k* from the integer solution's sorted load vector rather
+        # than from the master's z variable, which is only bracketed by
+        # [z_{k+1}*, z_k*].
         sorted_loads = _sorted_load_vector(data, chosen)
         zk = sorted_loads[k - 1] if k - 1 < len(sorted_loads) else 0.0
         z_star.append(float(zk))
@@ -352,7 +383,8 @@ def solve_leximin_warm(data: TASRData,
         # Stop early once the tail is all zeros.
         if zk <= freeze_tol and all(v <= freeze_tol for v in sorted_loads[k - 1:]):
             if verbose:
-                print(f"[stop] remaining loads are ~0 at rank {k}; leximin vector complete.")
+                print(f"[stop] remaining loads are ~0 at rank {k}; "
+                      f"leximin vector complete.")
             break
 
     return z_star, last_chosen, cg
@@ -361,102 +393,137 @@ def solve_leximin_warm(data: TASRData,
 # ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
-def _run_real(name: str, args: argparse.Namespace) -> None:
-    log_path, log_fh = _setup_logging(name)
+def _run(args: argparse.Namespace, name: str,
+         net_f: Path, tm_f: Path, scen_f: Path) -> None:
     res_dir = _results_dir_for(name)
-    try:
-        print("=" * 68)
-        print("  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)")
-        print(f"  Algorithm    : TCG-Exact-Warm  (folder: {ALGO_NAME})")
-        print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print("=" * 68)
 
-        from .adapter import build_tasr_data_from_files
-        net, tm, scen = resolve_instance(name)
-        print(f"[load] {net}")
-        data = build_tasr_data_from_files(net, tm, scen)
-        print(f"[data] nodes={len(data.nodes)} arcs={len(data.arcs)} demands={len(data.demands)} "
-              f"K={data.max_segments} budget={data.budget} N={len(data.arc_times)}")
+    print("=" * 68)
+    print("  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)")
+    print(f"  Algorithm    : TCG-Exact-Warm  (folder: {ALGO_NAME})")
+    print(f"  {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("=" * 68)
+    print(f"  Instance     : {name}")
+    print(f"  Dataset      : {net_f.parent}")
+    print(f"  Results dir  : {res_dir}")
+    print("=" * 68)
 
-        # Resolve + parse the warm-start srpaths.
-        warm_path = _resolve_warm_path(name, args)
-        warm, unresolved = _parse_srpaths(warm_path, data)
-        print(f"[warm] source       : {warm_path}")
-        if unresolved:
-            print(f"[warm] note         : {unresolved} srpaths entry/entries could not be "
-                  f"resolved to this instance and were ignored.")
+    from .adapter import build_tasr_data_from_files
 
-        print(f"  Instance     : {name}")
-        print(f"  Log          : {log_path}")
-        print(f"  Results dir  : {res_dir}")
-        print("=" * 68)
+    print(f"[load] {net_f}")
+    data = build_tasr_data_from_files(str(net_f), str(tm_f), str(scen_f))
+    print(f"[data] nodes={len(data.nodes)} arcs={len(data.arcs)} "
+          f"demands={len(data.demands)} K={data.max_segments} "
+          f"budget={data.budget} N={len(data.arc_times)}")
 
-        t0 = datetime.datetime.now()
-        z_star, chosen, cg = solve_leximin_warm(
-            data, warm, max_rank=args.max_rank, pricing_tol=args.pricing_tol,
-            freeze_tol=args.freeze_tol, mip_gap=args.mip_gap, time_limit=args.time_limit,
-        )
-        elapsed_s = (datetime.datetime.now() - t0).total_seconds()
+    if len(data.periods) != 2:
+        raise TASRError(
+            f"this driver is specialised to h = 2, but instance '{name}' has "
+            f"h = {len(data.periods)}. Use an exact solver "
+            f"(ALEXA / STELA / CARLA) on this instance.")
 
-        print("\n[leximin] z* prefix (sorted load vector, leading entries):")
-        print("  " + ", ".join(f"{z:.6g}" for z in z_star))
-        print("\n[routing] selected columns:")
-        for d_id, col in sorted(chosen.items(), key=lambda kv: str(kv[0])):
-            print(f"  demand={d_id}  p0={col.paths[0]}  p1={col.paths[1]}")
+    # Resolve + parse the warm-start srpaths.
+    warm_path = _resolve_warm_path(name, args)
+    warm, unresolved = _parse_srpaths(warm_path, data)
+    print(f"[warm] source       : {warm_path}")
+    if unresolved:
+        print(f"[warm] note         : {unresolved} srpaths entry/entries could "
+              f"not be resolved to this instance and were ignored.")
 
-        # Always saved under results/<instance>/TCG_exact_warm/ ...
-        sol_path = res_dir / f"{name}-srpaths.json"
-        _export_srpaths(chosen, data, sol_path)
+    t0 = datetime.datetime.now()
+    z_star, chosen, cg = solve_leximin_warm(
+        data, warm, max_rank=args.max_rank, pricing_tol=args.pricing_tol,
+        freeze_tol=args.freeze_tol, mip_gap=args.mip_gap,
+        time_limit=args.time_limit,
+    )
+    elapsed_s = (datetime.datetime.now() - t0).total_seconds()
 
-        pool_size = sum(len(c) for c in cg.columns.values())
-        with open(res_dir / f"{name}-summary.json", "w") as f:
-            json.dump({
-                "algorithm": ALGO_NAME,
-                "instance": name,
-                "warm_start": {
-                    "source": str(warm_path),
-                    "warm_algo": (None if args.warm_srpaths else args.warm_algo),
-                    "unresolved_entries": unresolved,
-                },
-                "ranks_certified": len(z_star),
-                "z_stars": z_star,
-                "pool_size": pool_size,
-                "time_s": round(elapsed_s, 2),
-            }, f, indent=2)
-        print(f"  Summary saved -> {res_dir / f'{name}-summary.json'}")
+    print("\n[leximin] z* prefix (sorted load vector, leading entries):")
+    print("  " + ", ".join(f"{z:.6g}" for z in z_star[:20]))
+    if len(z_star) > 20:
+        print(f"  ... ({len(z_star)} ranks certified, N={len(data.arc_times)})")
 
-        # ... plus an optional extra copy at a user-specified path.
-        if args.out:
-            _export_srpaths(chosen, data, Path(args.out))
+    # Always saved under results/<instance>/<ALGO_NAME>/ ...
+    sol_path = res_dir / f"{name}-srpaths.json"
+    _export_srpaths(chosen, data, sol_path)
 
-        print("=" * 68)
-    finally:
-        _teardown_logging(log_fh)
+    pool_size = sum(len(c) for c in cg.columns.values())
+    summary_path = res_dir / f"{name}-summary.json"
+    with open(summary_path, "w") as f:
+        json.dump({
+            "algorithm":    ALGO_NAME,
+            "instance":     name,
+            "N":            len(data.arc_times),
+            "ranks_solved": len(z_star),
+            "z_stars":      z_star,
+            "pool_size":    pool_size,
+            "warm_start": {
+                "source":             str(warm_path),
+                "warm_algo":          (None if args.warm_srpaths else args.warm_algo),
+                "unresolved_entries": unresolved,
+            },
+            "pricing_tol":  args.pricing_tol,
+            "freeze_tol":   args.freeze_tol,
+            "mip_gap":      args.mip_gap,
+            "time_limit":   args.time_limit,
+            "time_s":       round(elapsed_s, 2),
+        }, f, indent=2)
+    print(f"  Summary saved -> {summary_path}")
+
+    # ... plus an optional extra copy at a user-specified path.
+    if args.out:
+        _export_srpaths(chosen, data, Path(args.out))
+
+    print("=" * 68)
 
 
 def main(argv: Optional[list] = None) -> int:
     ap = argparse.ArgumentParser(
         description="TCG-Exact-Warm: sequential leximin via exact pair-path CG, "
                     "pool warm-started from a heuristic srpaths solution.")
-    ap.add_argument("instance", help="instance name (toy, ar3, setA-01) or folder path")
-    ap.add_argument("--max-rank", type=int, default=None, dest="max_rank",
+    add_dataset_args(ap)
+
+    ap.add_argument("--max-rank", "--max-iter",
+                    type=int, default=None, dest="max_rank",
                     help="stop after this many ranks (default: all N=|A|x|T|)")
-    ap.add_argument("--pricing-tol", type=float, default=1e-7, dest="pricing_tol")
-    ap.add_argument("--freeze-tol", type=float, default=1e-6, dest="freeze_tol")
-    ap.add_argument("--mip-gap", type=float, default=0.0, dest="mip_gap")
-    ap.add_argument("--time-limit", type=float, default=None, dest="time_limit")
-    ap.add_argument("--warm-algo", type=str, default=DEFAULT_WARM_ALGO, dest="warm_algo",
+    ap.add_argument("--pricing-tol", "--pricing_tol",
+                    type=float, default=1e-7, dest="pricing_tol")
+    ap.add_argument("--freeze-tol", "--freeze_tol",
+                    type=float, default=1e-6, dest="freeze_tol")
+    ap.add_argument("--mip-gap", "--mip_gap",
+                    type=float, default=0.0, dest="mip_gap")
+    ap.add_argument("--time-limit", "--time_limit",
+                    type=float, default=None, dest="time_limit",
+                    help="Time limit for ONE integer-master call, in seconds. "
+                         "Not a global cap.")
+    ap.add_argument("--warm-algo", "--warm_algo",
+                    type=str, default=DEFAULT_WARM_ALGO, dest="warm_algo",
                     help=f"heuristic whose srpaths seeds the pool, read from "
-                         f"results/<instance>/<warm-algo>/ (default: {DEFAULT_WARM_ALGO})")
-    ap.add_argument("--warm-srpaths", type=str, default=None, dest="warm_srpaths",
+                         f"results/<instance>/<warm-algo>/ "
+                         f"(default: {DEFAULT_WARM_ALGO})")
+    ap.add_argument("--warm-srpaths", "--warm_srpaths",
+                    type=str, default=None, dest="warm_srpaths",
                     help="explicit path to a srpaths.json to seed from "
                          "(overrides --warm-algo)")
     ap.add_argument("--out", type=str, default=None,
-                    help="also write the srpaths JSON solution to this extra path "
-                         "(the results/<instance>/TCG_exact_warm/ copy is always written)")
+                    help="also write the srpaths JSON solution to this extra "
+                         "path (the results/<instance>/<ALGO>/ copy is always "
+                         "written)")
     args = ap.parse_args(argv)
 
-    _run_real(args.instance, args)
+    name = instance_name(args)
+
+    # Resolve BEFORE opening the log: resolve_paths exits on a missing
+    # instance, and an empty log for a run that never started is just noise.
+    net_f, tm_f, scen_f = resolve_paths(args)
+
+    log_path, log_fh = _setup_logging(name)
+    print(f"  Log          : {log_path}")
+    try:
+        _run(args, name, net_f, tm_f, scen_f)
+    finally:
+        _release_gurobi()
+        _teardown_logging(log_fh)
+
     return 0
 
 
