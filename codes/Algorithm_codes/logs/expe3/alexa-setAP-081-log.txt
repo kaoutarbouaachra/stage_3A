@@ -1,0 +1,41 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-26 05:23:02
+====================================================================
+  Instance     : setAP-081
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-081_20260726_052302.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-081/ALEXA
+====================================================================
+
+  setAP-081 | 40 nodes, 200 arcs, 20 demands, 2 timesteps, N=400
+    t=0: 4599 non-zero ECMP coefficients
+    t=1: 4604 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=40, |D|=20, |T|=2) ...
+  -> 3,120 useful segment slots  (naive: 3,200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 62,400
+  Base model : 254,000 vars, 225,240 constraints, 74,634,798 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+  [k=1] Unexpected status 11 -- stopping.
+
+  Done.  0 ranks in 557.9s
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : 0 / 400
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-081/ALEXA/setAP-081-summary.json
+====================================================================
+
+Interrupt request received

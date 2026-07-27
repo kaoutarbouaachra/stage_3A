@@ -1,0 +1,47 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 23:26:55
+====================================================================
+  Instance     : setAP-024
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-024_20260724_232655.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-024/ALEXA
+====================================================================
+
+  setAP-024 | 10 nodes, 50 arcs, 50 demands, 2 timesteps, N=100
+    t=0: 159 non-zero ECMP coefficients
+    t=1: 158 non-zero ECMP coefficients
+  MLU baseline  : 1.398969
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=50, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 9,000
+  Base model : 23,600 vars, 20,400 constraints, 1,680,498 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.854925     587.9s     587.9s  OPTIMAL
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 598.6s
+  MLU (z*_1) = 0.854925
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.398969
+  MLU solution    : 0.854925  (+38.89%)
+  Certified ranks : 1 / 100
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-024/ALEXA/setAP-024-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-024/ALEXA/setAP-024-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-024/ALEXA/setAP-024-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

@@ -1,0 +1,79 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 14:48:21
+====================================================================
+  Instance     : setAP-004
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-004_20260724_144821.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-004/ALEXA
+====================================================================
+
+  setAP-004 | 10 nodes, 50 arcs, 10 demands, 2 timesteps, N=100
+    t=0: 167 non-zero ECMP coefficients
+    t=1: 168 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=10, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 1,800
+  Base model : 12,800 vars, 12,320 constraints, 383,198 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.000000       2.0s       2.0s  OPTIMAL
+      2   0.625000       1.9s       3.9s  OPTIMAL
+      3   0.400958       2.0s       6.0s  OPTIMAL
+      4   0.326519      26.0s      31.9s  OPTIMAL
+      5   0.319875       4.6s      36.6s  OPTIMAL
+      6   0.302791       4.6s      41.1s  OPTIMAL
+      7   0.264115       5.6s      46.8s  OPTIMAL
+      8   0.230936       5.1s      51.9s  OPTIMAL
+      9   0.161537       7.2s      59.1s  OPTIMAL
+     10   0.149024       5.9s      65.0s  OPTIMAL
+     11   0.130007       5.7s      70.8s  OPTIMAL
+     12   0.117666       4.2s      74.9s  OPTIMAL
+     13   0.114885       4.3s      79.2s  OPTIMAL
+     14   0.111320       4.3s      83.6s  OPTIMAL
+     15   0.109978       4.5s      88.1s  OPTIMAL
+     16   0.102005       5.0s      93.1s  OPTIMAL
+     17   0.099272       6.5s      99.6s  OPTIMAL
+     18   0.090207       7.3s     106.9s  OPTIMAL
+     19   0.087997       6.4s     113.3s  OPTIMAL
+     20   0.085600       5.0s     118.2s  OPTIMAL
+     21   0.084903       5.2s     123.5s  OPTIMAL
+     22   0.081095       4.8s     128.2s  OPTIMAL
+     23   0.072084       5.7s     133.9s  OPTIMAL
+     24   0.068215       5.2s     139.1s  OPTIMAL
+     25   0.064211       5.0s     144.2s  OPTIMAL
+     26   0.050381       4.7s     148.8s  OPTIMAL
+     27   0.047939       4.5s     153.4s  OPTIMAL
+     28   0.038655       5.0s     158.3s  OPTIMAL
+     29   0.030513       4.4s     162.7s  OPTIMAL
+     30   0.026141       4.8s     167.5s  OPTIMAL
+     31   0.021880       4.3s     171.8s  OPTIMAL
+     32   0.017039       5.4s     177.2s  OPTIMAL
+     33   0.015318       5.4s     182.6s  OPTIMAL
+     34   0.013465       4.8s     187.4s  OPTIMAL
+     35   0.002099       4.6s     192.0s  OPTIMAL
+     36   0.001398       4.6s     196.6s  OPTIMAL
+     37   0.000000       2.2s     198.7s  OPTIMAL
+  All loads are 0 -- converged.
+
+  Done.  37 ranks in 198.7s
+  MLU (z*_1) = 1.000000
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : 37 / 100
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-004/ALEXA/setAP-004-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-004/ALEXA/setAP-004-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-004/ALEXA/setAP-004-summary.json
+====================================================================

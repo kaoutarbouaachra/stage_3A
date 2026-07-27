@@ -1,0 +1,48 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 21:20:53
+====================================================================
+  Instance     : setAP-020
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-020_20260724_212053.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-020/ALEXA
+====================================================================
+
+  setAP-020 | 10 nodes, 50 arcs, 40 demands, 2 timesteps, N=100
+    t=0: 160 non-zero ECMP coefficients
+    t=1: 161 non-zero ECMP coefficients
+  MLU baseline  : 1.406921
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=40, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 7,200
+  Base model : 20,900 vars, 18,380 constraints, 1,351,498 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.883348     128.3s     128.3s  OPTIMAL
+      2   0.673476     227.6s     356.0s  OPTIMAL
+  [k=3] Unexpected status 11 -- stopping.
+
+  Done.  2 ranks in 598.8s
+  MLU (z*_1) = 0.883348
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.406921
+  MLU solution    : 0.883348  (+37.21%)
+  Certified ranks : 2 / 100
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-020/ALEXA/setAP-020-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-020/ALEXA/setAP-020-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-020/ALEXA/setAP-020-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

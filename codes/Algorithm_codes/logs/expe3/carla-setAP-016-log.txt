@@ -1,0 +1,61 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-016 | 10 nodes, 50 arcs, 40 demands, 2 timesteps, N=100
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 164 non-zero ECMP coefficients
+    t=1: 163 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.800593
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=10, |D|=40, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 7,200
+  Base model : 10,800 vars, 8,081 constraints, 46,800 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     0.745273     0.745273       6.9s       7.1s   OPTIMAL  [....................] 1%
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks certified in 599.8s
+  MLU (lambda_1) = 0.745273
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 0.745273   Theta_1   = 0.745273  ######################
+
+MLU solution: 0.745273
+  Solution written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-016/CARLA/setAP-016-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-016/CARLA/setAP-016-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 599.84s
+
+Interrupt request received
+
+Interrupt request received

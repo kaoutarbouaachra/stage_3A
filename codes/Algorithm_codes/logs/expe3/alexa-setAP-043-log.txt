@@ -1,0 +1,29 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-25 09:25:34
+====================================================================
+  Instance     : setAP-043
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-043_20260725_092534.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-043/ALEXA
+====================================================================
+
+  setAP-043 | 20 nodes, 100 arcs, 40 demands, 2 timesteps, N=200
+    t=0: 958 non-zero ECMP coefficients
+    t=1: 944 non-zero ECMP coefficients
+  MLU baseline  : 1.040861
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=40, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 30,400
+  Base model : 85,800 vars, 72,680 constraints, 15,181,198 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.040861     115.8s     115.8s  OPTIMAL

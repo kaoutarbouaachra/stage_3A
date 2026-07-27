@@ -1,0 +1,27 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-119 | 50 nodes, 250 arcs, 40 demands, 2 timesteps, N=500
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 7822 non-zero ECMP coefficients
+    t=1: 7724 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=40, |T|=2) …
+  → 4,900 useful segment slots  (naive: 5,000 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA

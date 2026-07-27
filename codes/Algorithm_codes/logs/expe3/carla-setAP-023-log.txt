@@ -1,0 +1,71 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-023 | 10 nodes, 50 arcs, 50 demands, 2 timesteps, N=100
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 159 non-zero ECMP coefficients
+    t=1: 163 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 0.825028
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=10, |D|=50, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 9,000
+  Base model : 13,500 vars, 10,101 constraints, 58,500 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     0.825028     0.825028       0.3s       0.5s   OPTIMAL  [....................] 1%
+      2     1.301430     0.476403     213.2s     213.7s   OPTIMAL  [....................] 2%
+      3     1.776746     0.475316      23.6s     237.3s   OPTIMAL  [....................] 3%
+      4     2.250959     0.474213      81.6s     318.9s   OPTIMAL  [....................] 4%
+      5     2.723283     0.472323      29.6s     348.5s   OPTIMAL  [#...................] 5%
+      6     3.191811     0.468528     149.7s     498.3s   OPTIMAL  [#...................] 6%
+  [k=7] Unexpected status 11 -- stopping.
+
+  Done.  6 ranks certified in 599.8s
+  MLU (lambda_1) = 0.825028
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 0.825028   Theta_1   = 0.825028  ########################
+  lambda_2   = 0.476403   Theta_2   = 1.301430  ##############
+  lambda_3   = 0.475316   Theta_3   = 1.776746  ##############
+  lambda_4   = 0.474213   Theta_4   = 2.250959  ##############
+  lambda_5   = 0.472323   Theta_5   = 2.723283  ##############
+  lambda_6   = 0.468528   Theta_6   = 3.191811  ##############
+
+MLU solution: 0.825028
+  Solution written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-023/CARLA/setAP-023-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-023/CARLA/setAP-023-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 599.84s
+
+Interrupt request received
+
+Interrupt request received

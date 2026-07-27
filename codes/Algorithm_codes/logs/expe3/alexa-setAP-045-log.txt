@@ -1,0 +1,49 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-25 10:28:35
+====================================================================
+  Instance     : setAP-045
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-045_20260725_102835.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-045/ALEXA
+====================================================================
+
+  setAP-045 | 20 nodes, 100 arcs, 40 demands, 2 timesteps, N=200
+    t=0: 915 non-zero ECMP coefficients
+    t=1: 910 non-zero ECMP coefficients
+  MLU baseline  : 5.959682
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=40, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 30,400
+  Base model : 85,800 vars, 72,680 constraints, 14,763,798 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   5.959682     109.0s     109.0s  OPTIMAL
+      2   0.957030     131.8s     240.9s  OPTIMAL
+      3   0.907894     128.6s     369.6s  OPTIMAL
+  [k=4] Unexpected status 11 -- stopping.
+
+  Done.  3 ranks in 591.1s
+  MLU (z*_1) = 5.959682
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 5.959682
+  MLU solution    : 5.959682  (+0.00%)
+  Certified ranks : 3 / 200
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-045/ALEXA/setAP-045-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-045/ALEXA/setAP-045-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-045/ALEXA/setAP-045-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

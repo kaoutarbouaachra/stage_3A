@@ -1,0 +1,50 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 22:23:54
+====================================================================
+  Instance     : setAP-022
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-022_20260724_222354.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-022/ALEXA
+====================================================================
+
+  setAP-022 | 10 nodes, 50 arcs, 50 demands, 2 timesteps, N=100
+    t=0: 155 non-zero ECMP coefficients
+    t=1: 158 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=50, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 9,000
+  Base model : 23,600 vars, 20,400 constraints, 1,660,998 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.000000       9.0s       9.0s  OPTIMAL
+      2   0.839604       9.4s      18.4s  OPTIMAL
+      3   0.420933       9.0s      27.4s  OPTIMAL
+      4   0.288703      65.2s      92.7s  OPTIMAL
+  [k=5] Unexpected status 11 -- stopping.
+
+  Done.  4 ranks in 598.6s
+  MLU (z*_1) = 1.000000
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : 4 / 100
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-022/ALEXA/setAP-022-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-022/ALEXA/setAP-022-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-022/ALEXA/setAP-022-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

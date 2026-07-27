@@ -1,0 +1,47 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-25 17:18:14
+====================================================================
+  Instance     : setAP-058
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-058_20260725_171814.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-058/ALEXA
+====================================================================
+
+  setAP-058 | 30 nodes, 150 arcs, 20 demands, 2 timesteps, N=300
+    t=0: 2342 non-zero ECMP coefficients
+    t=1: 2347 non-zero ECMP coefficients
+  MLU baseline  : 102.000013
+  Building ALEXA model (maxSeg=6, |V|=30, |D|=20, |T|=2) ...
+  -> 1,740 useful segment slots  (naive: 1,800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 34,800
+  Base model : 142,500 vars, 126,940 constraints, 28,696,198 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1 102.000013     139.4s     139.4s  OPTIMAL
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 583.3s
+  MLU (z*_1) = 102.000013
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 102.000013
+  MLU solution    : 102.000013  (+0.00%)
+  Certified ranks : 1 / 300
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-058/ALEXA/setAP-058-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-058/ALEXA/setAP-058-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-058/ALEXA/setAP-058-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

@@ -1,0 +1,47 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-25 05:13:29
+====================================================================
+  Instance     : setAP-035
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-035_20260725_051329.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-035/ALEXA
+====================================================================
+
+  setAP-035 | 20 nodes, 100 arcs, 20 demands, 2 timesteps, N=200
+    t=0: 923 non-zero ECMP coefficients
+    t=1: 933 non-zero ECMP coefficients
+  MLU baseline  : 0.978783
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=20, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 15,200
+  Base model : 63,000 vars, 56,640 constraints, 7,486,798 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.630987     126.0s     126.0s  OPTIMAL
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 595.0s
+  MLU (z*_1) = 0.630987
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 0.978783
+  MLU solution    : 0.630987  (+35.53%)
+  Certified ranks : 1 / 200
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-035/ALEXA/setAP-035-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-035/ALEXA/setAP-035-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-035/ALEXA/setAP-035-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

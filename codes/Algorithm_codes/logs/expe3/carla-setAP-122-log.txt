@@ -1,0 +1,65 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-122 | 50 nodes, 250 arcs, 50 demands, 2 timesteps, N=500
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 7527 non-zero ECMP coefficients
+    t=1: 7554 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=50, |T|=2) ...
+  -> 4,900 useful segment slots  (naive: 5,000 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 245,000
+  Base model : 367,500 vars, 250,101 constraints, 1,592,500 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     0.918390     0.918390      26.4s      40.8s   OPTIMAL  [....................] 0%
+      2     1.760232     0.841842      46.0s      86.7s   OPTIMAL  [....................] 0%
+      3     2.445642     0.685410      27.4s     114.2s   OPTIMAL  [....................] 1%
+  [k=4] Unexpected status 11 -- stopping.
+
+  Done.  3 ranks certified in 599.0s
+  MLU (lambda_1) = 0.918390
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 0.918390   Theta_1   = 0.918390  ###########################
+  lambda_2   = 0.841842   Theta_2   = 1.760232  #########################
+  lambda_3   = 0.685410   Theta_3   = 2.445642  ####################
+
+MLU solution: 0.918390
+  Solution written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-122/CARLA/setAP-122-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-122/CARLA/setAP-122-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 600.33s
+
+Interrupt request received
+
+Interrupt request received

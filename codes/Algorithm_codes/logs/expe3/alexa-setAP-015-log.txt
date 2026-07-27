@@ -1,0 +1,51 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 18:56:43
+====================================================================
+  Instance     : setAP-015
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-015_20260724_185643.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-015/ALEXA
+====================================================================
+
+  setAP-015 | 10 nodes, 50 arcs, 30 demands, 2 timesteps, N=100
+    t=0: 173 non-zero ECMP coefficients
+    t=1: 169 non-zero ECMP coefficients
+  MLU baseline  : 1.595405
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=30, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 5,400
+  Base model : 18,200 vars, 16,360 constraints, 1,097,698 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.595405       6.9s       6.9s  OPTIMAL
+      2   1.000000       5.0s      12.0s  OPTIMAL
+      3   0.560101       6.6s      18.6s  OPTIMAL
+      4   0.373634      57.3s      75.9s  OPTIMAL
+      5   0.372026      76.7s     152.6s  OPTIMAL
+  [k=6] Unexpected status 11 -- stopping.
+
+  Done.  5 ranks in 599.0s
+  MLU (z*_1) = 1.595405
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.595405
+  MLU solution    : 1.595405  (+0.00%)
+  Certified ranks : 5 / 100
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-015/ALEXA/setAP-015-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-015/ALEXA/setAP-015-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-015/ALEXA/setAP-015-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

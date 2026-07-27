@@ -1,0 +1,47 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-25 13:37:40
+====================================================================
+  Instance     : setAP-051
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-051_20260725_133740.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-051/ALEXA
+====================================================================
+
+  setAP-051 | 30 nodes, 150 arcs, 10 demands, 2 timesteps, N=300
+    t=0: 2594 non-zero ECMP coefficients
+    t=1: 2600 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=30, |D|=10, |T|=2) ...
+  -> 1,740 useful segment slots  (naive: 1,800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 17,400
+  Base model : 116,400 vars, 108,920 constraints, 16,032,598 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.873650     543.1s     543.1s  OPTIMAL
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 589.4s
+  MLU (z*_1) = 0.873650
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 0.873650  (+12.63%)
+  Certified ranks : 1 / 300
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-051/ALEXA/setAP-051-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-051/ALEXA/setAP-051-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-051/ALEXA/setAP-051-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

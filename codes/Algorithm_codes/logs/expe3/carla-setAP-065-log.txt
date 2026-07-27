@@ -1,0 +1,77 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-065 | 30 nodes, 150 arcs, 30 demands, 2 timesteps, N=300
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 2423 non-zero ECMP coefficients
+    t=1: 2434 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000001
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=30, |D|=30, |T|=2) ...
+  -> 1,740 useful segment slots  (naive: 1,800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 52,200
+  Base model : 78,300 vars, 54,061 constraints, 339,300 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     0.958171     0.958171       3.5s       5.8s   OPTIMAL  [....................] 0%
+      2     1.738536     0.780365      20.6s      26.4s   OPTIMAL  [....................] 1%
+      3     2.321037     0.582500      80.8s     107.2s   OPTIMAL  [....................] 1%
+      4     2.862701     0.541665      57.3s     164.5s   OPTIMAL  [....................] 1%
+      5     3.389851     0.527150      16.8s     181.3s   OPTIMAL  [....................] 2%
+      6     3.897748     0.507897      67.6s     248.8s   OPTIMAL  [....................] 2%
+      7     4.402434     0.504686      48.8s     297.6s   OPTIMAL  [....................] 2%
+      8     4.891446     0.489013     104.2s     401.8s   OPTIMAL  [....................] 3%
+      9     5.377323     0.485877     130.6s     532.4s   OPTIMAL  [....................] 3%
+  [k=10] Unexpected status 11 -- stopping.
+
+  Done.  9 ranks certified in 599.6s
+  MLU (lambda_1) = 0.958171
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 0.958171   Theta_1   = 0.958171  ############################
+  lambda_2   = 0.780365   Theta_2   = 1.738536  #######################
+  lambda_3   = 0.582500   Theta_3   = 2.321037  #################
+  lambda_4   = 0.541665   Theta_4   = 2.862701  ################
+  lambda_5   = 0.527150   Theta_5   = 3.389851  ###############
+  lambda_6   = 0.507897   Theta_6   = 3.897748  ###############
+  lambda_7   = 0.504686   Theta_7   = 4.402434  ###############
+  lambda_8   = 0.489013   Theta_8   = 4.891446  ##############
+  lambda_9   = 0.485877   Theta_9   = 5.377323  ##############
+
+MLU solution: 0.958171
+  Solution written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-065/CARLA/setAP-065-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-065/CARLA/setAP-065-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 599.92s
+
+Interrupt request received
+
+Interrupt request received

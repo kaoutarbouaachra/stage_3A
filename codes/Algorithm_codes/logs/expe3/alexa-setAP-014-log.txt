@@ -1,0 +1,54 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 18:26:07
+====================================================================
+  Instance     : setAP-014
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-014_20260724_182607.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-014/ALEXA
+====================================================================
+
+  setAP-014 | 10 nodes, 50 arcs, 30 demands, 2 timesteps, N=100
+    t=0: 154 non-zero ECMP coefficients
+    t=1: 159 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=30, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 5,400
+  Base model : 18,200 vars, 16,360 constraints, 995,498 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.593154      18.2s      18.2s  OPTIMAL
+      2   0.573238       5.4s      23.6s  OPTIMAL
+      3   0.453184     254.5s     278.1s  OPTIMAL
+      4   0.381057      21.1s     299.2s  OPTIMAL
+      5   0.374905      37.0s     336.2s  OPTIMAL
+      6   0.362897      45.2s     381.4s  OPTIMAL
+      7   0.346916      91.4s     472.8s  OPTIMAL
+      8   0.339850      96.3s     569.1s  OPTIMAL
+  [k=9] Unexpected status 11 -- stopping.
+
+  Done.  8 ranks in 599.0s
+  MLU (z*_1) = 0.593154
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 0.593154  (+40.68%)
+  Certified ranks : 8 / 100
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-014/ALEXA/setAP-014-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-014/ALEXA/setAP-014-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-014/ALEXA/setAP-014-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

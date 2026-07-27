@@ -1,0 +1,65 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-124 | 50 nodes, 250 arcs, 50 demands, 2 timesteps, N=500
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 7554 non-zero ECMP coefficients
+    t=1: 7603 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=50, |T|=2) …
+  → 4,900 useful segment slots  (naive: 5,000 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 245,000
+  Base model : 367,500 vars, 250,101 constraints, 1,592,500 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   1.000000       9.0s      23.6s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      2   0.570681      69.9s      94.0s  +0.429319  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      3   0.007772      21.8s     116.2s  +0.562909  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+  [k=4] Unexpected status 11 — stopping.
+
+  Done.  3 iterations in 599.0s
+  MLU (z*_1) = 1.000000
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  z*_1   = 1.000000  ##############################
+  z*_2   = 0.570681  #################
+  z*_3   = 0.007772  
+
+MLU solution: 1.000000
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-124/STELA/setAP-124-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-124/STELA/setAP-124-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 600.32s
+
+Interrupt request received
+
+Interrupt request received

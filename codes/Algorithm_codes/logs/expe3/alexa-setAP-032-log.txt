@@ -1,0 +1,48 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-25 03:38:57
+====================================================================
+  Instance     : setAP-032
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-032_20260725_033857.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-032/ALEXA
+====================================================================
+
+  setAP-032 | 20 nodes, 100 arcs, 20 demands, 2 timesteps, N=200
+    t=0: 932 non-zero ECMP coefficients
+    t=1: 950 non-zero ECMP coefficients
+  MLU baseline  : 1.000001
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=20, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 15,200
+  Base model : 63,000 vars, 56,640 constraints, 7,778,198 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.000001      92.9s      92.9s  OPTIMAL
+      2   0.282664      37.8s     130.7s  OPTIMAL
+      3   0.002261     159.6s     290.4s  OPTIMAL
+      4   0.002181      52.5s     342.9s  OPTIMAL
+  [k=5] Unexpected status 11 -- stopping.
+
+  Done.  4 ranks in 594.9s
+  MLU (z*_1) = 1.000001
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000001
+  MLU solution    : 1.000001  (+0.00%)
+  Certified ranks : 4 / 200
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-032/ALEXA/setAP-032-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-032/ALEXA/setAP-032-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-032/ALEXA/setAP-032-summary.json
+====================================================================
+
+Interrupt request received

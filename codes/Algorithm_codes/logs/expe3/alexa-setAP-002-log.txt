@@ -1,0 +1,92 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA
+  2026-07-24 14:12:19
+====================================================================
+  Instance     : setAP-002
+  Dataset      : ../setAP
+  Log          : /home/yannick/git/stage_3A/codes/Algorithm_codes/logs/ALEXA/setAP-002_20260724_141219.log
+  Results dir  : /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-002/ALEXA
+====================================================================
+
+  setAP-002 | 10 nodes, 50 arcs, 10 demands, 2 timesteps, N=100
+    t=0: 170 non-zero ECMP coefficients
+    t=1: 172 non-zero ECMP coefficients
+  MLU baseline  : 2.256411
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=10, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 1,800
+  Base model : 12,800 vars, 12,320 constraints, 373,698 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   2.256411       1.4s       1.4s  OPTIMAL
+      2   0.635175       6.0s       7.4s  OPTIMAL
+      3   0.494121      21.1s      28.5s  OPTIMAL
+      4   0.404985       7.8s      36.3s  OPTIMAL
+      5   0.379000       8.7s      45.0s  OPTIMAL
+      6   0.361093       5.6s      50.6s  OPTIMAL
+      7   0.361071       4.2s      54.8s  OPTIMAL
+      8   0.343475       7.4s      62.2s  OPTIMAL
+      9   0.334654       8.1s      70.3s  OPTIMAL
+     10   0.333333       6.5s      76.8s  OPTIMAL
+     11   0.320359       8.4s      85.2s  OPTIMAL
+     12   0.317393       5.9s      91.1s  OPTIMAL
+     13   0.316945       5.6s      96.7s  OPTIMAL
+     14   0.310681       7.3s     104.0s  OPTIMAL
+     15   0.302930       6.3s     110.3s  OPTIMAL
+     16   0.300925      11.8s     122.1s  OPTIMAL
+     17   0.281454      12.3s     134.5s  OPTIMAL
+     18   0.281393      17.6s     152.1s  OPTIMAL
+     19   0.280255      21.3s     173.4s  OPTIMAL
+     20   0.278343      15.5s     188.9s  OPTIMAL
+     21   0.268466      22.1s     210.9s  OPTIMAL
+     22   0.265361       8.2s     219.2s  OPTIMAL
+     23   0.265067      28.6s     247.8s  OPTIMAL
+     24   0.260331      29.0s     276.8s  OPTIMAL
+     25   0.248891      19.3s     296.1s  OPTIMAL
+     26   0.232542      13.5s     309.6s  OPTIMAL
+     27   0.217284      17.3s     326.9s  OPTIMAL
+     28   0.214051       9.9s     336.9s  OPTIMAL
+     29   0.205267      17.4s     354.2s  OPTIMAL
+     30   0.203571      18.0s     372.3s  OPTIMAL
+     31   0.193352       7.4s     379.6s  OPTIMAL
+     32   0.191149       8.0s     387.7s  OPTIMAL
+     33   0.172492       7.7s     395.4s  OPTIMAL
+     34   0.172213       8.8s     404.2s  OPTIMAL
+     35   0.168582       8.9s     413.1s  OPTIMAL
+     36   0.153625      86.6s     499.7s  OPTIMAL
+     37   0.133921       8.8s     508.6s  OPTIMAL
+     38   0.133513      16.6s     525.2s  OPTIMAL
+     39   0.132474       6.9s     532.1s  OPTIMAL
+     40   0.111554       7.7s     539.8s  OPTIMAL
+     41   0.102538       9.5s     549.3s  OPTIMAL
+     42   0.093418      10.0s     559.3s  OPTIMAL
+     43   0.086545      10.2s     569.5s  OPTIMAL
+     44   0.075716      11.4s     581.0s  OPTIMAL
+     45   0.072428       7.4s     588.3s  OPTIMAL
+     46   0.068287       9.0s     597.4s  OPTIMAL
+  [k=47] Unexpected status 11 -- stopping.
+
+  Done.  46 ranks in 599.4s
+  MLU (z*_1) = 2.256411
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 2.256411
+  MLU solution    : 2.256411  (+0.00%)
+  Certified ranks : 46 / 100
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-002/ALEXA/setAP-002-srpaths.json
+  Saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-002/ALEXA/setAP-002-srpaths.json
+  Summary saved -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-002/ALEXA/setAP-002-summary.json
+====================================================================
+
+Interrupt request received
+
+Interrupt request received

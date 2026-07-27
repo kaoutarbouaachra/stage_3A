@@ -1,0 +1,63 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-096 | 40 nodes, 200 arcs, 50 demands, 2 timesteps, N=400
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 4907 non-zero ECMP coefficients
+    t=1: 4860 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.201493
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=40, |D|=50, |T|=2) ...
+  -> 3,120 useful segment slots  (naive: 3,200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 156,000
+  Base model : 234,000 vars, 160,101 constraints, 1,014,000 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     1.201493     1.201493      20.9s      29.3s   OPTIMAL  [....................] 0%
+      2     2.201493     1.000000      15.1s      44.4s   OPTIMAL  [....................] 0%
+      3     3.182492     0.980999      16.5s      60.8s   OPTIMAL  [....................] 1%
+  [k=4] Unexpected status 11 -- stopping.
+
+  Done.  3 ranks certified in 599.4s
+  MLU (lambda_1) = 1.201493
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 1.201493   Theta_1   = 1.201493  ####################################
+  lambda_2   = 1.000000   Theta_2   = 2.201493  ##############################
+  lambda_3   = 0.980999   Theta_3   = 3.182492  #############################
+
+MLU solution: 1.201493
+  Solution written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-096/CARLA/setAP-096-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-096/CARLA/setAP-096-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 600.17s
+
+Interrupt request received

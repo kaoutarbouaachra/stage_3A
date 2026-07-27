@@ -1,0 +1,65 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-118 | 50 nodes, 250 arcs, 40 demands, 2 timesteps, N=500
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 7697 non-zero ECMP coefficients
+    t=1: 7781 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=40, |T|=2) ...
+  -> 4,900 useful segment slots  (naive: 5,000 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 196,000
+  Base model : 294,000 vars, 200,081 constraints, 1,274,000 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     1.000000     1.000000       8.0s      19.5s   OPTIMAL  [....................] 0%
+      2     1.315421     0.315420      19.2s      38.6s   OPTIMAL  [....................] 0%
+      3     1.336923     0.021502     138.8s     177.4s   OPTIMAL  [....................] 1%
+      4     1.358172     0.021249      38.2s     215.6s   OPTIMAL  [....................] 1%
+  [k=5] Unexpected status 11 -- stopping.
+
+  Done.  4 ranks certified in 598.9s
+  MLU (lambda_1) = 1.000000
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 1.000000   Theta_1   = 1.000000  ##############################
+  lambda_2   = 0.315420   Theta_2   = 1.315421  #########
+  lambda_3   = 0.021502   Theta_3   = 1.336923  
+  lambda_4   = 0.021249   Theta_4   = 1.358172  
+
+MLU solution: 1.000000
+  Solution written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-118/CARLA/setAP-118-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-118/CARLA/setAP-118-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 600.17s
+
+Interrupt request received

@@ -1,0 +1,81 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-089 | 40 nodes, 200 arcs, 30 demands, 2 timesteps, N=400
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 4709 non-zero ECMP coefficients
+    t=1: 4730 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=40, |D|=30, |T|=2) …
+  → 3,120 useful segment slots  (naive: 3,200 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2586446
+WLS license 2586446 - registered to Orange SA
+
+  x variables : 93,600
+  Base model : 140,400 vars, 96,061 constraints, 608,400 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   1.000000       4.0s       8.9s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      2   0.457143      14.4s      23.5s  +0.542857  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      3   0.445166       7.1s      30.8s  +0.011977  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      4   0.284211       8.8s      39.8s  +0.160955  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      5   0.267841       8.3s      48.3s  +0.016369  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      6   0.198496      18.3s      66.7s  +0.069345  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 2%
+      7   0.185913      30.7s      97.6s  +0.012583  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 2%
+      8   0.172289      25.6s     123.3s  +0.013623  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 2%
+      9   0.154436      40.0s     163.5s  +0.017854  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 2%
+     10   0.150709     212.4s     376.1s  +0.003726  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 2%
+     11   0.148211     183.2s     559.5s  +0.002499  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 3%
+  [k=12] Unexpected status 11 — stopping.
+
+  Done.  11 iterations in 599.4s
+  MLU (z*_1) = 1.000000
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  z*_1   = 1.000000  ##############################
+  z*_2   = 0.457143  #############
+  z*_3   = 0.445166  #############
+  z*_4   = 0.284211  ########
+  z*_5   = 0.267841  ########
+  z*_6   = 0.198496  #####
+  z*_7   = 0.185913  #####
+  z*_8   = 0.172289  #####
+  z*_9   = 0.154436  ####
+  z*_10  = 0.150709  ####
+  z*_11  = 0.148211  ####
+
+MLU solution: 1.000000
+  Solution written → /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-089/STELA/setAP-089-srpaths.json
+  Summary written -> /home/yannick/git/stage_3A/codes/Algorithm_codes/results/setAP-089/STELA/setAP-089-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 600.12s
+
+Interrupt request received
+
+Interrupt request received
