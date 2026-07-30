@@ -1,0 +1,27 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-064 | 30 nodes, 150 arcs, 30 demands, 2 timesteps, N=300
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 2378 non-zero ECMP coefficients
+    t=1: 2392 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: /home/kaoutar/gurobi.lic
+  Pre-computing useful segments (maxSeg=6, |V|=30, |D|=30, |T|=2) ...
+  -> 1,740 useful segment slots  (naive: 1,800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com

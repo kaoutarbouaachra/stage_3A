@@ -1,8 +1,7 @@
 # Python
 __pycache__/
 *.pyc
-
-# Environnements
+.venv/
 venv/
 .env/
 
@@ -18,9 +17,11 @@ gurobi.lic
 .DS_Store
 Thumbs.db
 
-.venv/
-__pycache__/
-*.pyc
-
-# Checker output
+# Solver debug output
+*.ilp
+infeasible*.ilp
 checker.log
+
+# Old code (not tracked)
+exact_algorithm/
+

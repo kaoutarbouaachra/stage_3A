@@ -29,7 +29,7 @@ for i in $(seq -w 1 $NB_INSTANCES); do
   echo "====== $(date) ====== STARTING STELA ON INSTANCE $INSTANCE_SET-$i"
   echo
   timeout -s SIGINT $TIME_PER_INSTANCE \
-    python -m stela.main \
+    python3 -m stela.main \
               --data_dir="$INSTANCES_DIR" \
               --time-limit=$TIME_PER_INSTANCE \
               "$INSTANCE_SET-$i" 2>&1 | tee "$LOG_DIR/stela-$INSTANCE_SET-$i-log.txt"
@@ -41,7 +41,7 @@ for i in $(seq -w 1 $NB_INSTANCES); do
   echo "====== $(date) ====== STARTING CARLA ON INSTANCE $INSTANCE_SET-$i"
   echo
   timeout -s SIGINT $TIME_PER_INSTANCE \
-    python -m carla.main \
+    python3 -m carla.main \
               --data_dir="$INSTANCES_DIR" \
               --time-limit=$TIME_PER_INSTANCE \
               "$INSTANCE_SET-$i" 2>&1 | tee "$LOG_DIR/carla-$INSTANCE_SET-$i-log.txt"

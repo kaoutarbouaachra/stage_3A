@@ -1,0 +1,22 @@
+{
+  "algorithm": "CARLA",
+  "instance": "setAP-066",
+  "N": 300,
+  "ranks_solved": 3,
+  "lambda_bars": [
+    0.7067039190476191,
+    0.64551743001443,
+    0.6359011847690387
+  ],
+  "theta_bars": [
+    0.7067039190476191,
+    1.3522213490620492,
+    1.988122533831088
+  ],
+  "time_limit": 1800.0,
+  "mip_gap": 0.0,
+  "mip_gap_abs": 1e-08,
+  "epsilon": 1e-06,
+  "free_threshold": false,
+  "total_time_s": 1799.9529059361666
+}
