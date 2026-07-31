@@ -39,15 +39,29 @@ Design decisions
   ``maxSeg``) before seeding; an infeasible trajectory is refused (the demand
   falls back to its trivial column) and a warning is printed.
 
+Time model (per instance)
+-------------------------
+* ``--wall-time`` : global wall-clock cap for THIS instance. A new rank is only
+  STARTED while elapsed < wall-time, so the loop stops cleanly BETWEEN ranks and
+  the last fully-solved rank's incumbent is never partial. Default 1800s (matches
+  the 30-min STELA/CARLA campaign).
+* ``--time-limit`` : cap for ONE integer-master optimize() call (the per-rank
+  MIP-time). Keep it well below ``--wall-time`` so several ranks fit in the
+  budget (wall/mip ~= number of ranks). Default 180s.
+* On an external SIGINT (e.g. ``timeout -s SIGINT``), the loop catches
+  ``KeyboardInterrupt`` and the driver still flushes srpaths + summary from the
+  ranks completed so far. No run leaves the big instances with empty output.
+
 SCOPE: assumes h = 2, like the cold driver.
 
 Everything downstream of the pool -- the rank-by-rank loop, the z_k* recovery
 from the integer solution's sorted load vector, the freeze tolerance, the
-outputs -- is identical to ``run_TCG_Exact``; only the initial pool differs.
+outputs -- is identical to ``run_TCG_Exact``; only the initial pool and the time
+guards differ.
 
 Run as a module from Algorithm_codes/:
     python -m TCG_Exact.run_TCG_exact_warm toy
-    python -m TCG_Exact.run_TCG_exact_warm setA-01 --max-rank 5 --time-limit 120
+    python -m TCG_Exact.run_TCG_exact_warm setA-01 --wall-time 1800 --time-limit 180
     python -m TCG_Exact.run_TCG_exact_warm setAP-001 --data-dir=../setAP/ --max-rank 5
     python -m TCG_Exact.run_TCG_exact_warm setA-01 --warm-algo TCG_TOPK
     python -m TCG_Exact.run_TCG_exact_warm setA-01 --warm-srpaths /path/to/seed-srpaths.json
@@ -65,6 +79,7 @@ import argparse
 import datetime
 import json
 import sys
+import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -323,12 +338,27 @@ def solve_leximin_warm(data: TASRData,
                        freeze_tol: float = 1e-6,
                        mip_gap: Optional[float] = 0.0,
                        time_limit: Optional[float] = None,
+                       wall_time: Optional[float] = None,
                        verbose: bool = True
-                       ) -> Tuple[List[float], Dict[DemandId, Column], PairPathColumnGeneration]:
+                       ) -> Tuple[List[float], Dict[DemandId, Column],
+                                  PairPathColumnGeneration, bool]:
     """
     Same sequential leximin loop as run_TCG_Exact.solve_leximin, but the pool is
-    warm-started with the heuristic columns before rank 1. Returns
-    (z_star_list, chosen_columns, cg).
+    warm-started with the heuristic columns before rank 1, and the loop is
+    guarded by a per-instance wall-clock cap.
+
+    Returns (z_star_list, chosen_columns, cg, interrupted).
+
+    wall_time : global wall-clock cap (s) for THIS instance. A new rank is only
+                started while elapsed < wall_time, so the loop stops between
+                ranks and the last completed rank's incumbent is never partial.
+                None => no cap (the old behaviour).
+    time_limit: cap (s) for ONE integer-master optimize() call (the MIP-time).
+                Keep it << wall_time so several ranks fit in the budget.
+
+    `interrupted` is True if the loop stopped early because of the wall cap OR
+    an external SIGINT (KeyboardInterrupt), False if it ran to completion
+    (leximin vector complete or max_rank reached).
 
     NOTE: the rank loop below is duplicated from the cold driver. Any change to
     the loop must be applied in both files until the seeding is factored out
@@ -338,6 +368,9 @@ def solve_leximin_warm(data: TASRData,
     if max_rank is None:
         max_rank = N
     max_rank = min(max_rank, N)
+
+    t_start = time.perf_counter()
+    wall_deadline = (t_start + wall_time) if wall_time else None
 
     # Cold construction first: this creates the trivial basic pool.
     cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
@@ -354,40 +387,64 @@ def solve_leximin_warm(data: TASRData,
         print(f"[warm] heuristic columns seeded: +{n_added} new "
               f"({n_refused} demand(s) refused -> trivial); pool now {pool_now} cols")
         print(f"[warm] heuristic incumbent sorted loads (top): {head}")
+        if wall_deadline:
+            print(f"[warm] wall cap: {wall_time:.0f}s   MIP cap/rank: "
+                  f"{time_limit if time_limit else 'none'}s")
 
     z_star: List[float] = []
     last_chosen: Dict[DemandId, Column] = {}
+    interrupted = False
 
-    for k in range(1, max_rank + 1):
-        # 1-5: column generation for rank k (inherited z_1*..z_{k-1}*).
-        cg_res = cg.solve_lp(rank_values=list(z_star))
-        # 6: integer master over the current pool, same inherited ranks.
-        mip = cg.solve_integer_master(rank_values=list(z_star),
-                                      time_limit=time_limit, mip_gap=mip_gap)
-        chosen = _selected_columns(cg, mip)
-        last_chosen = chosen
+    try:
+        for k in range(1, max_rank + 1):
+            # Wall cap is checked BEFORE starting the rank, so we never leave a
+            # rank half-solved: the incumbent from rank k-1 is complete.
+            if wall_deadline is not None and time.perf_counter() >= wall_deadline:
+                interrupted = True
+                if verbose:
+                    elapsed = time.perf_counter() - t_start
+                    print(f"[wall] cap reached ({elapsed:.0f}s >= {wall_time:.0f}s) "
+                          f"before rank {k}; stopping with {len(z_star)} rank(s).")
+                break
 
-        # Recover z_k* from the integer solution's sorted load vector rather
-        # than from the master's z variable, which is only bracketed by
-        # [z_{k+1}*, z_k*].
-        sorted_loads = _sorted_load_vector(data, chosen)
-        zk = sorted_loads[k - 1] if k - 1 < len(sorted_loads) else 0.0
-        z_star.append(float(zk))
+            # 1-5: column generation for rank k (inherited z_1*..z_{k-1}*).
+            cg_res = cg.solve_lp(rank_values=list(z_star))
+            # 6: integer master over the current pool, same inherited ranks.
+            mip = cg.solve_integer_master(rank_values=list(z_star),
+                                          time_limit=time_limit, mip_gap=mip_gap)
+            chosen = _selected_columns(cg, mip)
+            last_chosen = chosen
 
-        if verbose:
-            lp = cg_res.objective_value
-            print(f"[rank {k:>3}] LP={lp:.6g}  z_{k}*={zk:.6g}  "
-                  f"pool={sum(len(c) for c in cg.columns.values())} cols  "
-                  f"iters={cg_res.iterations}")
+            # Recover z_k* from the integer solution's sorted load vector rather
+            # than from the master's z variable, which is only bracketed by
+            # [z_{k+1}*, z_k*].
+            sorted_loads = _sorted_load_vector(data, chosen)
+            zk = sorted_loads[k - 1] if k - 1 < len(sorted_loads) else 0.0
+            z_star.append(float(zk))
 
-        # Stop early once the tail is all zeros.
-        if zk <= freeze_tol and all(v <= freeze_tol for v in sorted_loads[k - 1:]):
             if verbose:
-                print(f"[stop] remaining loads are ~0 at rank {k}; "
-                      f"leximin vector complete.")
-            break
+                lp = cg_res.objective_value
+                elapsed = time.perf_counter() - t_start
+                print(f"[rank {k:>3}] LP={lp:.6g}  z_{k}*={zk:.6g}  "
+                      f"pool={sum(len(c) for c in cg.columns.values())} cols  "
+                      f"iters={cg_res.iterations}  t={elapsed:.0f}s")
 
-    return z_star, last_chosen, cg
+            # Stop early once the tail is all zeros.
+            if zk <= freeze_tol and all(v <= freeze_tol for v in sorted_loads[k - 1:]):
+                if verbose:
+                    print(f"[stop] remaining loads are ~0 at rank {k}; "
+                          f"leximin vector complete.")
+                break
+
+    except KeyboardInterrupt:
+        # External SIGINT (e.g. `timeout -s SIGINT`). Keep whatever ranks were
+        # completed; the caller flushes srpaths/summary from what we return.
+        interrupted = True
+        if verbose:
+            print(f"\n[interrupt] SIGINT caught; returning {len(z_star)} "
+                  f"completed rank(s).")
+
+    return z_star, last_chosen, cg, interrupted
 
 
 # ---------------------------------------------------------------------------
@@ -430,48 +487,61 @@ def _run(args: argparse.Namespace, name: str,
               f"not be resolved to this instance and were ignored.")
 
     t0 = datetime.datetime.now()
-    z_star, chosen, cg = solve_leximin_warm(
-        data, warm, max_rank=args.max_rank, pricing_tol=args.pricing_tol,
-        freeze_tol=args.freeze_tol, mip_gap=args.mip_gap,
-        time_limit=args.time_limit,
-    )
-    elapsed_s = (datetime.datetime.now() - t0).total_seconds()
+    z_star: List[float] = []
+    chosen: Dict[DemandId, Column] = {}
+    cg: Optional[PairPathColumnGeneration] = None
+    interrupted = False
+    try:
+        z_star, chosen, cg, interrupted = solve_leximin_warm(
+            data, warm, max_rank=args.max_rank, pricing_tol=args.pricing_tol,
+            freeze_tol=args.freeze_tol, mip_gap=args.mip_gap,
+            time_limit=args.time_limit, wall_time=args.wall_time,
+        )
+    finally:
+        # Persist whatever we have, even if the loop raised past its own
+        # handler. This guarantees no run leaves the big instances empty.
+        elapsed_s = (datetime.datetime.now() - t0).total_seconds()
 
-    print("\n[leximin] z* prefix (sorted load vector, leading entries):")
-    print("  " + ", ".join(f"{z:.6g}" for z in z_star[:20]))
-    if len(z_star) > 20:
-        print(f"  ... ({len(z_star)} ranks certified, N={len(data.arc_times)})")
+        print("\n[leximin] z* prefix (sorted load vector, leading entries):")
+        print("  " + ", ".join(f"{z:.6g}" for z in z_star[:20]))
+        if len(z_star) > 20:
+            print(f"  ... ({len(z_star)} ranks certified, N={len(data.arc_times)})")
 
-    # Always saved under results/<instance>/<ALGO_NAME>/ ...
-    sol_path = res_dir / f"{name}-srpaths.json"
-    _export_srpaths(chosen, data, sol_path)
+        # Always saved under results/<instance>/<ALGO_NAME>/ ...
+        sol_path = res_dir / f"{name}-srpaths.json"
+        if chosen:
+            _export_srpaths(chosen, data, sol_path)
 
-    pool_size = sum(len(c) for c in cg.columns.values())
-    summary_path = res_dir / f"{name}-summary.json"
-    with open(summary_path, "w") as f:
-        json.dump({
-            "algorithm":    ALGO_NAME,
-            "instance":     name,
-            "N":            len(data.arc_times),
-            "ranks_solved": len(z_star),
-            "z_stars":      z_star,
-            "pool_size":    pool_size,
-            "warm_start": {
-                "source":             str(warm_path),
-                "warm_algo":          (None if args.warm_srpaths else args.warm_algo),
-                "unresolved_entries": unresolved,
-            },
-            "pricing_tol":  args.pricing_tol,
-            "freeze_tol":   args.freeze_tol,
-            "mip_gap":      args.mip_gap,
-            "time_limit":   args.time_limit,
-            "time_s":       round(elapsed_s, 2),
-        }, f, indent=2)
-    print(f"  Summary saved -> {summary_path}")
+        pool_size = (sum(len(c) for c in cg.columns.values())
+                     if cg is not None else 0)
+        summary_path = res_dir / f"{name}-summary.json"
+        with open(summary_path, "w") as f:
+            json.dump({
+                "algorithm":    ALGO_NAME,
+                "instance":     name,
+                "N":            len(data.arc_times),
+                "ranks_solved": len(z_star),
+                "interrupted":  bool(interrupted),
+                "z_stars":      z_star,
+                "pool_size":    pool_size,
+                "warm_start": {
+                    "source":             str(warm_path),
+                    "warm_algo":          (None if args.warm_srpaths else args.warm_algo),
+                    "unresolved_entries": unresolved,
+                },
+                "pricing_tol":  args.pricing_tol,
+                "freeze_tol":   args.freeze_tol,
+                "mip_gap":      args.mip_gap,
+                "time_limit":   args.time_limit,
+                "wall_time":    args.wall_time,
+                "time_s":       round(elapsed_s, 2),
+            }, f, indent=2)
+        print(f"  Summary saved -> {summary_path}"
+              f"{'  [INTERRUPTED]' if interrupted else ''}")
 
-    # ... plus an optional extra copy at a user-specified path.
-    if args.out:
-        _export_srpaths(chosen, data, Path(args.out))
+        # ... plus an optional extra copy at a user-specified path.
+        if args.out and chosen:
+            _export_srpaths(chosen, data, Path(args.out))
 
     print("=" * 68)
 
@@ -492,9 +562,16 @@ def main(argv: Optional[list] = None) -> int:
     ap.add_argument("--mip-gap", "--mip_gap",
                     type=float, default=0.0, dest="mip_gap")
     ap.add_argument("--time-limit", "--time_limit",
-                    type=float, default=None, dest="time_limit",
-                    help="Time limit for ONE integer-master call, in seconds. "
-                         "Not a global cap.")
+                    type=float, default=180.0, dest="time_limit",
+                    help="Cap (s) for ONE integer-master call (the per-rank "
+                         "MIP-time). Keep it << --wall-time so several ranks "
+                         "fit in the budget. Default 180.")
+    ap.add_argument("--wall-time", "--wall_time",
+                    type=float, default=1800.0, dest="wall_time",
+                    help="Per-instance global wall-clock cap (s). A new rank is "
+                         "only started while elapsed < wall-time, so the loop "
+                         "stops cleanly between ranks. Default 1800 (matches "
+                         "the 30-min STELA/CARLA campaign). Pass 0 to disable.")
     ap.add_argument("--warm-algo", "--warm_algo",
                     type=str, default=DEFAULT_WARM_ALGO, dest="warm_algo",
                     help=f"heuristic whose srpaths seeds the pool, read from "
@@ -509,6 +586,10 @@ def main(argv: Optional[list] = None) -> int:
                          "path (the results/<instance>/<ALGO>/ copy is always "
                          "written)")
     args = ap.parse_args(argv)
+
+    # A wall cap of 0 means "no cap" -- normalise to None for the loop.
+    if args.wall_time is not None and args.wall_time <= 0:
+        args.wall_time = None
 
     name = instance_name(args)
 
