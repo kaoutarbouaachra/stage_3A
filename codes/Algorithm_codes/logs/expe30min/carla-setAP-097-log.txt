@@ -1,0 +1,87 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-097 | 40 nodes, 200 arcs, 50 demands, 2 timesteps, N=400
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 4696 non-zero ECMP coefficients
+    t=1: 4737 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: /home/kaoutar/gurobi.lic
+  Pre-computing useful segments (maxSeg=6, |V|=40, |D|=50, |T|=2) ...
+  -> 3,120 useful segment slots  (naive: 3,200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+
+  x variables : 156,000
+  Base model : 234,000 vars, 160,101 constraints, 1,014,000 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     1.000000     1.000000      12.3s      20.5s   OPTIMAL  [....................] 0%
+      2     1.866157     0.866157      16.1s      36.6s   OPTIMAL  [....................] 0%
+      3     2.190387     0.324230      15.5s      52.1s   OPTIMAL  [....................] 1%
+      4     2.442854     0.252467      22.4s      74.5s   OPTIMAL  [....................] 1%
+      5     2.661600     0.218746      20.8s      95.3s   OPTIMAL  [....................] 1%
+      6     2.867593     0.205992      22.6s     117.9s   OPTIMAL  [....................] 2%
+      7     3.022525     0.154932      28.7s     146.7s   OPTIMAL  [....................] 2%
+      8     3.159861     0.137336      29.6s     176.2s   OPTIMAL  [....................] 2%
+      9     3.257471     0.097611      33.5s     209.7s   OPTIMAL  [....................] 2%
+     10     3.330673     0.073201      47.1s     256.9s   OPTIMAL  [....................] 2%
+     11     3.391858     0.061185     123.6s     380.5s   OPTIMAL  [....................] 3%
+     12     3.442719     0.050860     270.4s     650.9s   OPTIMAL  [....................] 3%
+     13     3.487100     0.044381     547.3s    1198.2s   OPTIMAL  [....................] 3%
+     14     3.531469     0.044369     320.5s    1518.7s   OPTIMAL  [....................] 4%
+  [k=15] Unexpected status 11 -- stopping.
+
+  Done.  14 ranks certified in 1799.3s
+  MLU (lambda_1) = 1.000000
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 1.000000   Theta_1   = 1.000000  ##############################
+  lambda_2   = 0.866157   Theta_2   = 1.866157  #########################
+  lambda_3   = 0.324230   Theta_3   = 2.190387  #########
+  lambda_4   = 0.252467   Theta_4   = 2.442854  #######
+  lambda_5   = 0.218746   Theta_5   = 2.661600  ######
+  lambda_6   = 0.205992   Theta_6   = 2.867593  ######
+  lambda_7   = 0.154932   Theta_7   = 3.022525  ####
+  lambda_8   = 0.137336   Theta_8   = 3.159861  ####
+  lambda_9   = 0.097611   Theta_9   = 3.257471  ##
+  lambda_10  = 0.073201   Theta_10  = 3.330673  ##
+  lambda_11  = 0.061185   Theta_11  = 3.391858  #
+  lambda_12  = 0.050860   Theta_12  = 3.442719  #
+  lambda_13  = 0.044381   Theta_13  = 3.487100  #
+  lambda_14  = 0.044369   Theta_14  = 3.531469  #
+
+MLU solution: 1.000000
+  Solution written -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-097/CARLA/setAP-097-srpaths.json
+  Summary written -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-097/CARLA/setAP-097-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 1800.11s
+
+Interrupt request received
+
+Interrupt request received

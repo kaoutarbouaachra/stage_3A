@@ -1,0 +1,59 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-119 | 50 nodes, 250 arcs, 40 demands, 2 timesteps, N=500
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 7822 non-zero ECMP coefficients
+    t=1: 7724 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: /home/kaoutar/gurobi.lic
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=40, |T|=2) ...
+  -> 4,900 useful segment slots  (naive: 5,000 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/main.py", line 239, in <module>
+    main()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/main.py", line 196, in main
+    waypoints, lam_bars, theta_bars = solver.solve()
+                                      ^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/solver.py", line 294, in solve
+    m.addConstr(u_k[idx] >= lam[idx] - z_k,
+KeyboardInterrupt
+
+  x variables : 196,000
+  Base model : 294,000 vars, 200,081 constraints, 1,274,000 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     1.000000     1.000000      10.8s      22.5s   OPTIMAL  [....................] 0%
+      2     1.655856     0.655856      16.7s      39.2s   OPTIMAL  [....................] 0%
+      3     2.079279     0.423424      17.4s      56.6s   OPTIMAL  [....................] 1%
+      4     2.335771     0.256492      21.8s      78.4s   OPTIMAL  [....................] 1%
+      5     2.523158     0.187387      28.9s     107.3s   OPTIMAL  [....................] 1%
+      6     2.695080     0.171922      29.9s     137.3s   OPTIMAL  [....................] 1%
+      7     2.801687     0.106607      34.7s     172.0s   OPTIMAL  [....................] 1%
+      8     2.903038     0.101351      38.7s     210.7s   OPTIMAL  [....................] 2%
+      9     2.992571     0.089533      45.6s     256.2s   OPTIMAL  [....................] 2%
+     10     3.075231     0.082660      53.3s     309.6s   OPTIMAL  [....................] 2%
+     11     3.131122     0.055891     112.0s     421.6s   OPTIMAL  [....................] 2%
+     12     3.176792     0.045671    1085.8s    1507.5s   OPTIMAL  [....................] 2%
+     13     3.216201     0.039409     291.0s    1798.5s   OPTIMAL  [....................] 3%
+Warning: environment still referenced so free is deferred (Continue to use WLS)

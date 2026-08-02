@@ -1,0 +1,73 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-114 | 50 nodes, 250 arcs, 30 demands, 2 timesteps, N=500
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 7617 non-zero ECMP coefficients
+    t=1: 7652 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000001
+
+============================================================
+ 4. Solver
+============================================================
+License: /home/kaoutar/gurobi.lic
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=30, |T|=2) …
+  → 4,900 useful segment slots  (naive: 5,000 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+
+  x variables : 147,000
+  Base model : 220,500 vars, 150,061 constraints, 955,500 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   1.000001       6.9s      15.6s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      2   0.586207      46.7s      62.6s  +0.413793  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      3   0.579426      44.3s     107.2s  +0.006782  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      4   0.527976      84.2s     191.7s  +0.051449  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      5   0.489656      86.8s     278.9s  +0.038321  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      6   0.459979     138.5s     417.6s  +0.029676  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+      7   0.451766      85.6s     503.6s  +0.008214  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+  [k=8] Unexpected status 11 — stopping.
+
+  Done.  7 iterations in 1798.8s
+  MLU (z*_1) = 1.000001
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  z*_1   = 1.000001  ##############################
+  z*_2   = 0.586207  #################
+  z*_3   = 0.579426  #################
+  z*_4   = 0.527976  ###############
+  z*_5   = 0.489656  ##############
+  z*_6   = 0.459979  #############
+  z*_7   = 0.451766  #############
+
+MLU solution: 1.000001
+  Solution written → /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/STELA/setAP-114-srpaths.json
+  Summary written -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/STELA/setAP-114-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 1800.09s
+
+Interrupt request received
+
+Interrupt request received

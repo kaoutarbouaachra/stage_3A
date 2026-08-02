@@ -1,0 +1,72 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-110 | 50 nodes, 250 arcs, 20 demands, 2 timesteps, N=500
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 7338 non-zero ECMP coefficients
+    t=1: 7331 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.255814
+
+============================================================
+ 4. Solver
+============================================================
+License: /home/kaoutar/gurobi.lic
+  Pre-computing useful segments (maxSeg=6, |V|=50, |D|=20, |T|=2) ...
+  -> 4,900 useful segment slots  (naive: 5,000 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/main.py", line 239, in <module>
+    main()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/main.py", line 196, in main
+    waypoints, lam_bars, theta_bars = solver.solve()
+                                      ^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/solver.py", line 340, in solve
+    best_waypoints = self._extract_waypoints(x)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/solver.py", line 414, in _extract_waypoints
+    active = {
+             ^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/carla/solver.py", line 418, in <dictcomp>
+    and x[d_id, t, i, j].X > 0.5
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+  x variables : 98,000
+  Base model : 147,000 vars, 100,041 constraints, 637,000 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     1.255814     1.255814       6.7s      12.4s   OPTIMAL  [....................] 0%
+      2     1.819137     0.563322       7.1s      19.5s   OPTIMAL  [....................] 0%
+      3     2.348638     0.529501      11.9s      31.4s   OPTIMAL  [....................] 1%
+      4     2.602870     0.254232      10.2s      41.6s   OPTIMAL  [....................] 1%
+      5     2.820685     0.217815      12.1s      53.7s   OPTIMAL  [....................] 1%
+      6     3.026885     0.206200      12.1s      65.8s   OPTIMAL  [....................] 1%
+      7     3.215752     0.188867      12.3s      78.1s   OPTIMAL  [....................] 1%
+      8     3.371922     0.156171      14.4s      92.5s   OPTIMAL  [....................] 2%
+      9     3.514340     0.142418      62.0s     154.5s   OPTIMAL  [....................] 2%
+     10     3.630404     0.116065     101.5s     256.0s   OPTIMAL  [....................] 2%
+     11     3.741649     0.111245      87.1s     343.1s   OPTIMAL  [....................] 2%
+     12     3.852767     0.111118      54.6s     397.6s   OPTIMAL  [....................] 2%
+     13     3.958246     0.105479      61.5s     459.1s   OPTIMAL  [....................] 3%
+     14     4.056762     0.098516     117.0s     576.1s   OPTIMAL  [....................] 3%
+     15     4.151567     0.094806     138.6s     714.7s   OPTIMAL  [....................] 3%
+     16     4.246261     0.094694      65.3s     780.0s   OPTIMAL  [....................] 3%
+     17     4.339132     0.092871     141.6s     921.6s   OPTIMAL  [....................] 3%
+     18     4.429525     0.090393     210.4s    1132.0s   OPTIMAL  [....................] 4%
+     19     4.518234     0.088708     276.3s    1408.3s   OPTIMAL  [....................] 4%
+Warning: environment still referenced so free is deferred (Continue to use WLS)

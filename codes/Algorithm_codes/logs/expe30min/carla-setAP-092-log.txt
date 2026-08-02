@@ -1,0 +1,67 @@
+
+============================================================
+ 1. Loading instance
+============================================================
+setAP-092 | 40 nodes, 200 arcs, 40 demands, 2 timesteps, N=400
+
+============================================================
+ 2. ECMP computation
+============================================================
+    t=0: 4709 non-zero ECMP coefficients
+    t=1: 4694 non-zero ECMP coefficients
+
+============================================================
+ 3. Baseline
+============================================================
+MLU baseline: 1.000000
+
+============================================================
+ 4. Solver
+============================================================
+License: /home/kaoutar/gurobi.lic
+  Pre-computing useful segments (maxSeg=6, |V|=40, |D|=40, |T|=2) ...
+  -> 3,120 useful segment slots  (naive: 3,200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+
+  x variables : 124,800
+  Base model : 187,200 vars, 128,081 constraints, 811,200 nonzeros
+
+
+      k      Theta_k     lambda_k  iter_time    elapsed    status
+  ----- ------------ ------------ ---------- ---------- ---------
+      1     1.000000     1.000000       5.2s      11.7s   OPTIMAL  [....................] 0%
+      2     1.572727     0.572727       9.6s      21.3s   OPTIMAL  [....................] 0%
+      3     1.687758     0.115030     103.9s     125.2s   OPTIMAL  [....................] 1%
+      4     1.773071     0.085313      24.3s     149.4s   OPTIMAL  [....................] 1%
+  [k=5] Unexpected status 11 -- stopping.
+
+  Done.  4 ranks certified in 1799.3s
+  MLU (lambda_1) = 1.000000
+
+============================================================
+ 5. Results
+============================================================
+
+Lex vector (first values):
+  lambda_1   = 1.000000   Theta_1   = 1.000000  ##############################
+  lambda_2   = 0.572727   Theta_2   = 1.572727  #################
+  lambda_3   = 0.115030   Theta_3   = 1.687758  ###
+  lambda_4   = 0.085313   Theta_4   = 1.773071  ##
+
+MLU solution: 1.000000
+  Solution written -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-092/CARLA/setAP-092-srpaths.json
+  Summary written -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-092/CARLA/setAP-092-summary.json
+
+============================================================
+ 6. Checker
+============================================================
+
+Done.
+Total time: 1800.14s
+
+Interrupt request received
+
+Interrupt request received
