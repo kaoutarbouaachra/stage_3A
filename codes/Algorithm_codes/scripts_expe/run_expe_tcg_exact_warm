@@ -36,8 +36,8 @@ cd "$CODES_DIR" || { echo "cannot cd to $CODES_DIR"; exit 1; }
 DATA_DIR="../setAP/"          # setAP instances
 MODULE="TCG_Exact.run_TCG_exact_warm"
 WARM_ALGO="TCG_DIAG"          # seed: results/<inst>/TCG_DIAG/<inst>-srpaths.json
-WALL=1800                     # internal per-instance wall cap (s)
-MIP=180                       # per-rank integer-master cap (s)
+WALL=3600                   # internal per-instance wall cap (s)
+MIP=1000                      # per-rank integer-master cap (s)
 TIMEOUT_MARGIN=120            # external timeout = WALL + margin (grace for flush)
 PYTHON=python3
 
