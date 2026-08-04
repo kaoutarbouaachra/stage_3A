@@ -1,0 +1,65 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-001_20260804_094713.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-04 09:47:13
+====================================================================
+  Instance     : setAP-001
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-001/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-001-net.json
+    t=0: 143 non-zero ECMP coefficients
+    t=1: 149 non-zero ECMP coefficients
+[data] nodes=10 arcs=50 demands=10 K=6 budget=7.0 N=100
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-001/TCG_DIAG/setAP-001-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +9 new (0 demand(s) refused -> trivial); pool now 19 cols
+[warm] heuristic incumbent sorted loads (top): 1.9471, 0.897437, 0.700987, 0.59323, 0.482759
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1.9471  z_1*=1.9471  pool=19 cols  iters=1  t=8s
+[rank   2] LP=0.378783  z_2*=0.897437  pool=22 cols  iters=3  t=10s
+[rank   3] LP=0.154946  z_3*=0.700987  pool=80 cols  iters=8  t=17s
+[rank   4] LP=0.0807184  z_4*=0.59323  pool=114 cols  iters=9  t=25s
+[rank   5] LP=0.0361866  z_5*=0.482759  pool=134 cols  iters=12  t=34s
+[rank   6] LP=0  z_6*=0.403513  pool=134 cols  iters=1  t=35s
+[rank   7] LP=0  z_7*=0.374332  pool=134 cols  iters=1  t=35s
+[rank   8] LP=0  z_8*=0.360431  pool=134 cols  iters=1  t=36s
+[rank   9] LP=0  z_9*=0.356176  pool=134 cols  iters=1  t=36s
+[rank  10] LP=0  z_10*=0.353734  pool=134 cols  iters=1  t=37s
+[rank  11] LP=0  z_11*=0.34215  pool=134 cols  iters=1  t=37s
+[rank  12] LP=0  z_12*=0.342082  pool=134 cols  iters=1  t=38s
+[rank  13] LP=0  z_13*=0.291665  pool=134 cols  iters=1  t=39s
+[rank  14] LP=0  z_14*=0.278698  pool=134 cols  iters=1  t=39s
+[rank  15] LP=0  z_15*=0.274043  pool=134 cols  iters=1  t=40s
+[rank  16] LP=0  z_16*=0.25094  pool=134 cols  iters=1  t=40s
+[rank  17] LP=0  z_17*=0.249435  pool=134 cols  iters=1  t=41s
+[rank  18] LP=0  z_18*=0.224169  pool=134 cols  iters=1  t=41s
+[rank  19] LP=0  z_19*=0.223519  pool=134 cols  iters=1  t=42s
+[rank  20] LP=0  z_20*=0.215813  pool=134 cols  iters=1  t=42s
+[rank  21] LP=0  z_21*=0.205723  pool=134 cols  iters=1  t=43s
+[rank  22] LP=0  z_22*=0.198162  pool=134 cols  iters=1  t=44s
+[rank  23] LP=0  z_23*=0.179678  pool=134 cols  iters=1  t=44s
+[rank  24] LP=0  z_24*=0.158371  pool=134 cols  iters=1  t=45s
+[rank  25] LP=0  z_25*=0.15343  pool=134 cols  iters=1  t=45s
+[rank  26] LP=0  z_26*=0.133011  pool=134 cols  iters=1  t=46s
+[rank  27] LP=0  z_27*=0.129946  pool=134 cols  iters=1  t=47s
+[rank  28] LP=0  z_28*=0.128036  pool=134 cols  iters=1  t=47s
+[rank  29] LP=0  z_29*=0.11376  pool=134 cols  iters=1  t=48s
+[rank  30] LP=0  z_30*=0.10967  pool=134 cols  iters=1  t=49s
+[rank  31] LP=0  z_31*=0.101459  pool=134 cols  iters=1  t=49s
+[rank  32] LP=0  z_32*=0.0416158  pool=134 cols  iters=1  t=50s
+[rank  33] LP=0  z_33*=0.00787916  pool=134 cols  iters=1  t=51s
+[rank  34] LP=0  z_34*=0  pool=134 cols  iters=1  t=52s
+[stop] remaining loads are ~0 at rank 34; leximin vector complete.
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1.9471, 0.897437, 0.700987, 0.59323, 0.482759, 0.403513, 0.374332, 0.360431, 0.356176, 0.353734, 0.34215, 0.342082, 0.291665, 0.278698, 0.274043, 0.25094, 0.249435, 0.224169, 0.223519, 0.215813
+  ... (34 ranks certified, N=100)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-001/TCG_EXACT_WARM/setAP-001-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-001/TCG_EXACT_WARM/setAP-001-summary.json
+====================================================================
+Freeing default Gurobi environment
