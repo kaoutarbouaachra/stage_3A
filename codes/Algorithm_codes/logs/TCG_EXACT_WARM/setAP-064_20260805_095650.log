@@ -1,0 +1,92 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-064_20260805_095650.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-05 09:56:50
+====================================================================
+  Instance     : setAP-064
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-064-net.json
+    t=0: 2378 non-zero ECMP coefficients
+    t=1: 2392 non-zero ECMP coefficients
+[data] nodes=30 arcs=150 demands=30 K=6 budget=7.0 N=300
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_DIAG/setAP-064-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +26 new (0 demand(s) refused -> trivial); pool now 56 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.440972, 0.413351, 0.412405, 0.410388
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=56 cols  iters=1  t=38s
+[rank   2] LP=0.320576  z_2*=0.440972  pool=62 cols  iters=3  t=101s
+[rank   3] LP=0.204589  z_3*=0.413351  pool=170 cols  iters=7  t=267s
+[rank   4] LP=0.158234  z_4*=0.412405  pool=299 cols  iters=9  t=499s
+[rank   5] LP=0.12852  z_5*=0.410388  pool=408 cols  iters=14  t=844s
+[rank   6] LP=0.107506  z_6*=0.409215  pool=455 cols  iters=8  t=1036s
+[rank   7] LP=0.0907332  z_7*=0.342863  pool=497 cols  iters=8  t=1225s
+[rank   8] LP=0.0770463  z_8*=0.341059  pool=532 cols  iters=7  t=1394s
+[rank   9] LP=0.0661941  z_9*=0.336152  pool=551 cols  iters=5  t=1514s
+[rank  10] LP=0.0562293  z_10*=0.320157  pool=570 cols  iters=5  t=1634s
+[rank  11] LP=0.0469381  z_11*=0.318122  pool=590 cols  iters=5  t=1753s
+[rank  12] LP=0.0383317  z_12*=0.313348  pool=613 cols  iters=5  t=1874s
+[rank  13] LP=0.030493  z_13*=0.312702  pool=635 cols  iters=6  t=2019s
+[rank  14] LP=0.0232249  z_14*=0.305029  pool=656 cols  iters=7  t=2188s
+[rank  15] LP=0.0164195  z_15*=0.304236  pool=685 cols  iters=7  t=2361s
+[rank  16] LP=0.00994491  z_16*=0.299722  pool=697 cols  iters=8  t=2556s
+[rank  17] LP=0.00361842  z_17*=0.298418  pool=710 cols  iters=5  t=2679s
+[rank  18] LP=0  z_18*=0.295139  pool=710 cols  iters=1  t=2698s
+[rank  19] LP=0  z_19*=0.294953  pool=710 cols  iters=1  t=2716s
+[rank  20] LP=0  z_20*=0.291579  pool=710 cols  iters=1  t=2736s
+[rank  21] LP=0  z_21*=0.283144  pool=710 cols  iters=1  t=2756s
+[rank  22] LP=0  z_22*=0.281137  pool=710 cols  iters=1  t=2775s
+[rank  23] LP=0  z_23*=0.278114  pool=710 cols  iters=1  t=2794s
+[rank  24] LP=0  z_24*=0.276331  pool=710 cols  iters=1  t=2814s
+[rank  25] LP=0  z_25*=0.269394  pool=710 cols  iters=1  t=2834s
+[rank  26] LP=0  z_26*=0.268295  pool=710 cols  iters=1  t=2854s
+[rank  27] LP=0  z_27*=0.25483  pool=710 cols  iters=1  t=2874s
+[rank  28] LP=0  z_28*=0.251488  pool=710 cols  iters=1  t=2894s
+[rank  29] LP=0  z_29*=0.250194  pool=710 cols  iters=1  t=2914s
+[rank  30] LP=0  z_30*=0.249925  pool=710 cols  iters=1  t=2934s
+[rank  31] LP=0  z_31*=0.246482  pool=710 cols  iters=1  t=2955s
+[rank  32] LP=0  z_32*=0.244002  pool=710 cols  iters=1  t=2974s
+[rank  33] LP=0  z_33*=0.240255  pool=710 cols  iters=1  t=2995s
+[rank  34] LP=0  z_34*=0.239161  pool=710 cols  iters=1  t=3015s
+[rank  35] LP=0  z_35*=0.232747  pool=710 cols  iters=1  t=3036s
+[rank  36] LP=0  z_36*=0.231357  pool=710 cols  iters=1  t=3057s
+[rank  37] LP=0  z_37*=0.229779  pool=710 cols  iters=1  t=3078s
+[rank  38] LP=0  z_38*=0.211658  pool=710 cols  iters=1  t=3099s
+[rank  39] LP=0  z_39*=0.210367  pool=710 cols  iters=1  t=3120s
+[rank  40] LP=0  z_40*=0.205106  pool=710 cols  iters=1  t=3141s
+[rank  41] LP=0  z_41*=0.201426  pool=710 cols  iters=1  t=3163s
+[rank  42] LP=0  z_42*=0.195842  pool=710 cols  iters=1  t=3183s
+[rank  43] LP=0  z_43*=0.19321  pool=710 cols  iters=1  t=3205s
+[rank  44] LP=0  z_44*=0.189066  pool=710 cols  iters=1  t=3226s
+[rank  45] LP=0  z_45*=0.18858  pool=710 cols  iters=1  t=3248s
+[rank  46] LP=0  z_46*=0.186099  pool=710 cols  iters=1  t=3270s
+[rank  47] LP=0  z_47*=0.185041  pool=710 cols  iters=1  t=3292s
+[rank  48] LP=0  z_48*=0.182436  pool=710 cols  iters=1  t=3314s
+[rank  49] LP=0  z_49*=0.179693  pool=710 cols  iters=1  t=3337s
+[rank  50] LP=0  z_50*=0.176749  pool=710 cols  iters=1  t=3359s
+[rank  51] LP=0  z_51*=0.174756  pool=710 cols  iters=1  t=3382s
+[rank  52] LP=0  z_52*=0.172441  pool=710 cols  iters=1  t=3405s
+[rank  53] LP=0  z_53*=0.172363  pool=710 cols  iters=1  t=3428s
+[rank  54] LP=0  z_54*=0.165474  pool=710 cols  iters=1  t=3451s
+[rank  55] LP=0  z_55*=0.164981  pool=710 cols  iters=1  t=3474s
+[rank  56] LP=0  z_56*=0.163917  pool=710 cols  iters=1  t=3498s
+[rank  57] LP=0  z_57*=0.163268  pool=710 cols  iters=1  t=3522s
+[rank  58] LP=0  z_58*=0.161638  pool=710 cols  iters=1  t=3545s
+[rank  59] LP=0  z_59*=0.161424  pool=710 cols  iters=1  t=3569s
+[rank  60] LP=0  z_60*=0.161  pool=710 cols  iters=1  t=3593s
+[rank  61] LP=0  z_61*=0.156071  pool=710 cols  iters=1  t=3617s
+[wall] cap reached (3617s >= 3600s) before rank 62; stopping with 61 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.440972, 0.413351, 0.412405, 0.410388, 0.409215, 0.342863, 0.341059, 0.336152, 0.320157, 0.318122, 0.313348, 0.312702, 0.305029, 0.304236, 0.299722, 0.298418, 0.295139, 0.294953, 0.291579
+  ... (61 ranks certified, N=300)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM/setAP-064-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM/setAP-064-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
