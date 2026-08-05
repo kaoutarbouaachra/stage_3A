@@ -1,0 +1,24 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-068_20260805_135824.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-05 13:58:24
+====================================================================
+  Instance     : setAP-068
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-068/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-068-net.json
+    t=0: 2259 non-zero ECMP coefficients
+    t=1: 2276 non-zero ECMP coefficients
+[data] nodes=30 arcs=150 demands=40 K=6 budget=7.0 N=300
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-068/TCG_DIAG/setAP-068-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +34 new (0 demand(s) refused -> trivial); pool now 74 cols
+[warm] heuristic incumbent sorted loads (top): 5.09259, 0.587651, 0.524035, 0.524035, 0.521543
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=5.09259  z_1*=5.09259  pool=74 cols  iters=1  t=51s
+[rank   2] LP=0.337681  z_2*=0.550278  pool=119 cols  iters=5  t=201s
