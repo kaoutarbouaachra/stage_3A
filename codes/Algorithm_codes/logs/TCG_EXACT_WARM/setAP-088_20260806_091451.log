@@ -1,0 +1,41 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-088_20260806_091451.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 09:14:51
+====================================================================
+  Instance     : setAP-088
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-088/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-088-net.json
+    t=0: 4474 non-zero ECMP coefficients
+    t=1: 4498 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=30 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-088/TCG_DIAG/setAP-088-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +25 new (0 demand(s) refused -> trivial); pool now 55 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.866953, 0.186317, 0.156454, 0.102426
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=55 cols  iters=1  t=71s
+[rank   2] LP=0.433476  z_2*=0.866953  pool=55 cols  iters=1  t=106s
+[rank   3] LP=0.0656658  z_3*=0.186317  pool=55 cols  iters=1  t=143s
+[rank   4] LP=0.00838367  z_4*=0.156454  pool=468 cols  iters=33  t=1733s
+[rank   5] LP=0.000910973  z_5*=0.102426  pool=650 cols  iters=17  t=2519s
+[rank   6] LP=0  z_6*=0.0746781  pool=650 cols  iters=1  t=2554s
+[rank   7] LP=0  z_7*=0.0728337  pool=650 cols  iters=1  t=2588s
+[rank   8] LP=0  z_8*=0.0602313  pool=650 cols  iters=1  t=2622s
+[rank   9] LP=0  z_9*=0.0520808  pool=650 cols  iters=1  t=2656s
+[rank  10] LP=0  z_10*=0.052062  pool=650 cols  iters=1  t=2691s
+[rank  11] LP=0  z_11*=0.0448187  pool=650 cols  iters=1  t=2725s
+[rank  12] LP=0  z_12*=0.0425512  pool=650 cols  iters=1  t=2760s
+[rank  13] LP=0  z_13*=0.0419855  pool=650 cols  iters=1  t=2795s
+[rank  14] LP=0  z_14*=0.0418701  pool=650 cols  iters=1  t=2829s
+[rank  15] LP=0  z_15*=0.0397854  pool=650 cols  iters=1  t=2864s
+[rank  16] LP=0  z_16*=0.0395875  pool=650 cols  iters=1  t=2899s
+[rank  17] LP=0  z_17*=0.0393991  pool=650 cols  iters=1  t=2934s
+[rank  18] LP=0  z_18*=0.0362097  pool=650 cols  iters=1  t=2969s
+[rank  19] LP=0  z_19*=0.033519  pool=650 cols  iters=1  t=3004s

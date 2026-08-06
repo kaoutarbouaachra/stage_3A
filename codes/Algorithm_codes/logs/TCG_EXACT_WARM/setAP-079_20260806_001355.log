@@ -1,0 +1,91 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-079_20260806_001355.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 00:13:55
+====================================================================
+  Instance     : setAP-079
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-079/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-079-net.json
+    t=0: 4596 non-zero ECMP coefficients
+    t=1: 4606 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=10 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-079/TCG_DIAG/setAP-079-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +9 new (0 demand(s) refused -> trivial); pool now 19 cols
+[warm] heuristic incumbent sorted loads (top): 0.821932, 0.659575, 0.563176, 0.524395, 0.475096
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.821932  z_1*=0.821932  pool=19 cols  iters=1  t=23s
+[rank   2] LP=0.414843  z_2*=0.659575  pool=24 cols  iters=2  t=48s
+[rank   3] LP=0.296657  z_3*=0.563176  pool=33 cols  iters=3  t=87s
+[rank   4] LP=0.21896  z_4*=0.524395  pool=53 cols  iters=4  t=139s
+[rank   5] LP=0.162774  z_5*=0.475096  pool=79 cols  iters=4  t=193s
+[rank   6] LP=0.126596  z_6*=0.456442  pool=175 cols  iters=13  t=391s
+[rank   7] LP=0.104463  z_7*=0.444775  pool=362 cols  iters=27  t=825s
+[rank   8] LP=0.0883358  z_8*=0.43662  pool=372 cols  iters=2  t=854s
+[rank   9] LP=0.073688  z_9*=0.418179  pool=428 cols  iters=13  t=1065s
+[rank  10] LP=0.06088  z_10*=0.404348  pool=516 cols  iters=20  t=1396s
+[rank  11] LP=0.0499382  z_11*=0.403471  pool=578 cols  iters=21  t=1741s
+[rank  12] LP=0.0399711  z_12*=0.396184  pool=612 cols  iters=9  t=1889s
+[rank  13] LP=0.0307899  z_13*=0.387097  pool=683 cols  iters=12  t=2080s
+[rank  14] LP=0.0226738  z_14*=0.380807  pool=734 cols  iters=11  t=2261s
+[rank  15] LP=0.0153949  z_15*=0.350875  pool=774 cols  iters=9  t=2407s
+[rank  16] LP=0.00865367  z_16*=0.350875  pool=856 cols  iters=17  t=2672s
+[rank  17] LP=0.00238764  z_17*=0.342548  pool=931 cols  iters=20  t=2953s
+[rank  18] LP=0  z_18*=0.320414  pool=931 cols  iters=1  t=2966s
+[rank  19] LP=0  z_19*=0.306167  pool=931 cols  iters=1  t=2978s
+[rank  20] LP=0  z_20*=0.294442  pool=931 cols  iters=1  t=2991s
+[rank  21] LP=0  z_21*=0.292848  pool=931 cols  iters=1  t=3004s
+[rank  22] LP=0  z_22*=0.270382  pool=931 cols  iters=1  t=3017s
+[rank  23] LP=0  z_23*=0.258796  pool=931 cols  iters=1  t=3030s
+[rank  24] LP=0  z_24*=0.24883  pool=931 cols  iters=1  t=3043s
+[rank  25] LP=0  z_25*=0.239459  pool=931 cols  iters=1  t=3056s
+[rank  26] LP=0  z_26*=0.238462  pool=931 cols  iters=1  t=3070s
+[rank  27] LP=0  z_27*=0.237332  pool=931 cols  iters=1  t=3084s
+[rank  28] LP=0  z_28*=0.224242  pool=931 cols  iters=1  t=3098s
+[rank  29] LP=0  z_29*=0.222564  pool=931 cols  iters=1  t=3112s
+[rank  30] LP=0  z_30*=0.217265  pool=931 cols  iters=1  t=3126s
+[rank  31] LP=0  z_31*=0.214707  pool=931 cols  iters=1  t=3140s
+[rank  32] LP=0  z_32*=0.208872  pool=931 cols  iters=1  t=3155s
+[rank  33] LP=0  z_33*=0.201747  pool=931 cols  iters=1  t=3170s
+[rank  34] LP=0  z_34*=0.190769  pool=931 cols  iters=1  t=3184s
+[rank  35] LP=0  z_35*=0.189089  pool=931 cols  iters=1  t=3199s
+[rank  36] LP=0  z_36*=0.183727  pool=931 cols  iters=1  t=3215s
+[rank  37] LP=0  z_37*=0.16493  pool=931 cols  iters=1  t=3230s
+[rank  38] LP=0  z_38*=0.16339  pool=931 cols  iters=1  t=3245s
+[rank  39] LP=0  z_39*=0.162675  pool=931 cols  iters=1  t=3261s
+[rank  40] LP=0  z_40*=0.158626  pool=931 cols  iters=1  t=3276s
+[rank  41] LP=0  z_41*=0.158315  pool=931 cols  iters=1  t=3292s
+[rank  42] LP=0  z_42*=0.146654  pool=931 cols  iters=1  t=3308s
+[rank  43] LP=0  z_43*=0.146296  pool=931 cols  iters=1  t=3324s
+[rank  44] LP=0  z_44*=0.146032  pool=931 cols  iters=1  t=3340s
+[rank  45] LP=0  z_45*=0.14478  pool=931 cols  iters=1  t=3356s
+[rank  46] LP=0  z_46*=0.144086  pool=931 cols  iters=1  t=3373s
+[rank  47] LP=0  z_47*=0.140175  pool=931 cols  iters=1  t=3389s
+[rank  48] LP=0  z_48*=0.137334  pool=931 cols  iters=1  t=3406s
+[rank  49] LP=0  z_49*=0.136264  pool=931 cols  iters=1  t=3422s
+[rank  50] LP=0  z_50*=0.134783  pool=931 cols  iters=1  t=3439s
+[rank  51] LP=0  z_51*=0.131263  pool=931 cols  iters=1  t=3456s
+[rank  52] LP=0  z_52*=0.130813  pool=931 cols  iters=1  t=3473s
+[rank  53] LP=0  z_53*=0.128555  pool=931 cols  iters=1  t=3490s
+[rank  54] LP=0  z_54*=0.120694  pool=931 cols  iters=1  t=3508s
+[rank  55] LP=0  z_55*=0.120571  pool=931 cols  iters=1  t=3525s
+[rank  56] LP=0  z_56*=0.120556  pool=931 cols  iters=1  t=3543s
+[rank  57] LP=0  z_57*=0.118871  pool=931 cols  iters=1  t=3560s
+[rank  58] LP=0  z_58*=0.112418  pool=931 cols  iters=1  t=3578s
+[rank  59] LP=0  z_59*=0.109155  pool=931 cols  iters=1  t=3596s
+[rank  60] LP=0  z_60*=0.102564  pool=931 cols  iters=1  t=3614s
+[wall] cap reached (3614s >= 3600s) before rank 61; stopping with 60 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  0.821932, 0.659575, 0.563176, 0.524395, 0.475096, 0.456442, 0.444775, 0.43662, 0.418179, 0.404348, 0.403471, 0.396184, 0.387097, 0.380807, 0.350875, 0.350875, 0.342548, 0.320414, 0.306167, 0.294442
+  ... (60 ranks certified, N=400)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-079/TCG_EXACT_WARM/setAP-079-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-079/TCG_EXACT_WARM/setAP-079-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

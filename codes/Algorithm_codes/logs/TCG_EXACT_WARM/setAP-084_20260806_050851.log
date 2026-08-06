@@ -1,0 +1,36 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-084_20260806_050851.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 05:08:51
+====================================================================
+  Instance     : setAP-084
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-084/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-084-net.json
+    t=0: 4609 non-zero ECMP coefficients
+    t=1: 4623 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=20 K=6 budget=9.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-084/TCG_DIAG/setAP-084-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +18 new (0 demand(s) refused -> trivial); pool now 38 cols
+[warm] heuristic incumbent sorted loads (top): 1.61834, 0.619309, 0.549618, 0.475426, 0.422444
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1.61834  z_1*=1.61834  pool=38 cols  iters=1  t=45s
+[rank   2] LP=0.320499  z_2*=0.555412  pool=46 cols  iters=4  t=145s
+[rank   3] LP=0.171782  z_3*=0.549618  pool=180 cols  iters=9  t=434s
+[rank   4] LP=0.126633  z_4*=0.475426  pool=354 cols  iters=14  t=868s
+[rank   5] LP=0.101831  z_5*=0.422444  pool=526 cols  iters=31  t=1834s
+[rank   6] LP=0.0830428  z_6*=0.420243  pool=608 cols  iters=18  t=2385s
+[rank   7] LP=0.0683276  z_7*=0.391917  pool=700 cols  iters=21  t=3017s
+[rank   8] LP=0.0560381  z_8*=0.389283  pool=757 cols  iters=19  t=3587s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-084/TCG_EXACT_WARM/setAP-084-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)

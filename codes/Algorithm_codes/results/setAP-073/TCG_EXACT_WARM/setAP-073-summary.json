@@ -1,0 +1,35 @@
+{
+  "algorithm": "TCG_EXACT_WARM",
+  "instance": "setAP-073",
+  "N": 300,
+  "ranks_solved": 14,
+  "interrupted": true,
+  "z_stars": [
+    1.000000035532995,
+    0.539232081218274,
+    0.4322158459214502,
+    0.36712351797040166,
+    0.21779067556742324,
+    0.2106788372093023,
+    0.20231484839650143,
+    0.19220346428571428,
+    0.18457634256559766,
+    0.18282233534743203,
+    0.17182696926713947,
+    0.163091286049238,
+    0.16255495298165137,
+    0.16172719801980198
+  ],
+  "pool_size": 909,
+  "warm_start": {
+    "source": "/home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-073/TCG_DIAG/setAP-073-srpaths.json",
+    "warm_algo": "TCG_DIAG",
+    "unresolved_entries": 0
+  },
+  "pricing_tol": 1e-07,
+  "freeze_tol": 1e-06,
+  "mip_gap": 0.0,
+  "time_limit": 1000.0,
+  "wall_time": 3600.0,
+  "time_s": 3623.58
+}

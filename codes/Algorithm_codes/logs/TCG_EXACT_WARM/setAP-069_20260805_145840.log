@@ -1,0 +1,61 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-069_20260805_145840.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-05 14:58:40
+====================================================================
+  Instance     : setAP-069
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-069/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-069-net.json
+    t=0: 2258 non-zero ECMP coefficients
+    t=1: 2248 non-zero ECMP coefficients
+[data] nodes=30 arcs=150 demands=40 K=6 budget=7.0 N=300
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-069/TCG_DIAG/setAP-069-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +34 new (0 demand(s) refused -> trivial); pool now 74 cols
+[warm] heuristic incumbent sorted loads (top): 1.04703, 0.394228, 0.321082, 0.209904, 0.206553
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1.04703  z_1*=1.04703  pool=74 cols  iters=1  t=51s
+[rank   2] LP=0.208528  z_2*=0.394228  pool=74 cols  iters=1  t=77s
+[rank   3] LP=0.0968339  z_3*=0.321082  pool=133 cols  iters=4  t=208s
+[rank   4] LP=0.0620532  z_4*=0.209904  pool=306 cols  iters=10  t=554s
+[rank   5] LP=0.0436777  z_5*=0.206553  pool=482 cols  iters=19  t=1236s
+[rank   6] LP=0.0316812  z_6*=0.191937  pool=554 cols  iters=11  t=1621s
+[rank   7] LP=0.0222356  z_7*=0.184797  pool=614 cols  iters=9  t=1937s
+[rank   8] LP=0.0144978  z_8*=0.184168  pool=667 cols  iters=9  t=2252s
+[rank   9] LP=0.00764264  z_9*=0.16114  pool=725 cols  iters=11  t=2633s
+[rank  10] LP=0.00135356  z_10*=0.158775  pool=781 cols  iters=15  t=3090s
+[rank  11] LP=0  z_11*=0.152082  pool=781 cols  iters=1  t=3115s
+[rank  12] LP=0  z_12*=0.145967  pool=781 cols  iters=1  t=3140s
+[rank  13] LP=0  z_13*=0.140567  pool=781 cols  iters=1  t=3165s
+[rank  14] LP=0  z_14*=0.137621  pool=781 cols  iters=1  t=3191s
+[rank  15] LP=0  z_15*=0.131035  pool=781 cols  iters=1  t=3217s
+[rank  16] LP=0  z_16*=0.130101  pool=781 cols  iters=1  t=3243s
+[rank  17] LP=0  z_17*=0.128471  pool=781 cols  iters=1  t=3269s
+[rank  18] LP=0  z_18*=0.124447  pool=781 cols  iters=1  t=3295s
+[rank  19] LP=0  z_19*=0.124219  pool=781 cols  iters=1  t=3320s
+[rank  20] LP=0  z_20*=0.115904  pool=781 cols  iters=1  t=3356s
+[rank  21] LP=0  z_21*=0.109931  pool=781 cols  iters=1  t=3382s
+[rank  22] LP=0  z_22*=0.109104  pool=781 cols  iters=1  t=3408s
+[rank  23] LP=0  z_23*=0.108288  pool=781 cols  iters=1  t=3434s
+[rank  24] LP=0  z_24*=0.107922  pool=781 cols  iters=1  t=3460s
+[rank  25] LP=0  z_25*=0.107145  pool=781 cols  iters=1  t=3487s
+[rank  26] LP=0  z_26*=0.103945  pool=781 cols  iters=1  t=3513s
+[rank  27] LP=0  z_27*=0.103265  pool=781 cols  iters=1  t=3540s
+[rank  28] LP=0  z_28*=0.103058  pool=781 cols  iters=1  t=3567s
+[rank  29] LP=0  z_29*=0.10203  pool=781 cols  iters=1  t=3593s
+[rank  30] LP=0  z_30*=0.101994  pool=781 cols  iters=1  t=3621s
+[wall] cap reached (3621s >= 3600s) before rank 31; stopping with 30 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1.04703, 0.394228, 0.321082, 0.209904, 0.206553, 0.191937, 0.184797, 0.184168, 0.16114, 0.158775, 0.152082, 0.145967, 0.140567, 0.137621, 0.131035, 0.130101, 0.128471, 0.124447, 0.124219, 0.115904
+  ... (30 ranks certified, N=300)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-069/TCG_EXACT_WARM/setAP-069-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-069/TCG_EXACT_WARM/setAP-069-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
