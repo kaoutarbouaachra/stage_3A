@@ -1,0 +1,22 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-100_20260806_165345.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:45
+====================================================================
+  Instance     : setAP-100
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-100-net.json
+    t=0: 4704 non-zero ECMP coefficients
+    t=1: 4744 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_DIAG/setAP-100-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_EXACT_WARM/setAP-100-summary.json

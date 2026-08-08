@@ -39,3 +39,29 @@ Academic license 2498834 - for non-commercial use only - registered to ya___@gma
 [rank  17] LP=0  z_17*=0.0393991  pool=650 cols  iters=1  t=2934s
 [rank  18] LP=0  z_18*=0.0362097  pool=650 cols  iters=1  t=2969s
 [rank  19] LP=0  z_19*=0.033519  pool=650 cols  iters=1  t=3004s
+[rank  20] LP=0  z_20*=0.0315541  pool=650 cols  iters=1  t=3039s
+[rank  21] LP=0  z_21*=0.0298881  pool=650 cols  iters=1  t=3074s
+[rank  22] LP=0  z_22*=0.0295552  pool=650 cols  iters=1  t=3110s
+[rank  23] LP=0  z_23*=0.029002  pool=650 cols  iters=1  t=3145s
+[rank  24] LP=0  z_24*=0.0273057  pool=650 cols  iters=1  t=3181s
+[rank  25] LP=0  z_25*=0.0264607  pool=650 cols  iters=1  t=3217s
+[rank  26] LP=0  z_26*=0.0256713  pool=650 cols  iters=1  t=3252s
+[rank  27] LP=0  z_27*=0.0253121  pool=650 cols  iters=1  t=3288s
+[rank  28] LP=0  z_28*=0.0250491  pool=650 cols  iters=1  t=3325s
+[rank  29] LP=0  z_29*=0.0246769  pool=650 cols  iters=1  t=3362s
+[rank  30] LP=0  z_30*=0.0246397  pool=650 cols  iters=1  t=3398s
+[rank  31] LP=0  z_31*=0.0242137  pool=650 cols  iters=1  t=3435s
+[rank  32] LP=0  z_32*=0.0240874  pool=650 cols  iters=1  t=3472s
+[rank  33] LP=0  z_33*=0.0240323  pool=650 cols  iters=1  t=3509s
+[rank  34] LP=0  z_34*=0.0239659  pool=650 cols  iters=1  t=3546s
+[rank  35] LP=0  z_35*=0.0237521  pool=650 cols  iters=1  t=3586s
+[rank  36] LP=0  z_36*=0.0231999  pool=650 cols  iters=1  t=3627s
+[wall] cap reached (3627s >= 3600s) before rank 37; stopping with 36 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.866953, 0.186317, 0.156454, 0.102426, 0.0746781, 0.0728337, 0.0602313, 0.0520808, 0.052062, 0.0448187, 0.0425512, 0.0419855, 0.0418701, 0.0397854, 0.0395875, 0.0393991, 0.0362097, 0.033519, 0.0315541
+  ... (36 ranks certified, N=400)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-088/TCG_EXACT_WARM/setAP-088-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-088/TCG_EXACT_WARM/setAP-088-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
