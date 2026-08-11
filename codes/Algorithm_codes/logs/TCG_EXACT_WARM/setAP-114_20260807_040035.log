@@ -1,0 +1,34 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-114_20260807_040035.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 04:00:35
+====================================================================
+  Instance     : setAP-114
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-114-net.json
+    t=0: 7617 non-zero ECMP coefficients
+    t=1: 7652 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=30 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/TCG_DIAG/setAP-114-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +28 new (0 demand(s) refused -> trivial); pool now 58 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.677648, 0.586207, 0.579426, 0.489656
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=58 cols  iters=1  t=115s
+[rank   2] LP=0.414299  z_2*=0.677648  pool=61 cols  iters=3  t=290s
+[rank   3] LP=0.294752  z_3*=0.579426  pool=105 cols  iters=5  t=594s
+[rank   4] LP=0.228503  z_4*=0.527976  pool=171 cols  iters=4  t=883s
+[rank   5] LP=0.186844  z_5*=0.524631  pool=300 cols  iters=6  t=1361s
+[rank   6] LP=0.157533  z_6*=0.4985  pool=624 cols  iters=18  t=2877s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/TCG_EXACT_WARM/setAP-114-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)

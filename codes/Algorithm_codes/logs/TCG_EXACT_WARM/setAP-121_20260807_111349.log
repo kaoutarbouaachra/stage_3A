@@ -1,0 +1,34 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-121_20260807_111349.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 11:13:49
+====================================================================
+  Instance     : setAP-121
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-121/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-121-net.json
+    t=0: 7333 non-zero ECMP coefficients
+    t=1: 7341 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=50 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-121/TCG_DIAG/setAP-121-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +46 new (0 demand(s) refused -> trivial); pool now 96 cols
+[warm] heuristic incumbent sorted loads (top): 0.623377, 0.465966, 0.457273, 0.426089, 0.420073
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.465966  z_1*=0.623377  pool=100 cols  iters=3  t=490s
+[rank   2] LP=0.331646  z_2*=0.465966  pool=111 cols  iters=3  t=810s
+[rank   3] LP=0.264186  z_3*=0.457273  pool=123 cols  iters=2  t=1028s
+[rank   4] LP=0.20997  z_4*=0.426089  pool=166 cols  iters=3  t=1393s
+[rank   5] LP=0.170082  z_5*=0.420073  pool=228 cols  iters=3  t=1777s
+[rank   6] LP=0.141126  z_6*=0.40772  pool=312 cols  iters=4  t=2274s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-121/TCG_EXACT_WARM/setAP-121-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)

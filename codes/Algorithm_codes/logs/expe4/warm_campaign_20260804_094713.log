@@ -8865,3 +8865,1770 @@ Academic license 2498834 - for non-commercial use only - registered to ya___@gma
 [rank  17] LP=0  z_17*=0.0393991  pool=650 cols  iters=1  t=2934s
 [rank  18] LP=0  z_18*=0.0362097  pool=650 cols  iters=1  t=2969s
 [rank  19] LP=0  z_19*=0.033519  pool=650 cols  iters=1  t=3004s
+[rank  20] LP=0  z_20*=0.0315541  pool=650 cols  iters=1  t=3039s
+[rank  21] LP=0  z_21*=0.0298881  pool=650 cols  iters=1  t=3074s
+[rank  22] LP=0  z_22*=0.0295552  pool=650 cols  iters=1  t=3110s
+[rank  23] LP=0  z_23*=0.029002  pool=650 cols  iters=1  t=3145s
+[rank  24] LP=0  z_24*=0.0273057  pool=650 cols  iters=1  t=3181s
+[rank  25] LP=0  z_25*=0.0264607  pool=650 cols  iters=1  t=3217s
+[rank  26] LP=0  z_26*=0.0256713  pool=650 cols  iters=1  t=3252s
+[rank  27] LP=0  z_27*=0.0253121  pool=650 cols  iters=1  t=3288s
+[rank  28] LP=0  z_28*=0.0250491  pool=650 cols  iters=1  t=3325s
+[rank  29] LP=0  z_29*=0.0246769  pool=650 cols  iters=1  t=3362s
+[rank  30] LP=0  z_30*=0.0246397  pool=650 cols  iters=1  t=3398s
+[rank  31] LP=0  z_31*=0.0242137  pool=650 cols  iters=1  t=3435s
+[rank  32] LP=0  z_32*=0.0240874  pool=650 cols  iters=1  t=3472s
+[rank  33] LP=0  z_33*=0.0240323  pool=650 cols  iters=1  t=3509s
+[rank  34] LP=0  z_34*=0.0239659  pool=650 cols  iters=1  t=3546s
+[rank  35] LP=0  z_35*=0.0237521  pool=650 cols  iters=1  t=3586s
+[rank  36] LP=0  z_36*=0.0231999  pool=650 cols  iters=1  t=3627s
+[wall] cap reached (3627s >= 3600s) before rank 37; stopping with 36 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.866953, 0.186317, 0.156454, 0.102426, 0.0746781, 0.0728337, 0.0602313, 0.0520808, 0.052062, 0.0448187, 0.0425512, 0.0419855, 0.0418701, 0.0397854, 0.0395875, 0.0393991, 0.0362097, 0.033519, 0.0315541
+  ... (36 ranks certified, N=400)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-088/TCG_EXACT_WARM/setAP-088-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-088/TCG_EXACT_WARM/setAP-088-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+------------------------------------------------------------------
+[run ] setAP-089  (10:15:18)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-089_20260806_101518.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 10:15:18
+====================================================================
+  Instance     : setAP-089
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-089-net.json
+    t=0: 4709 non-zero ECMP coefficients
+    t=1: 4730 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=30 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_DIAG/setAP-089-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +27 new (0 demand(s) refused -> trivial); pool now 57 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.457143, 0.445166, 0.284211, 0.267841
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=57 cols  iters=1  t=72s
+[rank   2] LP=0.30077  z_2*=0.457143  pool=57 cols  iters=1  t=107s
+[rank   3] LP=0.132765  z_3*=0.445166  pool=69 cols  iters=3  t=221s
+[rank   4] LP=0.069196  z_4*=0.284211  pool=167 cols  iters=7  t=507s
+[rank   5] LP=0.0412042  z_5*=0.267841  pool=459 cols  iters=26  t=1706s
+[rank   6] LP=0.0287639  z_6*=0.198496  pool=558 cols  iters=13  t=2279s
+[rank   7] LP=0.0192116  z_7*=0.185913  pool=665 cols  iters=13  t=2861s
+[rank   8] LP=0.0117959  z_8*=0.172289  pool=765 cols  iters=13  t=3439s
+
+[interrupt] SIGINT caught; returning 8 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.457143, 0.445166, 0.284211, 0.267841, 0.198496, 0.185913, 0.172289
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_EXACT_WARM/setAP-089-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_EXACT_WARM/setAP-089-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-089: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-090  (11:17:18)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-090_20260806_111718.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 11:17:18
+====================================================================
+  Instance     : setAP-090
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-090/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-090-net.json
+    t=0: 4428 non-zero ECMP coefficients
+    t=1: 4463 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=30 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-090/TCG_DIAG/setAP-090-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +26 new (0 demand(s) refused -> trivial); pool now 56 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.336597, 0.322368, 0.162281, 0.118255
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=56 cols  iters=1  t=69s
+[rank   2] LP=0.165222  z_2*=0.336597  pool=57 cols  iters=2  t=137s
+[rank   3] LP=0.0326693  z_3*=0.322368  pool=313 cols  iters=12  t=744s
+[rank   4] LP=0.015325  z_4*=0.162281  pool=591 cols  iters=20  t=1646s
+[rank   5] LP=0.00713998  z_5*=0.118255  pool=743 cols  iters=21  t=2585s
+[rank   6] LP=0.00126947  z_6*=0.109845  pool=890 cols  iters=15  t=3230s
+[rank   7] LP=0  z_7*=0.0875673  pool=890 cols  iters=1  t=3267s
+[rank   8] LP=0  z_8*=0.085608  pool=890 cols  iters=1  t=3304s
+[rank   9] LP=0  z_9*=0.0777596  pool=890 cols  iters=1  t=3341s
+[rank  10] LP=0  z_10*=0.0715944  pool=890 cols  iters=1  t=3378s
+[rank  11] LP=0  z_11*=0.0665934  pool=890 cols  iters=1  t=3415s
+[rank  12] LP=0  z_12*=0.066272  pool=890 cols  iters=1  t=3452s
+[rank  13] LP=0  z_13*=0.0661339  pool=890 cols  iters=1  t=3490s
+[rank  14] LP=0  z_14*=0.0592987  pool=890 cols  iters=1  t=3527s
+[rank  15] LP=0  z_15*=0.0592572  pool=890 cols  iters=1  t=3565s
+[rank  16] LP=0  z_16*=0.0583616  pool=890 cols  iters=1  t=3603s
+[wall] cap reached (3603s >= 3600s) before rank 17; stopping with 16 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.336597, 0.322368, 0.162281, 0.118255, 0.109845, 0.0875673, 0.085608, 0.0777596, 0.0715944, 0.0665934, 0.066272, 0.0661339, 0.0592987, 0.0592572, 0.0583616
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-090/TCG_EXACT_WARM/setAP-090-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-090/TCG_EXACT_WARM/setAP-090-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+------------------------------------------------------------------
+[run ] setAP-091  (12:17:22)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-091_20260806_121722.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 12:17:22
+====================================================================
+  Instance     : setAP-091
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-091/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-091-net.json
+    t=0: 4688 non-zero ECMP coefficients
+    t=1: 4708 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=40 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-091/TCG_DIAG/setAP-091-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +35 new (0 demand(s) refused -> trivial); pool now 75 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.75188, 0.185269, 0.132161, 0.114097
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=75 cols  iters=1  t=91s
+[rank   2] LP=0.37594  z_2*=0.75188  pool=75 cols  iters=1  t=135s
+[rank   3] LP=0.0544635  z_3*=0.185269  pool=250 cols  iters=8  t=681s
+[rank   4] LP=0.028378  z_4*=0.132161  pool=665 cols  iters=26  t=2404s
+[rank   5] LP=0.0193794  z_5*=0.114097  pool=769 cols  iters=11  t=3113s
+[warn] setAP-091: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-092  (13:19:22)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-092_20260806_131922.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 13:19:22
+====================================================================
+  Instance     : setAP-092
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-092/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-092-net.json
+    t=0: 4709 non-zero ECMP coefficients
+    t=1: 4694 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=40 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-092/TCG_DIAG/setAP-092-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +34 new (0 demand(s) refused -> trivial); pool now 74 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.572727, 0.11503, 0.0853133, 0.0309183
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=74 cols  iters=1  t=93s
+[rank   2] LP=0.286364  z_2*=0.572727  pool=74 cols  iters=1  t=139s
+[rank   3] LP=0.0056554  z_3*=0.11503  pool=712 cols  iters=46  t=3083s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-092/TCG_EXACT_WARM/setAP-092-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 127, in solve_lp
+    theta = self.data.segment_costs(d.id, master.aggregate_mu)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/data.py", line 260, in segment_costs
+    mu = float(aggregate_mu.get((a, t), 0.0))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 444, in solve_leximin_warm
+    print(f"\n[interrupt] SIGINT caught; returning {len(z_star)} "
+                                                    ^^^^^^^^^^^
+KeyboardInterrupt
+[warn] setAP-092: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-093  (14:21:22)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-093_20260806_142122.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 14:21:22
+====================================================================
+  Instance     : setAP-093
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-093/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-093-net.json
+    t=0: 4530 non-zero ECMP coefficients
+    t=1: 4540 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=40 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-093/TCG_DIAG/setAP-093-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +39 new (0 demand(s) refused -> trivial); pool now 79 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.942553, 0.788637, 0.438983, 0.429688
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=79 cols  iters=1  t=92s
+[rank   2] LP=0.577063  z_2*=0.942553  pool=79 cols  iters=1  t=138s
+[rank   3] LP=0.336915  z_3*=0.788637  pool=79 cols  iters=1  t=185s
+[rank   4] LP=0.217359  z_4*=0.438983  pool=187 cols  iters=6  t=508s
+[rank   5] LP=0.15624  z_5*=0.429688  pool=367 cols  iters=9  t=1072s
+[rank   6] LP=0.126931  z_6*=0.420761  pool=583 cols  iters=10  t=1768s
+[rank   7] LP=0.108869  z_7*=0.337786  pool=742 cols  iters=17  t=2823s
+[rank   8] LP=0.0970537  z_8*=0.322031  pool=808 cols  iters=10  t=3433s
+[warn] setAP-093: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-094  (15:23:22)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-094_20260806_152322.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 15:23:22
+====================================================================
+  Instance     : setAP-094
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-094/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-094-net.json
+    t=0: 4550 non-zero ECMP coefficients
+    t=1: 4562 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=40 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-094/TCG_DIAG/setAP-094-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +36 new (0 demand(s) refused -> trivial); pool now 76 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.402308, 0.389279, 0.380039, 0.356655
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=77 cols  iters=2  t=136s
+[rank   2] LP=0.27343  z_2*=0.402308  pool=123 cols  iters=4  t=348s
+[rank   3] LP=0.174308  z_3*=0.389279  pool=445 cols  iters=10  t=975s
+[rank   4] LP=0.14799  z_4*=0.380039  pool=763 cols  iters=18  t=2360s
+[rank   5] LP=0.133504  z_5*=0.356655  pool=869 cols  iters=11  t=3596s
+
+[interrupt] SIGINT caught; returning 5 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.402308, 0.389279, 0.380039, 0.356655
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-094/TCG_EXACT_WARM/setAP-094-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-094/TCG_EXACT_WARM/setAP-094-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-094: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-095  (16:25:22)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-095_20260806_162522.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:25:22
+====================================================================
+  Instance     : setAP-095
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-095/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-095-net.json
+    t=0: 4538 non-zero ECMP coefficients
+    t=1: 4593 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=40 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-095/TCG_DIAG/setAP-095-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +37 new (0 demand(s) refused -> trivial); pool now 77 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.717251, 0.472441, 0.46063, 0.343005
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=77 cols  iters=1  t=173s
+[rank   2] LP=0.412581  z_2*=0.717251  pool=77 cols  iters=1  t=269s
+[rank   3] LP=0.205892  z_3*=0.472441  pool=77 cols  iters=1  t=405s
+[rank   4] LP=0.0987102  z_4*=0.46063  pool=137 cols  iters=4  t=863s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-095/TCG_EXACT_WARM/setAP-095-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 226, in solve
+    m.optimize()
+  File "src/gurobipy/_model.pyx", line 926, in gurobipy._model.Model.optimize
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-095: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-096  (16:53:40)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-096_20260806_165340.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:40
+====================================================================
+  Instance     : setAP-096
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-096/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-096-net.json
+    t=0: 4907 non-zero ECMP coefficients
+    t=1: 4860 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=9.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-096/TCG_DIAG/setAP-096-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-096/TCG_EXACT_WARM/setAP-096-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-096: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-097  (16:53:41)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-097_20260806_165342.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:42
+====================================================================
+  Instance     : setAP-097
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-097/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-097-net.json
+    t=0: 4696 non-zero ECMP coefficients
+    t=1: 4737 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-097/TCG_DIAG/setAP-097-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-097/TCG_EXACT_WARM/setAP-097-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-097: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-098  (16:53:43)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-098_20260806_165343.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:43
+====================================================================
+  Instance     : setAP-098
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-098/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-098-net.json
+    t=0: 4423 non-zero ECMP coefficients
+    t=1: 4455 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-098/TCG_DIAG/setAP-098-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-098/TCG_EXACT_WARM/setAP-098-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-098: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-099  (16:53:44)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-099_20260806_165344.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:44
+====================================================================
+  Instance     : setAP-099
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-099/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-099-net.json
+    t=0: 4791 non-zero ECMP coefficients
+    t=1: 4798 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-099/TCG_DIAG/setAP-099-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-099/TCG_EXACT_WARM/setAP-099-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-099: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-100  (16:53:45)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-100_20260806_165345.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:45
+====================================================================
+  Instance     : setAP-100
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-100-net.json
+    t=0: 4704 non-zero ECMP coefficients
+    t=1: 4744 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_DIAG/setAP-100-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_EXACT_WARM/setAP-100-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-100: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-101  (16:53:46)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-101_20260806_165346.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:46
+====================================================================
+  Instance     : setAP-101
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-101/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-101-net.json
+    t=0: 7567 non-zero ECMP coefficients
+    t=1: 7597 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-101/TCG_DIAG/setAP-101-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-101/TCG_EXACT_WARM/setAP-101-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-101: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-102  (16:53:47)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-102_20260806_165347.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:47
+====================================================================
+  Instance     : setAP-102
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-102-net.json
+    t=0: 7545 non-zero ECMP coefficients
+    t=1: 7573 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_DIAG/setAP-102-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_EXACT_WARM/setAP-102-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-102: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-103  (16:53:48)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-103_20260806_165348.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 16:53:48
+====================================================================
+  Instance     : setAP-103
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-103/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-103-net.json
+    t=0: 7616 non-zero ECMP coefficients
+    t=1: 7632 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-103/TCG_DIAG/setAP-103-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +10 new (0 demand(s) refused -> trivial); pool now 20 cols
+[warm] heuristic incumbent sorted loads (top): 0.911394, 0.880827, 0.734491, 0.72009, 0.688448
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.880827  z_1*=0.911394  pool=21 cols  iters=2  t=56s
+[rank   2] LP=0.418375  z_2*=0.880827  pool=37 cols  iters=4  t=136s
+[rank   3] LP=0.237072  z_3*=0.734491  pool=94 cols  iters=7  t=291s
+[rank   4] LP=0.174493  z_4*=0.72009  pool=244 cols  iters=16  t=730s
+[rank   5] LP=0.150879  z_5*=0.688448  pool=382 cols  iters=16  t=1221s
+[rank   6] LP=0.131427  z_6*=0.686117  pool=519 cols  iters=17  t=1739s
+[rank   7] LP=0.115064  z_7*=0.620939  pool=679 cols  iters=24  t=2413s
+[warn] setAP-103: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-104  (17:55:48)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-104_20260806_175548.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 17:55:48
+====================================================================
+  Instance     : setAP-104
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-104/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-104-net.json
+    t=0: 7727 non-zero ECMP coefficients
+    t=1: 7783 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-104/TCG_DIAG/setAP-104-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +9 new (0 demand(s) refused -> trivial); pool now 19 cols
+[warm] heuristic incumbent sorted loads (top): 0.932625, 0.848388, 0.752504, 0.676963, 0.646192
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.442761  z_1*=0.932625  pool=27 cols  iters=5  t=114s
+[rank   2] LP=0.229589  z_2*=0.848388  pool=50 cols  iters=8  t=281s
+[rank   3] LP=0.147358  z_3*=0.752504  pool=117 cols  iters=12  t=584s
+[rank   4] LP=0.107035  z_4*=0.676963  pool=303 cols  iters=25  t=1313s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-104/TCG_EXACT_WARM/setAP-104-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 0 not solved to optimality. Status=13.
+[FAIL] setAP-104: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-105  (18:45:43)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-105_20260806_184543.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 18:45:43
+====================================================================
+  Instance     : setAP-105
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-105/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-105-net.json
+    t=0: 7698 non-zero ECMP coefficients
+    t=1: 7707 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-105/TCG_DIAG/setAP-105-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +10 new (0 demand(s) refused -> trivial); pool now 20 cols
+[warm] heuristic incumbent sorted loads (top): 0.689717, 0.608764, 0.454971, 0.434152, 0.421979
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.28624  z_1*=0.689717  pool=35 cols  iters=12  t=241s
+[rank   2] LP=0.131379  z_2*=0.608764  pool=132 cols  iters=14  t=609s
+[rank   3] LP=0.108435  z_3*=0.454971  pool=209 cols  iters=11  t=893s
+[rank   4] LP=0.0908796  z_4*=0.434152  pool=321 cols  iters=14  t=1282s
+[rank   5] LP=0.0765483  z_5*=0.421979  pool=500 cols  iters=20  t=1820s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-105/TCG_EXACT_WARM/setAP-105-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+
+Interrupt request received
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 9 not solved to optimality. Status=11.
+[warn] setAP-105: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-106  (19:47:44)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-106_20260806_194744.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 19:47:44
+====================================================================
+  Instance     : setAP-106
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-106-net.json
+    t=0: 7581 non-zero ECMP coefficients
+    t=1: 7592 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=20 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_DIAG/setAP-106-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +19 new (0 demand(s) refused -> trivial); pool now 39 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.703125, 0.156941, 0.154474, 0.105089
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=39 cols  iters=1  t=76s
+[rank   2] LP=0.351563  z_2*=0.703125  pool=39 cols  iters=1  t=114s
+[rank   3] LP=0.047002  z_3*=0.156941  pool=69 cols  iters=4  t=289s
+[rank   4] LP=0.0147782  z_4*=0.154474  pool=632 cols  iters=50  t=3005s
+
+[interrupt] SIGINT caught; returning 4 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.703125, 0.156941, 0.154474
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_EXACT_WARM/setAP-106-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_EXACT_WARM/setAP-106-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-106: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-107  (20:49:44)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-107_20260806_204944.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 20:49:44
+====================================================================
+  Instance     : setAP-107
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-107/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-107-net.json
+    t=0: 7609 non-zero ECMP coefficients
+    t=1: 7636 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=20 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-107/TCG_DIAG/setAP-107-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +20 new (0 demand(s) refused -> trivial); pool now 40 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.622857, 0.457143, 0.337579, 0.283381
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=40 cols  iters=1  t=73s
+[rank   2] LP=0.296062  z_2*=0.622857  pool=41 cols  iters=2  t=146s
+[rank   3] LP=0.111687  z_3*=0.457143  pool=78 cols  iters=6  t=388s
+[rank   4] LP=0.0561112  z_4*=0.337579  pool=193 cols  iters=9  t=833s
+[rank   5] LP=0.0332745  z_5*=0.283381  pool=717 cols  iters=51  t=3507s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-107/TCG_EXACT_WARM/setAP-107-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+
+Interrupt request received
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 3 not solved to optimality. Status=11.
+[warn] setAP-107: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-108  (21:51:44)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-108_20260806_215144.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 21:51:44
+====================================================================
+  Instance     : setAP-108
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-108/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-108-net.json
+    t=0: 7456 non-zero ECMP coefficients
+    t=1: 7488 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=20 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-108/TCG_DIAG/setAP-108-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +19 new (0 demand(s) refused -> trivial); pool now 39 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.536455, 0.522013, 0.441606, 0.400968
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=39 cols  iters=1  t=77s
+[rank   2] LP=0.374657  z_2*=0.536455  pool=43 cols  iters=3  t=203s
+[rank   3] LP=0.251363  z_3*=0.522013  pool=75 cols  iters=4  t=381s
+[rank   4] LP=0.189348  z_4*=0.441606  pool=108 cols  iters=5  t=624s
+[rank   5] LP=0.149227  z_5*=0.400968  pool=154 cols  iters=4  t=827s
+[rank   6] LP=0.117041  z_6*=0.396148  pool=398 cols  iters=18  t=1831s
+[rank   7] LP=0.100107  z_7*=0.38308  pool=583 cols  iters=21  t=3050s
+[warn] setAP-108: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-109  (22:53:44)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-109_20260806_225344.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 22:53:44
+====================================================================
+  Instance     : setAP-109
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-109/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-109-net.json
+    t=0: 7430 non-zero ECMP coefficients
+    t=1: 7474 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=20 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-109/TCG_DIAG/setAP-109-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +18 new (0 demand(s) refused -> trivial); pool now 38 cols
+[warm] heuristic incumbent sorted loads (top): 0.989031, 0.852127, 0.704726, 0.679624, 0.653521
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.989031  z_1*=0.989031  pool=38 cols  iters=1  t=77s
+[rank   2] LP=0.411591  z_2*=0.73355  pool=56 cols  iters=4  t=239s
+[rank   3] LP=0.300458  z_3*=0.704726  pool=88 cols  iters=4  t=406s
+[rank   4] LP=0.231934  z_4*=0.679624  pool=172 cols  iters=8  t=800s
+[rank   5] LP=0.18884  z_5*=0.653521  pool=289 cols  iters=8  t=1220s
+[rank   6] LP=0.160553  z_6*=0.63175  pool=528 cols  iters=28  t=2709s
+[rank   7] LP=0.144519  z_7*=0.614011  pool=602 cols  iters=17  t=3701s
+[wall] cap reached (3701s >= 3600s) before rank 8; stopping with 7 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  0.989031, 0.73355, 0.704726, 0.679624, 0.653521, 0.63175, 0.614011
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-109/TCG_EXACT_WARM/setAP-109-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-109/TCG_EXACT_WARM/setAP-109-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+------------------------------------------------------------------
+[run ] setAP-110  (23:55:26)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-110_20260806_235526.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-06 23:55:26
+====================================================================
+  Instance     : setAP-110
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-110/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-110-net.json
+    t=0: 7338 non-zero ECMP coefficients
+    t=1: 7331 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=20 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-110/TCG_DIAG/setAP-110-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +17 new (0 demand(s) refused -> trivial); pool now 37 cols
+[warm] heuristic incumbent sorted loads (top): 1.25581, 0.563322, 0.529501, 0.254232, 0.217815
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1.25581  z_1*=1.25581  pool=37 cols  iters=1  t=75s
+[rank   2] LP=0.364275  z_2*=0.563322  pool=37 cols  iters=1  t=112s
+[rank   3] LP=0.101731  z_3*=0.529501  pool=51 cols  iters=4  t=277s
+[rank   4] LP=0.0324042  z_4*=0.254232  pool=410 cols  iters=24  t=1610s
+
+[interrupt] SIGINT caught; returning 4 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1.25581, 0.563322, 0.529501, 0.254232
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-110/TCG_EXACT_WARM/setAP-110-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-110/TCG_EXACT_WARM/setAP-110-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-110: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-111  (00:57:26)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-111_20260807_005726.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 00:57:26
+====================================================================
+  Instance     : setAP-111
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-111/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-111-net.json
+    t=0: 7899 non-zero ECMP coefficients
+    t=1: 7901 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=30 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-111/TCG_DIAG/setAP-111-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +30 new (0 demand(s) refused -> trivial); pool now 60 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.328299, 0.32111, 0.3137, 0.234228
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=60 cols  iters=1  t=112s
+[rank   2] LP=0.21647  z_2*=0.328299  pool=64 cols  iters=3  t=285s
+[rank   3] LP=0.0779104  z_3*=0.32111  pool=359 cols  iters=13  t=1273s
+[rank   4] LP=0.0558891  z_4*=0.3137  pool=713 cols  iters=29  t=3653s
+[wall] cap reached (3653s >= 3600s) before rank 5; stopping with 4 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.328299, 0.32111, 0.3137
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-111/TCG_EXACT_WARM/setAP-111-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-111/TCG_EXACT_WARM/setAP-111-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+------------------------------------------------------------------
+[run ] setAP-112  (01:58:20)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-112_20260807_015820.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 01:58:20
+====================================================================
+  Instance     : setAP-112
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-112/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-112-net.json
+    t=0: 7355 non-zero ECMP coefficients
+    t=1: 7374 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=30 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-112/TCG_DIAG/setAP-112-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +25 new (0 demand(s) refused -> trivial); pool now 55 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.63743, 0.634615, 0.414634, 0.3125
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=55 cols  iters=1  t=112s
+[rank   2] LP=0.424015  z_2*=0.63743  pool=55 cols  iters=1  t=169s
+[rank   3] LP=0.212045  z_3*=0.634615  pool=56 cols  iters=2  t=288s
+[rank   4] LP=0.0941303  z_4*=0.414634  pool=306 cols  iters=13  t=1307s
+[rank   5] LP=0.0701677  z_5*=0.3125  pool=707 cols  iters=29  t=3613s
+[wall] cap reached (3613s >= 3600s) before rank 6; stopping with 5 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.63743, 0.634615, 0.414634, 0.3125
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-112/TCG_EXACT_WARM/setAP-112-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-112/TCG_EXACT_WARM/setAP-112-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+------------------------------------------------------------------
+[run ] setAP-113  (02:58:34)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-113_20260807_025834.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 02:58:34
+====================================================================
+  Instance     : setAP-113
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-113/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-113-net.json
+    t=0: 8045 non-zero ECMP coefficients
+    t=1: 8090 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=30 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-113/TCG_DIAG/setAP-113-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +24 new (0 demand(s) refused -> trivial); pool now 54 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.522344, 0.366972, 0.274262, 0.227248
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=54 cols  iters=1  t=109s
+[rank   2] LP=0.296439  z_2*=0.522344  pool=54 cols  iters=1  t=164s
+[rank   3] LP=0.118236  z_3*=0.366972  pool=55 cols  iters=2  t=285s
+[rank   4] LP=0.0517294  z_4*=0.274262  pool=176 cols  iters=7  t=801s
+
+[interrupt] SIGINT caught; returning 4 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.522344, 0.366972, 0.274262
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-113/TCG_EXACT_WARM/setAP-113-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-113/TCG_EXACT_WARM/setAP-113-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-113: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-114  (04:00:35)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-114_20260807_040035.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 04:00:35
+====================================================================
+  Instance     : setAP-114
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-114-net.json
+    t=0: 7617 non-zero ECMP coefficients
+    t=1: 7652 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=30 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/TCG_DIAG/setAP-114-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +28 new (0 demand(s) refused -> trivial); pool now 58 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.677648, 0.586207, 0.579426, 0.489656
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=58 cols  iters=1  t=115s
+[rank   2] LP=0.414299  z_2*=0.677648  pool=61 cols  iters=3  t=290s
+[rank   3] LP=0.294752  z_3*=0.579426  pool=105 cols  iters=5  t=594s
+[rank   4] LP=0.228503  z_4*=0.527976  pool=171 cols  iters=4  t=883s
+[rank   5] LP=0.186844  z_5*=0.524631  pool=300 cols  iters=6  t=1361s
+[rank   6] LP=0.157533  z_6*=0.4985  pool=624 cols  iters=18  t=2877s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-114/TCG_EXACT_WARM/setAP-114-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+
+Interrupt request received
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 11 not solved to optimality. Status=11.
+[warn] setAP-114: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-115  (05:02:35)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-115_20260807_050235.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 05:02:35
+====================================================================
+  Instance     : setAP-115
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-115/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-115-net.json
+    t=0: 7373 non-zero ECMP coefficients
+    t=1: 7423 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=30 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-115/TCG_DIAG/setAP-115-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +29 new (0 demand(s) refused -> trivial); pool now 59 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.5184, 0.507245, 0.409825, 0.400297
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=59 cols  iters=1  t=117s
+[rank   2] LP=0.359589  z_2*=0.5184  pool=60 cols  iters=2  t=235s
+[rank   3] LP=0.184075  z_3*=0.507245  pool=60 cols  iters=1  t=294s
+[rank   4] LP=0.0865149  z_4*=0.409825  pool=137 cols  iters=6  t=690s
+[rank   5] LP=0.0515968  z_5*=0.400297  pool=342 cols  iters=11  t=1462s
+
+[interrupt] SIGINT caught; returning 5 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.5184, 0.507245, 0.409825, 0.400297
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-115/TCG_EXACT_WARM/setAP-115-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-115/TCG_EXACT_WARM/setAP-115-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-115: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-116  (06:04:35)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-116_20260807_060435.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 06:04:35
+====================================================================
+  Instance     : setAP-116
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-116/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-116-net.json
+    t=0: 7300 non-zero ECMP coefficients
+    t=1: 7326 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=40 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-116/TCG_DIAG/setAP-116-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +39 new (0 demand(s) refused -> trivial); pool now 79 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.685786, 0.540741, 0.255556, 0.228223
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=79 cols  iters=1  t=150s
+[rank   2] LP=0.408842  z_2*=0.685786  pool=79 cols  iters=1  t=226s
+[rank   3] LP=0.140657  z_3*=0.540741  pool=89 cols  iters=3  t=457s
+[rank   4] LP=0.0667521  z_4*=0.255556  pool=347 cols  iters=9  t=1343s
+[warn] setAP-116: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-117  (07:06:35)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-117_20260807_070635.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 07:06:35
+====================================================================
+  Instance     : setAP-117
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-117/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-117-net.json
+    t=0: 7934 non-zero ECMP coefficients
+    t=1: 7948 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=40 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-117/TCG_DIAG/setAP-117-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +37 new (0 demand(s) refused -> trivial); pool now 77 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.739683, 0.674539, 0.558454, 0.43911
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=77 cols  iters=1  t=154s
+[rank   2] LP=0.493169  z_2*=0.739683  pool=77 cols  iters=1  t=230s
+[rank   3] LP=0.333086  z_3*=0.674539  pool=77 cols  iters=1  t=312s
+[rank   4] LP=0.254707  z_4*=0.558454  pool=85 cols  iters=2  t=474s
+[rank   5] LP=0.190793  z_5*=0.43911  pool=124 cols  iters=3  t=732s
+[rank   6] LP=0.138576  z_6*=0.406717  pool=328 cols  iters=10  t=1948s
+[rank   7] LP=0.110811  z_7*=0.392031  pool=549 cols  iters=8  t=2985s
+
+[interrupt] SIGINT caught; returning 7 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.739683, 0.674539, 0.558454, 0.43911, 0.406717, 0.392031
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-117/TCG_EXACT_WARM/setAP-117-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-117/TCG_EXACT_WARM/setAP-117-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-117: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-118  (08:08:35)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-118_20260807_080835.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 08:08:35
+====================================================================
+  Instance     : setAP-118
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-118/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-118-net.json
+    t=0: 7697 non-zero ECMP coefficients
+    t=1: 7781 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=40 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-118/TCG_DIAG/setAP-118-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +32 new (0 demand(s) refused -> trivial); pool now 72 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.31542, 0.0294433, 0.0203263, 0.0178999
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=72 cols  iters=1  t=151s
+[rank   2] LP=0.15771  z_2*=0.31542  pool=72 cols  iters=1  t=225s
+[rank   3] LP=0  z_3*=0.0294433  pool=72 cols  iters=1  t=302s
+[rank   4] LP=0  z_4*=0.0203263  pool=72 cols  iters=1  t=378s
+[rank   5] LP=0  z_5*=0.0139264  pool=72 cols  iters=1  t=456s
+[rank   6] LP=0  z_6*=0.0138973  pool=72 cols  iters=1  t=534s
+[rank   7] LP=0  z_7*=0.0138449  pool=72 cols  iters=1  t=612s
+[rank   8] LP=0  z_8*=0.0135676  pool=72 cols  iters=1  t=691s
+[rank   9] LP=0  z_9*=0.0130892  pool=72 cols  iters=1  t=769s
+[rank  10] LP=0  z_10*=0.012169  pool=72 cols  iters=1  t=848s
+[rank  11] LP=0  z_11*=0.0121439  pool=72 cols  iters=1  t=927s
+[rank  12] LP=0  z_12*=0.0120578  pool=72 cols  iters=1  t=1006s
+[rank  13] LP=0  z_13*=0.0118103  pool=72 cols  iters=1  t=1085s
+[rank  14] LP=0  z_14*=0.0107  pool=72 cols  iters=1  t=1164s
+[rank  15] LP=0  z_15*=0.0099001  pool=72 cols  iters=1  t=1243s
+[rank  16] LP=0  z_16*=0.00944116  pool=72 cols  iters=1  t=1323s
+[rank  17] LP=0  z_17*=0.00918856  pool=72 cols  iters=1  t=1402s
+[rank  18] LP=0  z_18*=0.00897474  pool=72 cols  iters=1  t=1482s
+[rank  19] LP=0  z_19*=0.00884357  pool=72 cols  iters=1  t=1562s
+[rank  20] LP=0  z_20*=0.00867424  pool=72 cols  iters=1  t=1641s
+[rank  21] LP=0  z_21*=0.00858434  pool=72 cols  iters=1  t=1722s
+[rank  22] LP=0  z_22*=0.00759892  pool=72 cols  iters=1  t=1802s
+[rank  23] LP=0  z_23*=0.00735008  pool=72 cols  iters=1  t=1882s
+[rank  24] LP=0  z_24*=0.00725417  pool=72 cols  iters=1  t=1962s
+[rank  25] LP=0  z_25*=0.00667723  pool=72 cols  iters=1  t=2043s
+[rank  26] LP=0  z_26*=0.00653605  pool=72 cols  iters=1  t=2124s
+[rank  27] LP=0  z_27*=0.00637888  pool=72 cols  iters=1  t=2204s
+[rank  28] LP=0  z_28*=0.00623053  pool=72 cols  iters=1  t=2285s
+[rank  29] LP=0  z_29*=0.00614302  pool=72 cols  iters=1  t=2366s
+[rank  30] LP=0  z_30*=0.00611131  pool=72 cols  iters=1  t=2447s
+[rank  31] LP=0  z_31*=0.00608926  pool=72 cols  iters=1  t=2528s
+[rank  32] LP=0  z_32*=0.00601343  pool=72 cols  iters=1  t=2608s
+[rank  33] LP=0  z_33*=0.00598873  pool=72 cols  iters=1  t=2689s
+[rank  34] LP=0  z_34*=0.00573189  pool=72 cols  iters=1  t=2771s
+[rank  35] LP=0  z_35*=0.00552969  pool=72 cols  iters=1  t=2852s
+[rank  36] LP=0  z_36*=0.00527618  pool=72 cols  iters=1  t=2933s
+[rank  37] LP=0  z_37*=0.00524295  pool=72 cols  iters=1  t=3015s
+[rank  38] LP=0  z_38*=0.00515245  pool=72 cols  iters=1  t=3096s
+[rank  39] LP=0  z_39*=0.00504181  pool=72 cols  iters=1  t=3178s
+[rank  40] LP=0  z_40*=0.00502503  pool=72 cols  iters=1  t=3259s
+[rank  41] LP=0  z_41*=0.00480286  pool=72 cols  iters=1  t=3341s
+[rank  42] LP=0  z_42*=0.00468036  pool=72 cols  iters=1  t=3423s
+[rank  43] LP=0  z_43*=0.0046165  pool=72 cols  iters=1  t=3506s
+[rank  44] LP=0  z_44*=0.00459436  pool=72 cols  iters=1  t=3588s
+[rank  45] LP=0  z_45*=0.00457704  pool=72 cols  iters=1  t=3672s
+[wall] cap reached (3672s >= 3600s) before rank 46; stopping with 45 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.31542, 0.0294433, 0.0203263, 0.0139264, 0.0138973, 0.0138449, 0.0135676, 0.0130892, 0.012169, 0.0121439, 0.0120578, 0.0118103, 0.0107, 0.0099001, 0.00944116, 0.00918856, 0.00897474, 0.00884357, 0.00867424
+  ... (45 ranks certified, N=500)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-118/TCG_EXACT_WARM/setAP-118-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-118/TCG_EXACT_WARM/setAP-118-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+------------------------------------------------------------------
+[run ] setAP-119  (09:09:48)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-119_20260807_090948.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 09:09:48
+====================================================================
+  Instance     : setAP-119
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-119/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-119-net.json
+    t=0: 7822 non-zero ECMP coefficients
+    t=1: 7724 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=40 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-119/TCG_DIAG/setAP-119-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +37 new (0 demand(s) refused -> trivial); pool now 77 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.655856, 0.423424, 0.256492, 0.187387
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=77 cols  iters=1  t=153s
+[rank   2] LP=0.35976  z_2*=0.655856  pool=77 cols  iters=1  t=229s
+[rank   3] LP=0.115847  z_3*=0.423424  pool=77 cols  iters=1  t=307s
+[rank   4] LP=0.0209032  z_4*=0.256492  pool=144 cols  iters=5  t=1006s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-119/TCG_EXACT_WARM/setAP-119-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 20 not solved to optimality. Status=11.
+[warn] setAP-119: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-120  (10:11:48)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-120_20260807_101149.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 10:11:49
+====================================================================
+  Instance     : setAP-120
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-120/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-120-net.json
+    t=0: 7625 non-zero ECMP coefficients
+    t=1: 7685 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=40 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-120/TCG_DIAG/setAP-120-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +36 new (0 demand(s) refused -> trivial); pool now 76 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.73743, 0.483581, 0.445996, 0.426592
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1  z_1*=1  pool=76 cols  iters=1  t=306s
+[rank   2] LP=0.416752  z_2*=0.73743  pool=77 cols  iters=2  t=616s
+[rank   3] LP=0.244072  z_3*=0.483581  pool=103 cols  iters=4  t=1279s
+[rank   4] LP=0.172073  z_4*=0.445996  pool=149 cols  iters=3  t=1793s
+[rank   5] LP=0.123066  z_5*=0.426592  pool=380 cols  iters=8  t=3429s
+
+[interrupt] SIGINT caught; returning 5 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.73743, 0.483581, 0.445996, 0.426592
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-120/TCG_EXACT_WARM/setAP-120-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-120/TCG_EXACT_WARM/setAP-120-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
+[warn] setAP-120: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-121  (11:13:49)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-121_20260807_111349.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 11:13:49
+====================================================================
+  Instance     : setAP-121
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-121/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-121-net.json
+    t=0: 7333 non-zero ECMP coefficients
+    t=1: 7341 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=50 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-121/TCG_DIAG/setAP-121-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +46 new (0 demand(s) refused -> trivial); pool now 96 cols
+[warm] heuristic incumbent sorted loads (top): 0.623377, 0.465966, 0.457273, 0.426089, 0.420073
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.465966  z_1*=0.623377  pool=100 cols  iters=3  t=490s
+[rank   2] LP=0.331646  z_2*=0.465966  pool=111 cols  iters=3  t=810s
+[rank   3] LP=0.264186  z_3*=0.457273  pool=123 cols  iters=2  t=1028s
+[rank   4] LP=0.20997  z_4*=0.426089  pool=166 cols  iters=3  t=1393s
+[rank   5] LP=0.170082  z_5*=0.420073  pool=228 cols  iters=3  t=1777s
+[rank   6] LP=0.141126  z_6*=0.40772  pool=312 cols  iters=4  t=2274s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-121/TCG_EXACT_WARM/setAP-121-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+
+Interrupt request received
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 41 not solved to optimality. Status=11.
+[warn] setAP-121: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-122  (12:15:49)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-122_20260807_121549.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 12:15:49
+====================================================================
+  Instance     : setAP-122
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-122/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-122-net.json
+    t=0: 7527 non-zero ECMP coefficients
+    t=1: 7554 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=50 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-122/TCG_DIAG/setAP-122-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +47 new (0 demand(s) refused -> trivial); pool now 97 cols
+[warm] heuristic incumbent sorted loads (top): 0.91839, 0.841842, 0.68541, 0.630797, 0.594745
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=0.841842  z_1*=0.91839  pool=98 cols  iters=2  t=513s
+[rank   2] LP=0.470994  z_2*=0.841842  pool=98 cols  iters=1  t=701s
+[rank   3] LP=0.364067  z_3*=0.68541  pool=100 cols  iters=2  t=1084s
+[rank   4] LP=0.275569  z_4*=0.630797  pool=162 cols  iters=3  t=1709s
+[rank   5] LP=0.212226  z_5*=0.594745  pool=299 cols  iters=5  t=2852s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-122/TCG_EXACT_WARM/setAP-122-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+
+Interrupt request received
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 33 not solved to optimality. Status=11.
+[warn] setAP-122: external timeout (rc=124); verify summary flushed.
+------------------------------------------------------------------
+[run ] setAP-123  (13:17:49)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-123_20260807_131749.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 13:17:49
+====================================================================
+  Instance     : setAP-123
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-123/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-123-net.json
+    t=0: 8107 non-zero ECMP coefficients
+    t=1: 8107 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=50 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-123/TCG_DIAG/setAP-123-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +42 new (0 demand(s) refused -> trivial); pool now 92 cols
+[warm] heuristic incumbent sorted loads (top): 1.01223, 1, 0.418478, 0.210145, 0.103261
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1.01223  z_1*=1.01223  pool=92 cols  iters=1  t=355s
+[rank   2] LP=0.5  z_2*=1  pool=92 cols  iters=1  t=530s
+[rank   3] LP=0.154099  z_3*=0.418478  pool=92 cols  iters=1  t=705s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-123/TCG_EXACT_WARM/setAP-123-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 226, in solve
+    m.optimize()
+  File "src/gurobipy/_model.pyx", line 926, in gurobipy._model.Model.optimize
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-123: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-124  (13:53:02)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-124_20260807_135302.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 13:53:02
+====================================================================
+  Instance     : setAP-124
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-124/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-124-net.json
+    t=0: 7554 non-zero ECMP coefficients
+    t=1: 7603 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=50 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-124/TCG_DIAG/setAP-124-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-124/TCG_EXACT_WARM/setAP-124-summary.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 376, in solve_leximin_warm
+    cg = PairPathColumnGeneration(data, output=False, pricing_output=False,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 95, in __init__
+    self._build_basic_initial_pool()
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 313, in _build_basic_initial_pool
+    pricing = pricer.solve(d.id, theta=theta, rho=1.0, sigma=0.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 107, in solve
+    m = gp.Model(f"pricing_{safe_name(demand_id)}")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: Recv failure: Connection reset by peer (code 56, command POST https://token.gurobi.com/api/v1/tokens)
+[FAIL] setAP-124: exit code 1.
+------------------------------------------------------------------
+[run ] setAP-125  (13:53:05)
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-125_20260807_135305.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-07 13:53:05
+====================================================================
+  Instance     : setAP-125
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-125/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-125-net.json
+    t=0: 7916 non-zero ECMP coefficients
+    t=1: 7923 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=50 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-125/TCG_DIAG/setAP-125-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +48 new (0 demand(s) refused -> trivial); pool now 98 cols
+[warm] heuristic incumbent sorted loads (top): 1.88844, 1, 0.517241, 0.325876, 0.313937
+[warm] wall cap: 3600s   MIP cap/rank: 1000.0s
+[rank   1] LP=1.88844  z_1*=1.88844  pool=98 cols  iters=1  t=365s
+[rank   2] LP=0.505747  z_2*=1  pool=98 cols  iters=1  t=554s
+[rank   3] LP=0.169845  z_3*=0.517241  pool=196 cols  iters=4  t=1370s
+[rank   4] LP=0.109895  z_4*=0.325876  pool=402 cols  iters=6  t=2754s
+[warn] setAP-125: external timeout (rc=124); verify summary flushed.
+==================================================================
+ Campaign done  |  2026-08-07 14:55:05
+   ran/flushed  : 114
+   skip (done)  : 0
+   skip (noseed): 0
+   failed       : 11
+   campaign log : logs/expe4/warm_campaign_20260804_094713.log
+==================================================================
