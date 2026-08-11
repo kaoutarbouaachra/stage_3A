@@ -22,21 +22,54 @@ except Exception as e:
 # ============================================================
 K_FIGURE = 15   # display cap; per instance shows min(K_FIGURE, ranks in log)
 EPS      = 1e-6
-INSTANCES = ["setA-01", "setA-02", "setA-03", "setA-04"]
+# setAP instances are named with a capital 'P' and 3-digit zero-padding
+# (setAP-001 ... setAP-088), matching the campaign logs.
+INSTANCES = [f"setAP-{i:03d}" for i in range(1, 89)]
+# Tolerance above which the warm srpaths vector and the logged z_k* prefix
+# are considered inconsistent (one-sided freezing leaves at most ~EPS slack,
+# so anything larger signals a real srpaths<->log mismatch).
+WARM_CONSISTENCY_TOL = 1e-4
 # ============================================================
 
-INPUT_ROOT = ALGO.parent / "setA"
+# setAP inputs live flat under codes/setAP/ (e.g. setAP/setAP-079-net.json).
+INPUT_ROOT = ALGO.parent / "setAP"
 RESULTS    = ALGO / "results"
 LOGS       = ALGO / "logs"
+
+# Result/log folder names as they appear on disk (lowercase). Lookups below
+# are made case-insensitive so either casing works on Windows or Linux.
+DIAG_DIR = "TCG_diag"
+WARM_DIR = "TCG_exact_warm"
+
+def resolve_child(parent, name):
+    """Return parent/name, falling back to a case-insensitive match among the
+    children of `parent` if the exact-cased folder is absent."""
+    exact = parent / name
+    if exact.exists():
+        return exact
+    if parent.is_dir():
+        low = name.lower()
+        for child in parent.iterdir():
+            if child.name.lower() == low:
+                return child
+    return exact  # non-existent; caller handles the miss
 
 class Inst:
     pass
 
 def find_input(name, suffix):
-    f = INPUT_ROOT / name / f"{name}-{suffix}.json"
-    if f.exists():
-        return f
-    raise FileNotFoundError(f"Input file not found: {f}")
+    """Locate an input file, tolerating both a flat layout
+    (setAP/<name>-<suffix>.json) and a nested one (setAP/<name>/<name>-<suffix>.json)."""
+    candidates = [
+        INPUT_ROOT / f"{name}-{suffix}.json",          # flat (setAP)
+        INPUT_ROOT / name / f"{name}-{suffix}.json",   # nested (legacy setA)
+    ]
+    for f in candidates:
+        if f.exists():
+            return f
+    raise FileNotFoundError(
+        f"Input file not found for {name}-{suffix}; tried: "
+        + " | ".join(str(c) for c in candidates))
 
 def load_instance(name):
     net  = json.loads(find_input(name, "net").read_text())
@@ -59,9 +92,9 @@ def load_instance(name):
     inst.interv  = {iv["t"]: set(iv["links"]) for iv in scen.get("interventions", [])}
     return inst
 
-def recompute_sorted(name, method, inst, r):
+def recompute_sorted(name, method_dir, inst, r):
     """Sorted load vector from the WRITTEN srpaths (checker-aligned)."""
-    f = RESULTS / name / method / f"{name}-srpaths.json"
+    f = resolve_child(RESULTS / name, method_dir) / f"{name}-srpaths.json"
     if not f.exists():
         return None
     data = json.loads(f.read_text())
@@ -71,7 +104,7 @@ def recompute_sorted(name, method, inst, r):
 def warm_vector_from_logs(name):
     """Read z_k* (k=1,2,...) from the most recent warm log, in rank order.
     Returns (vector, last_rank_reached)."""
-    d = LOGS / "TCG_exact_warm"
+    d = resolve_child(LOGS, WARM_DIR)
     logs = sorted(d.glob(f"{name}_*.log"))
     if not logs:
         return None, None
@@ -96,17 +129,32 @@ print(f"ECMP backend : {ECMP_BACKEND}   K_FIGURE = {K_FIGURE}\n")
 
 data = {}
 for name in INSTANCES:
-    inst = load_instance(name)
+    try:
+        inst = load_instance(name)
+    except FileNotFoundError as e:
+        print(f"[{name}] input MISSING: {e}\n")
+        data[name] = None
+        continue
     r = compute_all_splits(inst)
 
     warm_log, rc = warm_vector_from_logs(name)
-    diag         = recompute_sorted(name, "TCG_diag", inst, r)
+    diag         = recompute_sorted(name, DIAG_DIR, inst, r)
 
     if rc is None or warm_log is None or diag is None:
         print(f"[{name}] MISSING (rc={rc}, warm_log={warm_log is not None}, "
               f"diag={diag is not None})\n")
         data[name] = None
         continue
+
+    # Rigor guard: the warm srpaths, re-scored with the checker, should match
+    # the certified z_k* prefix (one-sided freezing => slack <= ~EPS).
+    warm_srp = recompute_sorted(name, WARM_DIR, inst, r)
+    if warm_srp is not None:
+        m = min(rc, len(warm_srp), len(warm_log))
+        dmax = max((abs(warm_srp[i] - warm_log[i]) for i in range(m)), default=0.0)
+        if dmax > WARM_CONSISTENCY_TOL:
+            print(f"[{name}] WARN warm srpaths vs log z_k* diverge "
+                  f"(max|Δ|={dmax:.2e} over {m} ranks) -> check freezing/srpaths")
 
     k = max(1, min(K_FIGURE, rc, len(warm_log), len(diag)))
     data[name] = (diag[:k], warm_log[:k], k)
