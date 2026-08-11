@@ -8,7 +8,7 @@
 #                               carla  <- seed TCG_DIAG_CARLA
 #
 # Diag runs FIRST for both encodings on every instance, so that each exact-warm
-# run finds its own-encoding diagonal seed. STELA uses the TCG_diag/TCG_Exact
+# run finds its own-encoding diagonal seed. STELA uses the TCG_Diag/TCG_Exact
 # packages (encoding defaults to stela, no flag needed); CARLA uses the
 # hardcoded TCG_carla package.
 # ============================================================================
@@ -16,7 +16,7 @@
 set -u
 
 ############################# CONFIG  ###############################
-# Absolute path to the package root (where TCG_Exact/, TCG_diag/, TCG_carla/,
+# Absolute path to the package root (where TCG_Exact/, TCG_Diag/, TCG_carla/,
 # core/, stela/ live) and to the setAP dataset.
 CODES_DIR="${CODES_DIR:-$HOME/stage_3A/codes/Algorithm_codes}"
 DATA_DIR="${DATA_DIR:-../setAP}"          # relative to CODES_DIR, as in the -m usage
@@ -114,7 +114,7 @@ for i in $(seq "$FIRST" "$LAST"); do
 
   # --- STELA diagonal  -> results/<inst>/TCG_DIAG/
   run_one TCG_DIAG "$INST" "$DIAG_EXT" \
-    python3 -m TCG_diag.run_TCG_Diag "$INST" --data-dir "$DATA_DIR" \
+    python3 -m TCG_Diag.run_TCG_Diag "$INST" --data-dir "$DATA_DIR" \
       --K "$DIAG_K" --time-limit "$DIAG_TIME_LIMIT" \
       --lp-time "$DIAG_LP_TIME" --mip-time "$DIAG_MIP_TIME" \
       --pricing-time "$DIAG_PRICING_TIME" \
