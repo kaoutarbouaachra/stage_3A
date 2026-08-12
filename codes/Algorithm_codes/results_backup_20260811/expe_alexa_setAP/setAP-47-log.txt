@@ -1,0 +1,55 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-21 02:43:59
+====================================================================
+  Instance     : /home/setAP-47
+  Log          : /home/setAP-47_20260721_024359.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-47 | 20 nodes, 100 arcs, 50 demands, 2 timesteps, N=200
+    t=0: 901 non-zero ECMP coefficients
+    t=1: 902 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=50, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 38,000
+  Base model : 97,200 vars, 80,700 constraints, 18,426,398 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.000000     235.7s     235.7s  OPTIMAL
+      2   0.684247     166.9s     402.6s  OPTIMAL
+      3   0.589726     146.8s     549.6s  OPTIMAL
+      4   0.495168     164.8s     714.5s  OPTIMAL
+      5   0.365297     455.9s    1170.5s  OPTIMAL
+  [k=6] Unexpected status 11 -- stopping.
+
+  Done.  5 ranks in 1188.0s
+  MLU (z*_1) = 1.000000
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : [1.0, 0.684247, 0.589726, 0.495168, 0.365297]
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)

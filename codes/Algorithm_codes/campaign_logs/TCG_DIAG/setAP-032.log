@@ -1,0 +1,64 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_DIAG/setAP-032_20260811_102826.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_DIAG)
+  2026-08-11 10:28:26
+====================================================================
+  Instance     : setAP-032
+  Dataset      : ../setAP
+  K ranks      : 8
+  time_limit   : 600.0s   (soft cap)
+  lp_time/iter : 120.0s   (bounds ONE LP optimize())
+  pricing_time : 180.0s   (bounds ONE pricing sweep)
+  mip_time/rank: 180.0s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-032/TCG_DIAG
+====================================================================
+
+  setAP-032 | 20 nodes, 100 arcs, 20 demands, 2 timesteps, N=200
+    t=0: 932 non-zero ECMP coefficients
+    t=1: 950 non-zero ECMP coefficients
+  MLU baseline  : 1.000001
+  Top-5 baseline: [1.0, 0.2827, 0.0024, 0.0023, 0.0022]
+
+  Initial pool : 20 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     20  LP  1.000001  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      1     1      20   1.000001   1.000001  [1.0, 0.2827, 0.0024]    0.1s  (mip 0.0s)
+    r2 it 1  pool     20  LP  0.141332  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      2     1      20   0.141332   0.282664  [1.0, 0.2827, 0.0024]    0.1s  (mip 0.0s)
+    r3 it 1  pool     20  LP  0.000000  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      3     1      20   0.000000   0.002432  [1.0, 0.2827, 0.0024]    0.1s  (mip 0.0s)
+    r4 it 1  pool     20  LP  0.000000  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      4     1      20   0.000000   0.002261  [1.0, 0.2827, 0.0024]    0.1s  (mip 0.0s)
+    r5 it 1  pool     20  LP  0.000000  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      5     1      20   0.000000   0.002181  [1.0, 0.2827, 0.0024]    0.1s  (mip 0.0s)
+    r6 it 1  pool     20  LP  0.000000  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      6     1      20   0.000000   0.001784  [1.0, 0.2827, 0.0024]    0.1s  (mip 0.0s)
+    r7 it 1  pool     20  LP  0.000000  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      7     1      20   0.000000   0.001537  [1.0, 0.2827, 0.0024]    0.2s  (mip 0.0s)
+    r8 it 1  pool     20  LP  0.000000  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      8     1      20   0.000000   0.001383  [1.0, 0.2827, 0.0024]    0.2s  (mip 0.0s)
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 1.000001
+  MLU solution    : 1.000001  (+0.00%)
+  Certified ranks : 8 / 8 requested
+  Top-5 baseline  : [1.0, 0.2827, 0.0024, 0.0023, 0.0022]
+  Top-5 solution  : [1.0, 0.2827, 0.0024, 0.0023, 0.0022]
+  Pool size       : 20
+  Solution written → /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-032/TCG_DIAG/setAP-032-srpaths.json
+  Saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-032/TCG_DIAG/setAP-032-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-032/TCG_DIAG/setAP-032-summary.json
+
+  Total time      : 1.1s
+====================================================================
+Freeing default Gurobi environment

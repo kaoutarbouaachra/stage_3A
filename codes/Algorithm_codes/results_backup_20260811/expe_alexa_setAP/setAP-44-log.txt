@@ -1,0 +1,53 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-21 01:32:11
+====================================================================
+  Instance     : /home/setAP-44
+  Log          : /home/setAP-44_20260721_013211.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-44 | 20 nodes, 100 arcs, 40 demands, 2 timesteps, N=200
+    t=0: 947 non-zero ECMP coefficients
+    t=1: 951 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=40, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 30,400
+  Base model : 85,800 vars, 72,680 constraints, 15,340,798 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.839809     150.9s     150.9s  OPTIMAL
+      2   0.795759      72.1s     223.3s  OPTIMAL
+      3   0.586534     141.2s     364.6s  OPTIMAL
+  [k=4] Unexpected status 11 -- stopping.
+
+  Done.  3 ranks in 1189.1s
+  MLU (z*_1) = 0.839809
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 0.839809  (+16.02%)
+  Certified ranks : [0.839809, 0.795759, 0.586534]
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)

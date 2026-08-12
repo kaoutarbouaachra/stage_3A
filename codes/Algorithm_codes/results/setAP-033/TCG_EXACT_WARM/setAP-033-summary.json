@@ -84,8 +84,8 @@
   },
   "pricing_tol": 1e-07,
   "freeze_tol": 1e-06,
-  "mip_gap": 0.0,
-  "time_limit": 1000.0,
-  "wall_time": 3600.0,
-  "time_s": 359.1
+  "mip_gap": 1e-09,
+  "time_limit": 180.0,
+  "wall_time": 1800.0,
+  "time_s": 561.22
 }

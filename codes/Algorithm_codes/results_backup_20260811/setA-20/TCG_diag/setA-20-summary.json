@@ -1,0 +1,29 @@
+{
+  "algorithm": "TCG_diag",
+  "instance": "setA-20",
+  "K": 12,
+  "mlu_baseline": 0.9999993333333335,
+  "mlu_solution": 0.991312385321101,
+  "reduction_pct": 0.8686953803535,
+  "z_stars": [
+    0.9913123846054077
+  ],
+  "top5_baseline": [
+    0.999999,
+    0.991312,
+    0.840789,
+    0.745954,
+    0.648212
+  ],
+  "top5_solution": [
+    0.991312,
+    0.822323,
+    0.745954,
+    0.735331,
+    0.648212
+  ],
+  "pool_size": 6070,
+  "time_s": 7470.31,
+  "checker_valid": true,
+  "checker_mlu": 0.991312
+}

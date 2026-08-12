@@ -1,0 +1,83 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM_CARLA/setAP-030_20260811_203802.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, CARLA cumulative, WARM-started
+  Algorithm    : TCG-Exact-Warm-CARLA  (folder: TCG_EXACT_WARM_CARLA)
+  Rank encoding: carla
+  2026-08-11 20:38:02
+====================================================================
+  Instance     : setAP-030
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-030/TCG_EXACT_WARM_CARLA
+====================================================================
+[load] ../setAP/setAP-030-net.json
+    t=0: 912 non-zero ECMP coefficients
+    t=1: 912 non-zero ECMP coefficients
+[data] nodes=20 arcs=100 demands=10 K=6 budget=7.0 N=200
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-030/TCG_DIAG_CARLA/setAP-030-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] rank encoding: carla
+[warm] heuristic columns seeded: +6 new (0 demand(s) refused -> trivial); pool now 16 cols
+[warm] heuristic incumbent sorted loads (top): 0.967632, 0.752939, 0.59278, 0.552616, 0.439314
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] Theta=0.614815  z_1*=0.967632  pool=17 cols  iters=2  t=9s
+[rank   2] Theta=1.2214  z_2*=0.752939  pool=17 cols  iters=1  t=11s
+[rank   3] Theta=1.79941  z_3*=0.59278  pool=19 cols  iters=2  t=17s
+[rank   4] Theta=2.35264  z_4*=0.552616  pool=19 cols  iters=1  t=20s
+[rank   5] Theta=2.76934  z_5*=0.439314  pool=23 cols  iters=2  t=27s
+[rank   6] Theta=3.1425  z_6*=0.407683  pool=23 cols  iters=1  t=30s
+[rank   7] Theta=3.50881  z_7*=0.394318  pool=27 cols  iters=2  t=38s
+[rank   8] Theta=3.79443  z_8*=0.383225  pool=39 cols  iters=4  t=53s
+[rank   9] Theta=3.94929  z_9*=0.309617  pool=49 cols  iters=3  t=63s
+[rank  10] Theta=4.09545  z_10*=0.298372  pool=50 cols  iters=2  t=71s
+[rank  11] Theta=4.24083  z_11*=0.292655  pool=50 cols  iters=1  t=74s
+[rank  12] Theta=4.38621  z_12*=0.269773  pool=50 cols  iters=1  t=77s
+[rank  13] Theta=4.53158  z_13*=0.170755  pool=50 cols  iters=1  t=81s
+[rank  14] Theta=4.66842  z_14*=0.159964  pool=58 cols  iters=3  t=91s
+[rank  15] Theta=4.78811  z_15*=0.156707  pool=64 cols  iters=2  t=100s
+[rank  16] Theta=4.89314  z_16*=0.095198  pool=84 cols  iters=5  t=120s
+[rank  17] Theta=4.985  z_17*=0.091863  pool=94 cols  iters=5  t=141s
+[rank  18] Theta=5.07229  z_18*=0.0817826  pool=94 cols  iters=1  t=145s
+[rank  19] Theta=5.15938  z_19*=0.0815752  pool=94 cols  iters=1  t=149s
+[rank  20] Theta=5.24322  z_20*=0.0706985  pool=94 cols  iters=1  t=154s
+[rank  21] Theta=5.30451  z_21*=0.0516643  pool=105 cols  iters=3  t=167s
+[rank  22] Theta=5.35003  z_22*=0.0515846  pool=138 cols  iters=6  t=193s
+[rank  23] Theta=5.39516  z_23*=0.0503277  pool=138 cols  iters=1  t=199s
+[rank  24] Theta=5.44027  z_24*=0.0491737  pool=138 cols  iters=1  t=205s
+[rank  25] Theta=5.48465  z_25*=0.0458585  pool=181 cols  iters=9  t=250s
+[rank  26] Theta=5.52516  z_26*=0.0449299  pool=181 cols  iters=1  t=256s
+[rank  27] Theta=5.56567  z_27*=0.0416862  pool=181 cols  iters=1  t=264s
+[rank  28] Theta=5.60618  z_28*=0.0409118  pool=181 cols  iters=1  t=273s
+[rank  29] Theta=5.64511  z_29*=0.0416384  pool=208 cols  iters=9  t=323s
+[rank  30] Theta=5.68317  z_30*=0.0409118  pool=211 cols  iters=3  t=344s
+[rank  31] Theta=5.72124  z_31*=0.0399911  pool=211 cols  iters=1  t=355s
+[rank  32] Theta=5.7593  z_32*=0.0391098  pool=211 cols  iters=1  t=366s
+[rank  33] Theta=5.79736  z_33*=0.0362944  pool=215 cols  iters=4  t=394s
+[rank  34] Theta=5.8354  z_34*=0.033503  pool=218 cols  iters=2  t=411s
+[rank  35] Theta=5.8728  z_35*=0.0308011  pool=218 cols  iters=1  t=425s
+[rank  36] Theta=5.90939  z_36*=0.0273827  pool=218 cols  iters=1  t=440s
+[rank  37] Theta=5.94521  z_37*=0.026791  pool=225 cols  iters=3  t=464s
+[rank  38] Theta=5.98068  z_38*=0.0263981  pool=225 cols  iters=1  t=478s
+[rank  39] Theta=6.01437  z_39*=0.026791  pool=234 cols  iters=3  t=503s
+[rank  40] Theta=6.04618  z_40*=0.0263981  pool=242 cols  iters=5  t=540s
+[rank  41] Theta=6.07599  z_41*=0.0263064  pool=245 cols  iters=3  t=568s
+[rank  42] Theta=6.10362  z_42*=0.0261111  pool=245 cols  iters=1  t=587s
+[rank  43] Theta=6.13012  z_43*=0.0256774  pool=251 cols  iters=3  t=615s
+[rank  44] Theta=6.15642  z_44*=0.0253859  pool=253 cols  iters=2  t=639s
+[rank  45] Theta=6.18225  z_45*=0.0250842  pool=253 cols  iters=1  t=658s
+[rank  46] Theta=6.20788  z_46*=0.0145625  pool=253 cols  iters=1  t=679s
+[rank  47] Theta=6.23295  z_47*=0.00540371  pool=260 cols  iters=4  t=715s
+[rank  48] Theta=6.25749  z_48*=0.00106581  pool=260 cols  iters=1  t=735s
+[rank  49] Theta=6.28122  z_49*=0.000921153  pool=261 cols  iters=2  t=756s
+[rank  50] Theta=6.30287  z_50*=0  pool=267 cols  iters=4  t=788s
+[stop] remaining loads are ~0 at rank 50; leximin vector complete.
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  0.967632, 0.752939, 0.59278, 0.552616, 0.439314, 0.407683, 0.394318, 0.383225, 0.309617, 0.298372, 0.292655, 0.269773, 0.170755, 0.159964, 0.156707, 0.095198, 0.091863, 0.0817826, 0.0815752, 0.0706985
+  ... (50 ranks certified, N=200)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-030/TCG_EXACT_WARM_CARLA/setAP-030-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-030/TCG_EXACT_WARM_CARLA/setAP-030-summary.json
+====================================================================
+Freeing default Gurobi environment

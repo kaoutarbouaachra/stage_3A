@@ -1,0 +1,76 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_DIAG_CARLA/setAP-058_20260811_103354.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag-CARLA  (folder: TCG_DIAG_CARLA)
+  Rank encoding: carla
+  2026-08-11 10:33:54
+====================================================================
+  Instance     : setAP-058
+  Dataset      : ../setAP
+  K ranks      : 8
+  time_limit   : 600.0s   (soft cap)
+  lp_time/iter : 120.0s   (bounds ONE LP optimize())
+  pricing_time : 180.0s   (bounds ONE pricing sweep)
+  mip_time/rank: 180.0s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-058/TCG_DIAG_CARLA
+====================================================================
+
+  setAP-058 | 30 nodes, 150 arcs, 20 demands, 2 timesteps, N=300
+    t=0: 2342 non-zero ECMP coefficients
+    t=1: 2347 non-zero ECMP coefficients
+  MLU baseline  : 102.000013
+  Top-5 baseline: [102.0, 0.8747, 0.6568, 0.4966, 0.4582]
+
+  Initial pool : 20 trajectories
+
+   Rank  CGit    Pool    Theta_k       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     20  Theta 102.000013  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      1     1      20 102.000013 102.000013 [102.0, 0.8747, 0.6568]    0.1s  (mip 0.0s)
+    r2 it 1  pool     25  Theta 102.874686  +   5 cols  priced 20/20  lp   0.0s  price    0.1s
+    r2 it 2  pool     35  Theta 102.656802  +  10 cols  priced 20/20  lp   0.0s  price    0.1s
+    r2 it 3  pool     45  Theta 102.496569  +  10 cols  priced 20/20  lp   0.0s  price    0.1s
+    r2 it 4  pool     55  Theta 102.474435  +  10 cols  priced 20/20  lp   0.0s  price    0.1s
+    r2 it 5  pool     55  Theta 102.458180  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      2     5      55 102.458180   0.874673 [102.0, 0.8747, 0.6568]    0.7s  (mip 0.0s)
+    r3 it 1  pool     60  Theta 102.897609  +   5 cols  priced 20/20  lp   0.0s  price    0.1s
+    r3 it 2  pool     75  Theta 102.825621  +  15 cols  priced 20/20  lp   0.0s  price    0.1s
+    r3 it 3  pool     75  Theta 102.812952  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      3     3      75 102.812952   0.366224 [102.0, 0.4582, 0.3662]    0.5s  (mip 0.0s)
+    r4 it 1  pool     75  Theta 103.135980  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      4     1      75 103.135980   0.355453 [102.0, 0.4582, 0.3654]    0.2s  (mip 0.1s)
+    r5 it 1  pool     80  Theta 103.442046  +   5 cols  priced 20/20  lp   0.0s  price    0.1s
+    r5 it 2  pool     90  Theta 103.440430  +  10 cols  priced 20/20  lp   0.0s  price    0.1s
+    r5 it 3  pool     90  Theta 103.424943  +   0 cols  priced 20/20  lp   0.0s  price    0.1s
+      5     3      90 103.424943   0.354771 [102.0, 0.4582, 0.3654]    0.6s  (mip 0.1s)
+    r6 it 1  pool     95  Theta 103.693772  +   5 cols  priced 20/20  lp   0.1s  price    0.1s
+    r6 it 2  pool    105  Theta 103.687705  +  10 cols  priced 20/20  lp   0.1s  price    0.1s
+    r6 it 3  pool    105  Theta 103.685495  +   0 cols  priced 20/20  lp   0.1s  price    0.1s
+      6     3     105 103.685495   0.338460 [102.0, 0.4582, 0.3654]    0.7s  (mip 0.2s)
+    r7 it 1  pool    105  Theta 103.924961  +   0 cols  priced 20/20  lp   0.1s  price    0.1s
+      7     1     105 103.924961   0.337530 [102.0, 0.4582, 0.3654]    0.4s  (mip 0.2s)
+    r8 it 1  pool    143  Theta 104.153363  +  38 cols  priced 20/20  lp   0.1s  price    0.1s
+    r8 it 2  pool    143  Theta 104.151459  +   0 cols  priced 20/20  lp   0.1s  price    0.1s
+      8     2     143 104.151459   0.328277 [102.0, 0.4582, 0.3654]    0.7s  (mip 0.3s)
+
+  ================================================================
+  Algorithm       : TCG-Diag-CARLA
+  MLU baseline    : 102.000013
+  MLU solution    : 102.000013  (+0.00%)
+  Certified ranks : 8 / 8 requested
+  Top-5 baseline  : [102.0, 0.8747, 0.6568, 0.4966, 0.4582]
+  Top-5 solution  : [102.0, 0.4582, 0.3654, 0.3548, 0.3385]
+  Pool size       : 143
+  Solution written → /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-058/TCG_DIAG_CARLA/setAP-058-srpaths.json
+  Saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-058/TCG_DIAG_CARLA/setAP-058-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-058/TCG_DIAG_CARLA/setAP-058-summary.json
+
+  Total time      : 4.1s
+====================================================================
+Freeing default Gurobi environment

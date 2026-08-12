@@ -1,0 +1,14 @@
+{
+  "algorithm": "alexa",
+  "instance": "setA-01",
+  "mlu_baseline": 1.0000006861063464,
+  "mlu_solution": 0.9293838998211091,
+  "reduction_pct": 7.061673783464527,
+  "z_stars": [
+    0.9293838998211112,
+    0.5519528735632184,
+    0.5077965999999989
+  ],
+  "checker_valid": true,
+  "checker_mlu": 0.929383
+}

@@ -1,0 +1,85 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-20 09:51:43
+====================================================================
+  Instance     : /home/setAP-04
+  Log          : /home/setAP-04_20260720_095143.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-04 | 10 nodes, 50 arcs, 10 demands, 2 timesteps, N=100
+    t=0: 167 non-zero ECMP coefficients
+    t=1: 168 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=10, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 1,800
+  Base model : 12,800 vars, 12,320 constraints, 383,198 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   1.000000       2.1s       2.1s  OPTIMAL
+      2   0.625000       2.3s       4.4s  OPTIMAL
+      3   0.400958       4.2s       8.6s  OPTIMAL
+      4   0.326519       5.1s      13.7s  OPTIMAL
+      5   0.319875       6.2s      19.8s  OPTIMAL
+      6   0.302791       3.6s      23.4s  OPTIMAL
+      7   0.264115       5.5s      28.9s  OPTIMAL
+      8   0.230936       8.1s      37.0s  OPTIMAL
+      9   0.161537       6.2s      43.1s  OPTIMAL
+     10   0.149024       6.0s      49.2s  OPTIMAL
+     11   0.130007       6.2s      55.3s  OPTIMAL
+     12   0.117666       4.4s      59.7s  OPTIMAL
+     13   0.114885       5.3s      65.0s  OPTIMAL
+     14   0.111320       4.4s      69.4s  OPTIMAL
+     15   0.109978       6.3s      75.7s  OPTIMAL
+     16   0.102005       6.2s      81.9s  OPTIMAL
+     17   0.099272       6.6s      88.6s  OPTIMAL
+     18   0.090207       5.1s      93.7s  OPTIMAL
+     19   0.087997       6.5s     100.2s  OPTIMAL
+     20   0.085600       7.2s     107.4s  OPTIMAL
+     21   0.084903       6.1s     113.5s  OPTIMAL
+     22   0.081095       5.7s     119.2s  OPTIMAL
+     23   0.072084       4.7s     124.0s  OPTIMAL
+     24   0.068215       5.5s     129.5s  OPTIMAL
+     25   0.064211       5.2s     134.7s  OPTIMAL
+     26   0.050381       5.1s     139.7s  OPTIMAL
+     27   0.047939       5.4s     145.1s  OPTIMAL
+     28   0.038655       5.9s     151.1s  OPTIMAL
+     29   0.030513       4.4s     155.5s  OPTIMAL
+     30   0.026141       4.8s     160.3s  OPTIMAL
+     31   0.021880       5.2s     165.5s  OPTIMAL
+     32   0.017039       5.3s     170.8s  OPTIMAL
+     33   0.015318       4.9s     175.7s  OPTIMAL
+     34   0.013465       4.8s     180.5s  OPTIMAL
+     35   0.002099       5.3s     185.8s  OPTIMAL
+     36   0.001398       5.0s     190.8s  OPTIMAL
+     37   0.000000       2.3s     193.2s  OPTIMAL
+  All loads are 0 -- converged.
+
+  Done.  37 ranks in 193.2s
+  MLU (z*_1) = 1.000000
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : [1.0, 0.625, 0.400958, 0.326519, 0.319875, 0.302791, 0.264115, 0.230936, 0.161537, 0.149024, 0.130007, 0.117666, 0.114885, 0.11132, 0.109978, 0.102005, 0.099272, 0.090207, 0.087997, 0.0856, 0.084903, 0.081095, 0.072084, 0.068215, 0.064211, 0.050381, 0.047939, 0.038655, 0.030513, 0.026141, 0.02188, 0.017039, 0.015318, 0.013465, 0.002099, 0.001398, 0.0]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)

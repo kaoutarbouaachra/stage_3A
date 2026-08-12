@@ -1,8 +1,8 @@
 {
   "algorithm": "TCG_DIAG",
   "instance": "setAP-027",
-  "K": 12,
-  "ranks_solved": 12,
+  "K": 8,
+  "ranks_solved": 8,
   "mlu_baseline": 10.67003755,
   "mlu_solution": 10.67003755,
   "reduction_pct": 0.0,
@@ -14,11 +14,7 @@
     0.2841815567226891,
     0.27786556119790795,
     0.2597276898989899,
-    0.2264786914600551,
-    0.20661911407766992,
-    0.18712601101928375,
-    0.15845206216695296,
-    0.1494830510067029
+    0.2264786914600551
   ],
   "top5_baseline": [
     10.670038,
@@ -35,8 +31,8 @@
     0.284182
   ],
   "pool_size": 10,
-  "time_limit": 3600,
-  "time_s": 2.1,
-  "checker_valid": true,
-  "checker_mlu": 10.670037
+  "time_limit": 600.0,
+  "time_s": 0.77,
+  "checker_valid": null,
+  "checker_mlu": null
 }

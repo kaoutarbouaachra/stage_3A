@@ -1,0 +1,10 @@
+{
+  "algorithm": "TCG_exact",
+  "instance": "setA-05",
+  "ranks_certified": 1,
+  "z_stars": [
+    0.20498587519516004
+  ],
+  "pool_size": 280,
+  "time_s": 12689.25
+}

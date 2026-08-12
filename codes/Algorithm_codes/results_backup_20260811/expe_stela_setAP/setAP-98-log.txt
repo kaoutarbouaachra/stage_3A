@@ -1,0 +1,66 @@
+
+════════════════════════════════════════════════════════════
+ 1. Loading instance
+════════════════════════════════════════════════════════════
+setAP-98 | 40 nodes, 200 arcs, 50 demands, 2 timesteps, N=400
+
+════════════════════════════════════════════════════════════
+ 2. ECMP computation
+════════════════════════════════════════════════════════════
+    t=0: 4423 non-zero ECMP coefficients
+    t=1: 4455 non-zero ECMP coefficients
+
+════════════════════════════════════════════════════════════
+ 3. Baseline
+════════════════════════════════════════════════════════════
+MLU baseline: 1.000000
+
+════════════════════════════════════════════════════════════
+ 4. Solver
+════════════════════════════════════════════════════════════
+License: NOT FOUND
+  Pre-computing useful segments (maxSeg=6, |V|=40, |D|=50, |T|=2) …
+  → 3,120 useful segment slots  (naive: 3,200 → reduction ×1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 156,000
+  Base model : 234,000 vars, 160,101 constraints, 1,014,000 nonzeros
+
+
+      k       z*_k  iter_time    elapsed        Δz*   status
+  ----- ---------- ---------- ---------- ---------- --------
+      1   1.000000       5.2s      17.7s  +0.000000  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      2   0.967742     312.3s     330.2s  +0.032258  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 0%
+      3   0.366386     446.7s     777.2s  +0.601356  OPTIMAL  [░░░░░░░░░░░░░░░░░░░░] 1%
+  [k=4] Unexpected status 11 — stopping.
+
+  Done.  3 iterations in 1199.3s
+  MLU (z*_1) = 1.000000
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 5. Results
+════════════════════════════════════════════════════════════
+
+Lex vector (first values):
+  z*_  1 = 1.000000 ██████████████████████████████
+  z*_  2 = 0.967742 █████████████████████████████
+  z*_  3 = 0.366386 ██████████
+
+MLU solution: 1.000000
+  Solution written → /home/setAP-98/setAP-98-srpaths.json
+Releasing Gurobi license
+Gurobi license released OK
+
+════════════════════════════════════════════════════════════
+ 6. Checker
+════════════════════════════════════════════════════════════
+
+Done.
+Total time: 1200.10s
+
+Interrupt request received

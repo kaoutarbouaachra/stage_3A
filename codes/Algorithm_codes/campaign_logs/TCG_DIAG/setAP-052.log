@@ -1,0 +1,68 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_DIAG/setAP-052_20260811_103210.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_DIAG)
+  2026-08-11 10:32:10
+====================================================================
+  Instance     : setAP-052
+  Dataset      : ../setAP
+  K ranks      : 8
+  time_limit   : 600.0s   (soft cap)
+  lp_time/iter : 120.0s   (bounds ONE LP optimize())
+  pricing_time : 180.0s   (bounds ONE pricing sweep)
+  mip_time/rank: 180.0s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-052/TCG_DIAG
+====================================================================
+
+  setAP-052 | 30 nodes, 150 arcs, 10 demands, 2 timesteps, N=300
+    t=0: 2348 non-zero ECMP coefficients
+    t=1: 2375 non-zero ECMP coefficients
+  MLU baseline  : 8.387903
+  Top-5 baseline: [8.3879, 1.0, 0.5047, 0.4022, 0.3789]
+
+  Initial pool : 10 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     10  LP  8.387903  +   0 cols  priced 10/10  lp   0.0s  price    0.0s
+      1     1      10   8.387903   8.387903  [8.3879, 1.0, 0.5047]    0.1s  (mip 0.0s)
+    r2 it 1  pool     15  LP  0.501574  +   5 cols  priced 10/10  lp   0.0s  price    0.1s
+    r2 it 2  pool     30  LP  0.353046  +  15 cols  priced 10/10  lp   0.0s  price    0.1s
+    r2 it 3  pool     50  LP  0.315389  +  20 cols  priced 10/10  lp   0.0s  price    0.1s
+    r2 it 4  pool     55  LP  0.304373  +   5 cols  priced 10/10  lp   0.0s  price    0.1s
+    r2 it 5  pool     55  LP  0.301460  +   0 cols  priced 10/10  lp   0.0s  price    0.1s
+      2     5      55   0.301460   0.681471 [8.3879, 0.6815, 0.6071]    0.4s  (mip 0.0s)
+    r3 it 1  pool     55  LP  0.000000  +   0 cols  priced 10/10  lp   0.0s  price    0.0s
+      3     1      55   0.000000   0.607095 [8.3879, 0.6815, 0.6071]    0.1s  (mip 0.0s)
+    r4 it 1  pool     55  LP  0.000000  +   0 cols  priced 10/10  lp   0.0s  price    0.1s
+      4     1      55   0.000000   0.506257 [8.3879, 0.6815, 0.6071]    0.1s  (mip 0.0s)
+    r5 it 1  pool     55  LP  0.000000  +   0 cols  priced 10/10  lp   0.0s  price    0.0s
+      5     1      55   0.000000   0.504721 [8.3879, 0.6815, 0.6071]    0.1s  (mip 0.0s)
+    r6 it 1  pool     55  LP  0.000000  +   0 cols  priced 10/10  lp   0.0s  price    0.1s
+      6     1      55   0.000000   0.402168 [8.3879, 0.6815, 0.6071]    0.2s  (mip 0.1s)
+    r7 it 1  pool     55  LP  0.000000  +   0 cols  priced 10/10  lp   0.0s  price    0.0s
+      7     1      55   0.000000   0.378935 [8.3879, 0.6815, 0.6071]    0.2s  (mip 0.1s)
+    r8 it 1  pool     55  LP  0.000000  +   0 cols  priced 10/10  lp   0.1s  price    0.1s
+      8     1      55   0.000000   0.352035 [8.3879, 0.6815, 0.6071]    0.2s  (mip 0.1s)
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 8.387903
+  MLU solution    : 8.387903  (+0.00%)
+  Certified ranks : 8 / 8 requested
+  Top-5 baseline  : [8.3879, 1.0, 0.5047, 0.4022, 0.3789]
+  Top-5 solution  : [8.3879, 0.6815, 0.6071, 0.5063, 0.5047]
+  Pool size       : 55
+  Solution written → /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-052/TCG_DIAG/setAP-052-srpaths.json
+  Saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-052/TCG_DIAG/setAP-052-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-052/TCG_DIAG/setAP-052-summary.json
+
+  Total time      : 1.6s
+====================================================================
+Freeing default Gurobi environment

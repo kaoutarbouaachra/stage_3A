@@ -1,0 +1,68 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_DIAG_CARLA/setAP-089_20260811_104637.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag-CARLA  (folder: TCG_DIAG_CARLA)
+  Rank encoding: carla
+  2026-08-11 10:46:37
+====================================================================
+  Instance     : setAP-089
+  Dataset      : ../setAP
+  K ranks      : 8
+  time_limit   : 600.0s   (soft cap)
+  lp_time/iter : 120.0s   (bounds ONE LP optimize())
+  pricing_time : 180.0s   (bounds ONE pricing sweep)
+  mip_time/rank: 180.0s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_DIAG_CARLA
+====================================================================
+
+  setAP-089 | 40 nodes, 200 arcs, 30 demands, 2 timesteps, N=400
+    t=0: 4709 non-zero ECMP coefficients
+    t=1: 4730 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Top-5 baseline: [1.0, 0.4571, 0.4452, 0.2842, 0.2678]
+
+  Initial pool : 30 trajectories
+
+   Rank  CGit    Pool    Theta_k       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     30  Theta  1.000000  +   0 cols  priced 30/30  lp   0.0s  price    0.2s
+      1     1      30   1.000000   1.000000  [1.0, 0.4571, 0.4452]    0.3s  (mip 0.0s)
+    r2 it 1  pool     30  Theta  1.457143  +   0 cols  priced 30/30  lp   0.0s  price    0.2s
+      2     1      30   1.457143   0.457143  [1.0, 0.4571, 0.4452]    0.3s  (mip 0.0s)
+    r3 it 1  pool     30  Theta  1.902309  +   0 cols  priced 30/30  lp   0.0s  price    0.2s
+      3     1      30   1.902309   0.445166  [1.0, 0.4571, 0.4452]    0.3s  (mip 0.0s)
+    r4 it 1  pool     30  Theta  2.186519  +   0 cols  priced 30/30  lp   0.0s  price    0.2s
+      4     1      30   2.186519   0.284211  [1.0, 0.4571, 0.4452]    0.3s  (mip 0.0s)
+    r5 it 1  pool     30  Theta  2.454361  +   0 cols  priced 30/30  lp   0.1s  price    0.2s
+      5     1      30   2.454361   0.267841  [1.0, 0.4571, 0.4452]    0.4s  (mip 0.1s)
+    r6 it 1  pool     45  Theta  2.682782  +  15 cols  priced 30/30  lp   0.1s  price    0.2s
+    r6 it 2  pool     55  Theta  2.661267  +  10 cols  priced 30/30  lp   0.1s  price    0.2s
+    r6 it 3  pool     60  Theta  2.654923  +   5 cols  priced 30/30  lp   0.1s  price    0.2s
+    r6 it 4  pool     60  Theta  2.652857  +   0 cols  priced 30/30  lp   0.1s  price    0.2s
+      6     4      60   2.652857   0.200562  [1.0, 0.4571, 0.4452]    1.3s  (mip 0.1s)
+    r7 it 1  pool     60  Theta  2.838770  +   0 cols  priced 30/30  lp   0.1s  price    0.2s
+      7     1      60   2.838770   0.198496  [1.0, 0.4571, 0.4452]    0.4s  (mip 0.1s)
+    r8 it 1  pool     60  Theta  3.011059  +   0 cols  priced 30/30  lp   0.1s  price    0.2s
+      8     1      60   3.011059   0.189759  [1.0, 0.4571, 0.4452]    0.4s  (mip 0.1s)
+
+  ================================================================
+  Algorithm       : TCG-Diag-CARLA
+  MLU baseline    : 1.000000
+  MLU solution    : 1.000000  (+0.00%)
+  Certified ranks : 8 / 8 requested
+  Top-5 baseline  : [1.0, 0.4571, 0.4452, 0.2842, 0.2678]
+  Top-5 solution  : [1.0, 0.4571, 0.4452, 0.2842, 0.2678]
+  Pool size       : 60
+  Solution written → /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_DIAG_CARLA/setAP-089-srpaths.json
+  Saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_DIAG_CARLA/setAP-089-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-089/TCG_DIAG_CARLA/setAP-089-summary.json
+
+  Total time      : 4.3s
+====================================================================
+Freeing default Gurobi environment

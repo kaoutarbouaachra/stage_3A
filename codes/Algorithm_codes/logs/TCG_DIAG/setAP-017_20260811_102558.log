@@ -1,0 +1,70 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_DIAG/setAP-017_20260811_102558.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_DIAG)
+  2026-08-11 10:25:58
+====================================================================
+  Instance     : setAP-017
+  Dataset      : ../setAP
+  K ranks      : 8
+  time_limit   : 600.0s   (soft cap)
+  lp_time/iter : 120.0s   (bounds ONE LP optimize())
+  pricing_time : 180.0s   (bounds ONE pricing sweep)
+  mip_time/rank: 180.0s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-017/TCG_DIAG
+====================================================================
+
+  setAP-017 | 10 nodes, 50 arcs, 40 demands, 2 timesteps, N=100
+    t=0: 160 non-zero ECMP coefficients
+    t=1: 159 non-zero ECMP coefficients
+  MLU baseline  : 11.409950
+  Top-5 baseline: [11.4099, 1.0, 0.7003, 0.6238, 0.5944]
+
+  Initial pool : 40 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     40  LP 11.409950  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      1     1      40  11.409950  11.409950 [11.4099, 1.0, 0.7003]    0.2s  (mip 0.0s)
+    r2 it 1  pool    100  LP  0.584087  +  60 cols  priced 40/40  lp   0.0s  price    0.2s
+    r2 it 2  pool    105  LP  0.567972  +   5 cols  priced 40/40  lp   0.0s  price    0.2s
+    r2 it 3  pool    105  LP  0.567972  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      2     3     105   0.567972   1.000000 [11.4099, 1.0, 0.7003]    0.6s  (mip 0.0s)
+    r3 it 1  pool    232  LP  0.021396  + 127 cols  priced 40/40  lp   0.0s  price    0.2s
+    r3 it 2  pool    251  LP  0.019605  +  19 cols  priced 40/40  lp   0.0s  price    0.2s
+    r3 it 3  pool    252  LP  0.019533  +   1 cols  priced 40/40  lp   0.0s  price    0.2s
+    r3 it 4  pool    256  LP  0.019526  +   4 cols  priced 40/40  lp   0.0s  price    0.2s
+    r3 it 5  pool    256  LP  0.019526  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      3     5     256   0.019526   0.700293 [11.4099, 1.0, 0.7003]    1.2s  (mip 0.0s)
+    r4 it 1  pool    256  LP  0.000000  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      4     1     256   0.000000   0.571593 [11.4099, 1.0, 0.7003]    0.3s  (mip 0.1s)
+    r5 it 1  pool    256  LP  0.000000  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      5     1     256   0.000000   0.432113 [11.4099, 1.0, 0.7003]    0.3s  (mip 0.1s)
+    r6 it 1  pool    256  LP  0.000000  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      6     1     256   0.000000   0.429628 [11.4099, 1.0, 0.7003]    0.3s  (mip 0.1s)
+    r7 it 1  pool    256  LP  0.000000  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      7     1     256   0.000000   0.428644 [11.4099, 1.0, 0.7003]    0.3s  (mip 0.1s)
+    r8 it 1  pool    256  LP  0.000000  +   0 cols  priced 40/40  lp   0.0s  price    0.2s
+      8     1     256   0.000000   0.419923 [11.4099, 1.0, 0.7003]    0.3s  (mip 0.1s)
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 11.409950
+  MLU solution    : 11.409950  (+0.00%)
+  Certified ranks : 8 / 8 requested
+  Top-5 baseline  : [11.4099, 1.0, 0.7003, 0.6238, 0.5944]
+  Top-5 solution  : [11.4099, 1.0, 0.7003, 0.5716, 0.4321]
+  Pool size       : 256
+  Solution written → /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-017/TCG_DIAG/setAP-017-srpaths.json
+  Saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-017/TCG_DIAG/setAP-017-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-017/TCG_DIAG/setAP-017-summary.json
+
+  Total time      : 3.4s
+====================================================================
+Freeing default Gurobi environment

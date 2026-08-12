@@ -1,0 +1,16 @@
+{
+  "algorithm": "STELA",
+  "instance": "setAP-124",
+  "N": 500,
+  "ranks_solved": 4,
+  "z_stars": [
+    1.0,
+    0.570681,
+    0.007772287323943662,
+    0.005707749498997997
+  ],
+  "time_limit": 1800.0,
+  "mip_gap": 1e-08,
+  "epsilon": 1e-06,
+  "total_time_s": 1800.2188778538257
+}

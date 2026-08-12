@@ -1,0 +1,78 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_DIAG/setAP-014_20260811_102527.log
+====================================================================
+  T-ASR -- Pair-Path Column Generation  (Rank-by-Rank Lex)
+  Algorithm    : TCG-Diag  (folder: TCG_DIAG)
+  2026-08-11 10:25:27
+====================================================================
+  Instance     : setAP-014
+  Dataset      : ../setAP
+  K ranks      : 8
+  time_limit   : 600.0s   (soft cap)
+  lp_time/iter : 120.0s   (bounds ONE LP optimize())
+  pricing_time : 180.0s   (bounds ONE pricing sweep)
+  mip_time/rank: 180.0s   (always reserved, never skipped)
+  max_cg_iter  : 20
+  topk_cols    : 5
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-014/TCG_DIAG
+====================================================================
+
+  setAP-014 | 10 nodes, 50 arcs, 30 demands, 2 timesteps, N=100
+    t=0: 154 non-zero ECMP coefficients
+    t=1: 159 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Top-5 baseline: [1.0, 0.6549, 0.5732, 0.4532, 0.4485]
+
+  Initial pool : 30 trajectories
+
+   Rank  CGit    Pool   LP_bound       z_k*               Top3_sol    Time
+  ----- ----- ------- ---------- ---------- ---------------------- -------
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+    r1 it 1  pool     50  LP  1.000000  +  20 cols  priced 30/30  lp   0.0s  price    0.1s
+    r1 it 2  pool     75  LP  0.757461  +  25 cols  priced 30/30  lp   0.0s  price    0.1s
+    r1 it 3  pool     75  LP  0.573238  +   0 cols  priced 30/30  lp   0.0s  price    0.1s
+      1     3      75   0.573238   0.594113 [0.5941, 0.5932, 0.5732]    0.4s  (mip 0.0s)
+    r2 it 1  pool     95  LP  0.368479  +  20 cols  priced 30/30  lp   0.0s  price    0.1s
+    r2 it 2  pool    105  LP  0.353591  +  10 cols  priced 30/30  lp   0.0s  price    0.1s
+    r2 it 3  pool    105  LP  0.352507  +   0 cols  priced 30/30  lp   0.0s  price    0.1s
+      2     3     105   0.352507   0.593154 [0.5941, 0.5932, 0.5732]    0.4s  (mip 0.0s)
+    r3 it 1  pool    110  LP  0.287983  +   5 cols  priced 30/30  lp   0.0s  price    0.1s
+    r3 it 2  pool    110  LP  0.283106  +   0 cols  priced 30/30  lp   0.0s  price    0.1s
+      3     2     110   0.283106   0.573238 [0.5941, 0.5932, 0.5732]    0.3s  (mip 0.0s)
+    r4 it 1  pool    130  LP  0.240444  +  20 cols  priced 30/30  lp   0.0s  price    0.1s
+    r4 it 2  pool    130  LP  0.238309  +   0 cols  priced 30/30  lp   0.0s  price    0.1s
+      4     2     130   0.238309   0.461474 [0.5941, 0.5932, 0.5732]    0.3s  (mip 0.0s)
+    r5 it 1  pool    184  LP  0.201725  +  54 cols  priced 30/30  lp   0.0s  price    0.1s
+    r5 it 2  pool    194  LP  0.197960  +  10 cols  priced 30/30  lp   0.0s  price    0.1s
+    r5 it 3  pool    194  LP  0.197916  +   0 cols  priced 30/30  lp   0.0s  price    0.1s
+      5     3     194   0.197916   0.374905 [0.5932, 0.5732, 0.4615]    0.5s  (mip 0.1s)
+    r6 it 1  pool    229  LP  0.164057  +  35 cols  priced 30/30  lp   0.0s  price    0.1s
+    r6 it 2  pool    249  LP  0.161181  +  20 cols  priced 30/30  lp   0.0s  price    0.1s
+    r6 it 3  pool    249  LP  0.160408  +   0 cols  priced 30/30  lp   0.0s  price    0.1s
+      6     3     249   0.160408   0.374449 [0.5932, 0.5732, 0.4615]    0.6s  (mip 0.1s)
+    r7 it 1  pool    266  LP  0.135061  +  17 cols  priced 30/30  lp   0.0s  price    0.1s
+    r7 it 2  pool    280  LP  0.134834  +  14 cols  priced 30/30  lp   0.0s  price    0.1s
+    r7 it 3  pool    280  LP  0.134825  +   0 cols  priced 30/30  lp   0.0s  price    0.1s
+      7     3     280   0.134825   0.362897 [0.5932, 0.5732, 0.4615]    0.6s  (mip 0.1s)
+    r8 it 1  pool    304  LP  0.115263  +  24 cols  priced 30/30  lp   0.1s  price    0.1s
+    r8 it 2  pool    305  LP  0.114732  +   1 cols  priced 30/30  lp   0.1s  price    0.1s
+    r8 it 3  pool    305  LP  0.114728  +   0 cols  priced 30/30  lp   0.1s  price    0.1s
+      8     3     305   0.114728   0.346916 [0.5932, 0.5732, 0.4615]    0.7s  (mip 0.1s)
+
+  ================================================================
+  Algorithm       : TCG-Diag
+  MLU baseline    : 1.000000
+  MLU solution    : 0.593154  (+40.68%)
+  Certified ranks : 8 / 8 requested
+  Top-5 baseline  : [1.0, 0.6549, 0.5732, 0.4532, 0.4485]
+  Top-5 solution  : [0.5932, 0.5732, 0.4615, 0.41, 0.3749]
+  Pool size       : 305
+  Solution written → /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-014/TCG_DIAG/setAP-014-srpaths.json
+  Saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-014/TCG_DIAG/setAP-014-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-014/TCG_DIAG/setAP-014-summary.json
+
+  Total time      : 3.9s
+====================================================================
+Freeing default Gurobi environment

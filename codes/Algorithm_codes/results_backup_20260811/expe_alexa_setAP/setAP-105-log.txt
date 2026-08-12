@@ -1,0 +1,49 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-22 01:53:52
+====================================================================
+  Instance     : /home/setAP-105
+  Log          : /home/setAP-105_20260722_015352.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-105 | 50 nodes, 250 arcs, 10 demands, 2 timesteps, N=500
+    t=0: 7698 non-zero ECMP coefficients
+    t=1: 7707 non-zero ECMP coefficients
+  MLU baseline  : 1.000001
+  Building ALEXA model (maxSeg=6, |V|=50, |D|=10, |T|=2) ...
+  -> 4,900 useful segment slots  (naive: 5,000 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 49,000
+  Base model : 324,000 vars, 301,520 constraints, 78,292,998 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+  [k=1] Unexpected status 11 -- stopping.
+
+  Done.  0 ranks in 1147.8s
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000001
+  MLU solution    : 1.000001  (+0.00%)
+  Certified ranks : []
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)

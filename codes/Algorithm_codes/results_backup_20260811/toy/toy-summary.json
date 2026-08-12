@@ -1,0 +1,22 @@
+{
+  "instance": "toy",
+  "n_nodes": 7,
+  "n_arcs": 22,
+  "n_demands": 2,
+  "n_times": 2,
+  "max_seg": 4,
+  "N": 44,
+  "mlu_baseline": 0.4375,
+  "mlu_solution": 0.375,
+  "reduction_pct": 14.285714285714285,
+  "n_iterations": 17,
+  "converged": true,
+  "t_solver_s": 0.66,
+  "t_total_s": 7.73,
+  "lex_improved": 1,
+  "lex_unchanged": 34,
+  "lex_degraded": 9,
+  "first_divergence": 1,
+  "checker_mlu": 0.375,
+  "feasible": true
+}

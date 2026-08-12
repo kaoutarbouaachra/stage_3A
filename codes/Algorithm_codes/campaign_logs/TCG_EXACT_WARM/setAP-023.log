@@ -1,0 +1,110 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-023_20260811_171501.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-11 17:15:01
+====================================================================
+  Instance     : setAP-023
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-023/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-023-net.json
+    t=0: 159 non-zero ECMP coefficients
+    t=1: 163 non-zero ECMP coefficients
+[data] nodes=10 arcs=50 demands=50 K=6 budget=7.0 N=100
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-023/TCG_DIAG/setAP-023-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +24 new (0 demand(s) refused -> trivial); pool now 74 cols
+[warm] heuristic incumbent sorted loads (top): 0.825028, 0.493589, 0.463791, 0.457394, 0.445215
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=0.825028  z_1*=0.825028  pool=74 cols  iters=1  t=14s
+[rank   2] LP=0.388065  z_2*=0.493589  pool=183 cols  iters=5  t=55s
+[rank   3] LP=0.327866  z_3*=0.463791  pool=200 cols  iters=3  t=78s
+[rank   4] LP=0.287662  z_4*=0.457394  pool=219 cols  iters=5  t=123s
+[rank   5] LP=0.252221  z_5*=0.44062  pool=242 cols  iters=4  t=160s
+[rank   6] LP=0.222485  z_6*=0.433253  pool=254 cols  iters=3  t=186s
+[rank   7] LP=0.198762  z_7*=0.430317  pool=259 cols  iters=3  t=214s
+[rank   8] LP=0.176963  z_8*=0.424863  pool=268 cols  iters=3  t=241s
+[rank   9] LP=0.156653  z_9*=0.4247  pool=273 cols  iters=2  t=256s
+[rank  10] LP=0.137384  z_10*=0.423968  pool=278 cols  iters=3  t=272s
+[rank  11] LP=0.118755  z_11*=0.422682  pool=284 cols  iters=2  t=283s
+[rank  12] LP=0.10174  z_12*=0.41356  pool=287 cols  iters=2  t=294s
+[rank  13] LP=0.0851746  z_13*=0.411779  pool=291 cols  iters=3  t=310s
+[rank  14] LP=0.0689967  z_14*=0.406468  pool=295 cols  iters=2  t=321s
+[rank  15] LP=0.0536915  z_15*=0.399957  pool=301 cols  iters=4  t=342s
+[rank  16] LP=0.0392261  z_16*=0.394193  pool=307 cols  iters=3  t=358s
+[rank  17] LP=0.0254555  z_17*=0.393767  pool=310 cols  iters=3  t=373s
+[rank  18] LP=0.0121193  z_18*=0.392021  pool=311 cols  iters=2  t=384s
+[rank  19] LP=0  z_19*=0.388996  pool=311 cols  iters=1  t=389s
+[rank  20] LP=0  z_20*=0.381587  pool=311 cols  iters=1  t=393s
+[rank  21] LP=0  z_21*=0.380833  pool=311 cols  iters=1  t=397s
+[rank  22] LP=0  z_22*=0.379022  pool=311 cols  iters=1  t=402s
+[rank  23] LP=0  z_23*=0.369157  pool=311 cols  iters=1  t=407s
+[rank  24] LP=0  z_24*=0.339433  pool=311 cols  iters=1  t=413s
+[rank  25] LP=0  z_25*=0.334191  pool=311 cols  iters=1  t=418s
+[rank  26] LP=0  z_26*=0.328638  pool=311 cols  iters=1  t=423s
+[rank  27] LP=0  z_27*=0.32725  pool=311 cols  iters=1  t=427s
+[rank  28] LP=0  z_28*=0.323902  pool=311 cols  iters=1  t=433s
+[rank  29] LP=0  z_29*=0.321477  pool=311 cols  iters=1  t=440s
+[rank  30] LP=0  z_30*=0.319388  pool=311 cols  iters=1  t=445s
+[rank  31] LP=0  z_31*=0.319253  pool=311 cols  iters=1  t=453s
+[rank  32] LP=0  z_32*=0.317819  pool=311 cols  iters=1  t=459s
+[rank  33] LP=0  z_33*=0.296644  pool=311 cols  iters=1  t=465s
+[rank  34] LP=0  z_34*=0.288306  pool=311 cols  iters=1  t=470s
+[rank  35] LP=0  z_35*=0.267339  pool=311 cols  iters=1  t=475s
+[rank  36] LP=0  z_36*=0.259252  pool=311 cols  iters=1  t=481s
+[rank  37] LP=0  z_37*=0.246827  pool=311 cols  iters=1  t=486s
+[rank  38] LP=0  z_38*=0.238176  pool=311 cols  iters=1  t=496s
+[rank  39] LP=0  z_39*=0.225063  pool=311 cols  iters=1  t=502s
+[rank  40] LP=0  z_40*=0.222662  pool=311 cols  iters=1  t=509s
+[rank  41] LP=0  z_41*=0.218221  pool=311 cols  iters=1  t=516s
+[rank  42] LP=0  z_42*=0.217973  pool=311 cols  iters=1  t=524s
+[rank  43] LP=0  z_43*=0.199296  pool=311 cols  iters=1  t=531s
+[rank  44] LP=0  z_44*=0.192336  pool=311 cols  iters=1  t=541s
+[rank  45] LP=0  z_45*=0.177152  pool=311 cols  iters=1  t=548s
+[rank  46] LP=0  z_46*=0.170564  pool=311 cols  iters=1  t=557s
+[rank  47] LP=0  z_47*=0.160542  pool=311 cols  iters=1  t=565s
+[rank  48] LP=0  z_48*=0.156954  pool=311 cols  iters=1  t=581s
+[rank  49] LP=0  z_49*=0.152125  pool=311 cols  iters=1  t=597s
+[rank  50] LP=0  z_50*=0.109868  pool=311 cols  iters=1  t=605s
+[rank  51] LP=0  z_51*=0.0932297  pool=311 cols  iters=1  t=615s
+[rank  52] LP=0  z_52*=0.0924287  pool=311 cols  iters=1  t=643s
+[rank  53] LP=0  z_53*=0.0899401  pool=311 cols  iters=1  t=699s
+[rank  54] LP=0  z_54*=0.0838872  pool=311 cols  iters=1  t=712s
+[rank  55] LP=0  z_55*=0.0788019  pool=311 cols  iters=1  t=750s
+[rank  56] LP=0  z_56*=0.0656435  pool=311 cols  iters=1  t=764s
+[rank  57] LP=0  z_57*=0.0602267  pool=311 cols  iters=1  t=777s
+[rank  58] LP=0  z_58*=0.0595823  pool=311 cols  iters=1  t=822s
+[rank  59] LP=0  z_59*=0.0462414  pool=311 cols  iters=1  t=849s
+[rank  60] LP=0  z_60*=0.0430503  pool=311 cols  iters=1  t=884s
+[rank  61] LP=0  z_61*=0.0354768  pool=311 cols  iters=1  t=911s
+[rank  62] LP=0  z_62*=0.0244151  pool=311 cols  iters=1  t=937s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-023/TCG_EXACT_WARM/setAP-023-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 413, in solve_leximin_warm
+    mip = cg.solve_integer_master(rank_values=list(z_star),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 172, in solve_integer_master
+    return self._solve_master(relax_integrality=False, rank_values=list(rank_values or []))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 269, in _solve_master
+    raise MasterInfeasibleError(
+TCG_Exact.data.MasterInfeasibleError: Restricted master is infeasible. Provide a feasible initial pool or check the budget. IIS rows: select[0], select[1], select[2], select[3], select[4], select[5], select[6], select[7], select[8], select[9], select[10], select[11], select[12], select[13], select[14], select[15], select[16], select[17], select[18], select[19]

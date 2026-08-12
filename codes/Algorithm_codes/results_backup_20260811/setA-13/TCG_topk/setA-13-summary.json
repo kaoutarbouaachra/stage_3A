@@ -1,0 +1,27 @@
+{
+  "algorithm": "TCG_topk",
+  "instance": "setA-13",
+  "K": 5,
+  "mlu_baseline": 0.9999990000000003,
+  "mlu_solution": 0.9999990000000003,
+  "reduction_pct": 0.0,
+  "z_stars": [],
+  "top5_baseline": [
+    0.999999,
+    0.935897,
+    0.850427,
+    0.666666,
+    0.666666
+  ],
+  "top5_solution": [
+    0.999999,
+    0.935897,
+    0.850427,
+    0.666666,
+    0.666666
+  ],
+  "pool_size": 2000,
+  "time_s": 314.14,
+  "checker_valid": null,
+  "checker_mlu": null
+}

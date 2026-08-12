@@ -1,0 +1,63 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-20 13:10:13
+====================================================================
+  Instance     : /home/setAP-13
+  Log          : /home/setAP-13_20260720_131013.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-13 | 10 nodes, 50 arcs, 30 demands, 2 timesteps, N=100
+    t=0: 159 non-zero ECMP coefficients
+    t=1: 162 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=10, |D|=30, |T|=2) ...
+  -> 180 useful segment slots  (naive: 200 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 5,400
+  Base model : 18,200 vars, 16,360 constraints, 1,003,398 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.763498      42.1s      42.1s  OPTIMAL
+      2   0.729642      13.6s      55.8s  OPTIMAL
+      3   0.616204      11.3s      67.1s  OPTIMAL
+      4   0.614830       9.3s      76.5s  OPTIMAL
+      5   0.586794      11.8s      88.3s  OPTIMAL
+      6   0.577954      32.9s     121.2s  OPTIMAL
+      7   0.577406      38.5s     159.7s  OPTIMAL
+      8   0.519774      77.4s     237.1s  OPTIMAL
+      9   0.467288      21.7s     258.8s  OPTIMAL
+     10   0.465830      62.2s     320.9s  OPTIMAL
+     11   0.452607     104.8s     425.8s  OPTIMAL
+     12   0.431787     177.3s     603.1s  OPTIMAL
+     13   0.411536     441.0s    1044.2s  OPTIMAL
+  [k=14] Unexpected status 11 -- stopping.
+
+  Done.  13 ranks in 1198.5s
+  MLU (z*_1) = 0.763498
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 0.763498  (+23.65%)
+  Certified ranks : [0.763498, 0.729642, 0.616204, 0.61483, 0.586794, 0.577954, 0.577406, 0.519774, 0.467288, 0.46583, 0.452607, 0.431787, 0.411536]
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)

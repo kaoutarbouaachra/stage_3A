@@ -1,0 +1,51 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-21 04:19:42
+====================================================================
+  Instance     : /home/setAP-51
+  Log          : /home/setAP-51_20260721_041942.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-51 | 30 nodes, 150 arcs, 10 demands, 2 timesteps, N=300
+    t=0: 2594 non-zero ECMP coefficients
+    t=1: 2600 non-zero ECMP coefficients
+  MLU baseline  : 1.000000
+  Building ALEXA model (maxSeg=6, |V|=30, |D|=10, |T|=2) ...
+  -> 1,740 useful segment slots  (naive: 1,800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 17,400
+  Base model : 116,400 vars, 108,920 constraints, 16,032,598 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.873650     543.8s     543.8s  OPTIMAL
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 1187.8s
+  MLU (z*_1) = 0.873650
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 1.000000
+  MLU solution    : 0.873650  (+12.63%)
+  Certified ranks : [0.87365]
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)

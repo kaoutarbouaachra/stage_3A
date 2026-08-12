@@ -1,0 +1,51 @@
+====================================================================
+  T-ASR -- ALEXA (Assignment-based LEXicographic Algorithm)
+  Algorithm    : ALEXA  (folder: alexa)
+  2026-07-20 21:56:34
+====================================================================
+  Instance     : /home/setAP-35
+  Log          : /home/setAP-35_20260720_215634.log
+  Results dir  : /tmp/
+====================================================================
+
+  setAP-35 | 20 nodes, 100 arcs, 20 demands, 2 timesteps, N=200
+    t=0: 923 non-zero ECMP coefficients
+    t=1: 933 non-zero ECMP coefficients
+  MLU baseline  : 0.978783
+  Building ALEXA model (maxSeg=6, |V|=20, |D|=20, |T|=2) ...
+  -> 760 useful segment slots  (naive: 800 -> reduction x1)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2495062
+WLS license 2495062 - registered to Orange SA
+
+  x variables : 15,200
+  Base model : 63,000 vars, 56,640 constraints, 7,486,798 nonzeros
+
+
+      k       z*_k  iter_time    elapsed   status
+  ----- ---------- ---------- ---------- --------
+      1   0.630987     143.8s     143.8s  OPTIMAL
+  [k=2] Unexpected status 11 -- stopping.
+
+  Done.  1 ranks in 1193.8s
+  MLU (z*_1) = 0.630987
+
+  ================================================================
+  Algorithm       : ALEXA
+  MLU baseline    : 0.978783
+  MLU solution    : 0.630987  (+35.53%)
+  Certified ranks : [0.630987]
+
+Interrupt request received
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 207, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/codes/Algorithm_codes/alexa/run_alexa.py", line 162, in main
+    sol_path = res_dir / f"{name}-srpaths.json"
+               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+Warning: environment still referenced so free is deferred (Continue to use WLS)
