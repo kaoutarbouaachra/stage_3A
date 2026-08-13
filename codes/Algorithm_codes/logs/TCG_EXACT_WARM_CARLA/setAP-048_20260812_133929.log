@@ -1,0 +1,63 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM_CARLA/setAP-048_20260812_133929.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, CARLA cumulative, WARM-started
+  Algorithm    : TCG-Exact-Warm-CARLA  (folder: TCG_EXACT_WARM_CARLA)
+  Rank encoding: carla
+  2026-08-12 13:39:29
+====================================================================
+  Instance     : setAP-048
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-048/TCG_EXACT_WARM_CARLA
+====================================================================
+[load] ../setAP/setAP-048-net.json
+    t=0: 845 non-zero ECMP coefficients
+    t=1: 850 non-zero ECMP coefficients
+[data] nodes=20 arcs=100 demands=50 K=6 budget=7.0 N=200
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-048/TCG_DIAG_CARLA/setAP-048-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] rank encoding: carla
+[warm] heuristic columns seeded: +29 new (0 demand(s) refused -> trivial); pool now 79 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.579528, 0.293243, 0.163063, 0.162329
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] Theta=1  z_1*=1  pool=79 cols  iters=1  t=30s
+[rank   2] Theta=1.57953  z_2*=0.579528  pool=79 cols  iters=1  t=45s
+[rank   3] Theta=1.87277  z_3*=0.293243  pool=79 cols  iters=1  t=61s
+[rank   4] Theta=2.0351  z_4*=0.163063  pool=82 cols  iters=3  t=109s
+[rank   5] Theta=2.18016  z_5*=0.162329  pool=82 cols  iters=1  t=125s
+[rank   6] Theta=2.32467  z_6*=0.131692  pool=82 cols  iters=1  t=141s
+[rank   7] Theta=2.45615  z_7*=0.126291  pool=82 cols  iters=1  t=157s
+[rank   8] Theta=2.56745  z_8*=0.111301  pool=82 cols  iters=1  t=173s
+[rank   9] Theta=2.67093  z_9*=0.107779  pool=82 cols  iters=1  t=189s
+[rank  10] Theta=2.76069  z_10*=0.0982301  pool=96 cols  iters=2  t=222s
+[rank  11] Theta=2.83917  z_11*=0.0834891  pool=114 cols  iters=2  t=256s
+[rank  12] Theta=2.91547  z_12*=0.0784797  pool=114 cols  iters=1  t=273s
+[rank  13] Theta=2.97494  z_13*=0.0717982  pool=157 cols  iters=4  t=342s
+[rank  14] Theta=3.027  z_14*=0.070255  pool=157 cols  iters=1  t=359s
+[rank  15] Theta=3.07348  z_15*=0.0651558  pool=196 cols  iters=2  t=397s
+[rank  16] Theta=3.11968  z_16*=0.0609756  pool=270 cols  iters=3  t=457s
+[rank  17] Theta=3.16296  z_17*=0.0594657  pool=270 cols  iters=1  t=478s
+[rank  18] Theta=3.20624  z_18*=0.0581595  pool=270 cols  iters=1  t=502s
+[rank  19] Theta=3.24952  z_19*=0.0579734  pool=270 cols  iters=1  t=535s
+[rank  20] Theta=3.29272  z_20*=0.057775  pool=270 cols  iters=1  t=562s
+[rank  21] Theta=3.33584  z_21*=0.0570552  pool=270 cols  iters=1  t=599s
+[rank  22] Theta=3.37896  z_22*=0.0565619  pool=270 cols  iters=1  t=638s
+[rank  23] Theta=3.42207  z_23*=0.0564103  pool=270 cols  iters=1  t=677s
+[rank  24] Theta=3.46383  z_24*=0.0509804  pool=306 cols  iters=2  t=740s
+[rank  25] Theta=3.50476  z_25*=0.0504598  pool=306 cols  iters=1  t=787s
+[rank  26] Theta=3.54568  z_26*=0.0504478  pool=306 cols  iters=1  t=837s
+[rank  27] Theta=3.58644  z_27*=0.0490805  pool=306 cols  iters=1  t=886s
+[rank  28] Theta=3.62664  z_28*=0.0488688  pool=306 cols  iters=1  t=941s
+[rank  29] Theta=3.66553  z_29*=0.0477301  pool=428 cols  iters=5  t=1153s
+[rank  30] Theta=3.7033  z_30*=0.0470833  pool=428 cols  iters=1  t=1269s
+[rank  31] Theta=3.74108  z_31*=0.0469027  pool=428 cols  iters=1  t=1387s
+[rank  32] Theta=3.77885  z_32*=0.0466667  pool=428 cols  iters=1  t=1544s
+[rank  33] Theta=3.81662  z_33*=0.0464589  pool=428 cols  iters=1  t=1714s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-048/TCG_EXACT_WARM_CARLA/setAP-048-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)

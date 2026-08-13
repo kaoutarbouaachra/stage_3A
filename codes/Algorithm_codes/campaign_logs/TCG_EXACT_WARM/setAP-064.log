@@ -1,0 +1,42 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-064_20260813_053552.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-13 05:35:52
+====================================================================
+  Instance     : setAP-064
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-064-net.json
+    t=0: 2378 non-zero ECMP coefficients
+    t=1: 2392 non-zero ECMP coefficients
+[data] nodes=30 arcs=150 demands=30 K=6 budget=7.0 N=300
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_DIAG/setAP-064-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +27 new (0 demand(s) refused -> trivial); pool now 57 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.440972, 0.413351, 0.412405, 0.410388
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=1  z_1*=1  pool=57 cols  iters=1  t=40s
+[rank   2] LP=0.320576  z_2*=0.440972  pool=67 cols  iters=2  t=84s
+[rank   3] LP=0.204589  z_3*=0.413351  pool=174 cols  iters=7  t=257s
+[rank   4] LP=0.158234  z_4*=0.412405  pool=302 cols  iters=9  t=514s
+[rank   5] LP=0.12852  z_5*=0.410388  pool=407 cols  iters=15  t=910s
+[rank   6] LP=0.107506  z_6*=0.409215  pool=448 cols  iters=6  t=1063s
+[rank   7] LP=0.0907332  z_7*=0.351139  pool=483 cols  iters=7  t=1242s
+[rank   8] LP=0.0770461  z_8*=0.342863  pool=523 cols  iters=8  t=1451s
+[rank   9] LP=0.0661941  z_9*=0.341059  pool=538 cols  iters=4  t=1554s
+[rank  10] LP=0.0562293  z_10*=0.336152  pool=563 cols  iters=5  t=1683s
+[rank  11] LP=0.0469381  z_11*=0.320157  pool=579 cols  iters=4  t=1785s
+[rank  12] LP=0.0383317  z_12*=0.312702  pool=602 cols  iters=5  t=1913s
+[wall] cap reached (1913s >= 1800s) before rank 13; stopping with 12 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.440972, 0.413351, 0.412405, 0.410388, 0.409215, 0.351139, 0.342863, 0.341059, 0.336152, 0.320157, 0.312702
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM/setAP-064-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM/setAP-064-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

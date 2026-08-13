@@ -1,0 +1,66 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM_CARLA/setAP-064_20260813_060746.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, CARLA cumulative, WARM-started
+  Algorithm    : TCG-Exact-Warm-CARLA  (folder: TCG_EXACT_WARM_CARLA)
+  Rank encoding: carla
+  2026-08-13 06:07:46
+====================================================================
+  Instance     : setAP-064
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM_CARLA
+====================================================================
+[load] ../setAP/setAP-064-net.json
+    t=0: 2378 non-zero ECMP coefficients
+    t=1: 2392 non-zero ECMP coefficients
+[data] nodes=30 arcs=150 demands=30 K=6 budget=7.0 N=300
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_DIAG_CARLA/setAP-064-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] rank encoding: carla
+[warm] heuristic columns seeded: +25 new (0 demand(s) refused -> trivial); pool now 55 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.471187, 0.453765, 0.440972, 0.413351
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] Theta=1  z_1*=1  pool=55 cols  iters=1  t=40s
+[rank   2] Theta=1.44097  z_2*=0.471187  pool=59 cols  iters=4  t=119s
+[rank   3] Theta=1.85432  z_3*=0.440972  pool=59 cols  iters=1  t=139s
+[rank   4] Theta=2.26673  z_4*=0.429609  pool=59 cols  iters=1  t=159s
+[rank   5] Theta=2.60288  z_5*=0.420479  pool=73 cols  iters=4  t=247s
+[rank   6] Theta=2.88199  z_6*=0.413351  pool=88 cols  iters=3  t=319s
+[rank   7] Theta=3.16109  z_7*=0.412405  pool=88 cols  iters=1  t=340s
+[rank   8] Theta=3.41945  z_8*=0.351139  pool=116 cols  iters=3  t=416s
+[rank   9] Theta=3.66859  z_9*=0.342863  pool=121 cols  iters=2  t=462s
+[rank  10] Theta=3.91677  z_10*=0.341494  pool=121 cols  iters=1  t=485s
+[rank  11] Theta=4.16421  z_11*=0.337095  pool=136 cols  iters=2  t=540s
+[rank  12] Theta=4.40957  z_12*=0.336152  pool=136 cols  iters=1  t=564s
+[rank  13] Theta=4.63935  z_13*=0.320157  pool=171 cols  iters=4  t=669s
+[rank  14] Theta=4.84882  z_14*=0.314454  pool=171 cols  iters=1  t=695s
+[rank  15] Theta=5.05828  z_15*=0.310378  pool=171 cols  iters=1  t=721s
+[rank  16] Theta=5.26775  z_16*=0.308888  pool=171 cols  iters=1  t=747s
+[rank  17] Theta=5.47722  z_17*=0.304236  pool=171 cols  iters=1  t=775s
+[rank  18] Theta=5.67765  z_18*=0.300758  pool=204 cols  iters=3  t=861s
+[rank  19] Theta=5.87632  z_19*=0.281639  pool=204 cols  iters=1  t=889s
+[rank  20] Theta=6.06988  z_20*=0.268012  pool=263 cols  iters=5  t=1028s
+[rank  21] Theta=6.24148  z_21*=0.266632  pool=263 cols  iters=1  t=1069s
+[rank  22] Theta=6.41307  z_22*=0.262382  pool=263 cols  iters=1  t=1105s
+[rank  23] Theta=6.58467  z_23*=0.260417  pool=263 cols  iters=1  t=1141s
+[rank  24] Theta=6.75627  z_24*=0.259821  pool=263 cols  iters=1  t=1183s
+[rank  25] Theta=6.92787  z_25*=0.259105  pool=263 cols  iters=1  t=1221s
+[rank  26] Theta=7.09914  z_26*=0.249307  pool=279 cols  iters=2  t=1294s
+[rank  27] Theta=7.2683  z_27*=0.224238  pool=279 cols  iters=1  t=1373s
+[rank  28] Theta=7.42879  z_28*=0.222741  pool=305 cols  iters=3  t=1488s
+[rank  29] Theta=7.58173  z_29*=0.222587  pool=305 cols  iters=1  t=1541s
+[rank  30] Theta=7.7333  z_30*=0.2224  pool=305 cols  iters=1  t=1598s
+[rank  31] Theta=7.88377  z_31*=0.219056  pool=317 cols  iters=2  t=1694s
+[rank  32] Theta=8.03148  z_32*=0.215517  pool=317 cols  iters=1  t=1777s
+[rank  33] Theta=8.17841  z_33*=0.214277  pool=345 cols  iters=5  t=2019s
+[wall] cap reached (2019s >= 1800s) before rank 34; stopping with 33 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.471187, 0.440972, 0.429609, 0.420479, 0.413351, 0.412405, 0.351139, 0.342863, 0.341494, 0.337095, 0.336152, 0.320157, 0.314454, 0.310378, 0.308888, 0.304236, 0.300758, 0.281639, 0.268012
+  ... (33 ranks certified, N=300)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM_CARLA/setAP-064-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-064/TCG_EXACT_WARM_CARLA/setAP-064-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
