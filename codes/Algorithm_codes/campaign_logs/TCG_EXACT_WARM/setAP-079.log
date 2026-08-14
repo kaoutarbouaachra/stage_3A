@@ -1,0 +1,54 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-079_20260813_212729.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-13 21:27:29
+====================================================================
+  Instance     : setAP-079
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-079/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-079-net.json
+    t=0: 4596 non-zero ECMP coefficients
+    t=1: 4606 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=10 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-079/TCG_DIAG/setAP-079-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +9 new (0 demand(s) refused -> trivial); pool now 19 cols
+[warm] heuristic incumbent sorted loads (top): 0.821932, 0.659575, 0.563176, 0.524395, 0.475096
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=0.821932  z_1*=0.821932  pool=19 cols  iters=1  t=26s
+[rank   2] LP=0.414843  z_2*=0.659575  pool=24 cols  iters=2  t=55s
+[rank   3] LP=0.296657  z_3*=0.563176  pool=33 cols  iters=3  t=100s
+[rank   4] LP=0.21896  z_4*=0.524395  pool=47 cols  iters=3  t=148s
+[rank   5] LP=0.162774  z_5*=0.475096  pool=82 cols  iters=6  t=240s
+[rank   6] LP=0.126596  z_6*=0.456442  pool=168 cols  iters=12  t=450s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-079/TCG_EXACT_WARM/setAP-079-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 7 not solved to optimality. Status=13.

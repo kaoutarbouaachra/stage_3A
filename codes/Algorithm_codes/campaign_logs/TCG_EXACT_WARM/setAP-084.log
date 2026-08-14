@@ -1,0 +1,35 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-084_20260814_024241.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-14 02:42:41
+====================================================================
+  Instance     : setAP-084
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-084/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-084-net.json
+    t=0: 4609 non-zero ECMP coefficients
+    t=1: 4623 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=20 K=6 budget=9.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-084/TCG_DIAG/setAP-084-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +15 new (0 demand(s) refused -> trivial); pool now 35 cols
+[warm] heuristic incumbent sorted loads (top): 1.61834, 0.555412, 0.549618, 0.475426, 0.422444
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=1.61834  z_1*=1.61834  pool=35 cols  iters=1  t=51s
+[rank   2] LP=0.320499  z_2*=0.555412  pool=46 cols  iters=5  t=235s
+[rank   3] LP=0.171782  z_3*=0.549618  pool=218 cols  iters=12  t=909s
+[rank   4] LP=0.126633  z_4*=0.475426  pool=401 cols  iters=14  t=1672s
+
+[interrupt] SIGINT caught; returning 4 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1.61834, 0.555412, 0.549618, 0.475426
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-084/TCG_EXACT_WARM/setAP-084-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-084/TCG_EXACT_WARM/setAP-084-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

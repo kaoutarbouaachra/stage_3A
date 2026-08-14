@@ -23,3 +23,14 @@ Academic license 2498834 - for non-commercial use only - registered to ya___@gma
 [rank   1] LP=1  z_1*=1  pool=93 cols  iters=1  t=68s
 [rank   2] LP=0.369844  z_2*=0.616801  pool=94 cols  iters=2  t=141s
 [rank   3] LP=0.146834  z_3*=0.492732  pool=145 cols  iters=6  t=366s
+[rank   4] LP=0.0982999  z_4*=0.290944  pool=351 cols  iters=9  t=755s
+[rank   5] LP=0.0781622  z_5*=0.235844  pool=530 cols  iters=13  t=1330s
+[rank   6] LP=0.0645088  z_6*=0.232421  pool=589 cols  iters=12  t=1823s
+[wall] cap reached (1823s >= 1800s) before rank 7; stopping with 6 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.616801, 0.492732, 0.290944, 0.235844, 0.232421
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-071/TCG_EXACT_WARM/setAP-071-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-071/TCG_EXACT_WARM/setAP-071-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

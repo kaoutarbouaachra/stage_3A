@@ -1,0 +1,34 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-072_20260813_140052.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-13 14:00:52
+====================================================================
+  Instance     : setAP-072
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-072/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-072-net.json
+    t=0: 2427 non-zero ECMP coefficients
+    t=1: 2403 non-zero ECMP coefficients
+[data] nodes=30 arcs=150 demands=50 K=6 budget=7.0 N=300
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-072/TCG_DIAG/setAP-072-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +41 new (0 demand(s) refused -> trivial); pool now 91 cols
+[warm] heuristic incumbent sorted loads (top): 2.28235, 0.466463, 0.457726, 0.390342, 0.364934
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=2.28235  z_1*=2.28235  pool=91 cols  iters=1  t=121s
+[rank   2] LP=0.333313  z_2*=0.466463  pool=94 cols  iters=2  t=267s
+[rank   3] LP=0.0811044  z_3*=0.457726  pool=409 cols  iters=13  t=1369s
+
+[interrupt] SIGINT caught; returning 3 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  2.28235, 0.466463, 0.457726
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-072/TCG_EXACT_WARM/setAP-072-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-072/TCG_EXACT_WARM/setAP-072-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

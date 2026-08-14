@@ -1,0 +1,39 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM_CARLA/setAP-091_20260814_112004.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, CARLA cumulative, WARM-started
+  Algorithm    : TCG-Exact-Warm-CARLA  (folder: TCG_EXACT_WARM_CARLA)
+  Rank encoding: carla
+  2026-08-14 11:20:04
+====================================================================
+  Instance     : setAP-091
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-091/TCG_EXACT_WARM_CARLA
+====================================================================
+[load] ../setAP/setAP-091-net.json
+    t=0: 4688 non-zero ECMP coefficients
+    t=1: 4708 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=40 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-091/TCG_DIAG_CARLA/setAP-091-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] rank encoding: carla
+[warm] heuristic columns seeded: +32 new (0 demand(s) refused -> trivial); pool now 72 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.75188, 0.214412, 0.132161, 0.123946
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] Theta=1  z_1*=1  pool=72 cols  iters=1  t=92s
+[rank   2] Theta=1.75188  z_2*=0.75188  pool=72 cols  iters=1  t=136s
+[rank   3] Theta=1.87116  z_3*=0.185269  pool=75 cols  iters=3  t=272s
+[rank   4] Theta=1.98887  z_4*=0.132161  pool=77 cols  iters=2  t=367s
+[rank   5] Theta=2.09681  z_5*=0.118803  pool=77 cols  iters=1  t=414s
+[rank   6] Theta=2.19095  z_6*=0.114097  pool=91 cols  iters=7  t=765s
+[rank   7] Theta=2.27414  z_7*=0.113108  pool=91 cols  iters=1  t=812s
+[rank   8] Theta=2.35697  z_8*=0.112251  pool=120 cols  iters=3  t=976s
+[rank   9] Theta=2.4276  z_9*=0.108183  pool=120 cols  iters=1  t=1025s
+[rank  10] Theta=2.49661  z_10*=0.105575  pool=147 cols  iters=3  t=1201s
+[rank  11] Theta=2.56412  z_11*=0.101366  pool=147 cols  iters=1  t=1264s
+[rank  12] Theta=2.63125  z_12*=0.100303  pool=147 cols  iters=1  t=1317s
+[rank  13] Theta=2.69826  z_13*=0.0987945  pool=147 cols  iters=1  t=1370s
+[rank  14] Theta=2.76089  z_14*=0.095674  pool=175 cols  iters=2  t=1495s
+[rank  15] Theta=2.81716  z_15*=0.0946055  pool=207 cols  iters=2  t=1632s

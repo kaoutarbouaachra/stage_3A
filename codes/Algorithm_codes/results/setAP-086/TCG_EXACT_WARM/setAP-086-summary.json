@@ -1,0 +1,28 @@
+{
+  "algorithm": "TCG_EXACT_WARM",
+  "instance": "setAP-086",
+  "N": 400,
+  "ranks_solved": 7,
+  "interrupted": true,
+  "z_stars": [
+    0.5395359331941545,
+    0.49474323628691985,
+    0.4895789018789144,
+    0.47285675898203594,
+    0.4582228936170213,
+    0.4564571026011561,
+    0.4334718927911276
+  ],
+  "pool_size": 538,
+  "warm_start": {
+    "source": "/home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-086/TCG_DIAG/setAP-086-srpaths.json",
+    "warm_algo": "TCG_DIAG",
+    "unresolved_entries": 0
+  },
+  "pricing_tol": 1e-07,
+  "freeze_tol": 1e-06,
+  "mip_gap": 1e-09,
+  "time_limit": 180.0,
+  "wall_time": 1800.0,
+  "time_s": 2333.47
+}
