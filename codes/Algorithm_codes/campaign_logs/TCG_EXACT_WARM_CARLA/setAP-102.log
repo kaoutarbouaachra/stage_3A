@@ -1,0 +1,61 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM_CARLA/setAP-102_20260815_000643.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, CARLA cumulative, WARM-started
+  Algorithm    : TCG-Exact-Warm-CARLA  (folder: TCG_EXACT_WARM_CARLA)
+  Rank encoding: carla
+  2026-08-15 00:06:43
+====================================================================
+  Instance     : setAP-102
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_EXACT_WARM_CARLA
+====================================================================
+[load] ../setAP/setAP-102-net.json
+    t=0: 7545 non-zero ECMP coefficients
+    t=1: 7573 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_DIAG_CARLA/setAP-102-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] rank encoding: carla
+[warm] heuristic columns seeded: +9 new (0 demand(s) refused -> trivial); pool now 19 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.527322, 0.254673, 0.211823, 0.200926
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] Theta=0.527322  z_1*=1  pool=20 cols  iters=2  t=78s
+[rank   2] Theta=1.02956  z_2*=0.527322  pool=20 cols  iters=1  t=117s
+[rank   3] Theta=1.52921  z_3*=0.254673  pool=20 cols  iters=1  t=156s
+[rank   4] Theta=1.74048  z_4*=0.211823  pool=34 cols  iters=8  t=367s
+[rank   5] Theta=1.88982  z_5*=0.200926  pool=36 cols  iters=2  t=411s
+[rank   6] Theta=2.03288  z_6*=0.199564  pool=36 cols  iters=1  t=433s
+[rank   7] Theta=2.17559  z_7*=0.186092  pool=38 cols  iters=2  t=478s
+[rank   8] Theta=2.30337  z_8*=0.175079  pool=43 cols  iters=3  t=546s
+[rank   9] Theta=2.41682  z_9*=0.171638  pool=43 cols  iters=1  t=569s
+[rank  10] Theta=2.52531  z_10*=0.165684  pool=58 cols  iters=4  t=675s
+[rank  11] Theta=2.62582  z_11*=0.157937  pool=58 cols  iters=1  t=699s
+[rank  12] Theta=2.72221  z_12*=0.149402  pool=77 cols  iters=4  t=796s
+[rank  13] Theta=2.81234  z_13*=0.148738  pool=77 cols  iters=1  t=819s
+[rank  14] Theta=2.9001  z_14*=0.148281  pool=84 cols  iters=2  t=869s
+[rank  15] Theta=2.98541  z_15*=0.14359  pool=84 cols  iters=1  t=894s
+[rank  16] Theta=3.07071  z_16*=0.138363  pool=84 cols  iters=1  t=919s
+[rank  17] Theta=3.1422  z_17*=0.134955  pool=108 cols  iters=4  t=1036s
+[rank  18] Theta=3.21226  z_18*=0.131226  pool=108 cols  iters=1  t=1062s
+[rank  19] Theta=3.27386  z_19*=0.120151  pool=138 cols  iters=5  t=1210s
+[rank  20] Theta=3.3338  z_20*=0.118778  pool=138 cols  iters=1  t=1235s
+[rank  21] Theta=3.39343  z_21*=0.116542  pool=138 cols  iters=1  t=1260s
+[rank  22] Theta=3.45212  z_22*=0.115583  pool=138 cols  iters=1  t=1286s
+[rank  23] Theta=3.50791  z_23*=0.114256  pool=203 cols  iters=8  t=1536s
+[rank  24] Theta=3.55819  z_24*=0.111765  pool=203 cols  iters=1  t=1563s
+[rank  25] Theta=3.60846  z_25*=0.108642  pool=203 cols  iters=1  t=1594s
+[rank  26] Theta=3.65764  z_26*=0.106549  pool=221 cols  iters=3  t=1689s
+[rank  27] Theta=3.70671  z_27*=0.100745  pool=221 cols  iters=1  t=1748s
+[rank  28] Theta=3.75578  z_28*=0.0990798  pool=221 cols  iters=1  t=1806s
+[wall] cap reached (1806s >= 1800s) before rank 29; stopping with 28 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.527322, 0.254673, 0.211823, 0.200926, 0.199564, 0.186092, 0.175079, 0.171638, 0.165684, 0.157937, 0.149402, 0.148738, 0.148281, 0.14359, 0.138363, 0.134955, 0.131226, 0.120151, 0.118778
+  ... (28 ranks certified, N=500)
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_EXACT_WARM_CARLA/setAP-102-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_EXACT_WARM_CARLA/setAP-102-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

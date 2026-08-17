@@ -1,0 +1,25 @@
+{
+  "algorithm": "TCG_EXACT_WARM",
+  "instance": "setAP-110",
+  "N": 500,
+  "ranks_solved": 4,
+  "interrupted": true,
+  "z_stars": [
+    1.2558142325581394,
+    0.5633223837209302,
+    0.5295013905325444,
+    0.25423186320754715
+  ],
+  "pool_size": 433,
+  "warm_start": {
+    "source": "/home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-110/TCG_DIAG/setAP-110-srpaths.json",
+    "warm_algo": "TCG_DIAG",
+    "unresolved_entries": 0
+  },
+  "pricing_tol": 1e-07,
+  "freeze_tol": 1e-06,
+  "mip_gap": 1e-09,
+  "time_limit": 180.0,
+  "wall_time": 1800.0,
+  "time_s": 2169.46
+}

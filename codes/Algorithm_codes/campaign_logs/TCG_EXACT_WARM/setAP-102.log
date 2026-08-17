@@ -1,0 +1,55 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-102_20260814_232643.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-14 23:26:43
+====================================================================
+  Instance     : setAP-102
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-102-net.json
+    t=0: 7545 non-zero ECMP coefficients
+    t=1: 7573 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_DIAG/setAP-102-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +9 new (0 demand(s) refused -> trivial); pool now 19 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.527322, 0.254673, 0.211823, 0.186092
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=0.527322  z_1*=1  pool=20 cols  iters=2  t=64s
+[rank   2] LP=0.185199  z_2*=0.527322  pool=23 cols  iters=2  t=107s
+[rank   3] LP=0.0673723  z_3*=0.254673  pool=78 cols  iters=8  t=301s
+
+Interrupt request received
+
+Interrupt request received
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-102/TCG_EXACT_WARM/setAP-102-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 612, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 603, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 495, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/run_TCG_exact_warm.py", line 411, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/master.py", line 130, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 7 not solved to optimality. Status=11.

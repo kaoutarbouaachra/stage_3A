@@ -1,0 +1,34 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-106_20260815_040541.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-15 04:05:41
+====================================================================
+  Instance     : setAP-106
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-106-net.json
+    t=0: 7581 non-zero ECMP coefficients
+    t=1: 7592 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=20 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_DIAG/setAP-106-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +20 new (0 demand(s) refused -> trivial); pool now 40 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.703125, 0.156941, 0.154474, 0.105089
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=1  z_1*=1  pool=40 cols  iters=1  t=89s
+[rank   2] LP=0.351563  z_2*=0.703125  pool=40 cols  iters=1  t=132s
+[rank   3] LP=0.047002  z_3*=0.156941  pool=68 cols  iters=4  t=326s
+
+[interrupt] SIGINT caught; returning 3 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.703125, 0.156941
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_EXACT_WARM/setAP-106-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-106/TCG_EXACT_WARM/setAP-106-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

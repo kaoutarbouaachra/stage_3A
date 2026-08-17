@@ -37,3 +37,13 @@ Academic license 2498834 - for non-commercial use only - registered to ya___@gma
 [rank  13] Theta=2.69826  z_13*=0.0987945  pool=147 cols  iters=1  t=1370s
 [rank  14] Theta=2.76089  z_14*=0.095674  pool=175 cols  iters=2  t=1495s
 [rank  15] Theta=2.81716  z_15*=0.0946055  pool=207 cols  iters=2  t=1632s
+[rank  16] Theta=2.8721  z_16*=0.0892268  pool=207 cols  iters=1  t=1688s
+[rank  17] Theta=2.92257  z_17*=0.088621  pool=269 cols  iters=4  t=1961s
+[wall] cap reached (1961s >= 1800s) before rank 18; stopping with 17 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.75188, 0.185269, 0.132161, 0.118803, 0.114097, 0.113108, 0.112251, 0.108183, 0.105575, 0.101366, 0.100303, 0.0987945, 0.095674, 0.0946055, 0.0892268, 0.088621
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-091/TCG_EXACT_WARM_CARLA/setAP-091-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-091/TCG_EXACT_WARM_CARLA/setAP-091-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

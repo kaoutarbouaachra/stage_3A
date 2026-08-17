@@ -1,0 +1,31 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-094_20260814_141215.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-14 14:12:15
+====================================================================
+  Instance     : setAP-094
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-094/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-094-net.json
+    t=0: 4550 non-zero ECMP coefficients
+    t=1: 4562 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=40 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-094/TCG_DIAG/setAP-094-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +36 new (0 demand(s) refused -> trivial); pool now 76 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.402308, 0.389279, 0.380039, 0.356655
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=1  z_1*=1  pool=76 cols  iters=1  t=105s
+[rank   2] LP=0.27343  z_2*=0.402308  pool=119 cols  iters=5  t=475s
+[rank   3] LP=0.174308  z_3*=0.389279  pool=429 cols  iters=10  t=1412s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-094/TCG_EXACT_WARM/setAP-094-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)

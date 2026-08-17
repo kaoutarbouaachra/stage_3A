@@ -1,0 +1,44 @@
+{
+  "algorithm": "TCG_EXACT_WARM_CARLA",
+  "rank_encoding": "carla",
+  "instance": "setAP-124",
+  "N": 500,
+  "ranks_solved": 10,
+  "interrupted": true,
+  "z_stars": [
+    1.0,
+    0.570681,
+    0.007772287323943662,
+    0.005707749498997997,
+    0.005212987041036717,
+    0.003732099796334012,
+    0.003720689984101749,
+    0.00353799696969697,
+    0.0034111640181611804,
+    0.00331302131147541
+  ],
+  "theta_stars": [
+    1.0,
+    1.570681,
+    1.5784532873239436,
+    1.5841610368229417,
+    1.5893740238639784,
+    1.5931061236603123,
+    1.5968268136444141,
+    1.600364810614111,
+    1.6037759746322722,
+    1.6070889959437475
+  ],
+  "pool_size": 180,
+  "warm_start": {
+    "source": "/home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-124/TCG_DIAG_CARLA/setAP-124-srpaths.json",
+    "warm_algo": "TCG_DIAG_CARLA",
+    "unresolved_entries": 0
+  },
+  "pricing_tol": 1e-07,
+  "freeze_tol": 1e-06,
+  "mip_gap": 1e-09,
+  "time_limit": 180.0,
+  "wall_time": 1800.0,
+  "time_s": 1810.67
+}

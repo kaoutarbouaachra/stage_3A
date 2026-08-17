@@ -1,0 +1,69 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM_CARLA/setAP-104_20260815_022658.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, CARLA cumulative, WARM-started
+  Algorithm    : TCG-Exact-Warm-CARLA  (folder: TCG_EXACT_WARM_CARLA)
+  Rank encoding: carla
+  2026-08-15 02:26:58
+====================================================================
+  Instance     : setAP-104
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-104/TCG_EXACT_WARM_CARLA
+====================================================================
+[load] ../setAP/setAP-104-net.json
+    t=0: 7727 non-zero ECMP coefficients
+    t=1: 7783 non-zero ECMP coefficients
+[data] nodes=50 arcs=250 demands=10 K=6 budget=7.0 N=500
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-104/TCG_DIAG_CARLA/setAP-104-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] rank encoding: carla
+[warm] heuristic columns seeded: +8 new (0 demand(s) refused -> trivial); pool now 18 cols
+[warm] heuristic incumbent sorted loads (top): 0.896082, 0.848388, 0.79818, 0.736091, 0.676963
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] Theta=0.442761  z_1*=0.896082  pool=30 cols  iters=4  t=106s
+[rank   2] Theta=0.881834  z_2*=0.848388  pool=30 cols  iters=1  t=126s
+[rank   3] Theta=1.28062  z_3*=0.79818  pool=30 cols  iters=1  t=146s
+[rank   4] Theta=1.63432  z_4*=0.736091  pool=30 cols  iters=1  t=167s
+[rank   5] Theta=1.97096  z_5*=0.676963  pool=33 cols  iters=2  t=212s
+[rank   6] Theta=2.26684  z_6*=0.617371  pool=50 cols  iters=6  t=361s
+[rank   7] Theta=2.52597  z_7*=0.542241  pool=50 cols  iters=1  t=384s
+[rank   8] Theta=2.76609  z_8*=0.530242  pool=57 cols  iters=3  t=457s
+[rank   9] Theta=2.98961  z_9*=0.503161  pool=57 cols  iters=1  t=481s
+[rank  10] Theta=3.2097  z_10*=0.485356  pool=60 cols  iters=3  t=557s
+[rank  11] Theta=3.39407  z_11*=0.481914  pool=87 cols  iters=6  t=722s
+[rank  12] Theta=3.56344  z_12*=0.436977  pool=87 cols  iters=1  t=747s
+[rank  13] Theta=3.73282  z_13*=0.406226  pool=87 cols  iters=1  t=772s
+[rank  14] Theta=3.90192  z_14*=0.318814  pool=87 cols  iters=1  t=800s
+[rank  15] Theta=4.06856  z_15*=0.313513  pool=93 cols  iters=2  t=853s
+[rank  16] Theta=4.22169  z_16*=0.27344  pool=148 cols  iters=15  t=1358s
+[rank  17] Theta=4.36673  z_17*=0.272358  pool=148 cols  iters=1  t=1385s
+[rank  18] Theta=4.51177  z_18*=0.271582  pool=148 cols  iters=1  t=1411s
+[rank  19] Theta=4.65612  z_19*=0.270427  pool=148 cols  iters=1  t=1442s
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-104/TCG_EXACT_WARM_CARLA/setAP-104-summary.json
+Freeing default Gurobi environment
+Warning: environment still referenced so free is deferred (Continue to use WLS)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_carla/run_exact_warm.py", line 526, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_carla/run_exact_warm.py", line 517, in main
+    _run(args, name, net_f, tm_f, scen_f)
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_carla/run_exact_warm.py", line 414, in _run
+    z_star, chosen, cg, interrupted = solve_leximin_warm(
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_carla/run_exact_warm.py", line 337, in solve_leximin_warm
+    cg_res = cg.solve_lp(rank_values=list(z_star))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_carla/master.py", line 167, in solve_lp
+    pricing = pricer.solve(demand_id=d.id, theta=theta, rho=rho,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kaoutar/stage_3A/codes/Algorithm_codes/TCG_Exact/pricing.py", line 234, in solve
+    raise PricingNotOptimalError(
+TCG_Exact.data.PricingNotOptimalError: Pricing for demand 0 not solved to optimality. Status=13.

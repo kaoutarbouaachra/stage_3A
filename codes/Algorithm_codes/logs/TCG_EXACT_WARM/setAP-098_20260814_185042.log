@@ -1,0 +1,36 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-098_20260814_185042.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-14 18:50:42
+====================================================================
+  Instance     : setAP-098
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-098/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-098-net.json
+    t=0: 4423 non-zero ECMP coefficients
+    t=1: 4455 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-098/TCG_DIAG/setAP-098-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +38 new (0 demand(s) refused -> trivial); pool now 88 cols
+[warm] heuristic incumbent sorted loads (top): 1, 0.967742, 0.366386, 0.36603, 0.348348
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=1  z_1*=1  pool=88 cols  iters=1  t=157s
+[rank   2] LP=0.483871  z_2*=0.967742  pool=88 cols  iters=1  t=220s
+[rank   3] LP=0.209507  z_3*=0.366386  pool=122 cols  iters=4  t=502s
+[rank   4] LP=0.128994  z_4*=0.36603  pool=185 cols  iters=4  t=836s
+[rank   5] LP=0.0908848  z_5*=0.348348  pool=527 cols  iters=9  t=1655s
+
+[interrupt] SIGINT caught; returning 5 completed rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  1, 0.967742, 0.366386, 0.36603, 0.348348
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-098/TCG_EXACT_WARM/setAP-098-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-098/TCG_EXACT_WARM/setAP-098-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment

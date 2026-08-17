@@ -1,0 +1,37 @@
+  Log          : /home/kaoutar/stage_3A/codes/Algorithm_codes/logs/TCG_EXACT_WARM/setAP-100_20260814_211447.log
+====================================================================
+  T-ASR -- Exact Pair-Path CG, WARM-started (sequential leximin)
+  Algorithm    : TCG-Exact-Warm  (folder: TCG_EXACT_WARM)
+  2026-08-14 21:14:47
+====================================================================
+  Instance     : setAP-100
+  Dataset      : ../setAP
+  Results dir  : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_EXACT_WARM
+====================================================================
+[load] ../setAP/setAP-100-net.json
+    t=0: 4704 non-zero ECMP coefficients
+    t=1: 4744 non-zero ECMP coefficients
+[data] nodes=40 arcs=200 demands=50 K=6 budget=7.0 N=400
+[warm] source       : /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_DIAG/setAP-100-srpaths.json
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2498834
+Academic license 2498834 - for non-commercial use only - registered to ya___@gmail.com
+[warm] heuristic columns seeded: +47 new (0 demand(s) refused -> trivial); pool now 97 cols
+[warm] heuristic incumbent sorted loads (top): 0.832649, 0.768689, 0.73849, 0.703931, 0.678262
+[warm] wall cap: 1800s   MIP cap/rank: 180.0s
+[rank   1] LP=0.832649  z_1*=0.832649  pool=97 cols  iters=1  t=133s
+[rank   2] LP=0.577874  z_2*=0.768689  pool=97 cols  iters=1  t=199s
+[rank   3] LP=0.440961  z_3*=0.73849  pool=102 cols  iters=4  t=475s
+[rank   4] LP=0.329115  z_4*=0.703931  pool=143 cols  iters=4  t=773s
+[rank   5] LP=0.260693  z_5*=0.678262  pool=230 cols  iters=4  t=1092s
+[rank   6] LP=0.220788  z_6*=0.647135  pool=285 cols  iters=4  t=1524s
+[rank   7] LP=0.190852  z_7*=0.542286  pool=392 cols  iters=4  t=1863s
+[wall] cap reached (1863s >= 1800s) before rank 8; stopping with 7 rank(s).
+
+[leximin] z* prefix (sorted load vector, leading entries):
+  0.832649, 0.768689, 0.73849, 0.703931, 0.678262, 0.647135, 0.542286
+[out] wrote /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_EXACT_WARM/setAP-100-srpaths.json
+  Summary saved -> /home/kaoutar/stage_3A/codes/Algorithm_codes/results/setAP-100/TCG_EXACT_WARM/setAP-100-summary.json  [INTERRUPTED]
+====================================================================
+Freeing default Gurobi environment
