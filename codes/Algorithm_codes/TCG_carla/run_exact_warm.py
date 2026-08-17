@@ -10,10 +10,6 @@ Same loop, seeding, time guards and hyperparameters as
 TCG_Exact.run_TCG_exact_warm; only the master rank encoding differs (cumulative
 Ogryczak-Tamir, hardcoded in TCG_carla.master).
 
-The warm start is encoding-independent -- a seed srpaths file defines
-trajectories, and trajectory columns carry no encoding -- so a STELA diagonal
-seed (TCG_DIAG) works just as well; pass --warm-algo TCG_DIAG to use it.
-
 Time model (per instance)
 -------------------------
 * --wall-time : global wall-clock cap for THIS instance. A new rank is only
@@ -70,17 +66,13 @@ from .run_exact import (
     _cumulative_theta,
 )
 
-# Hardcoded CARLA namespace -- never collides with the STELA warm runs.
+# Hardcoded CARLA namespace 
 ALGO_NAME = "TCG_EXACT_WARM_CARLA"
 RANK_ENCODING = "carla"
 
-# Default heuristic whose srpaths seeds the pool (results/<inst>/<this>/...).
-# The CARLA diagonal heuristic is the natural pairing; TCG_DIAG (STELA) also
-# works since columns are encoding-independent (pass --warm-algo TCG_DIAG).
 DEFAULT_WARM_ALGO = "TCG_DIAG_CARLA"
 
-# results-folder name -> module path, for an actionable hint if the seed is
-# missing. Folders are uppercase; module paths keep their own casing.
+
 _WARM_ALGO_MODULE = {
     "TCG_DIAG_CARLA": "TCG_carla.run_diag",
     "TCG_DIAG": "TCG_diag.run_TCG_Diag",

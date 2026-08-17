@@ -9,23 +9,12 @@ pricing and hyperparameters as TCG_Exact.run_TCG_Exact; the ONLY difference is
 the master rank encoding, which is the cumulative Ogryczak-Tamir block hardcoded
 in TCG_carla.master.
 
-For each rank k = 1, 2, ... it does:
-    1. Solve the rank-k restricted master LP (inherited z_1*..z_{k-1}*, cumulated
-       into Theta_j* inside the CARLA master).
-    2. Build stratified segment costs theta_{d,k} from the O-T duals.
-    3. Run exact pair-path pricing for every demand (TCG_Exact.pricing, unchanged).
-    4. Add negative reduced-cost columns; repeat until none is found.
-    5. Solve the rank-k INTEGER master over the current pool.
-    6. Recover z_k* from the integer solution's sorted load vector (NOT from any
-       master variable) and inherit it for rank k+1.
 
 The exact pair-path pricer, the column data model and the file adapter are
 reused as-is from the STELA package TCG_Exact, so pricing is byte-for-byte the
 same code STELA uses -- the comparison is "all else equal" by construction.
 
-SCOPE: assumes h = 2. Exact for the LP relaxation under exact pricing; the
-integer master over a finite pool is a heuristic for the MIP unless
-branch-and-price is used.
+SCOPE: assumes h = 2. 
 
 Run as a module from Algorithm_codes/:
     python -m TCG_carla.run_exact toy
@@ -52,13 +41,12 @@ from typing import Dict, List, Optional, Tuple
 from core.paths import RESULTS_DIR, LOGS_DIR, CODES_DIR
 from core.dataset import add_dataset_args, resolve_paths, instance_name
 
-# Shared, unmodified data model (single source of truth).
 from TCG_Exact.data import ArcTime, Column, DemandId, TASRData, TASRError
 # CARLA-hardcoded master lives in THIS package.
 from .master import MasterResult, PairPathColumnGeneration
 
 
-# Hardcoded CARLA namespace -- never collides with the STELA TCG_EXACT runs.
+# Hardcoded CARLA namespace 
 ALGO_NAME = "TCG_EXACT_CARLA"
 RANK_ENCODING = "carla"
 
@@ -75,9 +63,7 @@ def _setup_gurobi():
 _lic = _setup_gurobi()
 
 
-# ---------------------------------------------------------------------------
-# Tee: duplicates sys.stdout to a log file
-# ---------------------------------------------------------------------------
+
 class _Tee:
     """Writes simultaneously to stdout and a log file."""
 
@@ -176,7 +162,7 @@ def _cumulative_theta(z_star: List[float]) -> List[float]:
 
 
 # ---------------------------------------------------------------------------
-# srpaths export (challenge output format)
+# srpaths export 
 # ---------------------------------------------------------------------------
 def _path_to_waypoints(path) -> List:
     """
