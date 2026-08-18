@@ -3,48 +3,9 @@ Function: run_TCG_Diag.py  -- unified rank-by-rank pair-path CG driver (h = 2, t
 Role: Wires the lexicographic loop to the CORRECTED modules:
         * pricing_dp.py  -> exact diagonal Bellman-Ford + heuristic off-diagonal,
                             signature price_demand_topk(..., psi_1, ctx=...).
-        * cg_master.py   -> trajectory_budget_cost (module-level) is reused; the load
-                            contribution Gamma is computed here with an indexed,
-                            cached routine (the old trajectory_load_contribution was
-                            removed during the master fixes).
+        * cg_master.py   
 
-Algorithm :
-  Shared pool grows across all lex ranks. For k = 1..K:
-    1. Inner CG: solve LP-RMP(k) with inherited rows (Tj, Nj) for j<k, read
-       stratified duals mu_bar_k = mu_k + sum_{j<k} eta_j, price all demands,
-       add improving trajectories, repeat until no negative reduced cost.
-    2. Solve MIP(k) on the pool -> certified z_k*.
-    3. Inherit z_k* as a pinned row for rank k+1.
-
-Dual signs: sigma_d (free), mu_k <= 0, eta_j <= 0, psi(t) <= 0. The pricing uses
-(-mu_bar) as the per-(a,t) pressure and rho = -psi(1) as the per-shared-segment
-budget penalty. Passing mu = mu_bar is correct AT LP OPTIMALITY (rho_L = -mu_bar),
-which is why the LP must be solved to proven optimality before reading duals.
-
---------------------------------------------------------------------------------
-TIMING MODEL
-  * args.lp_time / args.mip_time bound ONE Gurobi optimize() call each, through
-    its TimeLimit parameter. They do NOT bound the Python model build, the
-    pricing sweep, nor the sum over CG iterations.
-  * args.pricing_time bounds ONE pricing sweep (all demands), in wall-clock.
-  * The inner CG loop stops at `cg_deadline`, set so that args.mip_time remains
-    for the rank MIP.
-  * THE RANK MIP ALWAYS RUNS, with TimeLimit = args.mip_time. It is never
-    skipped, whatever the CG consumed. This is sound: the MIP on a partial pool
-    is still feasible, hence returns a valid upper bound on z_k*, an
-    unconverged CG costs quality, not correctness.
-
-  Consequence, stated plainly: args.time_limit is a SOFT cap. Because the model
-  build is pure Python and cannot be interrupted, the last rank may overshoot it
-  by roughly (build time + args.mip_time). A new rank is only started while
-  elapsed <= time_limit, so at most one rank overshoots.
-
-  On large instances rank 1's CG can consume the whole budget on its own; only
-  its MIP is then guaranteed. To certify several ranks, shrink the per-iteration
-  cost (--topk_cols 1, --max_cg_iter 6) rather than raising --time_limit.
-
-SCOPE: this driver assumes h = 2 (see the assertion in _run). It is a heuristic
-pricing variant and is NOT part of the exact suite compared in the paper.
+SCOPE: this driver assumes h = 2 
 
 Usage (from Algorithm_codes/):
     python -m TCG_Diag.run_TCG_Diag --instance setA-01 --K 5

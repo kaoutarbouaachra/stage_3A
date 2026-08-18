@@ -3,26 +3,8 @@ Function: run_TCG_TopK.py
 Role: the lexicographic pair-path Column Generation algorithm for T-ASR.
 NB: (this version implements the algorithm with heuristic pricing of the diagonal + off-diagonal phases)
 
-Description:
-    Implements the complete algorithm: PAIR-PATH COLUMN GENERATION ALGORITHM FOR T-ASR
-      =================================================
-      Shared pool: grows across all lexicographic ranks.
 
-      For each rank k = 1, 2, ..., K:
-        1. Internal CG:
-           a. Solve LP-RMP(k) with inherited constraints from ranks j < k
-           b. Extract stratified duals mu_bar_k(a,t)
-           c. Pricing: find pairs (p0,p1) with negative reduced cost
-           d. Add them to the shared pool
-           Repeat until convergence (no column with rc < 0)
-        2. Solve MIP(k) on the pool -> obtain z_k*
-        3. Store z_k* (used as an inherited constraint for rank k+1)
-
-      Result: solution P* with certified lexicographic prefix (z_1*, ..., z_K*)
-
-SCOPE: assumes h = 2 (trajectories are pairs (p0, p1)). Heuristic pricing, so
-the certified prefix is an upper bound on the true leximin vector; this driver
-is NOT part of the exact suite compared in the paper.
+SCOPE: assumes h = 2 
 
 Usage (from Algorithm_codes/):
     python -m TCG_topk.run_TCG_TopK --instance setA-01 --K 5

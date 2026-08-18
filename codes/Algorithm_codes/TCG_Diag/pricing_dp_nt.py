@@ -7,15 +7,6 @@ Role:pricing with nt4python k-hop Bellman-Ford on the diagonal
 Important modelling point:
 The nt4python Bellman-Ford is used only for DIAGONAL pricing.
 It is not run on the physical topology.  For each demand and each dual vector,
-we build an auxiliary segment graph:
-    node = router
-    auxiliary arc (i, j) exists iff j is reachable from i in BOTH periods 0 and 1
-    weight(i, j) = theta0(i, j) + theta1(i, j)
-    hop limit = inst.max_seg
-
-This is exactly the same diagonal pricing problem as the previous Python DP.
-The off-diagonal part remains heuristic, with the same function names and same
-return types as pricing_dp.py, so the rest of the code can stay unchanged.
 
 If nt4python is not installed or fails, this file automatically falls back to the
 pure-Python diagonal DP.

@@ -11,32 +11,6 @@ pool-restricted integer solve.
     solve_lp(rank_values=[z1,...,z_{k-1}]) solves the rank-k CARLA LP.
     solve_integer_master(...)              solves the integer master over the
                                            currently generated pool.
-
-CARLA rank rows
----------------
-The columns (trajectories), the selection rows (S), the load-assembly expression
-lambda(a,t) = sum Gamma*xi, the budget row (B) and the whole pricing interface
-are identical to STELA. What is baked in here is the cumulative rank block: for
-each active rank j <= k a free threshold q_j and nonnegative excesses d_{j,a,t}
-with
-
-    lambda(a,t) <= q_j + d_{j,a,t},
-
-so that  Theta_j := j*q_j + sum_{a,t} d_{j,a,t}  equals the sum of the j largest
-loads at the O-T optimum. Rank k minimises Theta_k; the inherited ranks j<k are
-frozen one-sidedly by  Theta_j <= Theta_j*  with  Theta_j* = sum_{r<=j} z_r*
-(cumulated internally from the certified sorted loads passed in `rank_values`).
-No binary appears in the rank encoding; only xi toggles between the LP
-relaxation and the integer master.
-
-The duals fed to the pricer are read exactly as in STELA:
-aggregate_mu(a,t) = sum over ALL load-bounding rows touching (a,t) of their Pi
-(<= 0 in a minimisation). For CARLA that sum is sum_{j<=k} of the O-T row duals,
-i.e. the stratified subgradient of the sum of the k largest loads -- so the
-pricer (imported unchanged from TCG_Exact.pricing) never learns which encoding
-produced the duals.
-
-The column data model and the exact pricer are reused as-is from TCG_Exact.
 """
 
 from __future__ import annotations

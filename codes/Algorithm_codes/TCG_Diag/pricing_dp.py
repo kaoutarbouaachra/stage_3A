@@ -1,9 +1,6 @@
 """
 pricing_dp.py  (exact diagonal pricing-off diagonal enumeration (topK))
 ---------------------------------------------
-Dual sign convention (matches cg_master.py)
-  mu(a,t) <= 0, psi(t) <= 0 are passed raw; here we use the non-negative
-  effective quantities (-mu) inside theta and rho = -psi for the budget penalty.
 """
  
 from __future__ import annotations

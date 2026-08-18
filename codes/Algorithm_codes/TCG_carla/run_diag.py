@@ -3,46 +3,7 @@ run_diag.py  (TCG_carla)
 ========================
 
 TCG-Diag-CARLA: rank-by-rank pair-path CG driver (h = 2) with the CARLA
-cumulative Ogryczak-Tamir rank encoding hardcoded. Same pool, pricing oracle,
-CG loop, time model and hyperparameters as TCG_Diag.run_TCG_Diag; the only
-difference is the master rank rows built in LexRMP._build_model.
-
-Algorithm :
-  Shared pool grows across all lex ranks. For k = 1..K:
-    1. Inner CG: solve LP-RMP(k) with cumulative inherited rows, read the
-       stratified duals mu_bar_k, price all demands, add improving trajectories,
-       repeat until no negative reduced cost.
-    2. Solve MIP(k) on the pool; recover z_k* from the incumbent's sorted load
-       vector (the cumulative master has no z_thresh).
-    3. Inherit z_k* for rank k+1 (cumulated into Theta_j* inside the master).
-
-CARLA rank rows. For each active rank j a free level q_j and nonnegative
-excesses d_{j,a,t} with  lam(a,t) <= q_j + d_{j,a,t};  Theta_j := j q_j +
-sum_{a,t} d_{j,a,t} is the sum of the j largest loads at the O-T optimum. Rank k
-minimises Theta_k; inherited ranks j<k are frozen one-sidedly by  Theta_j <=
-Theta_j*  with  Theta_j* = sum_{r<=j} z_r*. No binary appears in the rank
-encoding.
-
-Pricing is identical to STELA: mu_bar(a,t) = sum of the Pi of every load-bounding
-row touching (a,t) (here the O-T rows), and price_demand_topk is imported
-unchanged from TCG_Diag.pricing_dp. The pool and budget helpers come unchanged
-from TCG_Diag.cg_master.
-
-Dual signs: sigma_d (free), the load-bounding-row duals <= 0, psi(t) <= 0. The
-pricing uses (-mu_bar) as the per-(a,t) pressure and rho = -psi(1) as the
-per-shared-segment budget penalty; passing mu = mu_bar is correct AT LP
-OPTIMALITY, which is why the LP must be solved to proven optimality first.
-
---------------------------------------------------------------------------------
-TIMING MODEL (same as TCG_Diag)
-  * args.lp_time / args.mip_time bound ONE Gurobi optimize() call each.
-  * args.pricing_time bounds ONE pricing sweep (all demands).
-  * The inner CG stops at cg_deadline, reserving args.mip_time for the rank MIP,
-    which ALWAYS runs (a partial pool still yields a valid upper bound on z_k*).
-  * args.time_limit is a SOFT cap; the last rank may overshoot by
-    (build time + mip_time). A new rank starts only while elapsed <= time_limit.
-
-SCOPE: assumes h = 2. Heuristic pricing variant; NOT part of the exact suite.
+cumulative Ogryczak-Tamir rank encoding hardcoded. 
 
 Usage (from Algorithm_codes/):
     python -m TCG_carla.run_diag --instance setA-01 --K 5

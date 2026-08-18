@@ -2,10 +2,6 @@
 Function:pricing_dp_heuristic.py 
 Role: Pricing for lexicographic CG with diagonal/off-diagonal with heuristic path enumeration.
 ---------------------------------------
-  1. Explores paths with 3, 4, 5 waypoints (not only 0-2)
-  2. Better candidate node selection (dual-based)
-  3. Adds several columns per demand (top-K)
-  4. More aggressive off-diagonal pricing
 """
 
 from __future__ import annotations

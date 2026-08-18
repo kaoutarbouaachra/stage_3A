@@ -6,9 +6,6 @@ run_exact_warm.py  (TCG_carla)
 TCG-Exact-Warm-CARLA: the CARLA sequential leximin driver of
 :mod:`TCG_carla.run_exact`, but with the column pool warm-started from a
 heuristic solution (by default the CARLA diagonal heuristic TCG_DIAG_CARLA).
-Same loop, seeding, time guards and hyperparameters as
-TCG_Exact.run_TCG_exact_warm; only the master rank encoding differs (cumulative
-Ogryczak-Tamir, hardcoded in TCG_carla.master).
 
 Time model (per instance)
 -------------------------

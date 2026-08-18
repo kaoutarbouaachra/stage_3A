@@ -4,15 +4,10 @@ run_exact.py  (TCG_carla)
 =========================
 
 TCG-Exact-CARLA: sequential lexicographic (leximin) driver for the CARLA
-cumulative pair-path column-generation master (h = 2 periods). Same loop, pool,
-pricing and hyperparameters as TCG_Exact.run_TCG_Exact; the ONLY difference is
-the master rank encoding, which is the cumulative Ogryczak-Tamir block hardcoded
-in TCG_carla.master.
+cumulative pair-path column-generation master (h = 2 periods). 
 
 
-The exact pair-path pricer, the column data model and the file adapter are
-reused as-is from the STELA package TCG_Exact, so pricing is byte-for-byte the
-same code STELA uses -- the comparison is "all else equal" by construction.
+The exact pair-path pricer,
 
 SCOPE: assumes h = 2. 
 

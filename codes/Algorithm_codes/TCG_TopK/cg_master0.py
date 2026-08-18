@@ -4,17 +4,6 @@ Function:cg_master0.py
 
 Role: Restricted Master Problem (RMP) for the pair-path Column Generation.
 
-Variables:
-  z[d, traj_id] ∈ {0, 1}  for each trajectory (p0, p1) in the pool
-
-Constraints:
-  (S) Σ_traj z[d, traj] = 1            for each demand d
-  (L) λ(a, t) = Σ_d,traj Γ_dat(traj) × z[d, traj]   for each (a, t)
-  (B) Σ_d,traj β_dt(traj) × z[d, traj] ≤ κ(t)       for each t ∈ T*
-
-Objective:
-  Phase 1 (pool generation): MLU = max_at λ(a, t)
-  Phase 2 (lex k≥2): lex-k objective with inherited constraints
 """
 
 from __future__ import annotations

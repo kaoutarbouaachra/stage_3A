@@ -1,29 +1,9 @@
 #!/usr/bin/env bash
 # =============================================================================
 # scripts_expe/run_warm_campaign.sh
-#   TCG-Exact-Warm over all setAP instances, on p-maestro.
+#   TCG-Exact-Warm (stela or carla) over all setAP instances, on p-maestro.
 #
-# Lives in scripts_expe/ but operates from Algorithm_codes/: it locates itself
-# and cd's one level up, so all relative paths (results/, ../setAP/, logs/) are
-# resolved exactly as when a driver is run by hand from Algorithm_codes/.
-#
-# For each instance:
-#   * skips it if the TCG_DIAG seed srpaths is missing (warns, does NOT crash);
-#   * skips it if a COMPLETED warm summary already exists (restartable: a run
-#     with interrupted=true IS re-run);
-#   * runs warm with a hard wall cap (WALL) and a per-rank MIP cap (MIP);
-#   * wraps the call in `timeout -s SIGINT` as a SECOND safety net past WALL.
-#
-# Per-instance solver logs are written by the driver itself to
-#   logs/TCG_EXACT_WARM/<inst>_<timestamp>.log
-# This script additionally writes a CAMPAIGN log (which instance ran/skipped/
-# failed) to
-#   logs/expe4/warm_campaign_<timestamp>.log
-#
-# Launch under tmux:
-#     tmux new -s expe4
-#     bash scripts_expe/run_warm_campaign.sh
-# (the campaign log is written automatically; no need to pipe to tee.)
+
 # =============================================================================
 set -u
 
@@ -35,7 +15,7 @@ cd "$CODES_DIR" || { echo "cannot cd to $CODES_DIR"; exit 1; }
 # ---- config -----------------------------------------------------------------
 DATA_DIR="../setAP/"          # setAP instances
 MODULE="TCG_Exact.run_TCG_exact_warm"
-WARM_ALGO="TCG_DIAG"          # seed: results/<inst>/TCG_DIAG/<inst>-srpaths.json
+WARM_ALGO="TCG_DIAG"         
 WALL=3600                   # internal per-instance wall cap (s)
 MIP=1000                      # per-rank integer-master cap (s)
 TIMEOUT_MARGIN=120            # external timeout = WALL + margin (grace for flush)
