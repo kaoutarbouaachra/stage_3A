@@ -28,6 +28,7 @@ Algorithm_codes/
   TCG_TopK/                   Column-generation solver with heuristic diagonal/off-diagonal pricing
   TCG_Diag/                   Alternative column-generation solver with Bellman-Ford diagonal pricing
   TCG_Exact/                  Alternative column-generation solver with exact pricing
+  TCG_carla/                  Carla-driven column-generation solver (with exact an diag pricings)  
   logs/                       Runtime logs produced by algos
   results/                    Solver outputs and checker results
 ```
